@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @contact.name %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @contact.phone %>
-</p>
-
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<div class="container">
+  <h2>Contacto</h2>
+  <ul class="form-group">
+    <li class="list-group-item">Name: <%= @contact.name %></li>
+    <li class="list-group-item">Phone: <%= @contact.phone %></li>
+  </ul>
+  <div class="row">
+    <div class="col-xs-12 text-right">
+      <tr>
+        <td>
+          <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-warning' %>
+          <%= link_to 'Back', contacts_path, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,8 @@ class User < ApplicationRecord
   # Attributes
 
   # Associations
-
+  has_many :contacts
+  
   # Delegates
 
   # Constants
