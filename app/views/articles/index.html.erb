@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h1>Meus Artigos</h1><%= link_to 'Novo Artigo', new_article_path, class: 'btn btn-success' %>
+  </div>
+
+  <div class="col-md-8 col-md-offset-2 col-xs-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @articles.empty? %>
+          <tr>
+            <td colspan="4" class="text-center">
+              <h3>Sem artigos cadastrados.</h3>
+              <%= link_to 'click aqui', new_article_path %> para cadastrar um novo artigo
+            </td>
+          </tr>
+        <% end %>
+        <% @articles.each do |c| %>
+        <tr>
+          <td>
+            <%= c.id %>
+          </td>
+          <td>
+            <%= c.title %>
+          </td>
+          <td>
+            <%= c.description %>
+          </td>
+          <td class="text-right">
+            <%= link_to 'Editar', edit_article_path(c), class: 'btn btn-warning' %>
+            <%= link_to 'Excluir', article_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

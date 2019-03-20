@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Contacto</h2>
+  <ul class="form-group">
+    <li class="list-group-item">Titulo: <%= @article.title %></li>
+    <li class="list-group-item">Descrição: <%= @article.description %></li>
+  </ul>
+  <div class="row">
+    <div class="col-xs-12 text-right">
+      <tr>
+        <td>
+          <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-warning' %>
+          <%= link_to 'Back', articles_path, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    </div>
+  </div>
+</div>
