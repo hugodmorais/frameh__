@@ -5,7 +5,7 @@ class Contact < ApplicationRecord
   # Attributes
 
   # Associations
-  belongs_to :users
+  belongs_to :user
   
   # Delegates
 

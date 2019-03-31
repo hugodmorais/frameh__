@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   # Associations
   has_many :contacts
+  has_many :articles
   
   # Delegates
 
@@ -24,7 +25,8 @@ class User < ApplicationRecord
   # Scopes
 
   # Callbacks
-
+  before_save { self.email = email.downcase }
+  
   # Constants Methods
 
   # Default
