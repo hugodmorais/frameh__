@@ -33,6 +33,11 @@
           <td>
             <%= c.description %>
           </td>
+          <td>
+            <small>Created by: <%= c.user.name %>,
+              <%= time_ago_in_words(c.created_at) %> ago,
+              last updated: <%= time_ago_in_words(c.updated) %></small>
+          </td>
           <td class="text-right">
             <%= link_to 'Editar', edit_article_path(c), class: 'btn btn-warning' %>
             <%= link_to 'Excluir', article_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
