@@ -10,6 +10,7 @@
           <th>Id</th>
           <th>Title</th>
           <th>Description</th>
+          <th>Created</th>
           <th class="text-right">Actions</th>
         </tr>
       </thead>
@@ -34,9 +35,7 @@
             <%= c.description %>
           </td>
           <td>
-            <small>Created by: <%= c.user.name %>,
-              <%= time_ago_in_words(c.created_at) %> ago,
-              last updated: <%= time_ago_in_words(c.updated) %></small>
+            <small>Created by: <%= c.user.name %></small>
           </td>
           <td class="text-right">
             <%= link_to 'Editar', edit_article_path(c), class: 'btn btn-warning' %>
