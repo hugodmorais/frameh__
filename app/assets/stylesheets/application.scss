@@ -2,6 +2,31 @@
 @import "bootstrap";
 
 $gray-medium-light: #EAEAEA;
+.jumbotron {
+  background-image: asset-url('jumbo');
+  background-size: cover;
+  height: 570px;
+  text-align: center;
+  padding-top: 14em;
+}
+
+.header_menu {
+  color: red;
+}
+
+.navbar {
+  background-color: rgb(65, 54, 54);
+  border: none;
+}
+
+.navbar-nav li {
+  color: rgb(179, 228, 230);
+}
+
+.jumbotron h1 {
+  color: rgb(234, 234, 234);
+}
+
 footer {
   margin-top: 45px;
   padding-top: 5px;
