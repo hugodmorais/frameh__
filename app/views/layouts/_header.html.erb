@@ -37,10 +37,22 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               bem vindo, <%= current_user.name %> <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu">
+            <ul id="image" class="dropdown-menu">
+              
+              <li>
+                <a><%= image_tag( current_user.image, :height => "3em", class: "img-thumbnail" )  %></a>
+                  
+              </li>
+              
               <li>
                 <%= link_to 'Minha Pagina', contacts_path %>
               </li>
+              <% if current_user.admin == true %>
+                <li>
+                  <%= link_to 'Lista de Utilizadores', users_path %>
+                </li>
+                <li class="divider" role="separator"></li>
+              <% end %>
               <li>
                 <%= link_to 'Editar', edit_user_path(current_user) %>
               </li>

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   has_secure_password
-
+  has_one_attached :image
   # Includes
 
   # Attributes
@@ -31,5 +31,9 @@ class User < ApplicationRecord
 
   # Default
 
+  def thumb
+    image.variant(resize: '260x180', rotate: '90', auto_orient: true)
+  end
+  
   private
 end

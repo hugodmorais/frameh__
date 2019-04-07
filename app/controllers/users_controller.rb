@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :require_logged_in_user, only: [:edit, :update]
 
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -27,10 +31,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    flash[:danger] = "User was successefully destroy"
+    redirect_to users_path
+  end
+
   private
 
   def user_params
-    params.require(:user).permit!
+    params.require(:user).permit(:email, :name, :password, :image)
   end
-
 end

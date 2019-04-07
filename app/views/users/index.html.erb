@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <h1>Utilizadores</h1>
+    </div>
+    
+    <div class="col-md-8 col-md-offset-2 col-xs-12">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if @users.empty? %>
+                <tr>
+                    <td colspan="4" class="text-center">
+                    <h3>Sem Utilizadores cadastrados.</h3>
+                </tr>
+            <% end %>
+            <% @users.each do |c| %>
+            <tr>
+            <td>
+                <%= c.id %>
+            </td>
+            <td>
+                <%= c.name %>
+            </td>
+            <td>
+                <%= c.email %>
+            </td>
+            <td class="text-right">
+                <%= link_to 'Excluir', user_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
+            </td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+    </div>
+    

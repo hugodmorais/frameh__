@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   resources :contacts
   resources :articles
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :users
 end
