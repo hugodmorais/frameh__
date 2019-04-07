@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_logged_in_user, only: [:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 5)
   end
 
   def new
