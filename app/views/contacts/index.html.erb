@@ -38,7 +38,7 @@
       </tbody>
     </table>
     <div align="center">
-        <%= will_paginate %>
+        <%= will_paginate @contacts, :previous_label => 'Previous', :next_label => 'Next' %>
     </div>
   </div>
 </div>
