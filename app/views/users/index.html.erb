@@ -1,46 +1,59 @@
-<div class="row offset-2 col-xs-10 well">
-    <div class="col-xs-12 text-center">
-        <h1>Utilizadores</h1>
-    </div>
-    
-    <div class="col-md-8 col-md-offset-2 col-xs-12">
-        <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th class="text-right">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if @users.empty? %>
-                <tr>
-                    <td colspan="4" class="text-center">
-                    <h3>Sem Utilizadores cadastrados.</h3>
-                </tr>
-            <% end %>
-            <% @users.each do |c| %>
-            <tr>
-            <td>
-                <%= c.id %>
-            </td>
-            <td>
-                <%= c.name %>
-            </td>
-            <td>
-                <%= c.email %>
-            </td>
-            <td class="text-right">
-                <%= link_to 'Excluir', user_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
-            </td>
-            </tr>
-            <% end %>
-        </tbody>
-        </table>
-        <div align="center">
-            <%= will_paginate @users, :previous_label => 'Previous', :next_label => 'Next' %>
+<div class="row">
+    <div class="offset-1 col-lg-12">
+        <div class="panel panel-border">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Utilizadores</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="panel-body">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+                <table id="datatable" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th class="text-right">Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                            <% if @users.empty? %>
+                            <tr>
+                                <td colspan="4" class="text-center">
+                                <h3>Sem Utilizadores cadastrados.</h3>
+                            </tr>
+                        <% end %>
+                        <% @users.each do |c| %>
+                        <tr>
+                        <td>
+                            <%= c.id %>
+                        </td>
+                        <td>
+                            <%= c.name %>
+                        </td>
+                        <td>
+                            <%= c.email %>
+                        </td>
+                        <td class="text-right">
+                            <%= link_to 'Excluir', user_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
+                        </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+                <div>
+                    <%= will_paginate @contacts, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
         </div>
     </div>
-    </div>
+</div>
     

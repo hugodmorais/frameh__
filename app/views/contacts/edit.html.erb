@@ -1,13 +1,17 @@
 <div class="row">
-  <div class="col-xs-12">
-    <h1>Editar Contato</h1>
-  </div>
-
-  <div class="col-md-6 col-md-offset-3 col-xs-12">
-    <%= form_for @contact do |f| %>
-      <%= render 'form', f: f %>
-
-      <%= f.submit 'Atualizar', class: 'btn btn-primary' %>
-    <% end %>
+  <div class="offset-1 col-lg-12">
+    <div class="panel panel-border panel-custom">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Editar Contacto</h3>
+      </div>
+      <div class="panel-body">
+          <%= form_for @contact do |f| %>
+          <%= render 'form', f: f %>
+    
+          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+          <%= link_to "Cancelar", contacts_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

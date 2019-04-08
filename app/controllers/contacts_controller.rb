@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contacts = current_user.contacts.paginate(page: params[:page], per_page: 5)
+    @contacts = current_user.contacts.paginate(page: params[:page], per_page: 9)
   end
 
   def show

@@ -1,17 +1,33 @@
-<div class="container">
-  <h2>Contacto</h2>
-  <ul class="form-group">
-    <li class="list-group-item">Titulo: <%= @article.title %></li>
-    <li class="list-group-item">Descrição: <%= @article.description %></li>
-  </ul>
-  <div class="row">
-    <div class="col-xs-12 text-right">
-      <tr>
-        <td>
-          <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-warning' %>
-          <%= link_to 'Back', articles_path, class: 'btn btn-danger' %>
-        </td>
-      </tr>
+<div class="row">
+  <div class="offset-1 col-xs-12">
+    <div class="panel panel-border panel-custom">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Artigo</h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Titulo:</label>
+              <div class="col-sm-10">
+                <p class="form-control-static"><%= @article.title %></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Descrição:</label>
+              <div class="col-sm-10">
+                <p class="form-control-static"><%= @article.description %></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-9 m-t-15">
+                  <%= link_to "Sair", articles_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+

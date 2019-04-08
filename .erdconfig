@@ -1,0 +1,11 @@
+attributes:
+    - primary_keys
+    - foreign_keys
+    - inheritance
+    - content
+    - timestamps
+title: "Modelo de dados Frameh"
+sort: false
+prepend_primary: true
+exclude: ['Audited::Audit']
+indirect: false

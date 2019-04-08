@@ -549,7 +549,34 @@ body {
     border-right: none;
 }
 
+.panel-border {
+  height: 635px;
+  width: 1155px;
+  padding: 20px;
+}
+
+.panel-heading {
+  margin-right: 25px;
+}
+
+.paginate {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  font-size: 14px !important;
+}
+
+.form-control {
+  font-size: 16px !important;
+}
+
 body {
   font-size: 14px !important;
+  background-color: #4f5b62 !important;
 }
 
