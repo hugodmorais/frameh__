@@ -9,6 +9,7 @@ class User < ApplicationRecord
   # Associations
   has_many :contacts
   has_many :articles
+  has_many :user_groups
   
   # Delegates
 

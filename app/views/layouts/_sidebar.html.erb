@@ -24,7 +24,7 @@
             </div>
             <div class="sidebar-header">
               <div class="user-pic">
-                <%= image_tag( current_user.image, class: "img-thumbnail" )  %>
+                <%#= image_tag( current_user&.image, class: "img-thumbnail" )  %>
               </div>
               <div class="user-info">
                 <span class="user-name">
@@ -89,39 +89,37 @@
                     </ul>
                   </div>
                 </li>
-                <% if current_user.admin == true %>
+                
                     <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fas fa-users"></i>
                         <span>Utilizadores</span>
                     </a>
                     <div class="sidebar-submenu">
-                        <ul>
+                      <ul>
+                          <li>
+                              <%= link_to 'Grupos de Utilizadores', user_groups_path %>
+                          </li>
+                          <li>
+                              <%= link_to 'Grupos Trabalho', work_groups_path %>
+                          </li>
+                          <% if current_user.admin == true %>
                             <li>
-                                <%= link_to 'Lista', users_path %>
+                              <%= link_to 'Lista', users_path %>
                             </li>
-                        </ul>
-                    </div>
-                    </li>
-                <% end %>
+                          <% end %>
+                      </ul>
+                    </div>                  
+                  </li>
                 <li class="sidebar-dropdown">
                   <a href="#">
-                    <i class="fa fa-chart-line"></i>
-                    <span>Charts</span>
+                    <i class="fa fa-briefcase"></i>
+                    <span>Trabalho</span>
                   </a>
                   <div class="sidebar-submenu">
                     <ul>
                       <li>
-                        <a href="#">Pie chart</a>
-                      </li>
-                      <li>
-                        <a href="#">Line chart</a>
-                      </li>
-                      <li>
-                        <a href="#">Bar chart</a>
-                      </li>
-                      <li>
-                        <a href="#">Histogram</a>
+                          <%= link_to 'Empresas', works_path %>
                       </li>
                     </ul>
                   </div>

@@ -1,5 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+/*
+*= require jquery.datetimepicker
+*/
 
 $gray-medium-light: #EAEAEA;
 .jumbotron {
@@ -29,27 +32,24 @@ $gray-medium-light: #EAEAEA;
   margin-top: 2.5em;
 }
 
-footer {
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
-  a {
-    color: $gray;
-    /*It means: that a:hover */
-    &:hover{
-      color: $gray-darker;
-    }
-  }
-  small {
-    text-align: center;
-  }
-  #contacts_footer {
-    float: right;
-  }
+.footer {
+  display: block;
+  margin-top: -20px;
+  height: 35px;
+  background: #343a40;
+}
 
-  #contacts_footer a {
-    padding-right: 5px;
-    text-decoration: underline;
-  }
+.footer div {
+  float: right;
+}
+
+.footer div small{
+  padding-right: 15px;
+}
+
+#contacts_footer {
+  padding-top: 2px;
+  padding-right: 10px;
 }
 
 
@@ -130,9 +130,7 @@ body {
 
 /*----------------page-wrapper----------------*/
 
-.page-wrapper {
-  height: 100vh;
-}
+
 
 .page-wrapper .theme {
   width: 40px;
@@ -578,5 +576,9 @@ body {
 body {
   font-size: 14px !important;
   background-color: #4f5b62 !important;
+}
+
+.form-control {
+  height: 3.5rem !important;
 }
 

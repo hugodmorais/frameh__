@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :articles
   resources :users
+  resources :user_groups
+  resources :works
+  resources :work_groups
 end
