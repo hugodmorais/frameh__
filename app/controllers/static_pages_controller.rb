@@ -9,4 +9,8 @@ class StaticPagesController < ApplicationController
 
   def contato  
   end
+
+  def work_groups_static
+    @user_groups = UserGroup.all
+  end
 end

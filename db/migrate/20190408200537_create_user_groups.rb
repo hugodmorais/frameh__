@@ -6,7 +6,6 @@ class CreateUserGroups < ActiveRecord::Migration[5.2]
       t.integer :genre
       t.datetime :birth_date
       t.references :user, foreign_key: true
-      t.references :work_group, foreign_key: true
 
       t.timestamps
     end

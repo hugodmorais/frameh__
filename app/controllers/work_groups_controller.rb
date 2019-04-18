@@ -1,9 +1,11 @@
 class WorkGroupsController < ApplicationController
     before_action :set_work_group, only: [:edit, :show, :update, :destroy]
+    before_action :set_user_groups, only: [:new, :create, :edit, :update]
+    before_action :set_works, only: [:new, :create, :edit, :update]
   
     def index
-        @work_groups = UserGroup.all
-
+        @work_groups = WorkGroup.all.paginate(page: params[:page], per_page: 9)
+        @user_groups = UserGroup.all
     end
     
     def new
@@ -48,6 +50,14 @@ class WorkGroupsController < ApplicationController
     def set_work_group
         @work_group = Work.find(params[:id])
     end
+
+    def set_user_groups
+        @user_groups = UserGroup.all
+    end  
+    
+    def set_works
+        @works = Work.all
+    end  
     
     def work_group_params
         params.require(:work).permit!

@@ -24,7 +24,7 @@
             </div>
             <div class="sidebar-header">
               <div class="user-pic">
-                <%#= image_tag( current_user&.image, class: "img-thumbnail" )  %>
+                <%= image_tag( current_user&.image, class: "img-thumbnail rotateSide" ) if current_user&.image.attached?  %>
               </div>
               <div class="user-info">
                 <span class="user-name">
@@ -98,14 +98,14 @@
                     <div class="sidebar-submenu">
                       <ul>
                           <li>
-                              <%= link_to 'Grupos de Utilizadores', user_groups_path %>
+                              <%= link_to 'Utilizadores', user_groups_path %>
                           </li>
                           <li>
-                              <%= link_to 'Grupos Trabalho', work_groups_path %>
+                              <%= link_to 'Editar Trabalho', work_groups_static_path %>
                           </li>
                           <% if current_user.admin == true %>
                             <li>
-                              <%= link_to 'Lista', users_path %>
+                              <%= link_to 'Contas', users_path %>
                             </li>
                           <% end %>
                       </ul>

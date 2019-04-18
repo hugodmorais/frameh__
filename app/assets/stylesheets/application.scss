@@ -237,7 +237,7 @@ body {
 }
 
 .sidebar-wrapper .sidebar-header .user-pic img {
-  transform: rotate(90deg);
+  
   object-fit: cover;
   height: 100%;
   width: 100%;
@@ -568,6 +568,17 @@ body {
 .btn {
   font-size: 14px !important;
 }
+
+.rotate90 {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  padding: 10px;
+}
+
+
 
 .form-control {
   font-size: 16px !important;

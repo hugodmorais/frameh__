@@ -1,12 +1,13 @@
 class UserGroup < ApplicationRecord
   
+  has_one_attached :image
   # Includes
 
   # Attributes
 
   # Associations
   belongs_to :user
-  belongs_to :work_group
+  has_many :work_groups
 
   # Delegates
 
@@ -26,6 +27,10 @@ class UserGroup < ApplicationRecord
   def to_s
     return 'Masculino' if genre == 0
     'Feminino'
+  end
+
+  def thumb
+    image.variant(resize: '50x50', auto_orient: true)
   end
 
   private

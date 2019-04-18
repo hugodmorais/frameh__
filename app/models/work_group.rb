@@ -4,11 +4,11 @@ class WorkGroup < ApplicationRecord
     # Attributes
 
     # Associations
-    has_many :user_groups
-    has_many :works
+    belongs_to :user_group
+    belongs_to :work
     
     # Delegates
-
+    
     # Constants
 
     # Validations

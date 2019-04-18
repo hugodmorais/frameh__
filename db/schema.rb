@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_211809) do
+ActiveRecord::Schema.define(version: 2019_05_12_111732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,11 +59,9 @@ ActiveRecord::Schema.define(version: 2019_04_12_211809) do
     t.integer "genre"
     t.datetime "birth_date"
     t.bigint "user_id"
-    t.bigint "work_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_groups_on_user_id"
-    t.index ["work_group_id"], name: "index_user_groups_on_work_group_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,22 +76,24 @@ ActiveRecord::Schema.define(version: 2019_04_12_211809) do
   create_table "work_groups", force: :cascade do |t|
     t.datetime "start_at"
     t.datetime "end_at"
+    t.bigint "work_id"
+    t.bigint "user_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_group_id"], name: "index_work_groups_on_user_group_id"
+    t.index ["work_id"], name: "index_work_groups_on_work_id"
   end
 
   create_table "works", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "country", default: "", null: false
     t.string "city"
-    t.bigint "work_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["work_group_id"], name: "index_works_on_work_group_id"
   end
 
   add_foreign_key "contacts", "users"
   add_foreign_key "user_groups", "users"
-  add_foreign_key "user_groups", "work_groups"
-  add_foreign_key "works", "work_groups"
+  add_foreign_key "work_groups", "user_groups"
+  add_foreign_key "work_groups", "works"
 end

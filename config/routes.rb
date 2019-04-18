@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
   get 'sobre', to: 'static_pages#sobre'
   get 'contacto', to: 'static_pages#contacto'
+  get 'work_groups_static', to: 'static_pages#work_groups_static'
   get 'entrar', to: 'sessions#new'
   post 'entrar', to: 'sessions#create'
   delete 'sair', to: 'sessions#destroy'

@@ -1,16 +1,28 @@
 
 
   <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :start_at %>
+    <%= f.text_field :start_at, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :country %>
-    <%= f.text_field :country, class: 'form-control' %>
+    <%= f.label :end_at %>
+    <%= f.text_field :end_at, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :city, class: 'form-control' %>
+  <div class="form-group %>">
+    <%= f.label :user_group_id do %>
+    <%= t(:user_group) %></span>
+    <% end %>
+    <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, {}, class: 'form-control' %>
   </div>
+
+  <div class="form-group %>">
+      <%= f.label :work_id do %>
+      <%= t(:work) %></span>
+      <% end %>
+      <%= f.collection_select :work_id, @works, :id, :name, {}, class: 'form-control' %>
+    </div>
+</div>
+
+

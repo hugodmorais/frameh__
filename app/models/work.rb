@@ -4,7 +4,7 @@ class Work < ApplicationRecord
     # Attributes
 
     # Associations
-    belongs_to :work_group
+    has_many :work_groups
     
     # Delegates
 
