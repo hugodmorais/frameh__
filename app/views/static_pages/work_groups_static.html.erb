@@ -22,7 +22,7 @@
                   <h5 class="card-title">Nome: <%= c.first_name %> <%= c.last_name %></h5>
                   <h5 class="card-title">Empresa Atual: <%= WorkGroup.find_by(user_group: c.id)&.work&.name %></h5>
                   <i class="fa fa-network"></i>
-                  <%= link_to 'Editar', work_groups_path, class: 'btn btn-primary' %>
+                  <%= link_to 'Editar', {:controller => "work_groups", :action => "index", :c => c.id }, class: 'btn btn-primary' %>
                 </div>
               </div>
             </div>

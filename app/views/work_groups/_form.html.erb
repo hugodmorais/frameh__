@@ -2,12 +2,12 @@
 
   <div class="form-group">
     <%= f.label :start_at %>
-    <%= f.text_field :start_at, class: 'form-control' %>
+    <%= f.date_field :start_at, class: 'form-control', id: 'date' %>
   </div>
 
   <div class="form-group">
     <%= f.label :end_at %>
-    <%= f.text_field :end_at, class: 'form-control' %>
+    <%= f.date_field :end_at, class: 'form-control', id: 'date' %>
   </div>
 
   <div class="form-group %>">
@@ -22,7 +22,7 @@
       <%= t(:work) %></span>
       <% end %>
       <%= f.collection_select :work_id, @works, :id, :name, {}, class: 'form-control' %>
-    </div>
-</div>
+  </div>
+
 
 

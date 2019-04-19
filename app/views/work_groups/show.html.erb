@@ -2,32 +2,38 @@
   <div class="offset-1 col-xs-12">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h3 class="panel-title text-center">Empresa</h3>
+        <h3 class="panel-title text-center">Trabalho</h3>
       </div>
       <div class="panel-body">
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
           <form class="form-horizontal">
             <div class="form-group">
-              <label class="col-sm-2 control-label">Nome:</label>
+              <label class="col-sm-2 control-label">Data Inicio:</label>
               <div class="col-sm-10">
-                <p class="form-control-static"><%= @work.name %></p>
+                <p class="form-control-static"><%= @work_group.start_at %></p>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Pais:</label>
+              <label class="col-sm-2 control-label">Data Final:</label>
               <div class="col-sm-10">
-                <p class="form-control-static"><%= @work.country %></p>
+                <p class="form-control-static"><%= @work_group.end_at %></p>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Cidade:</label>
+              <label class="col-sm-2 control-label">First Name:</label>
               <div class="col-sm-10">
-                <p class="form-control-static"><%= @work.city %></p>
+                <p class="form-control-static"><%= @work_group.user_group&.first_name %></p>
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Last Name:</label>
+              <div class="col-sm-10">
+                <p class="form-control-static"><%= @work_group.user_group&.last_name %></p>
+              </div>
+              </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-9 m-t-15">
-                  <%= link_to "Sair", works_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+                  <%= link_to "Sair", work_groups_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
               </div>
             </div>
           </form>

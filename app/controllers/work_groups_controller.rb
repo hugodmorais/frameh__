@@ -4,8 +4,8 @@ class WorkGroupsController < ApplicationController
     before_action :set_works, only: [:new, :create, :edit, :update]
   
     def index
-        @work_groups = WorkGroup.all.paginate(page: params[:page], per_page: 9)
         @user_groups = UserGroup.all
+        @work_groups = WorkGroup.where(user_group: params[:c]).paginate(page: params[:page], per_page: 9)
     end
     
     def new
@@ -17,38 +17,41 @@ class WorkGroupsController < ApplicationController
 
     def create
         @work_group = WorkGroup.new(work_group_params)
+        c = @work_group.user_group_id
         if @work_group.save
             flash[:success] = "Work Group was successfully created!"
-            redirect_to work_path(@work_group)
+            redirect_to controller: 'work_groups', action: 'index', c: c
         else
             render 'new'
         end
     end
 
     def update
-    if @work_group.update(work_group_params)
-        flash[:success] = "Work Group was successfully updated!"
-        redirect_to work_path(@work_group)
-    else
-        render 'edit'
-    end
+        c = @work_group.user_group_id
+        if @work_group.update(work_group_params)
+            flash[:success] = "Work Group was successfully updated!"
+            redirect_to controller: 'work_groups', action: 'index', c: c
+        else
+            render 'edit'
+        end
     end
 
     def show
     end
 
     def destroy
+        c = @work_group.user_group_id
         @work_group.destroy
 
         flash[:danger] = "Work Group was successefully destroy"
-        redirect_to work_groups_path
+        redirect_to controller: 'work_groups', action: 'index', c: c
     end
     
 
     private
 
     def set_work_group
-        @work_group = Work.find(params[:id])
+        @work_group = WorkGroup.find(params[:id])
     end
 
     def set_user_groups
@@ -60,6 +63,6 @@ class WorkGroupsController < ApplicationController
     end  
     
     def work_group_params
-        params.require(:work).permit!
+        params.require(:work_group).permit!
     end
 end

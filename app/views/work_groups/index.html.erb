@@ -21,6 +21,8 @@
                         <th>Id</th>
                         <th>Primeiro Nome</th>
                         <th>Ultimo Nome</th>
+                        <th>Data Inicio</th>
+                        <th>Data Final</th>
                         <th class="text-right">Ações</th>
                     </tr>
                     </thead>
@@ -35,6 +37,12 @@
                         <tr>
                         <td>
                             <%= c.id %>
+                        </td>
+                        <td>
+                            <%= c.user_group&.first_name %>
+                        </td>
+                        <td>
+                            <%= c.user_group&.last_name %>
                         </td>
                         <td>
                             <%= c.start_at %>

@@ -16,6 +16,7 @@ class UserGroupsController < ApplicationController
       @user_group = UserGroup.new(user_group_params)
       @user_group.user = current_user
       if @user_group.save
+        WorkGroup.create!(id: @user_group.id)
         flash[:success] = "UserGroup was successfully created!"
         redirect_to user_group_path(@user_group)
       else
