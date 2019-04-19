@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="offset-1 col-lg-12">
+      <div class="panel panel-border">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Gestão Anual</h3>
+              <div class="btn-group pull-right">
+                <%= link_to 'Novo Ano', new_annual_management_path, class: 'btn btn-success' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel-body">
+              <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+                <table id="datatable" class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Ano</th>
+                      <th>Descrição</th>
+                      <th class="text-right">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if @annual_managements.empty? %>
+                      <tr>
+                        <td colspan="4" class="text-center">
+                          <h3>Sem gestão Anual cadastrada.</h3>
+                          <%= link_to 'click aqui', new_annual_management_path %> para cadastrar um novo ano
+                        </td>
+                      </tr>
+                    <% end %>
+                    <% @annual_managements.each do |c| %>
+                      <tr>
+                        <td>
+                          <%= c.id %>
+                        </td>
+                        <td>
+                          <%= c.year %>
+                        </td>
+                        <td>
+                          <%= c.description %>
+                        </td>
+                        <td class="text-right">
+                          <%= link_to 'Editar', edit_annual_management_path(c), class: 'btn btn-warning' %>
+                          <%= link_to 'Excluir', annual_management_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <div>
+                  <%= will_paginate @annual_managements, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
