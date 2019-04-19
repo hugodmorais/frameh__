@@ -1,0 +1,34 @@
+<%= render 'layouts/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :annual_management_id do %>
+    <%= t(:annual_management) %></span>
+    <% end %>
+    <%= f.collection_select :annual_management_id, @annual_managements, :id, :year, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_group_id do %>
+    <%= t(:user_group) %></span>
+    <% end %>
+    <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :month %>
+    <%= f.select :month, nil, { include_blank: true}, class: 'form-control' do %>
+      <%= options_for_select Date::MONTHNAMES[1..12] %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :kind %>
+    <%= f.select :kind, nil, { include_blank: true}, class: 'form-control' do %>
+      <%= options_for_select Income::TYPES.map { |desc, index| [t(desc), index] }, @income.kind %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :income_value %>
+    <%= f.text_field :income_value, class: 'form-control', rows: "10" %>
+  </div>

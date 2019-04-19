@@ -4,6 +4,7 @@ class AnnualManagement < ApplicationRecord
     # Attributes
 
     # Associations
+    has_many :incomes
     
     # Delegates
 

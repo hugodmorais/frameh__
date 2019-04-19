@@ -2,8 +2,25 @@
 <div class="offset-1 col-lg-12">
     <div class="panel panel-border panel-custom">
     <div class="panel-body">
-        
-        
+        <div class="row">
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                    <h5>Utilizadores Registados</h5>
+                    <hr>
+                    <% @user_groups.each_with_index  do |c, index| %>
+                        <tr>
+                            <strong>Utilizador:</strong> <%= c.first_name %> <%= c.last_name %>
+                            <%= image_tag( c.image, class: "rotate90 img-circle", size: "60x60") if c.image.attached? %><br>
+                        </tr>
+                        <% unless index == @user_groups.size - 1 %>
+                            <hr>
+                        <% end %>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
     </div>
 </div>

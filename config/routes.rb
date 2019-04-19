@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :works
   resources :work_groups
   resources :annual_managements
+  resources :incomes
 end

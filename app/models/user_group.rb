@@ -8,6 +8,7 @@ class UserGroup < ApplicationRecord
   # Associations
   belongs_to :user
   has_many :work_groups
+  has_many :incomes
 
   # Delegates
 

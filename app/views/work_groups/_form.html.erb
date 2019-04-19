@@ -10,14 +10,14 @@
     <%= f.date_field :end_at, class: 'form-control', id: 'date' %>
   </div>
 
-  <div class="form-group %>">
+  <div class="form-group">
     <%= f.label :user_group_id do %>
     <%= t(:user_group) %></span>
     <% end %>
     <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, {}, class: 'form-control' %>
   </div>
 
-  <div class="form-group %>">
+  <div class="form-group">
       <%= f.label :work_id do %>
       <%= t(:work) %></span>
       <% end %>
