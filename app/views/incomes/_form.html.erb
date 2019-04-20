@@ -17,7 +17,8 @@
   <div class="form-group">
     <%= f.label :month %>
     <%= f.select :month, nil, { include_blank: true}, class: 'form-control' do %>
-      <%= options_for_select Date::MONTHNAMES[1..12] %>
+      <%= options_for_select Date::MONTHNAMES.each_with_index.collect{|m, i| [m, i]}%>
+      <%= puts options_for_select Date::MONTHNAMES.each_with_index.collect{|m, i| [m, i]}%>
     <% end %>
   </div>
 

@@ -4,7 +4,7 @@ class IncomesController < ApplicationController
     before_action :set_user_groups, only: [:new, :create, :edit, :update]
     
     def index
-        @incomes = Income.all.paginate(page: params[:page], per_page: 9)
+        @incomes = Income.all.by_month.paginate(page: params[:page], per_page: 9)
     end
     
     def new
