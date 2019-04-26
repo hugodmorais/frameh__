@@ -1,19 +1,48 @@
-<div class="row row_frameh">
-  <div class="offset-3 col-lg-9">
-    <div class="panel panel-border panel-custom">
-      <div class="panel-heading">
-        <h3 class="panel-title text-center">Adicionar Novo Utilizador</h3>
-      </div>
-      <div class="panel-body">
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+        <div class="card-header">
+          <h3>Criar Conta</h3>
+        </div>
+        <div class="card-body">
           <%= form_for @user do |f| %>
-          <%= render 'form', f: f %>
-    
-          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-          <%= link_to "Cancelar", users_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-        <% end %>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
+              </div>
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <%= f.email_field :email, placeholder: 'Email', class: 'form-control' %>
+              </div>
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                <%= f.password_field :password, placeholder: 'Palavra-passe', class: 'form-control' %>
+              </div>
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                <%= f.password_field :password_confirmation, placeholder: 'Confirmar Palavra-passe', class: 'form-control' %>
+              </div>
+            </div>
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  <%= f.file_field :image, placeholder: 'Imagem', class: 'form-control' %>
+                </div>
+              </div>
+            <div class="form-group">
+                <%= link_to "Cancelar", root_path, class: "btn float-right login_btn" %>
+                <%= f.submit 'Registar', class: 'btn float-right login_btn' %>
+            </div>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-  
   

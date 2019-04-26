@@ -6,7 +6,37 @@
       </div>
       <div class="panel-body">
           <%= form_for current_user do |f| %>
-          <%= render 'form', f: f %>
+            <!-- Campos de preenchimento do formulario -->
+<div class="row">
+    <div class="col-xs-12 table">
+
+        <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+        
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :image %>
+          </div>
+
+
+
     
           <%= f.submit 'Guardar', class: 'btn btn-primary' %>
           <%= link_to "Cancelar", users_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
