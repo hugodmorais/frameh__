@@ -4,6 +4,7 @@ class CreateWorks < ActiveRecord::Migration[5.2]
       t.string :name, null: false, default: ''
       t.string :country, null: false, default: ''
       t.string :city
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

@@ -2,7 +2,8 @@ class IncomesController < ApplicationController
     before_action :set_income, only: [:edit, :show, :update, :destroy]
     before_action :set_annual_managements, only: [:new, :create, :edit, :update]
     before_action :set_user_groups, only: [:new, :create, :edit, :update]
-    
+    before_action :require_logged_in_user
+  
     def index
         @incomes = Income.all.by_month.paginate(page: params[:page], per_page: 9)
     end

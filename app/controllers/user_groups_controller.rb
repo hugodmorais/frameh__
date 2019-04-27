@@ -1,6 +1,7 @@
 class UserGroupsController < ApplicationController
     before_action :set_user_groups, only: [:edit, :show, :update, :destroy]
-  
+    before_action :require_logged_in_user
+    
     def index
       @user_groups = UserGroup.where(user: current_user).paginate(page: params[:page], per_page: 9)
     end

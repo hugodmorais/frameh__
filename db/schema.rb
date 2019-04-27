@@ -109,8 +109,10 @@ ActiveRecord::Schema.define(version: 2019_05_12_111734) do
     t.string "name", default: "", null: false
     t.string "country", default: "", null: false
     t.string "city"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_works_on_user_id"
   end
 
   add_foreign_key "contacts", "users"
@@ -119,4 +121,5 @@ ActiveRecord::Schema.define(version: 2019_05_12_111734) do
   add_foreign_key "user_groups", "users"
   add_foreign_key "work_groups", "user_groups"
   add_foreign_key "work_groups", "works"
+  add_foreign_key "works", "users"
 end

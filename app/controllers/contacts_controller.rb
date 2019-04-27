@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
-  before_action :require_logged_in_user
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_in_user
 
   def index
     @contacts = current_user.contacts.paginate(page: params[:page], per_page: 9)

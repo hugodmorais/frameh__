@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     def require_logged_in_user
       unless user_signed_in?
         flash[:danger] = 'Area restrita. Por favor, realize o login'
-        redirect_to entrar_path
+        redirect_to index_path
       end
     end
 

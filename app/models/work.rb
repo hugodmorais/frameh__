@@ -5,6 +5,7 @@ class Work < ApplicationRecord
 
     # Associations
     has_many :work_groups
+    belongs_to :user
     
     # Delegates
 

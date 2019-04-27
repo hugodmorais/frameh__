@@ -1,8 +1,10 @@
 class WorksController < ApplicationController
     before_action :set_work, only: [:edit, :show, :update, :destroy]
-  
+    before_action :require_logged_in_user
+    before_action :require_same_user
+
     def index
-        @works = Work.all.paginate(page: params[:page], per_page: 9)
+        @works = Work.where(user: current_user).paginate(page: params[:page], per_page: 9)
     end
     
     def new
@@ -14,6 +16,7 @@ class WorksController < ApplicationController
 
     def create
         @work = Work.new(work_params)
+        @work.user = current_user
         if @work.save
             flash[:success] = "Work was successfully created!"
             redirect_to work_path(@work)
@@ -50,5 +53,12 @@ class WorksController < ApplicationController
     
     def work_params
         params.require(:work).permit!
+    end
+
+    def require_same_user
+        if current_user != @work&.user
+            flash[:danger] = "Somente acesso aos seus ficheiros."
+            redirect_to root_path
+        end
     end
 end

@@ -2,7 +2,8 @@ class WorkGroupsController < ApplicationController
     before_action :set_work_group, only: [:edit, :show, :update, :destroy]
     before_action :set_user_groups, only: [:new, :create, :edit, :update]
     before_action :set_works, only: [:new, :create, :edit, :update]
-  
+    before_action :require_logged_in_user
+    
     def index
         @user_groups = UserGroup.all
         @work_groups = WorkGroup.where(user_group: params[:c]).paginate(page: params[:page], per_page: 9)
