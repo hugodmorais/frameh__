@@ -1,0 +1,2 @@
+class IncomeCategory < ApplicationRecord
+end

@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :work_groups
   resources :annual_managements
   resources :incomes
+  resources :income_categories
 end
