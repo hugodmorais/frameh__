@@ -11,6 +11,6 @@ class StaticPagesController < ApplicationController
   end
 
   def work_groups_static
-    @user_groups = UserGroup.all
+    @user_groups = UserGroup.where(user: current_user)
   end
 end

@@ -34,7 +34,7 @@ class User < ApplicationRecord
   # Default
 
   def thumb
-    image.variant(resize: '260x180', rotate: '90', auto_orient: true)
+    image.variant(resize: '260x180', auto_orient: true)
   end
   
   private

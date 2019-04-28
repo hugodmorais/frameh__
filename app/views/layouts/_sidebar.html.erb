@@ -24,7 +24,7 @@
             </div>
             <div class="sidebar-header">
               <div class="user-pic">
-                <%= image_tag( current_user&.image, class: "img-thumbnail rotateSide" ) if current_user&.image.attached?  %>
+                <%= image_tag( current_user&.image, class: "img-thumbnail rotate90" ) if current_user&.image.attached?  %>
               </div>
               <div class="user-info">
                 <span class="user-name">
@@ -71,21 +71,12 @@
                   <a href="#">
                     <i class="fa fa-shopping-cart"></i>
                     <span>E-commerce</span>
-                    <span class="badge badge-pill badge-danger">3</span>
                   </a>
                   <div class="sidebar-submenu">
                     <ul>
                       <li>
-                        <a href="#">Products
-      
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">Orders</a>
-                      </li>
-                      <li>
-                        <a href="#">Credit cart</a>
-                      </li>
+                        <%= link_to 'Receitas', incomes_path %>
+                    </li>
                     </ul>
                   </div>
                 </li>

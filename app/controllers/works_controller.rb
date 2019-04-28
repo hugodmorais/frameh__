@@ -1,7 +1,6 @@
 class WorksController < ApplicationController
     before_action :set_work, only: [:edit, :show, :update, :destroy]
     before_action :require_logged_in_user
-    before_action :require_same_user
 
     def index
         @works = Work.where(user: current_user).paginate(page: params[:page], per_page: 9)
@@ -53,12 +52,5 @@ class WorksController < ApplicationController
     
     def work_params
         params.require(:work).permit!
-    end
-
-    def require_same_user
-        if current_user != @work&.user
-            flash[:danger] = "Somente acesso aos seus ficheiros."
-            redirect_to root_path
-        end
     end
 end
