@@ -7,12 +7,12 @@ ruby '2.5.3'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
 gem 'paperclip'
-
+gem "aws-sdk-s3", require: false
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'pg', '1.1.3'
+
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -71,7 +71,7 @@ end
 group :production do
   gem 'pg', '1.1.3'
   gem 'rails_12factor'
-  gem "aws-sdk-s3", require: false
+  
   gem 'mini_magick', '~> 4.8'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
