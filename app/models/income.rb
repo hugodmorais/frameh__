@@ -22,7 +22,10 @@ class Income < ApplicationRecord
 
     # Constants Methods
 
-    # Default    
-
+    # Default  
+    def to_s
+        name
+    end
+    
     private
 end

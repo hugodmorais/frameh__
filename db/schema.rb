@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2019_05_12_111734) do
 
   create_table "incomes", force: :cascade do |t|
     t.integer "month", null: false
-    t.integer "kind", null: false
+    t.integer "kind"
     t.decimal "income_value"
     t.bigint "user_group_id"
     t.bigint "annual_management_id"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 2019_05_12_111734) do
     t.datetime "updated_at", null: false
     t.index ["annual_management_id"], name: "index_incomes_on_annual_management_id"
     t.index ["income_category_id"], name: "index_incomes_on_income_category_id"
-    t.index ["kind"], name: "index_incomes_on_kind"
     t.index ["user_group_id"], name: "index_incomes_on_user_group_id"
   end
 

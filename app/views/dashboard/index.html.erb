@@ -12,11 +12,17 @@
                     <% @user_groups.each_with_index  do |c, index| %>
                         <tr>
                             <strong>Utilizador:</strong> <%= c.first_name %> <%= c.last_name %>
-                            <%= image_tag( c.image, class: "rotate90 img-circle", size: "60x60") if c.image.attached? %><br>
-                        </tr>
-                        <% unless index == @user_groups.size - 1 %>
-                            <hr>
-                        <% end %>
+                            <%= image_tag( c.image, class: "rotate90 img-circle", size: "60x60") if c.image.attached? %>
+
+                            <% if c.incomes.any? %>
+                              <span class="badge badge-pill badge-primary"><%= c.incomes_sum(c) %></span>
+                            <% end %>
+                            <br>
+                          </tr>
+                          <% unless index == @user_groups.size - 1 %>
+                          <hr>
+                          <% end %>
+                         
                     <% end %>
                 </div>
               </div>

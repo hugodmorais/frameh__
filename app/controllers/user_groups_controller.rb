@@ -1,8 +1,10 @@
 class UserGroupsController < ApplicationController
     before_action :set_user_groups, only: [:edit, :show, :update, :destroy]
+    before_action :set_incomes, only: [:edit, :show, :update, :destroy]
     before_action :require_logged_in_user
     
     def index
+      @incomes_sum = Income.total
       @user_groups = UserGroup.where(user: current_user).paginate(page: params[:page], per_page: 9)
     end
     
@@ -50,7 +52,10 @@ class UserGroupsController < ApplicationController
     def set_user_groups
       @user_group = UserGroup.find(params[:id])
     end
-    
+
+    def set_incomes
+      @incomes = Income.find(params[:id])
+    end    
   
     def user_group_params
       params.require(:user_group).permit!

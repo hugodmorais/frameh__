@@ -30,6 +30,10 @@ class UserGroup < ApplicationRecord
     'Feminino'
   end
 
+  def incomes_sum(user)
+    Income.where(user_group: user).sum(:income_value)
+  end
+
   def thumb
     image.variant(resize: '50x50', auto_orient: true)
   end
