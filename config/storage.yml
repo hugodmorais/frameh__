@@ -11,7 +11,7 @@ amazon:
   access_key_id: ""
   secret_access_key: ""
   bucket: ""
-  region: "" # e.g. 'us-east-1'
+  region: "eu-west-2" # e.g. 'us-east-1'
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
