@@ -5,13 +5,13 @@ class Income < ApplicationRecord
     # Attributes
 
     # Associations
+    belongs_to :income_category
     belongs_to :annual_management
     belongs_to :user_group
     
     # Delegates
 
     # Constants
-    TYPES = { 'Salario': 0, 'Sub Natal': 1, 'Sub Ferias': 2, 'Premios': 3, 'Outras Receitas': 4 }.freeze
 
     # Validations
 
@@ -22,12 +22,7 @@ class Income < ApplicationRecord
 
     # Constants Methods
 
-    # Default
-
-    def kind_desc
-        TYPES.key kind
-    end
-    
+    # Default    
 
     private
 end

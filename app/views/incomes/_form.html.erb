@@ -23,11 +23,11 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :kind %>
-    <%= f.select :kind, nil, { include_blank: true}, class: 'form-control' do %>
-      <%= options_for_select Income::TYPES.map { |desc, index| [t(desc), index] }, @income.kind %>
+    <%= f.label :income_category_id do %>
+    <%= t(:incomes) %></span>
     <% end %>
-  </div>
+    <%= f.collection_select :income_category_id, @income_categories, :id, :name, {}, class: 'form-control' %>
+  </div>  
 
   <div class="form-group">
     <%= f.label :income_value %>

@@ -11,10 +11,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12">
-            <% @user_groups.each do |c| %>
+          <% @user_groups.each do |c| %>
+            <div class="col-lg-3">
             <div class="panel-body">
-              <div class="card" style="width: 18rem;">
+              <div class="card" style="width: 20rem;">
                 
                 <div class="card-body">
                   <p class="card-title"><%= image_tag( c.image, class: "rotate90 float:left", size: "140x110" ) if c.image.attached?  %></p>
@@ -26,9 +26,9 @@
                 </div>
               </div>
             </div>
-            <% end %> 
-                          
+            
           </div>
+          <% end %> 
         </div>
       </div>
     </div>

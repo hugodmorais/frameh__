@@ -56,11 +56,11 @@ class WorkGroupsController < ApplicationController
     end
 
     def set_user_groups
-        @user_groups = UserGroup.all
+        @user_groups = UserGroup.where(user: current_user)
     end  
     
     def set_works
-        @works = Work.all
+        @works = Work.where(user: current_user)
     end  
     
     def work_group_params
