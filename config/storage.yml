@@ -8,9 +8,9 @@ local:
 
 amazon:
   service: S3
-  access_key_id: "AKIAV6XHRCE4AO5BHJHJ"
-  secret_access_key: "Aboy49XOvPf/atKadK79llMY3ctJ6y36+IrAz0lh"
-  bucket: "hugodmorais"
+  access_key_id: ""
+  secret_access_key: ""
+  bucket: ""
   region: "us-east-1" # e.g. 'us-east-1'
 
 # Remember not to checkin your GCS keyfile to a repository
