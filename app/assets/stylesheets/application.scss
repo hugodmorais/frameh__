@@ -623,10 +623,8 @@ body, .container {
 }
 
 .row_frameh {
-  padding-top: 20px;
-  padding-right: 40px !important;
   height: 100%;
-  background-color: #f4f3ef;
+  background-color: white;
 }
 
 .card_body {
@@ -637,5 +635,21 @@ body, .container {
   min-height: 500px;
 }
 
+.list-group-horizontal .list-group-item {
+  display: inline-block;
+}
+.list-group-horizontal .list-group-item {
+margin-bottom: 0;
+margin-left:-4px;
+margin-right: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+border-top-right-radius:0;
+border-bottom-left-radius:4px;
+}
+.list-group-horizontal .list-group-item:last-child {
+border-top-right-radius:4px;
+border-bottom-left-radius:0;
+}
 
 
