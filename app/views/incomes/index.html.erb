@@ -27,7 +27,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% if @incomes.empty? %>
+                    <% unless @incomes.present? %>
                       <tr>
                         <td colspan="4" class="text-center">
                           <h3>Sem gestão Anual cadastrada.</h3>
