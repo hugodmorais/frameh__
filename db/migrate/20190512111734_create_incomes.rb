@@ -1,7 +1,7 @@
 class CreateIncomes < ActiveRecord::Migration[5.2]
   def change
     create_table :incomes do |t|
-      t.integer :month, null: false
+      t.integer :month
       t.integer :kind
       t.decimal :income_value
 

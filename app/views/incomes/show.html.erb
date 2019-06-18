@@ -1,22 +1,27 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('incomes.incomes'), incomes_path)] %>
+<% @current_bread_name = @income.income_category.name %>
+<!-- End Breadcrumb -->
+
 <div class="row row_frameh">
-  <div class="offset-3 col-xs-9">
+  <div class="offset-2 col-xs-9">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h3 class="panel-title text-center">Receita</h3>
+        <h1 class="panel-title text-center">Receita</h1>
       </div>
       <div class="panel-body">
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
           <form class="form-horizontal">
             <div class="form-group">
-              <label class="col-sm-2 control-label">Ano:</label>
+              <label class="col-sm-2 control-label"><%= t(:user) %></label>
               <div class="col-sm-10">
-                <p class="form-control-static"><%= @income.annual_management.year %></p>
+                <p class="form-control-static"><%= @income.user_group.first_name %></p>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Nome:</label>
+              <label class="col-sm-2 control-label">Ano:</label>
               <div class="col-sm-10">
-                <p class="form-control-static"><%= @income.user_group.first_name %></p>
+                <p class="form-control-static"><%= @income.annual_management.year %></p>
               </div>
             </div>
             <div class="form-group">

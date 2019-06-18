@@ -6,7 +6,7 @@ class IncomesController < ApplicationController
     before_action :require_logged_in_user
   
     def index
-        @incomes = Income.all.by_month.paginate(page: params[:page], per_page: 9)
+        @incomes = Income.all.paginate(page: params[:page], per_page: 9)
     end
     
     def new

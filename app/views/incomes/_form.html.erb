@@ -1,35 +1,43 @@
+<%= form_for @income do |f| %>
 <%= render 'layouts/error_messages', object: f.object %>
-
-  <div class="form-group">
-    <%= f.label :annual_management_id do %>
-    <%= t(:annual_management) %></span>
-    <% end %>
-    <%= f.collection_select :annual_management_id, @annual_managements, :id, :year, {}, class: 'form-control' %>
-  </div>
-
   <div class="form-group">
     <%= f.label :user_group_id do %>
-    <%= t(:user_group) %></span>
+    <%= t(:user) %></span>
     <% end %>
     <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, {}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :month %>
+    <%= f.label :annual_management_id do %>
+    <%= t(:year) %></span>
+    <% end %>
+    <%= f.collection_select :annual_management_id, @annual_managements, :id, :year, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :month do %>
+      <%= t(:month) %></span>
+    <% end %>
     <%= f.select :month, nil, { include_blank: true}, class: 'form-control' do %>
       <%= options_for_select Date::MONTHNAMES.each_with_index.collect{|m, i| [m, i]}%>
-      <%= puts options_for_select Date::MONTHNAMES.each_with_index.collect{|m, i| [m, i]}%>
     <% end %>
   </div>
 
   <div class="form-group">
     <%= f.label :income_category_id do %>
-    <%= t(:incomes) %></span>
+    <%= t('incomes.income_kind') %></span>
     <% end %>
     <%= f.collection_select :income_category_id, @income_categories, :id, :name, {}, class: 'form-control' %>
   </div>  
 
   <div class="form-group">
-    <%= f.label :income_value %>
+    <%= f.label :income_value do %>
+      <%= t(:value) %></span>
+    <% end %>
     <%= f.text_field :income_value, class: 'form-control', rows: "10" %>
   </div>
+
+  <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  <%= link_to "Cancelar", incomes_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+
+  <% end %>

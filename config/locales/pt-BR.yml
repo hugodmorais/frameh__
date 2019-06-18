@@ -1,5 +1,20 @@
 pt-BR:
   hello: 'Ola Mundo'
+  user: Utilizador
+  year: Ano
+  month: Mês
+  value: Valor
+
+  incomes:
+    incomes: Receitas
+    income_kind: Tipo de Receita
+    new: Nova Receita
+    edit: Editar Receita
+
+  income_categories:
+    income_categories: Categorias das Receitas
+    new: Nova Categoria
+    edit: Editar Categoria
 
   activerecord:
     attributes:

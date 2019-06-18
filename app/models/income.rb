@@ -16,7 +16,6 @@ class Income < ApplicationRecord
     # Validations
 
     # Scopes    
-    scope :by_month, -> { order :month }
 
     # Callbacks
 

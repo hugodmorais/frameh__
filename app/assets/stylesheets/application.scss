@@ -7,6 +7,10 @@
   transform: rotate(90deg);
 }
 
+h1 {
+  font-size: 26px !important;
+}
+
 @keyframes swing {
   0% {
     transform: rotate(0deg);
@@ -66,6 +70,10 @@ body {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+#background_in {
+  background-color: #061747;
 }
 
 /*----------------page-wrapper----------------*/
@@ -526,9 +534,7 @@ body {
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-  background-image: url(/assets/indicadores-desempenho.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #07565A;
   height: 100%;
   font-family: 'Numans', sans-serif;
 }
@@ -538,14 +544,11 @@ html,body{
   align-content: center;
 }
 
-.card{
-  border-style: none;
-  height: 370px;
-  margin-top: 120px;
-  margin-right: 650px;
-  margin-left: -100px;
-  margin-bottom: auto;
-  width: 550px;
+.card  {
+  margin-left: 200px;
+  margin-right: 500px;
+  margin-top: 200px;
+    
 }
 
 .social_icon span{
@@ -629,7 +632,8 @@ body, .container {
 }
 
 .row_frameh {
-  height: 1300px;
+  padding-top: 3rem;
+  height: 1000px;
   background-color: white;
 }
 
@@ -662,4 +666,13 @@ html {
 	height: 1000px !important;
 }
 
+.breadcrumb_back {
+  background-color: white !important;
+  margin-top: 1rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
 
+.breadcrumb_color {
+  color: white !important
+}

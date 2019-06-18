@@ -1,17 +1,19 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('incomes.incomes'), incomes_url)] %>
+<% @current_bread_name = t('incomes.edit') %>
+<!-- End Breadcrumb -->
+
 <div class="row row_frameh">
-  <div class="offset-3 col-lg-9">
+  <div class="offset-2 col-lg-8">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h3 class="panel-title text-center">Editar Receita</h3>
+        <h1 class="panel-title text-center"><%= t('incomes.edit') %></h1>
       </div>
       <div class="panel-body">
-          <%= form_for @income do |f| %>
-          <%= render 'form', f: f %>
-    
-          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-          <%= link_to "Cancelar", incomes_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-        <% end %>
+        <%= render 'form', income: @income %>
       </div>
     </div>
   </div>
 </div>
+  
+  

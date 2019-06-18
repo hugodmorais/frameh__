@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_05_12_111734) do
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.integer "month", null: false
+    t.integer "month"
     t.integer "kind"
     t.decimal "income_value"
     t.bigint "user_group_id"

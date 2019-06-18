@@ -26,7 +26,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <% if @works.empty? %>
+                      <% unless @works.present? %>
                       <tr>
                         <td colspan="4" class="text-center">
                           <h3>Sem Empresas cadastradas.</h3>

@@ -1,8 +1,13 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('income_categories.income_categories'), income_categories_path)] %>
+<% @current_bread_name = @income_category.name %>
+<!-- End Breadcrumb -->
+
 <div class="row row_frameh">
-  <div class="offset-3 col-xs-9">
+  <div class="offset-2 col-xs-9">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h3 class="panel-title text-center">Categoria</h3>
+        <h1 class="panel-title text-center">Categoria</h1>
       </div>
       <div class="panel-body">
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
