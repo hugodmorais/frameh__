@@ -1,47 +1,52 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('users.users'), incomes_url)] %>
+<% @current_bread_name = t('users.edit') %>
+<!-- End Breadcrumb -->
+
 <div class="row row_frameh">
-  <div class="offset-3 col-lg-9">
+  <div class="offset-2 col-lg-8">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h3 class="panel-title text-center">Editar Utilizador</h3>
+        <h1 class="panel-title text-center"><%= t('users.edit') %></h1>
       </div>
       <div class="panel-body">
-          <%= form_for current_user do |f| %>
-            <!-- Campos de preenchimento do formulario -->
-<div class="row">
-    <div class="col-xs-12 table">
+        <%= form_for current_user do |f| %>
+          <div class="row">
+            <div class="col-xs-12 table">
+              <div class="form-group">  
+                <%= f.label :name %>
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
+            
+              <div class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, class: 'form-control' %>
+              </div>
+            
+              <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, class: 'form-control' %>
+              </div>
 
-        <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-control' %>
+              <div class="form-group">
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password, class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+              </div>
+              <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+              <%= link_to "Cancelar", users_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+            </div>
           </div>
-        
-          <div class="form-group">
-            <%= f.label :email %>
-            <%= f.email_field :email, class: 'form-control' %>
-          </div>
-        
-          <div class="form-group">
-            <%= f.label :password %>
-            <%= f.password_field :password, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :image %>
-            <%= f.file_field :image %>
-          </div>
-
-
-
-    
-          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-          <%= link_to "Cancelar", users_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+
+         
+  

@@ -1,8 +1,13 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('annual_managements.annual_managements'), annual_managements_path)] %>
+<% @current_bread_name = @annual_management.year %>
+<!-- End Breadcrumb -->
+
 <div class="row row_frameh">
-  <div class="offset-3 col-xs-9">
+  <div class="offset-2 col-xs-9">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h3 class="panel-title text-center">Ano</h3>
+        <h1 class="panel-title text-center">Ano</h1>
       </div>
       <div class="panel-body">
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
@@ -30,4 +35,5 @@
     </div>
   </div>
 </div>
+
 

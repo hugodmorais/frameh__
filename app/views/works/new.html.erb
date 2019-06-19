@@ -1,17 +1,16 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('works.works'), works_url)] %>
+<% @current_bread_name = t('works.new') %>
+<!-- End Breadcrumb -->
+
 <div class="row row_frameh">
-  <div class="offset-3 col-lg-9">
+  <div class="offset-2 col-lg-8">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h3 class="panel-title text-center">Adicionar Nova Empresa</h3>
+        <h1 class="panel-title text-center"><%= t('works.new') %></h1>
       </div>
       <div class="panel-body">
-          <%= form_for @work do |f| %>
-          <%= render 'layouts/error_messages', object: f.object %>
-          <%= render 'form', f: f %>
-    
-          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-          <%= link_to "Cancelar", works_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-        <% end %>
+        <%= render 'form', work: @work %>
       </div>
     </div>
   </div>

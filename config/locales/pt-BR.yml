@@ -4,6 +4,24 @@ pt-BR:
   year: Ano
   month: Mês
   value: Valor
+  city: Cidade
+  country: País
+  description: Descrição
+
+  works:
+    works: Empresas
+    new: Nova Empresa
+    edit: Editar Empresa
+
+  annual_managements:
+    annual_managements: Gestão Anual
+    new: Novo Ano
+    edit: Editar Ano
+
+  users:
+    users: Utilizadores
+    new: Novo Utilizador
+    edit: Editar Utilizador
 
   incomes:
     incomes: Receitas

@@ -26,7 +26,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <% if @articles.empty? %>
+                      <% unless @articles.present? %>
                       <tr>
                         <td colspan="4" class="text-center">
                           <h3>Sem artigos cadastrados.</h3>

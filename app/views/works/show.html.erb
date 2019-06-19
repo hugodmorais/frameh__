@@ -1,28 +1,33 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('works.works'), works_path)] %>
+<% @current_bread_name = @work.name %>
+<!-- End Breadcrumb -->
+
 <div class="row row_frameh">
-  <div class="offset-3 col-xs-9">
+  <div class="offset-2 col-xs-9">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h3 class="panel-title text-center">Empresa</h3>
+        <h1 class="panel-title text-center">Empresa</h1>
       </div>
       <div class="panel-body">
         <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
           <form class="form-horizontal">
             <div class="form-group">
-              <label class="col-sm-2 control-label">Nome:</label>
+              <label class="col-sm-2 control-label"><%= t(:name) %></label>
               <div class="col-sm-10">
                 <p class="form-control-static"><%= @work.name %></p>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Pais:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= @work.country %></p>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Cidade:</label>
               <div class="col-sm-10">
                 <p class="form-control-static"><%= @work.city %></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Pais:</label>
+              <div class="col-sm-10">
+                <p class="form-control-static"><%= @work.country %></p>
               </div>
             </div>
             <div class="form-group">
@@ -36,4 +41,3 @@
     </div>
   </div>
 </div>
-

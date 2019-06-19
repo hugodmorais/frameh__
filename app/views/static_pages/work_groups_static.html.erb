@@ -1,18 +1,17 @@
 <div class="row row_frameh">
-    <div class="offset-3 col-lg-9">
-      <div class="panel panel-border">
-        <div class="row">
+    <div class="col-lg-9">
+      <div class="">
+        <div class="">
           <div class="col-lg-12">
             <div class="panel-heading">
               <h3 class="panel-title text-center">Works</h3>
               <div class="btn-group pull-right">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
+            
+          
+        
+        <div class="">
           <% @user_groups.each do |c| %>
-            <div class="col-lg-3">
+            
             <div class="panel-body">
               <div class="card" style="width: 20rem;">
                 
@@ -25,7 +24,7 @@
                   <%= link_to 'Editar', {:controller => "work_groups", :action => "index", :c => c.id }, class: 'btn btn-primary' %>
                 </div>
               </div>
-            </div>
+           
             
           </div>
           <% end %> 
@@ -33,4 +32,4 @@
       </div>
     </div>
   </div>
-  
+</div>

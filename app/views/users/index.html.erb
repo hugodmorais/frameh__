@@ -1,12 +1,17 @@
+<!-- Start Breadcrumb -->
+<% @current_bread_name = t('users.users') %>
+<!-- End Breadcrumb -->
+
 <div class="row row_frameh">
-    <div class="offset-3 col-lg-9">
-      <div class="panel panel-border">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel-heading">
-              <h3 class="panel-title text-center">Utilizadores</h3>
+  <div class="offset-1 col-lg-10">
+    <div class="panel panel-border">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel-heading">
+            <h1 class="panel-title text-center"><%= t('users.users') %></h1>
               <div class="btn-group pull-right">
-                <%= link_to 'Nova Conta', new_user_path, class: 'btn btn-success' %>
+               
+               
               </div>
             </div>
           </div>
@@ -18,40 +23,49 @@
                 <table id="datatable" class="table table-hover">
                   <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th class="text-right">Ações</th>
+                      <th>Id</th>
+                      <th>Nome</th>
+                      <th>Email</th>
+                      <th class="text-right">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <% if @users.empty? %>
-                            <tr>
-                                <td colspan="4" class="text-center">
-                                <h3>Sem Utilizadores cadastrados.</h3>
-                            </tr>
-                        <% end %>
-                        <% @users.each do |c| %>
-                        <tr>
+                    <% unless @users.present? %>
+                      <tr>
+                        <td colspan="4" class="text-center">
+                          <h3>Sem Utilizadores cadastrados.</h3>
+                          <%= link_to 'click aqui', new_user_path %> para cadastrar um novo ano
+                        </td>
+                      </tr>
+                    <% end %>
+                    <% @users.each do |user| %>
+                      <tr>
                         <td>
-                            <%= c.id %>
+                          <%= user.id %>
                         </td>
                         <td>
-                            <%= c.name %>
+                          <%= user.name %>
                         </td>
                         <td>
-                            <%= c.email %>
+                          <%= user.email %>
                         </td>
                         <td class="text-right">
-                            <%= link_to 'Excluir', user_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
+                          <%= link_to user_path(user) do %>
+                            <i class="fas fa-eye"></i>
+                          <% end %>
+                          <%= link_to edit_user_path(user) do %>
+                            <i class="fas fa-edit"></i>
+                          <% end %>
+                          <%= link_to user_path(user), method: :delete, data: { confirm: t(:remove_question)} do %>
+                            <i class="fas fa-trash-alt"></i>
+                          <% end %>
                         </td>
-                        </tr>
-                        <% end %>
+                      </tr>
+                    <% end %>
                   </tbody>
                 </table>
-                <div>
-                    <%= will_paginate @contacts, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
-                </div>
+              <div>
+                <%= will_paginate @users, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
               </div>
             </div>
           </div>
@@ -59,4 +73,5 @@
       </div>
     </div>
   </div>
+</div>
   

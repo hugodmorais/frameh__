@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :show, :update, :destroy]
   before_action :require_logged_in_user, only: [:edit, :update]
 
   def index
@@ -40,6 +41,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+end
 
   def user_params
     params.require(:user).permit(:email, :name, :password, :image)

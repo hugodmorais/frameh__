@@ -25,7 +25,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% if @contacts.empty? %>
+                    <% unless @contacts.present? %>
                       <tr>
                         <td colspan="4" class="text-center">
                           <h3>Sem contactos cadastrados.</h3>
