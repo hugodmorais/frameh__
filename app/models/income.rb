@@ -16,7 +16,8 @@ class Income < ApplicationRecord
     # Validations
 
     # Scopes    
-
+    scope :in_year, ->(year) { where year: year }
+    
     # Callbacks
 
     # Constants Methods

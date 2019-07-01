@@ -15,6 +15,8 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require jquery.datetimepicker
+//= require highcharts
+//= require chartkick
 //= require_tree .
 
 
@@ -22,7 +24,6 @@
 $(document).on('turbolinks:load', function() {
   // The below commented jQuery line is commented when turbolink is disabled and uncommented when trubolink is enabled
   // jQuery(function ($) { 
-
     $(".sidebar-dropdown > a").click(function(e) {
       e.preventDefault();
       $(".sidebar-submenu").slideUp(200);

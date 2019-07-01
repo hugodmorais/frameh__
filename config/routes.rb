@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   post 'entrar', to: 'sessions#create'
   delete 'sair', to: 'sessions#destroy'
 
+  resources :dashboard, only: [] do
+    member do
+      get 'results', defaults: { format: :json }
+    end
+  end
   resources :contacts
   resources :articles
   resources :users

@@ -2,6 +2,7 @@
 @import "bootstrap";
 /*
 *= require jquery.datetimepicker
+*= require material_icons
 */
 .rotateSide {
   transform: rotate(90deg);
@@ -73,7 +74,7 @@ body {
 }
 
 #background_in {
-  background-color: #061747;
+  background-color: #122C34;
 }
 
 /*----------------page-wrapper----------------*/
@@ -666,6 +667,10 @@ html {
 	height: 1000px !important;
 }
 
+.inside_card {
+  text-align: center;
+}
+
 .breadcrumb_back {
   background-color: white !important;
   margin-top: 1rem;
@@ -674,5 +679,14 @@ html {
 }
 
 .breadcrumb_color {
-  color: white !important
+  color: white !important;
 }
+
+.row_chart {
+  margin-top: -400px !important;
+}
+
+.row-sm {
+  padding-left: 25px;
+}
+

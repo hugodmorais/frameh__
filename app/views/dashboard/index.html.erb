@@ -1,31 +1,44 @@
 <% if user_signed_in? %>
   <div class="row row_frameh">
-    <div class="offset-2 col-lg-10">   
-      <div class="col-lg-3 mt-4 ml-5">
-        <ul class="list-group-horizontal">
-          <li href="#" class="list-group-item">
-            <div class="">
-              <h5 class="mb-1">List group item heading</h5>
-              <small>3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small>Donec id elit non mi porta.</small>
-          </li>
-        
-            <li href="#" class="list-group-item">
-              <div class="">
-                <h5 class="mb-1">List group item heading</h5>
-                <small>3 days ago</small>
-              </div>
-              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-              <small>Donec id elit non mi porta.</small>
-            </li>
-          </ul>     
+    <div class="col-lg-3 col-sm-6">
+      <div class="widget-inline-box text-center">
+        <h3><i class="text-primary md md-add-shopping-cart"></i> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
+        <h4 class="text-muted">Criados</h4>
       </div>
     </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="widget-inline-box text-center">
+        <h3><i class="text-custom md md-attach-money"></i> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
+        <h4 class="text-muted">Atingidos</h4>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="widget-inline-box text-center">
+        <h3><i class="text-warning md md-account-child"></i> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
+        <h4 class="text-muted">Parcialmente atingidos</h4>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="widget-inline-box text-center b-0">
+        <h3><i class="text-danger md md-visibility"></i> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
+        <h4 class="text-muted">Não atingidos</h4>
+      </div>
+    </div>
+    <div class="col-lg-8 row_chart"> 
+      <%= column_chart results_dashboard_path(current_user), id: 'container', 
+          ytitle: "Salario", 
+          xtitle: "Meses", 
+          title: 'Analise Receitas vs Despesas',
+          chartOptions: {
+            legend: {
+                enabled: false
+            }
+          }
+       %> 
+    </div>  
   </div>
 <% else %>
-<div class="container">
+  <div class="container">
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
@@ -37,8 +50,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                 <%= f.email_field :email, placeholder: 'Email', class: 'form-control' %>
-              </div>
-              
+              </div>              
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
@@ -50,9 +62,9 @@
               <input type="checkbox">Lembrar-me
             </div>
             <div class="form-group">
-                <%= f.submit 'Entrar', class: 'btn float-right login_btn' %>
+              <%= f.submit 'Entrar', class: 'btn float-right login_btn' %>
             </div>
-            <% end %>
+          <% end %>
         </div>
         <div class="card-footer">
           <div class="d-flex justify-content-center links">
