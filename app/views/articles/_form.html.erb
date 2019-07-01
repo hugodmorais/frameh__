@@ -1,4 +1,4 @@
-
+<%= form_for @article do |f| %>
 
   <div class="form-group">
     <%= f.label :title %>
@@ -9,3 +9,7 @@
     <%= f.label :description %>
     <%= f.text_area :description, class: 'form-control', rows: "10" %>
   </div>
+
+  <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  <%= link_to "Cancelar", articles_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+<% end %>

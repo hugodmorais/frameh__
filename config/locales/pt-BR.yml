@@ -7,6 +7,7 @@ pt-BR:
   city: Cidade
   country: País
   description: Descrição
+  name: Nome
 
   works:
     works: Empresas

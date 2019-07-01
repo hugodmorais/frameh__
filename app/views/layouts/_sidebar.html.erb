@@ -1,166 +1,173 @@
 <head>
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">  
 </head>
 
 <div class="page-wrapper chiller-theme toggled">
-        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-          <i class="fas fa-bars"></i>
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#"></a>
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">
+          <%= link_to dashboard_path do %>
+            <span>Frameh</span>
+          <% end %>
         </a>
-        <nav id="sidebar" class="sidebar-wrapper">
-          <div class="sidebar-content">
-            <div class="sidebar-brand">
-              <a href="#">
-                <%= link_to dashboard_path do %>
-                    <span>Frameh</span>
-                <% end %>
-              </a>
-            </div>
-            <div class="sidebar-header">
-              <div class="user-pic">
-                <%= image_tag( current_user&.image, class: "img-thumbnail rotate90" ) if current_user&.image.attached?  %>
-              </div>
-              <div class="user-info">
-                <span class="user-name">
-                    <%= current_user.name %>
-                </span>
-                <% if current_user.admin? %>
-                    <span class="user-role">Administrator</span>
-                <% end %>
-                <span class="user-status">
-                  <i class="fa fa-circle"></i>
-                  <span>Online</span>
-                </span>
-              </div>
-            </div>
-            <!-- sidebar-search  -->
-            <div class="sidebar-menu">
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <%= image_tag( current_user&.image, class: "img-thumbnail rotate90" ) if current_user&.image.attached?  %>
+        </div>
+        <div class="user-info">
+          <span class="user-name">
+            <%= current_user.name %>
+          </span>
+          <% if current_user.admin? %>
+            <span class="user-role">Administrator</span>
+          <% end %>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>General</span>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+              <span class="badge badge-pill badge-warning">New</span>
+            </a>
+            <div class="sidebar-submenu">
               <ul>
-                <li class="header-menu">
-                  <span>General</span>
-                </li>
-                <li class="sidebar-dropdown">
-                  <a href="#">
-                    <i class="fa fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                    <span class="badge badge-pill badge-warning">New</span>
+                <li>
+                  <a href="#">Dashboard 1
+                    <span class="badge badge-pill badge-success">Pro</span>
                   </a>
-                  <div class="sidebar-submenu">
-                    <ul>
-                      <li>
-                        <a href="#">Dashboard 1
-                          <span class="badge badge-pill badge-success">Pro</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">Dashboard 2</a>
-                      </li>
-                      <li>
-                        <a href="#">Dashboard 3</a>
-                      </li>
-                    </ul>
-                  </div>
                 </li>
-                <li class="sidebar-dropdown">
-                  <a href="#">
-                    <i class="fa fa-shopping-cart"></i>
-                    <span>E-commerce</span>
-                  </a>
-                  <div class="sidebar-submenu">
-                    <ul>
-                      <li>
-                        <%= link_to 'Receitas', incomes_path %>
-                      </li>
-                      <li>
-                        <%= link_to 'Categorias das Receitas', income_categories_path %>
-                      </li>
-                    </ul>
-                  </div>
+                <li>
+                  <a href="#">Dashboard 2</a>
                 </li>
-                
-                    <li class="sidebar-dropdown">
-                    <a href="#">
-                        <i class="fas fa-users"></i>
-                        <span>Utilizadores</span>
-                    </a>
-                    <div class="sidebar-submenu">
-                      <ul>
-                          <li>
-                              <%= link_to 'Utilizadores', user_groups_path %>
-                          </li>
-                          <li>
-                              <%= link_to 'Editar Trabalho', work_groups_static_path %>
-                          </li>
-                          <% if current_user.admin? %>
-                            <li>
-                              <%= link_to 'Contas', users_path %>
-                            </li>
-                          <% end %>
-                      </ul>
-                    </div>                  
-                  </li>
-                <li class="sidebar-dropdown">
-                  <a href="#">
-                    <i class="fa fa-briefcase"></i>
-                    <span>Trabalho</span>
-                  </a>
-                  <div class="sidebar-submenu">
-                    <ul>
-                      <li>
-                          <%= link_to 'Empresas', works_path %>
-                      </li>
-                    </ul>
-                  </div>
+                <li>
+                  <a href="#">Dashboard 3</a>
                 </li>
-                <li class="sidebar-dropdown">
-                        <a href="#">
-                                <i class="fas fa-archive"></i>
-                          <span>Registos</span>
-                        </a>
-                        <div class="sidebar-submenu">
-                          <ul>
-                                <li>
-                                    <%= link_to 'Contactos', contacts_path %>
-                                </li>
-                                <li class="divider" role="separator"></li>
-                                <li>
-                                    <%= link_to 'Artigos', articles_path %>
-                                </li>
-                                <li>
-                                    <%= link_to 'Gestão Anual', annual_managements_path %>
-                                </li>
-                          </ul>
-                        </div>
-                      </li>
               </ul>
             </div>
-            <!-- sidebar-menu  -->
-          </div>
-          <!-- sidebar-content  -->
-          <div class="sidebar-footer">
+          </li>
+          <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-bell"></i>
-              <span class="badge badge-pill badge-warning notification">3</span>
+              <i class="fa fa-list-alt"></i>
+              <span>Biblioteca</span>
             </a>
-            <a href="#">
-              <i class="fa fa-envelope"></i>
-              <span class="badge badge-pill badge-success notification">7</span>
-            </a>
-            <a href="#">
-                <%= link_to edit_user_path(current_user) do %>
-                    <i class="fa fa-cog"></i>
+            <div class="sidebar-submenu">
+              <ul>
+                <% if current_user.admin? %>
+                  <li>
+                    <%= link_to 'Contas', users_path %>
+                  </li>
                 <% end %>
-            </a>
+                <li>
+                  <%= link_to 'Gestão Anual', annual_managements_path %>
+                </li>
+                <li>
+                  <%= link_to 'Categorias das Receitas', income_categories_path %>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
             <a href="#">
-                <%= link_to sair_path, method: :delete, data: { confirm: t(:remove_question)} do %>
-                    <i class="fa fa-power-off"></i>
-                <% end %>
+              <i class="fa fa-shopping-cart"></i>
+              <span>E-commerce</span>
             </a>
-          </div>
-        </nav> 
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <%= link_to 'Receitas', incomes_path %>
+                </li>
+              </ul>
+            </div>
+          </li>          
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-users"></i>
+              <span>Utilizadores</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <%= link_to 'Utilizadores', user_groups_path %>
+                </li>
+                <li>
+                  <%= link_to 'Editar Trabalho', work_groups_static_path %>
+                </li>                     
+              </ul>
+            </div>                  
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-briefcase"></i>
+              <span>Trabalho</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <%= link_to 'Empresas', works_path %>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-archive"></i>
+                <span>Registos</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <%= link_to 'Contactos', contacts_path %>
+                </li>
+                <li class="divider" role="separator"></li>
+                <li>
+                  <%= link_to 'Artigos', articles_path %>
+                </li>                    
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+      <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a href="#">
+        <%= link_to edit_user_path(current_user) do %>
+          <i class="fa fa-cog"></i>
+        <% end %>
+      </a>
+      <a href="#">
+        <%= link_to sair_path, method: :delete, data: { confirm: t(:remove_question)} do %>
+          <i class="fa fa-power-off"></i>
+        <% end %>
+      </a>
+    </div>
+  </nav> 
 </div>
       
           

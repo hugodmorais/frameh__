@@ -5,12 +5,7 @@
         <h3 class="panel-title text-center">Editar Artigo</h3>
       </div>
       <div class="panel-body">
-          <%= form_for @article do |f| %>
-          <%= render 'form', f: f %>
-    
-          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-          <%= link_to "Cancelar", articles_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-        <% end %>
+        <%= render 'form' %>
       </div>
     </div>
   </div>

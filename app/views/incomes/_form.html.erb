@@ -18,7 +18,7 @@
     <%= f.label :month do %>
       <%= t(:month) %></span>
     <% end %>
-    <%= f.select :month, nil, { include_blank: true}, class: 'form-control' do %>
+    <%= f.select :month, nil, { }, class: 'form-control' do %>
       <%= options_for_select Date::MONTHNAMES.each_with_index.collect{|m, i| [m, i]}%>
     <% end %>
   </div>

@@ -1,40 +1,40 @@
 <div class="row row_frameh">
-    <div class="offset-3 col-lg-9">
-      <div class="panel panel-border">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel-heading">
-              <h3 class="panel-title text-center">Artigos</h3>
-              <div class="btn-group pull-right">
-                <%= link_to 'Novo Artigo', new_article_path, class: 'btn btn-success' %>
-              </div>
+  <div class="offset-3 col-lg-9">
+    <div class="panel panel-border">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Artigos</h3>
+            <div class="btn-group pull-right">
+              <%= link_to 'Novo Artigo', new_article_path, class: 'btn btn-success' %>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel-body">
-              <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-                <table id="datatable" class="table table-hover">
-                  <thead>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel-body">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+              <table id="datatable" class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                    <th>Criado por</th>
+                    <th class="text-right">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% unless @articles.present? %>
                     <tr>
-                      <th>Id</th>
-                      <th>Titulo</th>
-                      <th>Descrição</th>
-                      <th>Criado por</th>
-                      <th class="text-right">Ações</th>
+                      <td colspan="4" class="text-center">
+                        <h3>Sem artigos cadastrados.</h3>
+                        <%= link_to 'click aqui', new_article_path %> para cadastrar um novo artigo
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                      <% unless @articles.present? %>
-                      <tr>
-                        <td colspan="4" class="text-center">
-                          <h3>Sem artigos cadastrados.</h3>
-                          <%= link_to 'click aqui', new_article_path %> para cadastrar um novo artigo
-                        </td>
-                      </tr>
-                    <% end %>
-                    <% @articles.each do |c| %>
+                  <% end %>
+                  <% @articles.each do |c| %>
                     <tr>
                       <td>
                         <%= c.id %>
@@ -53,12 +53,11 @@
                         <%= link_to 'Excluir', article_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
                       </td>
                     </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-                <div>
-                  <%= will_paginate @articles, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
-                </div>
+                  <% end %>
+                </tbody>
+              </table>
+              <div>
+                <%= will_paginate @articles, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
               </div>
             </div>
           </div>
@@ -66,4 +65,5 @@
       </div>
     </div>
   </div>
+</div>
   
