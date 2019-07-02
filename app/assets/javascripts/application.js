@@ -14,9 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require jquery.datetimepicker
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.pt.js
 //= require highcharts
 //= require chartkick
+// require common/app_form
 //= require_tree .
 
 

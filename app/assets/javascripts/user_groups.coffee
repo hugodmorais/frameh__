@@ -1,18 +1,14 @@
-measures =
-  index: ->
-    console.log("dsfdsfdsfdsfd")
-    date_input = $('input[name="date"]')
-    #our date input has the name "date"
-    container = if $('.bootstrap-iso form').length > 0 then $('.bootstrap-iso form').parent() else 'body'
-    options = 
-        format: 'mm/dd/yyyy'
-        container: container
-        todayHighlight: true
-        autoclose: true
+user_groups =
+  form: ->
+    AppForm.init()
+    $('.datepicker').datepicker()
     
-
 $(document).on 'turbolinks:load', ->
-    measures.index()
+  controller = $('#page').data('controller')
+  action = $('#page').data('action')
+  if controller == 'user_groups'
+    user_groups.form()
+  
   
 
 
