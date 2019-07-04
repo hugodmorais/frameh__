@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_111734) do
+ActiveRecord::Schema.define(version: 2019_07_04_222238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,26 @@ ActiveRecord::Schema.define(version: 2019_05_12_111734) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "expense_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer "month"
+    t.integer "kind"
+    t.decimal "income_value"
+    t.bigint "user_group_id"
+    t.bigint "annual_management_id"
+    t.bigint "expense_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["annual_management_id"], name: "index_expenses_on_annual_management_id"
+    t.index ["expense_category_id"], name: "index_expenses_on_expense_category_id"
+    t.index ["user_group_id"], name: "index_expenses_on_user_group_id"
   end
 
   create_table "income_categories", force: :cascade do |t|
@@ -123,6 +143,9 @@ ActiveRecord::Schema.define(version: 2019_05_12_111734) do
   end
 
   add_foreign_key "contacts", "users"
+  add_foreign_key "expenses", "annual_managements"
+  add_foreign_key "expenses", "expense_categories"
+  add_foreign_key "expenses", "user_groups"
   add_foreign_key "incomes", "annual_managements"
   add_foreign_key "incomes", "income_categories"
   add_foreign_key "incomes", "user_groups"
