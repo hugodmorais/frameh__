@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   resources :annual_managements
   resources :incomes
   resources :income_categories
+  resources :expense_categories
+  resources :expenses
 end

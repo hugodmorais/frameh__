@@ -35,6 +35,11 @@ pt-BR:
     new: Nova Categoria
     edit: Editar Categoria
 
+  expense_categories:
+    expense_categories: Categorias das Despesas
+    new: Nova Categoria
+    edit: Editar Categoria
+
   activerecord:
     attributes:
       user:

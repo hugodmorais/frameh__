@@ -1,0 +1,17 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('expense_categories.expense_categories'), expense_categories_url)] %>
+<% @current_bread_name = t('expense_categories.edit') %>
+<!-- End Breadcrumb -->
+
+<div class="row row_frameh">
+  <div class="offset-2 col-lg-8">
+    <div class="panel panel-border panel-custom">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center"><%= t('expense_categories.edit') %></h1>
+      </div>
+      <div class="panel-body">
+        <%= render 'form', expense_category: @expense_category %>
+      </div>
+    </div>
+  </div>
+</div>

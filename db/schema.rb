@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_222238) do
   create_table "expenses", force: :cascade do |t|
     t.integer "month"
     t.integer "kind"
-    t.decimal "income_value"
+    t.decimal "expense_value"
     t.bigint "user_group_id"
     t.bigint "annual_management_id"
     t.bigint "expense_category_id"

@@ -1,0 +1,18 @@
+
+<%= form_for @expense_category do |f| %>
+<%= render 'layouts/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label :user_group_id do %>
+      <%= t(:name) %></span>
+    <% end %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  <%= link_to "Cancelar", expense_categories_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+
+<% end %>
+
+
+
+  

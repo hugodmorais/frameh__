@@ -1,0 +1,86 @@
+<!-- Start Breadcrumb -->
+<% @current_bread_name = t('expenses.expenses') %>
+<!-- End Breadcrumb -->
+
+<div class="row row_frameh">
+    <div class="offset-1 col-lg-10">
+      <div class="panel panel-border">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel-heading">
+              <h1 class="panel-title text-center">Despesas</h1>
+              <div class="btn-group pull-right">
+                <%= link_to new_expense_path, class: 'btn btn-success btn-sm waves-effect waves-light' do %>
+                  <i class="m-l-5 fa fa-plus"></i>
+                  <%= t('expenses.new') %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel-body">
+              <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+                <table id="datatable" class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Ano</th>
+                      <th>Mês</th>
+                      <th>Tipo</th>
+                      <th>Valor</th>
+                      <th class="text-right">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% unless @expenses.present? %>
+                      <tr>
+                        <td colspan="4" class="text-center">
+                          <h3>Sem gestão Anual cadastrada.</h3>
+                          <%= link_to 'click aqui', new_expense_path %> para cadastrar um novo ano
+                        </td>
+                      </tr>
+                    <% end %>
+                    <% @expenses.each do |c| %>
+                      <tr>
+                        <td>
+                          <%= c.id %>
+                        </td>
+                        <td>
+                          <%= c.annual_management.year %>
+                        </td>
+                        <td>
+                          <%= Date::MONTHNAMES[c.month] %>
+                        </td>
+                        <td>
+                          <%= c.expense_category.name %>
+                        </td>
+                        <td>
+                          <%= c.expense_value %>
+                        </td>
+                        <td class="text-right">
+                          <%= link_to expense_path(c) do %>
+                            <i class="fas fa-eye"></i>
+                          <% end %>
+                          <%= link_to edit_expense_path(c) do %>
+                            <i class="fas fa-edit"></i>
+                          <% end %>
+                          <%= link_to expense_path(c), method: :delete, data: { confirm: t(:remove_question)} do %>
+                            <i class="fas fa-trash-alt"></i>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+                <div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

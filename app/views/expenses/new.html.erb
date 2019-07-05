@@ -1,0 +1,18 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('expenses.expenses'), expenses_url)] %>
+<% @current_bread_name = t('expenses.new') %>
+<!-- End Breadcrumb -->
+
+<div class="row row_frameh">
+  <div class="offset-2 col-lg-8">
+    <div class="panel panel-border panel-custom">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center"><%= t('expenses.new') %></h1>
+      </div>
+      <div class="panel-body">
+        <%= render 'form', expense: @expense %>
+      </div>
+    </div>
+  </div>
+</div>
+  
