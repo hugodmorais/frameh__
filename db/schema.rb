@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_222238) do
+ActiveRecord::Schema.define(version: 2019_07_06_111812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,18 +67,35 @@ ActiveRecord::Schema.define(version: 2019_07_04_222238) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "expenses", force: :cascade do |t|
-    t.integer "month"
-    t.integer "kind"
-    t.decimal "expense_value"
-    t.bigint "user_group_id"
-    t.bigint "annual_management_id"
+  create_table "expense_groups", force: :cascade do |t|
+    t.integer "expense_value"
+    t.bigint "expense_id"
+    t.bigint "group_id"
     t.bigint "expense_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["expense_category_id"], name: "index_expense_groups_on_expense_category_id"
+    t.index ["expense_id"], name: "index_expense_groups_on_expense_id"
+    t.index ["group_id"], name: "index_expense_groups_on_group_id"
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer "month"
+    t.integer "kind"
+    t.bigint "user_group_id"
+    t.bigint "annual_management_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["annual_management_id"], name: "index_expenses_on_annual_management_id"
-    t.index ["expense_category_id"], name: "index_expenses_on_expense_category_id"
     t.index ["user_group_id"], name: "index_expenses_on_user_group_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.bigint "expense_category_id"
+    t.integer "expense_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expense_category_id"], name: "index_groups_on_expense_category_id"
   end
 
   create_table "income_categories", force: :cascade do |t|
@@ -144,8 +161,8 @@ ActiveRecord::Schema.define(version: 2019_07_04_222238) do
 
   add_foreign_key "contacts", "users"
   add_foreign_key "expenses", "annual_managements"
-  add_foreign_key "expenses", "expense_categories"
   add_foreign_key "expenses", "user_groups"
+  add_foreign_key "groups", "expense_categories"
   add_foreign_key "incomes", "annual_managements"
   add_foreign_key "incomes", "income_categories"
   add_foreign_key "incomes", "user_groups"

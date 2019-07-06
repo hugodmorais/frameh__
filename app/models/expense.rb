@@ -4,11 +4,12 @@ class Expense < ApplicationRecord
     # Attributes
 
     # Associations
-    belongs_to :expense_category
     belongs_to :annual_management
     belongs_to :user_group
+    has_many :expense_groups
     
     # Delegates
+    accepts_nested_attributes_for :expense_groups, allow_destroy: true
 
     # Constants
 

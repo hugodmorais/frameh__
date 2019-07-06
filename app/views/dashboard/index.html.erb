@@ -2,14 +2,14 @@
   <div class="row row_frameh">
     <div class="col-lg-3 col-sm-6">
       <div class="widget-inline-box text-center">
-        <h3><i class="text-primary md md-add-shopping-cart"></i> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
-        <h4 class="text-muted">Criados</h4>
+        <h3><i class="text-primary md md-add-shopping-cart"></i> <b data-plugin="counterup"><%= Income.sum('income_value') %></b></h3>
+        <h4 class="text-muted">Total Receitas</h4>
       </div>
     </div>
     <div class="col-lg-3 col-sm-6">
       <div class="widget-inline-box text-center">
-        <h3><i class="text-custom md md-attach-money"></i> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
-        <h4 class="text-muted">Atingidos</h4>
+        <h3><i class="text-custom md md-attach-money"></i> <b data-plugin="counterup"><%= ExpenseGroup.sum('expense_value') %></b></h3>
+        <h4 class="text-muted">Total Despesas</h4>
       </div>
     </div>
     <div class="col-lg-3 col-sm-6">
@@ -25,6 +25,7 @@
       </div>
     </div>
     <div class="col-lg-8 row_chart"> 
+      <%= results_dashboard_path(current_user) %>
       <%= column_chart results_dashboard_path(current_user), id: 'container', 
           ytitle: "Salario", 
           xtitle: "Meses", 

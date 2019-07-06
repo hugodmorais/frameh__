@@ -6,7 +6,10 @@ class ExpensesController < ApplicationController
     before_action :require_logged_in_user
   
     def index
-        @expenses = Expense.all.paginate(page: params[:page], per_page: 9)
+        @expenses = []
+        5.times do
+            @expenses = Expense.all.paginate(page: params[:page], per_page: 9)
+        end
     end
     
     def new
@@ -65,6 +68,12 @@ class ExpensesController < ApplicationController
     end  
     
     def expense_params
-        params.require(:expense).permit!
+        params.require(:expense).permit(
+            :month,
+            :kind,
+            :user_group_id,
+            :annual_management_id,
+            expense_groups_attributes: %i[id expense_category_id expense_value _destroy]
+        )
     end
 end

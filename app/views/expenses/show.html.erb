@@ -1,6 +1,5 @@
 <!-- Start Breadcrumb -->
 <% @bread_links = [link_to(t('expenses.expenses'), expenses_path)] %>
-<% @current_bread_name = @expense.expense_category.name %>
 <!-- End Breadcrumb -->
 
 <div class="row row_frameh">
@@ -31,17 +30,13 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Tipo:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= @expense.expense_category.name %></p>
+                <label class="col-sm-2 control-label"><%= t(:permissions) %></label>
+                <div class="col-sm-10">
+                  <% @expense.expense_groups.each do |expense_group| %>
+                    <p class="form-control-static"><%= expense_group.expense_category.name %> - <%= expense_group.expense_value %></p>
+                  <% end %>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Valor:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= @expense.expense_value %></p>
-              </div>
-            </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-9 m-t-15">
                   <%= link_to "Sair", expenses_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>

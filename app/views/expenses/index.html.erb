@@ -28,8 +28,6 @@
                       <th>Id</th>
                       <th>Ano</th>
                       <th>Mês</th>
-                      <th>Tipo</th>
-                      <th>Valor</th>
                       <th class="text-right">Ações</th>
                     </tr>
                   </thead>
@@ -52,12 +50,6 @@
                         </td>
                         <td>
                           <%= Date::MONTHNAMES[c.month] %>
-                        </td>
-                        <td>
-                          <%= c.expense_category.name %>
-                        </td>
-                        <td>
-                          <%= c.expense_value %>
                         </td>
                         <td class="text-right">
                           <%= link_to expense_path(c) do %>

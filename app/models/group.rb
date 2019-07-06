@@ -1,11 +1,13 @@
-class ExpenseCategory < ApplicationRecord
-    # Includes
+class Group < ApplicationRecord
+     # Includes
 
     # Attributes
 
     # Associations
+    belongs_to :expense_category
+    has_many :expenses, dependent: :nullify
     has_many :expense_groups
-    
+
     # Delegates
 
     # Constants
