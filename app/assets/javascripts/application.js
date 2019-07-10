@@ -11,14 +11,16 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require rails-ujs
 //= require bootstrap-sprockets
-//= require turbolinks
+//= require jquery.dataTables
+//= require dataTables.bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt.js
 //= require highcharts
 //= require chartkick
+//= require turbolinks
 // require common/app_form
 //= require_tree .
 
