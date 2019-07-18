@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :articles
   resources :users
-  resources :user_groups
+  resources :user_groups 
   resources :works
   resources :work_groups
   resources :annual_managements
@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   resources :income_categories
   resources :expense_categories
   resources :expenses
+
+  get 'datatables/user_groups_table', defaults: { format: :json }
 end

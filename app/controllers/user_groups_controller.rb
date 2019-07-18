@@ -1,5 +1,5 @@
 class UserGroupsController < ApplicationController
-    before_action :set_user_groups, only: [:edit, :show, :update, :destroy]
+    before_action :set_user_groups, only: [:edit, :show, :update, :destroy, :user_groups_table]
     before_action :set_incomes, only: [:edit, :update, :destroy]
     before_action :require_logged_in_user
     
@@ -43,8 +43,7 @@ class UserGroupsController < ApplicationController
   
       flash[:danger] = "UserGroup was successefully destroy"
       redirect_to user_groups_path
-    end
-    
+    end  
   
     private
   
