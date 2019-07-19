@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   resources :expenses
 
   get 'datatables/user_groups_table', defaults: { format: :json }
+  get 'datatables/users_table', defaults: { format: :json }
 end

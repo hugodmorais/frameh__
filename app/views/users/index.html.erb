@@ -1,6 +1,6 @@
-<!-- Start Breadcrumb -->
+<!-- Start Breadcrumb
 <% @current_bread_name = t('users.users') %>
-<!-- End Breadcrumb -->
+ End Breadcrumb -->
 
 <div class="row row_frameh">
   <div class="offset-1 col-lg-10">
@@ -8,19 +8,14 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="panel-heading">
-            <h1 class="panel-title text-center"><%= t('users.users') %></h1>
-              <div class="btn-group pull-right">
-               
-               
-              </div>
-            </div>
+            <h1 class="panel-title text-center">Contas</h1>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="panel-body">
               <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-                <table id="datatable" class="table table-hover">
+                <table id="users_table" class="table table-hover" data-url="<%= datatables_users_table_path %>">
                   <thead>
                     <tr>
                       <th>Id</th>
@@ -29,43 +24,7 @@
                       <th class="text-right">Ações</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <% unless @users.present? %>
-                      <tr>
-                        <td colspan="4" class="text-center">
-                          <h3>Sem Utilizadores cadastrados.</h3>
-                          <%= link_to 'click aqui', new_user_path %> para cadastrar um novo ano
-                        </td>
-                      </tr>
-                    <% end %>
-                    <% @users.each do |user| %>
-                      <tr>
-                        <td>
-                          <%= user.id %>
-                        </td>
-                        <td>
-                          <%= user.name %>
-                        </td>
-                        <td>
-                          <%= user.email %>
-                        </td>
-                        <td class="text-right">
-                          <%= link_to user_path(user) do %>
-                            <i class="fas fa-eye"></i>
-                          <% end %>
-                          <%= link_to edit_user_path(user) do %>
-                            <i class="fas fa-edit"></i>
-                          <% end %>
-                          <%= link_to user_path(user), method: :delete, data: { confirm: t(:remove_question)} do %>
-                            <i class="fas fa-trash-alt"></i>
-                          <% end %>
-                        </td>
-                      </tr>
-                    <% end %>
-                  </tbody>
                 </table>
-              <div>
-                <%= will_paginate @users, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
               </div>
             </div>
           </div>
