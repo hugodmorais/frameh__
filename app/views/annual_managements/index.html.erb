@@ -1,6 +1,6 @@
-<!-- Start Breadcrumb -->
+<!-- Start Breadcrumb
 <% @current_bread_name = t('annual_managements.annual_managements') %>
-<!-- End Breadcrumb -->
+ End Breadcrumb -->
 
 <div class="row row_frameh">
   <div class="offset-1 col-lg-10">
@@ -22,53 +22,16 @@
         <div class="col-lg-12">
           <div class="panel-body">
             <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-              <table id="datatable" class="table table-hover">
+              <table id="annual_managements_table" class="table table-hover" data-url="<%= datatables_annual_managements_table_path %>">
                 <thead>
                   <tr>
                     <th>Id</th>
                     <th>Ano</th>
                     <th>Descrição</th>
-                    <th class="text-right">Ações</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <% unless @annual_managements.present? %>
-                    <tr>
-                      <td colspan="4" class="text-center">
-                        <h3>Sem gestão Anual cadastrada.</h3>
-                        <%= link_to 'click aqui', new_annual_management_path %> para cadastrar um novo ano
-                      </td>
-                    </tr>
-                  <% end %>
-                  <% @annual_managements.each do |annual_management| %>
-                    <tr>
-                      <td>
-                        <%= annual_management.id %>
-                      </td>
-                      <td>
-                        <%= annual_management.year %>
-                      </td>
-                      <td>
-                        <%= annual_management.description %>
-                      </td>
-                      <td class="text-right">
-                        <%= link_to annual_management_path(annual_management) do %>
-                          <i class="fas fa-eye"></i>
-                        <% end %>
-                        <%= link_to edit_annual_management_path(annual_management) do %>
-                          <i class="fas fa-edit"></i>
-                        <% end %>
-                        <%= link_to annual_management_path(annual_management), method: :delete, data: { confirm: t(:remove_question)} do %>
-                          <i class="fas fa-trash-alt"></i>
-                        <% end %>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
               </table>
-              <div>
-                <%= will_paginate @annual_managements, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
-              </div>
             </div>
           </div>
         </div>
@@ -76,75 +39,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-<div class="row row_frameh">
-    <div class="offset-3 col-lg-9">
-      <div class="panel panel-border">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel-heading">
-              <h3 class="panel-title text-center">Gestão Anual</h3>
-              <div class="btn-group pull-right">
-                <%= link_to 'Novo Ano', new_annual_management_path, class: 'btn btn-success' %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel-body">
-              <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-                <table id="datatable" class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Ano</th>
-                      <th>Descrição</th>
-                      <th class="text-right">Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% unless @annual_managements.present? %>
-                      <tr>
-                        <td colspan="4" class="text-center">
-                          <h3>Sem gestão Anual cadastrada.</h3>
-                          <%= link_to 'click aqui', new_annual_management_path %> para cadastrar um novo ano
-                        </td>
-                      </tr>
-                    <% end %>
-                    <% @annual_managements.each do |c| %>
-                      <tr>
-                        <td>
-                          <%= c.id %>
-                        </td>
-                        <td>
-                          <%= c.year %>
-                        </td>
-                        <td>
-                          <%= c.description %>
-                        </td>
-                        <td class="text-right">
-                          <%= link_to 'Editar', edit_annual_management_path(c), class: 'btn btn-warning' %>
-                          <%= link_to 'Excluir', annual_management_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
-                        </td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-                <div>
-                  <%= will_paginate @annual_managements, :previous_label => 'Previous', class: "paginate", :next_label => 'Next' %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
