@@ -22,7 +22,7 @@
           <div class="col-lg-12">
             <div class="panel-body">
               <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-                <table id="datatable" class="table table-hover">
+                <table id="incomes_table" class="table table-hover" data-url="<%= datatables_incomes_path %>">
                   <thead>
                     <tr>
                       <th>Id</th>
@@ -30,52 +30,10 @@
                       <th>Mês</th>
                       <th>Tipo</th>
                       <th>Valor</th>
-                      <th class="text-right">Ações</th>
+                      <th>Ações</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <% unless @incomes.present? %>
-                      <tr>
-                        <td colspan="4" class="text-center">
-                          <h3>Sem gestão Anual cadastrada.</h3>
-                          <%= link_to 'click aqui', new_income_path %> para cadastrar um novo ano
-                        </td>
-                      </tr>
-                    <% end %>
-                    <% @incomes.each do |c| %>
-                      <tr>
-                        <td>
-                          <%= c.id %>
-                        </td>
-                        <td>
-                          <%= c.annual_management.year %>
-                        </td>
-                        <td>
-                          <%= Date::MONTHNAMES[c.month] %>
-                        </td>
-                        <td>
-                          <%= c.income_category.name %>
-                        </td>
-                        <td>
-                          <%= c.income_value %>
-                        </td>
-                        <td class="text-right">
-                          <%= link_to income_path(c) do %>
-                            <i class="fas fa-eye"></i>
-                          <% end %>
-                          <%= link_to edit_income_path(c) do %>
-                            <i class="fas fa-edit"></i>
-                          <% end %>
-                          <%= link_to income_path(c), method: :delete, data: { confirm: t(:remove_question)} do %>
-                            <i class="fas fa-trash-alt"></i>
-                          <% end %>
-                        </td>
-                      </tr>
-                    <% end %>
-                  </tbody>
                 </table>
-                <div>
-                </div>
               </div>
             </div>
           </div>
@@ -83,4 +41,5 @@
       </div>
     </div>
   </div>
+</div>
   
