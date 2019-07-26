@@ -29,6 +29,12 @@ pt-BR:
     income_kind: Tipo de Receita
     new: Nova Receita
     edit: Editar Receita
+  
+  expenses:
+    expenses: Despesas
+    expense_kind: Tipo de Despesa
+    new: Nova Despesa
+    edit: Editar Despesa
 
   income_categories:
     income_categories: Categorias das Receitas

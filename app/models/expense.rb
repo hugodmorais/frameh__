@@ -21,7 +21,7 @@ class Expense < ApplicationRecord
 
     # Constants Methods
 
-    # Default    
+    # Default  
 
     private
 end

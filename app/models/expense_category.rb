@@ -7,7 +7,7 @@ class ExpenseCategory < ApplicationRecord
     has_many :expense_groups
     
     # Delegates
-
+    
     # Constants
 
     # Validations
