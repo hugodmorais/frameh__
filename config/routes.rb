@@ -36,4 +36,5 @@ Rails.application.routes.draw do
   get 'datatables/incomes', defaults: { format: :json }
   get 'datatables/expenses', defaults: { format: :json }
   get 'datatables/expenses', defaults: { format: :json }
+  get 'datatables/companies', defaults: { format: :json }
 end
