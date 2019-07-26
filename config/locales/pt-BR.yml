@@ -9,8 +9,8 @@ pt-BR:
   description: Descrição
   name: Nome
 
-  works:
-    works: Empresas
+  companies:
+    companies: Empresas
     new: Nova Empresa
     edit: Editar Empresa
 

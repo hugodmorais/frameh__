@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :contacts
   has_many :articles
   has_many :user_groups
-  has_many :works
+  has_many :companies
   
   # Delegates
 

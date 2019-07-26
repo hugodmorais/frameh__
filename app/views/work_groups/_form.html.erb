@@ -19,9 +19,9 @@
 
   <div class="form-group">
       <%= f.label :work_id do %>
-      <%= t(:work) %></span>
+      <%= t(:company) %></span>
       <% end %>
-      <%= f.collection_select :work_id, @works, :id, :name, {}, class: 'form-control' %>
+      <%= f.collection_select :company_id, @companies, :id, :name, {}, class: 'form-control' %>
   </div>
 
 

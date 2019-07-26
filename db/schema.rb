@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2019_07_06_111812) do
     t.integer "user_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "country", default: "", null: false
+    t.string "city"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "phone"
@@ -141,24 +151,15 @@ ActiveRecord::Schema.define(version: 2019_07_06_111812) do
   create_table "work_groups", force: :cascade do |t|
     t.datetime "start_at"
     t.datetime "end_at"
-    t.bigint "work_id"
+    t.bigint "company_id"
     t.bigint "user_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_work_groups_on_company_id"
     t.index ["user_group_id"], name: "index_work_groups_on_user_group_id"
-    t.index ["work_id"], name: "index_work_groups_on_work_id"
   end
 
-  create_table "works", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "country", default: "", null: false
-    t.string "city"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_works_on_user_id"
-  end
-
+  add_foreign_key "companies", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "expenses", "annual_managements"
   add_foreign_key "expenses", "user_groups"
@@ -167,7 +168,6 @@ ActiveRecord::Schema.define(version: 2019_07_06_111812) do
   add_foreign_key "incomes", "income_categories"
   add_foreign_key "incomes", "user_groups"
   add_foreign_key "user_groups", "users"
+  add_foreign_key "work_groups", "companies"
   add_foreign_key "work_groups", "user_groups"
-  add_foreign_key "work_groups", "works"
-  add_foreign_key "works", "users"
 end

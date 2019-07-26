@@ -1,4 +1,4 @@
-class Work < ApplicationRecord
+class Company < ApplicationRecord
     # Includes
 
     # Attributes

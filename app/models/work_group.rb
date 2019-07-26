@@ -5,7 +5,7 @@ class WorkGroup < ApplicationRecord
 
     # Associations
     belongs_to :user_group
-    belongs_to :work
+    belongs_to :company
     
     # Delegates
     

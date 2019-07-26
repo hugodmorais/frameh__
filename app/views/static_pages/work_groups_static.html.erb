@@ -4,7 +4,7 @@
         <div class="">
           <div class="col-lg-12">
             <div class="panel-heading">
-              <h3 class="panel-title text-center">Works</h3>
+              <h3 class="panel-title text-center">Companies</h3>
               <div class="btn-group pull-right">
             
           
@@ -38,7 +38,7 @@
                   <p class="card-title"><%= image_tag( c.image, class: "rotate90 float:left", size: "140x110" ) if c.image.attached?  %></p>
                   <br>
                   <h5 class="card-title">Nome: <%= c.first_name %> <%= c.last_name %></h5>
-                  <h5 class="card-title">Empresa Atual: <%= WorkGroup.find_by(user_group: c.id)&.work&.name %></h5>
+                  <h5 class="card-title">Empresa Atual: <%= WorkGroup.find_by(user_group: c.id)&.company&.name %></h5>
                   <i class="fa fa-network"></i>
                   <%= link_to 'Editar', {:controller => "work_groups", :action => "index", :c => c.id }, class: 'btn btn-primary' %>
                 </div>

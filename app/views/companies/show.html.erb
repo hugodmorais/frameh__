@@ -1,6 +1,6 @@
 <!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('works.works'), works_path)] %>
-<% @current_bread_name = @work.name %>
+<% @bread_links = [link_to(t('companies.companies'), companies_path)] %>
+<% @current_bread_name = @company.name %>
 <!-- End Breadcrumb -->
 
 <div class="row row_frameh">
@@ -15,24 +15,24 @@
             <div class="form-group">
               <label class="col-sm-2 control-label"><%= t(:name) %></label>
               <div class="col-sm-10">
-                <p class="form-control-static"><%= @work.name %></p>
+                <p class="form-control-static"><%= @company.name %></p>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Cidade:</label>
               <div class="col-sm-10">
-                <p class="form-control-static"><%= @work.city %></p>
+                <p class="form-control-static"><%= @company.city %></p>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">Pais:</label>
               <div class="col-sm-10">
-                <p class="form-control-static"><%= @work.country %></p>
+                <p class="form-control-static"><%= @company.country %></p>
               </div>
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-9 m-t-15">
-                  <%= link_to "Sair", works_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+                  <%= link_to "Sair", companies_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
               </div>
             </div>
           </form>

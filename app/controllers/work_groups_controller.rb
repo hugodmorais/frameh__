@@ -1,7 +1,7 @@
 class WorkGroupsController < ApplicationController
     before_action :set_work_group, only: [:edit, :show, :update, :destroy]
     before_action :set_user_groups, only: [:new, :create, :edit, :update]
-    before_action :set_works, only: [:new, :create, :edit, :update]
+    before_action :set_companies, only: [:new, :create, :edit, :update]
     before_action :require_logged_in_user
     
     def index
@@ -59,8 +59,8 @@ class WorkGroupsController < ApplicationController
         @user_groups = UserGroup.where(user: current_user)
     end  
     
-    def set_works
-        @works = Work.where(user: current_user)
+    def set_companies
+        @companies = Work.where(user: current_user)
     end  
     
     def work_group_params

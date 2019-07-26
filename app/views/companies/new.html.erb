@@ -1,17 +1,18 @@
 <!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('works.works'), works_url)] %>
-<% @current_bread_name = t('works.edit') %>
+<% @bread_links = [link_to(t('companies.companies'), companies_url)] %>
+<% @current_bread_name = t('companies.new') %>
 <!-- End Breadcrumb -->
 
 <div class="row row_frameh">
   <div class="offset-2 col-lg-8">
     <div class="panel panel-border panel-custom">
       <div class="panel-heading">
-        <h1 class="panel-title text-center"><%= t('works.edit') %></h1>
+        <h1 class="panel-title text-center"><%= t('companies.new') %></h1>
       </div>
       <div class="panel-body">
-        <%= render 'form', work: @work %>
+        <%= render 'form', company: @company %>
       </div>
     </div>
   </div>
 </div>
+
