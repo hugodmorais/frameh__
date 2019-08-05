@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   get 'datatables/expenses', defaults: { format: :json }
   get 'datatables/expenses', defaults: { format: :json }
   get 'datatables/companies', defaults: { format: :json }
+
+  get 'highcharts/results_total', defaults: { format: :json }
 end

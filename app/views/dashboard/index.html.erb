@@ -24,18 +24,8 @@
         <h4 class="text-muted">Não atingidos</h4>
       </div>
     </div>
-    <div class="col-lg-8 row_chart"> 
-      <%= results_dashboard_path(current_user) %>
-      <%= column_chart results_dashboard_path(current_user), id: 'container', 
-          ytitle: "Salario", 
-          xtitle: "Meses", 
-          title: 'Analise Receitas vs Despesas',
-          chartOptions: {
-            legend: {
-                enabled: false
-            }
-          }
-       %> 
+    <div class="col-lg-8"> 
+      <div id="results_total" data-url="<%= highcharts_results_total_path %>">
     </div>  
   </div>
 <% else %>
