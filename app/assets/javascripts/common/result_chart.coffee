@@ -41,7 +41,6 @@ class window.ResultChart
           enabled: false
         style:
           fontWeight: 'bold'
-          color: Highcharts.theme and Highcharts.theme.textColor or 'gray'
         title:
           text: ''
       legend:
@@ -71,6 +70,10 @@ class window.ResultChart
           @chart.series[0].remove false
         for object in data.series
           @chart.addSeries(object, false)
+      @chart.hideLoading()
+      @chart.redraw()
+
+
       
 
   
