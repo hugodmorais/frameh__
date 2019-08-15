@@ -1,40 +1,48 @@
-<!-- Start Breadcrumb
-<% @bread_links = [link_to(t('incomes.incomes'), user_groups_path)] %>
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('user_groups.user_groups'), user_groups_path)] %>
 <% @current_bread_name = @user_group.first_name %>
- End Breadcrumb -->
-
-<div class="row row_frameh">
+<!-- End Breadcrumb -->
+<div class="row row_index">
   <div class="offset-2 col-xs-9">
-    <div class="panel panel-border panel-custom">
-      <div class="panel-heading">
-        <h1 class="panel-title text-center">Utilizador</h1>
-      </div>
-      <div class="panel-body">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Primeiro Nome:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= @user_group.first_name %></p>
-              </div>
+    <div class="panel-heading">
+      <h1 class="panel-title text-center">Utilizador</h1>
+    </div>
+    <div class="panel-body">
+      <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Primeiro Nome:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @user_group.first_name %></p>
             </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Ultimo Nome:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= @user_group.last_name %></p>
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Ultimo Nome:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @user_group.last_name %></p>
             </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-9 m-t-15">
-                <%= link_to "Sair", user_groups_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Gênero:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @user_group.to_s %></p>
             </div>
-          </form>
-        </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Data de Nascimento:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @user_group.birth_date.strftime("%F") %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9 m-t-15">
+              <%= link_to "Sair", user_groups_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
-  
-  
+

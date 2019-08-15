@@ -9,6 +9,10 @@ class DashboardController < ApplicationController
         render json: @testes  
     end
 
+    def results_partial
+        @results_partial = Income.all
+    end
+
     private
 
    

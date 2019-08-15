@@ -1,16 +1,22 @@
 
-<%= form_for @expense_category do |f| %>
-<%= render 'layouts/error_messages', object: f.object %>
-  <div class="form-group">
-    <%= f.label :user_group_id do %>
+<%= form_for expense_category do |f| %>
+  <div class="form-group <%= 'has-error' if expense_category.errors['name'].present? %>">
+    <%= f.label :expense_category do %>
       <%= t(:name) %></span>
     <% end %>
     <%= f.text_field :name, class: 'form-control' %>
+    <% if expense_category.errors['name'].present? %>
+      <span class="help-block text-danger">
+        <small><%= expense_category.errors['name'].first %></small>
+      </span>
+    <% end %>
   </div>
-
-  <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-  <%= link_to "Cancelar", expense_categories_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-
+  <div class="row">
+    <div class="col-sm-10 m-t-15">
+      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+      <%= link_to "Cancelar", expense_categories_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+    </div>
+  </div>  
 <% end %>
 
 

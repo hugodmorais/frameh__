@@ -10,9 +10,9 @@ class IncomeCategory < ApplicationRecord
     # Delegates
 
     # Constants
-    TYPES = { 'Salario': 0, 'Sub Natal': 1, 'Sub Ferias': 2, 'Premios': 3, 'Outras Receitas': 4 }.freeze
-
+    
     # Validations
+    validates :name, presence: true, uniqueness: true
 
     # Scopes    
     scope :by_month, -> { order :month }
@@ -21,12 +21,7 @@ class IncomeCategory < ApplicationRecord
 
     # Constants Methods
 
-    # Default
-
-    def kind_desc
-        TYPES.key kind
-    end
-    
+    # Default    
 
     private
 end

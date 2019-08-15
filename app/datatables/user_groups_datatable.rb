@@ -12,7 +12,7 @@ class UserGroupsDatatable < ApplicationDatatable
           row << user_group.id
           row << user_group.first_name
           row << user_group.last_name
-          row << user_group.birth_date
+          row << user_group.birth_date.strftime("%F")
           row << user_group.to_s
           links = [].tap do |link|
             link << link_to(user_group_path(user_group)) do

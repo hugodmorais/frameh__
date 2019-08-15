@@ -1,7 +1,7 @@
 class CreateAnnualManagements < ActiveRecord::Migration[5.2]
   def change
     create_table :annual_managements do |t|
-      t.integer :year
+      t.integer :year, null: false
       t.text :description
 
       t.timestamps

@@ -1,39 +1,58 @@
 <!-- Campos de preenchimento do formulario -->
-<%= form_for @user_group do |f| %>
-<%= render 'layouts/error_messages', object: f.object %>
-  <div class="form-group">
+<%= form_for user_group do |f| %>
+  <div class="form-group <%= 'has-error' if user_group.errors['first_name'].present? %>">
     <%= f.label :first_name do %>
       <%= t(:first_name) %></span>
     <% end %>
     <%= f.text_field :first_name, class: 'form-control' %>
+    <% if user_group.errors[:first_name].present? %>
+      <span class="help-block text-danger">
+        <small><%= user_group.errors[:first_name].first %></small>
+      </span>
+    <% end %>
   </div>
-
-  <div class="form-group">
+  <div class="form-group <%= 'has-error' if user_group.errors['last_name'].present? %>">
     <%= f.label :last_name do %>
       <%= t(:last_name) %></span>
     <% end %>
     <%= f.text_field :last_name, class: 'form-control' %>
+    <% if user_group.errors[:last_name].present? %>
+      <span class="help-block text-danger">
+        <small><%= user_group.errors[:last_name].first %></small>
+      </span>
+    <% end %>
   </div>
-
-  <div class="form-group">
+  <div class="form-group <%= 'has-error' if user_group.errors['genre'].present? %>">
     <%= f.label :genre do %>
       <%= t('genre') %></span>
     <% end %>
-    <%= f.select :genre, nil, { include_blank: true}, class: 'form-control' do %>
+    <%= f.select :genre, nil, { include_blank: false}, class: 'form-control' do %>
       <%= options_for_select UserGroup::GENRES.map { |desc, index| [t(desc), index] }, @user_group.genre %>
+    <% end %>
+    <% if user_group.errors[:genre].present? %>
+      <span class="help-block text-danger">
+        <small><%= user_group.errors[:genre].first %></small>
+      </span>
     <% end %>
   </div>  
 
-  <div class="form-group">
+  <div class="form-group <%= 'has-error' if user_group.errors['birth_date'].present? %>">
     <%= f.label :birth_date do %>
       <%= t(:birth_date) %></span>
     <% end %>
-    <%= f.date_field :birth_date, class: 'form-control datepicker' %>
+    <%= f.text_field :birth_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
+    <% if user_group.errors[:birth_date].present? %>
+      <span class="help-block text-danger">
+        <small><%= user_group.errors[:birth_date].first %></small>
+      </span>
+    <% end %>
   </div>
-
-  <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-  <%= link_to "Cancelar", user_groups_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-
+  <div class="row">
+    <div class="col-sm-10 m-t-15">
+      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+      <%= link_to "Cancelar", user_groups_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+    </div>
+  </div>  
 <% end %>
 
   

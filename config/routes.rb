@@ -39,4 +39,5 @@ Rails.application.routes.draw do
   get 'datatables/companies', defaults: { format: :json }
 
   get 'highcharts/results_total', defaults: { format: :json }
+  get 'highcharts/results_partial', defaults: { format: :json }
 end

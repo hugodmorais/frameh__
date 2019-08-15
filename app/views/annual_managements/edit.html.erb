@@ -2,16 +2,13 @@
 <% @bread_links = [link_to(t('annual_managements.annual_managements'), annual_managements_url)] %>
 <% @current_bread_name = t('annual_managements.edit') %>
 <!-- End Breadcrumb -->
-
-<div class="row row_frameh">
+<div class="row row_index">
   <div class="offset-2 col-lg-8">
-    <div class="panel panel-border panel-custom">
-      <div class="panel-heading">
-        <h1 class="panel-title text-center"><%= t('annual_managements.edit') %></h1>
-      </div>
-      <div class="panel-body">
-        <%= render 'form', annual_management: @annual_management %>
-      </div>
+    <div class="panel-heading">
+      <h1 class="panel-title text-center"><%= t('annual_managements.edit') %></h1>
+    </div>
+    <div class="panel-body">
+      <%= render 'form', annual_management: @annual_management %>
     </div>
   </div>
 </div>

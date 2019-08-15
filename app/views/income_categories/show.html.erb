@@ -2,31 +2,31 @@
 <% @bread_links = [link_to(t('income_categories.income_categories'), income_categories_path)] %>
 <% @current_bread_name = @income_category.name %>
 <!-- End Breadcrumb -->
-
-<div class="row row_frameh">
+<div class="row row_index">
   <div class="offset-2 col-xs-9">
-    <div class="panel panel-border panel-custom">
-      <div class="panel-heading">
-        <h1 class="panel-title text-center">Categoria</h1>
-      </div>
-      <div class="panel-body">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label class="col-sm-2 control-label"><%= t :name %></label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= @income_category.name %></p>
-              </div>
+    <div class="panel-heading">
+      <h1 class="panel-title text-center">Categoria</h1>
+    </div>
+    <div class="panel-body">
+      <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Nome:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @income_category.name %></p>
             </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-9 m-t-15">
-                  <%= link_to "Sair", income_categories_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-              </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9 m-t-15">
+              <%= link_to "Sair", income_categories_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
+
+
+
 

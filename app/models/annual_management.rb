@@ -4,14 +4,15 @@ class AnnualManagement < ApplicationRecord
     # Attributes
 
     # Associations
-    has_many :incomes
+    has_many :incomes, dependent: :destroy
     
     # Delegates
 
     # Constants
 
     # Validations
-
+    validates :year, presence: true, uniqueness: true
+    
     # Scopes    
     scope :by_year, -> { order :year }
 

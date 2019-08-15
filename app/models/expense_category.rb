@@ -11,7 +11,8 @@ class ExpenseCategory < ApplicationRecord
     # Constants
 
     # Validations
-
+    validates :name, presence: true, uniqueness: true
+    
     # Scopes    
 
     # Callbacks

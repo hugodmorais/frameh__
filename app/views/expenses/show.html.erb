@@ -1,49 +1,46 @@
 <!-- Start Breadcrumb -->
 <% @bread_links = [link_to(t('expenses.expenses'), expenses_path)] %>
 <!-- End Breadcrumb -->
-
-<div class="row row_frameh">
+<div class="row row_index">
   <div class="offset-2 col-xs-9">
-    <div class="panel panel-border panel-custom">
-      <div class="panel-heading">
-        <h1 class="panel-title text-center">Despesa</h1>
-      </div>
-      <div class="panel-body">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label class="col-sm-2 control-label"><%= t(:user) %></label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= @expense.user_group.first_name %></p>
-              </div>
+    <div class="panel-heading">
+      <h1 class="panel-title text-center">Despesa</h1>
+    </div>
+    <div class="panel-body">
+      <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= t(:user) %></label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @expense.user_group.first_name %></p>
             </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Ano:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= @expense.annual_management.year %></p>
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Ano:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @expense.annual_management.year %></p>
             </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Mês:</label>
-              <div class="col-sm-10">
-                <p class="form-control-static"><%= Date::MONTHNAMES[@expense.month] %></p>
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Mês:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= Date::MONTHNAMES[@expense.month] %></p>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label"><%= t(:permissions) %></label>
-                <div class="col-sm-10">
-                  <% @expense.expense_groups.each do |expense_group| %>
-                    <p class="form-control-static"><%= expense_group.expense_category.name %> - <%= expense_group.expense_value %></p>
-                  <% end %>
-                </div>
-              </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-9 m-t-15">
-                  <%= link_to "Sair", expenses_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= t(:permissions) %></label>
+            <div class="col-sm-10">
+              <% @expense.expense_groups.each do |expense_group| %>
+                <p class="form-control-static"><%= expense_group.expense_category.name %> - <%= expense_group.expense_value %></p>
+              <% end %>
             </div>
-          </form>
-        </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9 m-t-15">
+              <%= link_to "Sair", expenses_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

@@ -14,6 +14,7 @@ class Expense < ApplicationRecord
     # Constants
 
     # Validations
+    validates :month, presence: true
 
     # Scopes    
 

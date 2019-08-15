@@ -8,6 +8,13 @@ pt-BR:
   country: País
   description: Descrição
   name: Nome
+  value: Valor
+  expense_kind: Tipo de Despesa
+  delete: Apagar
+  first_name: Primeiro Nome
+  last_name: Último Nome
+  genre: Gênero
+  birth_date: Data de Nascimento
 
   companies:
     companies: Empresas
@@ -45,6 +52,11 @@ pt-BR:
     expense_categories: Categorias das Despesas
     new: Nova Categoria
     edit: Editar Categoria
+
+  user_groups:
+    user_groups: Utilizadores
+    new: Novo Utilizador
+    edit: Editar Utilizador
 
   activerecord:
     attributes:

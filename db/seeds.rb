@@ -14,9 +14,13 @@ UserGroup.destroy_all
 user = User.create!( name: 'Hugo Morais', email: 'hugomorais@gmail.com', password: '123456', admin: true )
 user1 = User.create!( name: 'Kenia Soares', email: 'kenia@gmail.com', password: '123456' )
 
-year = AnnualManagement.create!( year: '2018', description: 'um' )
-year1 = AnnualManagement.create!( year: '2019', description: 'dois' )
-year2 = AnnualManagement.create!( year: '2020', description: 'tres' )
+year4 = AnnualManagement.create!( year: '2014', description: 'Um' )
+year5 = AnnualManagement.create!( year: '2015', description: 'Dois' )
+year6 = AnnualManagement.create!( year: '2016', description: 'Tres' )
+year6 = AnnualManagement.create!( year: '2017', description: 'Quatro' )
+year = AnnualManagement.create!( year: '2018', description: 'Cinco' )
+year1 = AnnualManagement.create!( year: '2019', description: 'Seis' )
+year2 = AnnualManagement.create!( year: '2020', description: 'Sete' )
 
 work = Company.create!( name: 'Aquapor', country: 'Portugal', city: 'Lisboa', user: user )
 work1 = Company.create!( name: 'Sebo', country: 'Brasil', city: 'Ji-Paraná', user: user )

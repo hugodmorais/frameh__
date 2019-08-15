@@ -1,17 +1,14 @@
-<!-- Start Breadcrumb
-<% @bread_links = [link_to(t('incomes.incomes'), user_groups_url)] %>
-<% @current_bread_name = t('incomes.new') %>
- End Breadcrumb -->
-
-<div class="row_frameh">
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('user_groups.user_groups'), user_groups_url)] %>
+<% @current_bread_name = t('user_groups.new') %>
+<!-- End Breadcrumb -->
+<div class="row_index">
   <div class="offset-2 col-lg-8">
-    <div class="panel panel-border panel-custom">
-      <div class="panel-heading">
-        <h1 class="panel-title text-center"><%= t('incomes.new') %></h1>
-      </div>
-      <div class="panel-body">
-        <%= render 'form', user_group: @user_group %>
-      </div>
+    <div class="panel-heading">
+      <h1 class="panel-title text-center"><%= t('incomes.new') %></h1>
+    </div>
+    <div class="panel-body">
+      <%= render 'form', user_group: @user_group %>
     </div>
   </div>
 </div>

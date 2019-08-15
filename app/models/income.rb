@@ -14,6 +14,7 @@ class Income < ApplicationRecord
     # Constants
 
     # Validations
+    validates :income_value, presence: true, uniqueness: true
 
     # Scopes    
     scope :in_year, ->(year) { where year: year }

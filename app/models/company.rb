@@ -12,7 +12,8 @@ class Company < ApplicationRecord
     # Constants
 
     # Validations
-    
+    validates :name, :city, :country, presence: true
+
     # Scopes
 
     # Callbacks

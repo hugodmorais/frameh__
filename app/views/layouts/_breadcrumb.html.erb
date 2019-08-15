@@ -1,7 +1,8 @@
 <% if bread_links.any? || current_bread_name.present? %>
   <div class="row">
     <div class="col-lg-12">
-      <ol class="breadcrumb breadcrumb_back">
+        <div class="panel panel-border">
+      <ol class="breadcrumb breadcrumb_back panel_breadcrumb">
         <li class="breadcrumb-item">
           <%= link_to root_url do %><i class="fa fa-home"></i><% end %>
         </li>
@@ -13,5 +14,6 @@
         <li class="breadcrumb-item active"><%= current_bread_name %></li>
       </ol>
     </div>
+  </div>
   </div>
 <% end %>
