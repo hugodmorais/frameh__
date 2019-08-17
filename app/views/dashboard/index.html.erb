@@ -1,52 +1,97 @@
 <% if user_signed_in? %>
 <div class="container">
-    <div class="row row_frameh">
-        <div class="col-lg-3 col-sm-6">
-          <div class="widget-inline-box text-center">
-            <h3><span class="glyphicon glyphicon glyphicon-ok-sign" aria-hidden="true" style="font-size:20px;color:blue;"></span> <b data-plugin="counterup"><%= Income.sum('income_value') %></b></h3>
-            <h4 class="text-muted">Total Receitas</h4>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="widget-inline-box text-center">
-            <h3><span class="glyphicon glyphicon-adjust" aria-hidden="true" style="font-size:20px;color:red;"></span> <b data-plugin="counterup"><%= ExpenseGroup.sum('expense_value') %></b></h3>
-            <h4 class="text-muted">Total Despesas</h4>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="widget-inline-box text-center">
-            <h3><span class="glyphicon glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;color:yellow;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
-            <h4 class="text-muted">Parcialmente atingidos</h4>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="widget-inline-box text-center b-0">
-            <h3><span class="glyphicon glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="font-size:20px;color:green;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
-            <h4 class="text-muted">Não atingidos</h4>
-          </div>
-        </div>
-      </div>  
-    <ul class="nav nav-tabs row_chart">
-      <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-      <li class=""><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-      <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-      <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
-    </ul>
+  <div class="row row_frameh">
+    <div class="col-lg-3 col-sm-6">
+      <div class="widget-inline-box text-center">
+        <h3>
+          <span class="glyphicon glyphicon glyphicon-ok-sign" aria-hidden="true" style="font-size:20px;color:blue;"></span> 
+          <b data-plugin="counterup">
+            <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).sum('income_value') %>
+          </b>
+        </h3>
+        <h4 class="text-muted">Total Receitas</h4>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="widget-inline-box text-center">
+        <h3>
+          <span class="glyphicon glyphicon-adjust" aria-hidden="true" style="font-size:20px;color:red;"></span> 
+          <b data-plugin="counterup">
+            <%= Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).includes(:expense_groups).sum('expense_value') %>
+          </b>
+        </h3>
+        <h4 class="text-muted">Total Despesas</h4>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="widget-inline-box text-center">
+        <h3><span class="glyphicon glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;color:yellow;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
+        <h4 class="text-muted">Parcialmente atingidos</h4>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="widget-inline-box text-center b-0">
+        <h3><span class="glyphicon glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="font-size:20px;color:green;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
+        <h4 class="text-muted">Não atingidos</h4>
+      </div>
+    </div>
+  </div>  
+  <ul class="nav nav-tabs row_chart">
+    <li class="active"><a data-toggle="tab" href="#home">Análise Anual - <%= Date.current.year %></a></li>
+    <li class=""><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+  </ul>
     
     <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
-          <div class="row row_frameh">
-              <div class="col-lg-8">
-                <div class="">
-                  <div id="results_total" data-url="<%= highcharts_results_total_path %>"></div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="">
-                  <div id="results_partial" data-url="<%= highcharts_results_partial_path %>"></div>
-                </div>
-              </div>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="">
+              <div id="results_total" data-url="<%= highcharts_results_total_path %>"></div>
+            </div>
           </div>
+            <div class="col-4">
+              <div class="list-group" id="list-tab">
+                <a class="list-group-item">
+                  <h3>
+                    <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="font-size:20px;"></span> 
+                    <b data-plugin="counterup">2.958,25</b>
+                  </h3>
+                  <h4 class="text-muted">Débito - Conta Bancária</h4>
+                </a>
+                <a class="list-group-item" role="tab" aria-controls="home">
+                  <h3>
+                    <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="font-size:20px;"></span> 
+                    <b data-plugin="counterup">1500,00</b>
+                  </h3>
+                  <h4 class="text-muted">Crédito - Disponível</h4>
+                </a>
+                <a class="list-group-item" role="tab" aria-controls="home">
+                  <h3>
+                    <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true" style="font-size:20px;"></span> 
+                    <b data-plugin="counterup">800,00</b>
+                  </h3>
+                  <h4 class="text-muted">Poupança</h4>
+                </a>
+                <a class="list-group-item" role="tab" aria-controls="home">
+                  <h3>
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;"></span> 
+                    <b data-plugin="counterup">375,00</b>
+                  </h3>
+                  <h4 class="text-muted">Total Prestações mensal</h4>
+                </a>
+              </div>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+              <div class="">
+                <div id="results_partial" data-url="<%= highcharts_results_partial_path %>"></div>
+              </div>
+            </div>
+        </div>
       </div>
       <div id="menu1" class="tab-pane">
         <h3>Menu 1</h3>

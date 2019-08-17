@@ -11,7 +11,7 @@ class ExpensesDatatable < ApplicationDatatable
         [].tap do |row|
           row << expense.id
           row << expense.annual_management.year
-          row << expense.month
+          row << t('date.month_names')[expense.month]
                  
           links = [].tap do |link|
             link << link_to(expense_path(expense)) do

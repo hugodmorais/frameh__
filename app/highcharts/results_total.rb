@@ -1,6 +1,7 @@
 class ResultsTotal
     attr_accessor :params
-    attr_accessor :testes
+    attr_accessor :incomes
+    attr_accessor :expenses
   
     def initialize(params)
       self.params = params
@@ -13,10 +14,12 @@ class ResultsTotal
   
     def data
       unless valid?
-        self.testes = Income.none
+        self.incomes = Income.none
+        self.expenses = Income.none
         return false
       end
-      self.testes = Income.all
+      self.incomes = Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year))
+      self.expenses = Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).includes(:expense_groups)
     end
   end
   

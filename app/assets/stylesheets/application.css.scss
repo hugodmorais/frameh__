@@ -17,6 +17,18 @@ h1 {
   font-size: 26px !important;
 }
 
+#list-tab {
+  padding-top: 4.5rem;
+}
+
+#list-tab a {
+  height: 7rem;
+  background-color: #212529;
+  color: white;
+  text-align: center;
+  border-style: none !important;
+}
+
 @keyframes swing {
   0% {
     transform: rotate(0deg);

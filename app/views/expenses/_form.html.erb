@@ -26,7 +26,7 @@
       <%= t(:month) %></span>
     <% end %>
     <%= f.select :month, nil, { }, class: 'form-control' do %>
-      <%= options_for_select Date::MONTHNAMES[1..12] %>
+      <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}) %>
     <% end %>
     
     <% if expense.errors['month'].present? %>

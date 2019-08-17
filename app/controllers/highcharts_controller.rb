@@ -1,7 +1,8 @@
 class HighchartsController < ApplicationController
     def results_total
         chart = ResultsTotal.new(params)
-        @testes = chart.testes
+        @incomes = chart.incomes
+        @expenses = chart.expenses
     end
 
     def results_partial

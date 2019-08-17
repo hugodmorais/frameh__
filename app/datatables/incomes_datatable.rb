@@ -11,7 +11,7 @@ class IncomesDatatable < ApplicationDatatable
         [].tap do |row|
           row << income.id
           row << income.annual_management.year
-          row << income.month
+          row << t('date.month_names')[income.month]
           row << income.kind
           row << income.income_value
           links = [].tap do |link|
