@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :contracts
   resources :contract_statuses
   resources :currency_kinds
+  resources :accounts
 
   get 'datatables/user_groups_table', defaults: { format: :json }
   get 'datatables/users_table', defaults: { format: :json }
@@ -43,6 +44,7 @@ Rails.application.routes.draw do
   get 'datatables/contract_statuses', defaults: { format: :json }
   get 'datatables/contracts', defaults: { format: :json }
   get 'datatables/currency_kinds', defaults: { format: :json }
+  get 'datatables/accounts', defaults: { format: :json }
 
   get 'highcharts/results_total', defaults: { format: :json }
   get 'highcharts/results_partial', defaults: { format: :json }

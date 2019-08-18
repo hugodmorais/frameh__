@@ -1,11 +1,11 @@
-class CurrencyKind < ApplicationRecord
+class Account < ApplicationRecord
     
     # Includes
     
     # Attributes
     
     # Associations
-    has_many :accounts
+    belongs_to :currency_kind
     
     # Delegates
     

@@ -67,7 +67,7 @@
               <ul>
                 <% if current_user.admin? %>
                   <li>
-                    <%= link_to 'Contas', users_path %>
+                    <%= link_to 'Contas Utilizadores', users_path %>
                   </li>
                 <% end %>
                 <li>
@@ -84,6 +84,9 @@
                 </li>
                 <li>
                   <%= link_to 'Tipos de Moeda', currency_kinds_path %>
+                </li>
+                <li>
+                  <%= link_to 'Contas Banco', accounts_path %>
                 </li>
               </ul>
             </div>

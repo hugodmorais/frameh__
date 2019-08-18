@@ -16,6 +16,9 @@ pt-BR:
   genre: Gênero
   birth_date: Data de Nascimento
   contract_number: Número do Contrato
+  main_account: Conta Principal
+  savings_account: Conta Poupança
+  credit_account: Conta C.Crédito
 
   companies:
     companies: Empresas
@@ -73,6 +76,11 @@ pt-BR:
     currency_kinds: Tipos de Moeda
     new: Novo Tipo de moeda
     edit: Editar Tipo de Moeda
+
+  accounts:
+    accounts: Contas Banco
+    new: Nova Conta de Banco
+    edit: Editar Conta de Banco
 
   activerecord:
     attributes:
