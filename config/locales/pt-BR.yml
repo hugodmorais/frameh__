@@ -69,6 +69,11 @@ pt-BR:
     new: Novo Utilizador
     edit: Editar Utilizador
 
+  currency_kinds:
+    currency_kinds: Tipos de Moeda
+    new: Novo Tipo de moeda
+    edit: Editar Tipo de Moeda
+
   activerecord:
     attributes:
       user:
