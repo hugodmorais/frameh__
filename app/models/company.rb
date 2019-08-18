@@ -5,6 +5,7 @@ class Company < ApplicationRecord
 
     # Associations
     has_many :work_groups
+    has_many :contracts
     belongs_to :user
     
     # Delegates

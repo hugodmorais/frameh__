@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   resources :income_categories
   resources :expense_categories
   resources :expenses
+  resources :contracts
+  resources :contract_statuses
 
   get 'datatables/user_groups_table', defaults: { format: :json }
   get 'datatables/users_table', defaults: { format: :json }
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
   get 'datatables/expenses', defaults: { format: :json }
   get 'datatables/expenses', defaults: { format: :json }
   get 'datatables/companies', defaults: { format: :json }
+  get 'datatables/contract_statuses', defaults: { format: :json }
+  get 'datatables/contracts', defaults: { format: :json }
 
   get 'highcharts/results_total', defaults: { format: :json }
   get 'highcharts/results_partial', defaults: { format: :json }

@@ -9,7 +9,8 @@ class UserGroup < ApplicationRecord
   belongs_to :user
   has_many :work_groups
   has_many :incomes
-
+  has_many :contracts
+    
   # Delegates
 
   # Constants

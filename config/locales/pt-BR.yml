@@ -15,6 +15,7 @@ pt-BR:
   last_name: Último Nome
   genre: Gênero
   birth_date: Data de Nascimento
+  contract_number: Número do Contrato
 
   companies:
     companies: Empresas
@@ -52,6 +53,16 @@ pt-BR:
     expense_categories: Categorias das Despesas
     new: Nova Categoria
     edit: Editar Categoria
+
+  contract_statuses:
+    contract_statuses: Estados do Contrato
+    new: Novo Estado
+    edit: Editar Estado
+
+  contracts:
+    contracts: Contrato
+    new: Novo Contrato
+    edit: Editar Contrato
 
   user_groups:
     user_groups: Utilizadores

@@ -54,4 +54,18 @@ class DatatablesController < ApplicationController
         format.json { render json: datatable }
       end
     end
+
+    def contract_statuses
+      datatable = ContractStatusesDatatable.new(view_context)
+      respond_to do |format|
+        format.json { render json: datatable }
+      end
+    end
+
+    def contracts
+      datatable = ContractsDatatable.new(view_context)
+      respond_to do |format|
+        format.json { render json: datatable }
+      end
+    end
 end
