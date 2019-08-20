@@ -1,0 +1,9 @@
+<% @accounts.each do |account| %>
+  <div class="form-group">
+    <%= f.label account.name do %>
+      <%= t("#{account.name}") %></span>
+    <% end %>
+    
+    <%= f.text_field :total_balance, class: 'form-control', rows: "10" %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<%= form_for financial_statement do |f| %>
+  <div class="form-group <%= 'has-error' if financial_statement.errors['month'].present? %>">
+    <%= f.label :month do %>
+      <%= t(:month) %></span>
+    <% end %>
+    <%= f.select :month, nil, { }, class: 'form-control' do %>
+      <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}) %>
+    <% end %>
+    <% if financial_statement.errors[:month].present? %>
+      <span class="help-block text-danger">
+        <small><%= financial_statement.errors[:month].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <%= f.fields_for :total_balances do |w| %>
+    <%= render partial: 'total_balance_fields',locals: { f: w } %>
+  <% end %>
+  <div class="row">
+    <div class="col-sm-10 m-t-15">
+      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+      <%= link_to "Cancelar", financial_statements_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+    </div>
+  </div>  
+<% end %>

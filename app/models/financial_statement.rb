@@ -1,12 +1,12 @@
-class Account < ApplicationRecord
+class FinancialStatement < ApplicationRecord
     
     # Includes
     
     # Attributes
     
     # Associations
-    belongs_to :currency_kind
-    has_many :financial_statements
+    belongs_to :annual_management
+    belongs_to :account
     
     # Delegates
     
