@@ -1,14 +1,14 @@
 <!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('contracts.contracts'), contracts_url)] %>
-<% @current_bread_name = t('contracts.edit') %>
+<% @bread_links = [link_to(t('financial_statements.financial_statements'), financial_statements_url)] %>
+<% @current_bread_name = t('financial_statements.edit') %>
 <!-- End Breadcrumb -->
 <div class="row row_index">
   <div class="offset-2 col-lg-8">
     <div class="panel-heading">
-      <h1 class="panel-title text-center"><%= t('contracts.edit') %></h1>
+      <h1 class="panel-title text-center"><%= t('financial_statements.edit') %></h1>
     </div>
     <div class="panel-body">
-      <%= render 'form', contract: @contract %>
+      <%= render 'form', financial_statement: @financial_statement %>
     </div>
   </div>
 </div>

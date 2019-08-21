@@ -82,4 +82,11 @@ class DatatablesController < ApplicationController
         format.json { render json: datatable }
       end
     end
+
+    def financial_statements
+      datatable = FinancialStatementsDatatable.new(view_context)
+      respond_to do |format|
+        format.json { render json: datatable }
+      end
+    end
 end
