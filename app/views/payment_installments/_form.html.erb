@@ -1,0 +1,96 @@
+<%= form_for payment_installment do |f| %>
+  <div class="form-group <%= 'has-error' if payment_installment.errors['name'].present? %>">
+    <%= f.label :name do %>
+      <%= t(:name) %></span>
+    <% end %>
+    <%= f.text_field :name, placeholder: "Introduza o Nome", class: 'form-control', rows: "10" %>
+    <% if payment_installment.errors[:name].present? %>
+      <span class="help-block text-danger">
+        <small><%= payment_installment.errors[:name].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if payment_installment.errors['start_date'].present? %>">
+    <%= f.label :start_date do %>
+      <%= t(:start_date) %></span>
+    <% end %>
+    <%= f.text_field :start_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
+    <% if payment_installment.errors[:start_date].present? %>
+      <span class="help-block text-danger">
+        <small><%= payment_installment.errors[:start_date].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if payment_installment.errors['months_number'].present? %>">
+    <%= f.label :months_number do %>
+      <%= t(:payment_installment_months_number) %></span>
+    <% end %>
+    <%= f.text_field :months_number, placeholder: "Introduza o número de mensalidades", class: 'form-control', rows: "10" %>
+    <% if payment_installment.errors[:months_number].present? %>
+      <span class="help-block text-danger">
+        <small><%= payment_installment.errors[:months_number].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if payment_installment.errors['total_value'].present? %>">
+    <%= f.label :total_value do %>
+      <%= t(:total_value) %></span>
+    <% end %>
+    <%= f.text_area :total_value, placeholder: "Introduza o valor total com juros incluídos", class: 'form-control', rows: "10" %>
+    <% if payment_installment.errors[:total_value].present? %>
+      <span class="help-block text-danger">
+        <small><%= payment_installment.errors[:total_value].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if payment_installment.errors['store_name'].present? %>">
+    <%= f.label :store_name do %>
+      <%= t(:store_name) %></span>
+    <% end %>
+    <%= f.text_field :store_name, placeholder: "Introduza o Nome do Local da Compra", class: 'form-control' %>
+    <% if payment_installment.errors[:store_name].present? %>
+      <span class="help-block text-danger">
+        <small><%= payment_installment.errors[:store_name].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if payment_installment.errors['description'].present? %>">
+    <%= f.label :description do %>
+      <%= t(:description) %></span>
+    <% end %>
+    <%= f.text_field :description, placeholder: "Introduza a Descrição", class: 'form-control' %>
+    <% if payment_installment.errors[:description].present? %>
+      <span class="help-block text-danger">
+        <small><%= payment_installment.errors[:description].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if payment_installment.errors['deposit_money'].present? %>">
+    <%= f.label :deposit_money do %>
+      <%= t(:deposit_money) %></span>
+    <% end %>
+    <%= f.text_field :deposit_money, placeholder: "Introduza o valor da Mensalidade", class: 'form-control' %>
+    <% if payment_installment.errors[:deposit_money].present? %>
+      <span class="help-block text-danger">
+        <small><%= payment_installment.errors[:deposit_money].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if payment_installment.errors['monthly_installment'].present? %>">
+    <%= f.label :monthly_installment do %>
+      <%= t(:monthly_installment) %></span>
+    <% end %>
+    <%= f.text_field :monthly_installment, placeholder: "Introduza o valor de Entrada", class: 'form-control' %>
+    <% if payment_installment.errors[:monthly_installment].present? %>
+      <span class="help-block text-danger">
+        <small><%= payment_installment.errors[:monthly_installment].first %></small>
+      </span>
+    <% end %>
+  </div> 
+  <div class="row">
+    <div class="col-sm-10 m-t-15">
+      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+      <%= link_to "Cancelar", payment_installments_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+    </div>
+  </div>  
+<% end %>

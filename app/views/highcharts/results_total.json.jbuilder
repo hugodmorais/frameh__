@@ -17,6 +17,7 @@ json.series do
         json.y nil
       end
     end
+    json.color '#055D00'
   end
   json.child! do
     json.type 'column'
@@ -29,6 +30,7 @@ json.series do
         json.y nil
       end
     end
+    json.color '#AB0000'
   end
 end
   

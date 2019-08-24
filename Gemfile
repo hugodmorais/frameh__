@@ -38,6 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.0'
 
 gem 'bootstrap-datepicker-rails'
+gem 'bootstrap_progressbar'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

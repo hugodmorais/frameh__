@@ -1,0 +1,17 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('payment_installments.payment_installments'), payment_installments_url)] %>
+<% @current_bread_name = t('payment_installments.edit') %>
+<!-- End Breadcrumb -->
+<div class="row row_index">
+  <div class="offset-2 col-lg-8">
+    <div class="panel-heading">
+      <h1 class="panel-title text-center"><%= t('payment_installments.edit') %></h1>
+    </div>
+    <div class="panel-body">
+      <%= render 'form', payment_installment: @payment_installment %>
+    </div>
+  </div>
+</div>
+
+  
+  

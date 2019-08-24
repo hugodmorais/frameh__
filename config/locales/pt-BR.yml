@@ -19,6 +19,12 @@ pt-BR:
   main_account: Conta Principal
   savings_account: Conta Poupança
   credit_account: Conta C.Crédito
+  start_date: Data de Início
+  payment_installment_months_number: Numero de Mensalidades
+  total_value: Valor Total (c/juros)
+  store_name: Local da Compra
+  deposit_money: Valor da Mensalidade
+  monthly_installment: Valor de Entrada
 
   companies:
     companies: Empresas
@@ -29,6 +35,11 @@ pt-BR:
     annual_managements: Gestão Anual
     new: Novo Ano
     edit: Editar Ano
+
+  payment_installments:
+    payment_installments: Pagamentos Parcelas
+    new: Novo Pagamento
+    edit: Editar Pagamento
 
   users:
     users: Utilizadores

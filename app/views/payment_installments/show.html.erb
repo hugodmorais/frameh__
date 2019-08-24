@@ -1,0 +1,71 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('payment_installments.payment_installments'), payment_installments_path)] %>
+<% @current_bread_name = @payment_installment.name %>
+<!-- End Breadcrumb -->
+<div class="row row_index">
+  <div class="offset-2 col-xs-9">
+    <div class="panel-heading">
+      <h1 class="panel-title text-center">Pagamento</h1>
+    </div>
+    <div class="panel-body">
+      <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><%= t(:name) %></label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @payment_installment.name %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Data de Início:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @payment_installment.start_date %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Número de Mensalidades:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @payment_installment.months_number %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Valor Total:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @payment_installment.total_value %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Nome do Local da compra:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @payment_installment.store_name %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Descrição:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @payment_installment.description %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Valor da Mensalidade:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @payment_installment.deposit_money %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Valor de Entrada:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><%= @payment_installment.monthly_installment %></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9 m-t-15">
+                <%= link_to "Sair", payment_installments_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

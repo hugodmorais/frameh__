@@ -77,27 +77,68 @@
                 <a class="list-group-item" role="tab" aria-controls="home">
                   <h3>
                     <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;"></span> 
-                    <b data-plugin="counterup">375,00</b>
+                    <b data-plugin="counterup"><%= PaymentInstallment.sum('deposit_money') %></b>
                   </h3>
                   <h4 class="text-muted">Total Prestações mensal</h4>
                 </a>
               </div>
             </div>
-           
         </div>
-        <div class="row">
-            <div class="col-md-4">
-              <div class="">
-                <div id="results_partial" data-url="<%= highcharts_results_partial_path %>"></div>
-              </div>
+        <hr>
+        <div class="row m-t-30">
+          <div class="col-md-4">
+            <h2 class="text-center">Dívidas Valor Pago</h2>
+            <p class="m-b-15"></p>
+            <% @payment_installments.each do |p| %>
+              <span class="label label-success">
+                <%= p.name %>
+              </span>
+              <p class="m-b-5"></p>
+              <%= progress_bar p.percentage_calculate(p.total_value, p.amount_already_paid).round(2), label: true, style: 'min-width: 20px', alternative: 'success', active: true %>
+            <% end %>
+          </div>
+          <div class="col-md-4">
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+                  <small>3 days ago</small>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+                  <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+                  <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+                  <small class="text-muted">3 days ago</small>
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
+              </a>
             </div>
+          </div> 
+          <div class="col-md-4">
+            <div class="">
+              <div id="results_partial" data-url="<%= highcharts_results_partial_path %>"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div id="menu1" class="tab-pane">
         <h3>Menu 1</h3>
-        <div class="container">
-          <%= render 'todo_items/todo_item' %>
-        </div>
+       
       </div>
       <div id="menu2" class="tab-pane fade">
         <h3>Menu 2</h3>
