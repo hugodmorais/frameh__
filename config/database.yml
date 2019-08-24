@@ -89,3 +89,4 @@ production:
   database: contact_production
   username: contact
   password: <%= ENV['CONTACT_DATABASE_PASSWORD'] %>
+  
