@@ -5,8 +5,7 @@ class PaymentInstallment < ApplicationRecord
     # Attributes
     
     # Associations
-    
-    # Delegates
+    belongs_to :user
     
     # Constants
     

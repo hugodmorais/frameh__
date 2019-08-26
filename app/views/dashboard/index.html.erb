@@ -1,42 +1,6 @@
 <% if user_signed_in? %>
 <div class="container">
-  <div class="row row_frameh">
-    <div class="col-lg-3 col-sm-6">
-      <div class="widget-inline-box text-center">
-        <h3>
-          <span class="glyphicon glyphicon glyphicon-ok-sign" aria-hidden="true" style="font-size:20px;color:blue;"></span> 
-          <b data-plugin="counterup">
-            <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).sum('income_value') %>
-          </b>
-        </h3>
-        <h4 class="text-muted">Total Receitas</h4>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="widget-inline-box text-center">
-        <h3>
-          <span class="glyphicon glyphicon-adjust" aria-hidden="true" style="font-size:20px;color:red;"></span> 
-          <b data-plugin="counterup">
-            <%= Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).includes(:expense_groups).sum('expense_value') %>
-          </b>
-        </h3>
-        <h4 class="text-muted">Total Despesas</h4>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="widget-inline-box text-center">
-        <h3><span class="glyphicon glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;color:yellow;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
-        <h4 class="text-muted">Parcialmente atingidos</h4>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-      <div class="widget-inline-box text-center b-0">
-        <h3><span class="glyphicon glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="font-size:20px;color:green;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
-        <h4 class="text-muted">Não atingidos</h4>
-      </div>
-    </div>
-  </div>  
-  <ul class="nav nav-tabs row_chart m-l-15">
+  <ul class="nav nav-tabs row_chart m-l-15 m-t-30">
     <li class="active"><a data-toggle="tab" href="#home">Análise Anual - <%= Date.current.year %></a></li>
     <li class=""><a data-toggle="tab" href="#menu1">Menu 1</a></li>
     <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
@@ -44,49 +8,85 @@
   </ul>
     <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
-        <div class="row">
+        <div class="row m-t-20">
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget-inline-box text-center">
+              <h3>
+                <span class="glyphicon glyphicon glyphicon-ok-sign" aria-hidden="true" style="font-size:20px;color:rgb(5, 93, 0);"></span> 
+                <b data-plugin="counterup">
+                  <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).sum('income_value') %>
+                </b>
+              </h3>
+              <h4 class="text-muted">Total Receitas</h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget-inline-box text-center">
+              <h3>
+                <span class="glyphicon glyphicon-adjust" aria-hidden="true" style="font-size:20px;color:rgb(171, 0, 0);"></span> 
+                <b data-plugin="counterup">
+                  <%= Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).includes(:expense_groups).sum('expense_value') %>
+                </b>
+              </h3>
+              <h4 class="text-muted">Total Despesas</h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget-inline-box text-center">
+              <h3><span class="glyphicon glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;color:yellow;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
+              <h4 class="text-muted">Label 03</h4>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget-inline-box text-center b-0">
+              <h3><span class="glyphicon glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="font-size:20px;color:green;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
+              <h4 class="text-muted">Label 04</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row row_frameh row_charts">
           <div class="col-lg-8">
             <div class="">
               <div id="results_total" data-url="<%= highcharts_results_total_path %>"></div>
             </div>
           </div>
-            <div class="col-4">
-              <div class="list-group" id="list-tab">
-                <a class="list-group-item">
-                  <h3>
-                    <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="font-size:20px;"></span> 
-                    <b data-plugin="counterup">2.958,25</b>
-                  </h3>
-                  <h4 class="text-muted">Débito - Conta Bancária</h4>
-                </a>
-                <a class="list-group-item" role="tab" aria-controls="home">
-                  <h3>
-                    <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="font-size:20px;"></span> 
-                    <b data-plugin="counterup">1500,00</b>
-                  </h3>
-                  <h4 class="text-muted">Crédito - Disponível</h4>
-                </a>
-                <a class="list-group-item" role="tab" aria-controls="home">
-                  <h3>
-                    <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true" style="font-size:20px;"></span> 
-                    <b data-plugin="counterup">800,00</b>
-                  </h3>
-                  <h4 class="text-muted">Poupança</h4>
-                </a>
-                <a class="list-group-item" role="tab" aria-controls="home">
-                  <h3>
-                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;"></span> 
-                    <b data-plugin="counterup"><%= PaymentInstallment.sum('deposit_money') %></b>
-                  </h3>
-                  <h4 class="text-muted">Total Prestações mensal</h4>
-                </a>
-              </div>
+          <div class="col-4">
+            <div class="list-group" id="list-tab">
+              <a class="list-group-item">
+                <h3>
+                  <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="font-size:20px;"></span> 
+                  <b data-plugin="counterup">2.958,25</b>
+                </h3>
+                <h4 class="text-muted">Débito - Conta Bancária</h4>
+              </a>
+              <a class="list-group-item" role="tab" aria-controls="home">
+                <h3>
+                  <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="font-size:20px;"></span> 
+                  <b data-plugin="counterup">1500,00</b>
+                </h3>
+                <h4 class="text-muted">Crédito - Disponível</h4>
+              </a>
+              <a class="list-group-item" role="tab" aria-controls="home">
+                <h3>
+                  <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true" style="font-size:20px;"></span> 
+                  <b data-plugin="counterup">800,00</b>
+                </h3>
+                <h4 class="text-muted">Poupança</h4>
+              </a>
+              <a class="list-group-item" role="tab" aria-controls="home">
+                <h3>
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;"></span> 
+                  <b data-plugin="counterup"><%= PaymentInstallment.sum('deposit_money') %></b>
+                </h3>
+                <h4 class="text-muted">Total Prestações mensal</h4>
+              </a>
             </div>
+          </div>
         </div>
         <hr>
         <div class="row m-t-30">
           <div class="col-md-4">
-            <h2 class="text-center">Dívidas Valor Pago</h2>
+            <h2 class="text-center">Balanço Contas</h2>
             <p class="m-b-15"></p>
             <% @payment_installments.each do |p| %>
               <span class="label label-success">
@@ -97,36 +97,42 @@
             <% end %>
           </div>
           <div class="col-md-4">
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small>3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.</p>
-              </a>
-            </div>
+              <div class="m-tr-20">
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-outline-primary">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> <span class="glyphicon glyphicon-chevron-left"></span>
+                      </label>
+                      <label class="btn btn-info">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Agosto
+                      </label>
+                      <label class="btn btn-outline-primary">
+                        <input type="radio" name="options" id="option3" autocomplete="off"> <span class="glyphicon glyphicon-chevron-right"></span>
+                      </label>
+                    </div>
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr style="background-color: #5ee285;">
+                        <th>Receita Mensal</th>
+                        <th><%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') %></th>
+                      </tr>
+                      <tr style="background-color: #c95d5d;">
+                        <th>Despesas Mensais</th>
+                        <th><%= Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></th>
+                      </tr>
+                      <% @expenses.each do |expense| %>
+                        <tr>
+                        <td><%= expense.expense_category.name %></td>
+                        <td>- <%= expense.expense_value %></td>
+                      </tr>
+                        <% end %>
+                        <tr>
+                        <td>Balanço</td> 
+                        <td><%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') - Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %>
+                        </td>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
           </div> 
           <div class="col-md-4">
             <div class="">
@@ -135,9 +141,25 @@
           </div>
         </div>
       </div>
-      <div id="menu1" class="tab-pane">
+      <div id="menu1" class="tab-pane m-l-30">
         <h3>Menu 1</h3>
-       
+        <div class="row text-center">
+        <div class="jumbotron" style="width: 500px;">
+          <h1>Receita Mensal - <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') %></h1>
+          <h1>Despesas Mensais - <%= Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></h1>
+          <table class="table table-striped">
+            <tbody>
+              <% @expenses.each do |expense| %>
+                <tr>
+                <th><%= expense.expense_category.name %> -> <%= expense.expense_value %></th>
+              </tr>
+                <% end %>
+            </tbody>
+          </table>
+          <hr>
+          <h3><h1>Balanço -> <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') - Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></h1></h3>
+      </div>
+      </div>
       </div>
       <div id="menu2" class="tab-pane fade">
         <h3>Menu 2</h3>

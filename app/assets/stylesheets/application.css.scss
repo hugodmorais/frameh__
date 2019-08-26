@@ -18,11 +18,11 @@ h1 {
 }
 
 #list-tab {
-  padding-top: 4.5rem;
+  padding-top: 1.5rem;
 }
 
 #list-tab a {
-  height: 7rem;
+  height: 6rem;
   background-color: #212529;
   color: white;
   text-align: center;
@@ -655,7 +655,7 @@ body, .container {
 
 .row_frameh {
   padding: 3rem;
-  height: 800px;
+  height: 600px;
   background-color: white;
 }
 
@@ -704,7 +704,7 @@ html {
 }
 
 .row_chart {
-  margin-top: -700px !important;
+  margin-top: -900px !important;
 }
 
 .row_chart li a {
@@ -714,6 +714,11 @@ html {
 
 .row_index {
   padding-top: 1rem;
+}
+
+#results_total {
+  width: 700px;
+  height: 300px;
 }
 
 #results_partial {
@@ -793,6 +798,15 @@ html {
 .m-l-15 {
   margin-left: 15px !important;
 }
+.m-l-20 {
+  margin-left: 20px !important;
+}
+.m-l-30 {
+  margin-left: 30px !important;
+}
+.m-l-40 {
+  margin-left: 40px !important;
+}
 .m-t-5 {
   margin-top: 5px !important;
 }
@@ -814,6 +828,11 @@ html {
 .m-t-40 {
   margin-top: 40px !important;
 }
+
+.m-tr-20 {
+  margin-top: -20px !important;
+}
+
 .m-b-0 {
   margin-bottom: 0px !important;
 }
@@ -861,4 +880,8 @@ html {
 
 .panel_breadcrumb li a {
   padding-bottom: 20px !important;
+}
+
+.row_charts {
+  height: 350px !important;
 }

@@ -17,5 +17,17 @@ json.title do
         end
       end
     end
+    json.child! do
+      json.type 'pie'
+      json.name t(:real_value)
+      indexed_results = @results_partial.index_by(&:income_category_id)
+      json.data 1..indexed_results.length do |month|
+        if indexed_results[month].present?
+            json.y indexed_results[month].income_value.to_f
+        else
+          json.y nil
+        end
+      end
+    end
 end
   

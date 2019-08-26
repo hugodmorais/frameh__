@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :articles
   has_many :user_groups
   has_many :companies
+  has_many :payment_installments
   
   # Delegates
 
