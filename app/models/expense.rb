@@ -1,6 +1,7 @@
 class Expense < ApplicationRecord
     # Includes
-
+    include CurrentScopable
+    
     # Attributes
 
     # Associations
@@ -17,6 +18,8 @@ class Expense < ApplicationRecord
     validates :month, presence: true
 
     # Scopes    
+    scope :in_month, ->(month) { where month: month }
+    scope :in_year, ->(year) { joins(:annual_management).where(annual_managements: { year: year }) }
 
     # Callbacks
 

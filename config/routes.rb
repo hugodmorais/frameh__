@@ -26,7 +26,13 @@ Rails.application.routes.draw do
   resources :incomes
   resources :income_categories
   resources :expense_categories
-  resources :expenses
+
+  resources :expenses do
+    collection do
+      get 'monthly_expenses', defaults: { format: :json }
+    end
+  end
+
   resources :contracts
   resources :contract_statuses
   resources :currency_kinds

@@ -1,4 +1,9 @@
 <% if user_signed_in? %>
+
+<!-- Start Info_hidden -->
+<%= info_hidden(monthly_expenses_url: incomes_path) %>
+<!-- End Info_hidden -->
+
 <div class="container">
   <ul class="nav nav-tabs row_chart m-l-15 m-t-30">
     <li class="active"><a data-toggle="tab" href="#home">Análise Anual - <%= Date.current.year %></a></li>
@@ -98,17 +103,9 @@
           </div>
           <div class="col-md-4">
               <div class="m-tr-20">
-                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                      <label class="btn btn-outline-primary">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked> <span class="glyphicon glyphicon-chevron-left"></span>
-                      </label>
-                      <label class="btn btn-info">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Agosto
-                      </label>
-                      <label class="btn btn-outline-primary">
-                        <input type="radio" name="options" id="option3" autocomplete="off"> <span class="glyphicon glyphicon-chevron-right"></span>
-                      </label>
-                    </div>
+                 
+                  <%= render 'month_selector', month: Current.month %>
+                 
                   <table class="table table-bordered">
                     <tbody>
                       <tr style="background-color: #5ee285;">
@@ -152,6 +149,10 @@
               <% @expenses.each do |expense| %>
                 <tr>
                 <th><%= expense.expense_category.name %> -> <%= expense.expense_value %></th>
+                <div class="operational-score" data-perspective="<%= expense.id %>">
+                    ee<%= @expense
+                    %>
+                  </div>
               </tr>
                 <% end %>
             </tbody>

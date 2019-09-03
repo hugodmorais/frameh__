@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
     def index
         @expenses = []
         5.times do
-            @expenses = Expense.all.paginate(page: params[:page], per_page: 9)
+            @expenses = Expense.all
         end
     end
     
@@ -47,8 +47,11 @@ class ExpensesController < ApplicationController
         flash[:danger] = "expense was successefully destroy"
         redirect_to expense_path
     end
-    
 
+    def monthly_expenses
+        @expenses = Expense.in_current_year.in_month(Current.month)
+    end
+    
     private
 
     def set_expense
