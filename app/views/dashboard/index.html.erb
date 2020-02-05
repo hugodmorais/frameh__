@@ -1,6 +1,5 @@
 <% if user_signed_in? %>
-
-<!-- Start Info_hidden -->
+  <!-- Start Info_hidden -->
 <%= info_hidden(monthly_expenses_url: incomes_path) %>
 <!-- End Info_hidden -->
 
@@ -101,41 +100,6 @@
               <%= progress_bar p.percentage_calculate(p.total_value, p.amount_already_paid).round(2), label: true, style: 'min-width: 20px', alternative: 'success', active: true %>
             <% end %>
           </div>
-          <div class="col-md-4">
-              <div class="m-tr-20">
-                 
-                  <%= render 'month_selector', month: Current.month %>
-                 
-                  <table class="table table-bordered">
-                    <tbody>
-                      <tr style="background-color: #5ee285;">
-                        <th>Receita Mensal</th>
-                        <th><%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') %></th>
-                      </tr>
-                      <tr style="background-color: #c95d5d;">
-                        <th>Despesas Mensais</th>
-                        <th><%= Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></th>
-                      </tr>
-                      <% @expenses.each do |expense| %>
-                        <tr>
-                        <td><%= expense.expense_category.name %></td>
-                        <td>- <%= expense.expense_value %></td>
-                      </tr>
-                        <% end %>
-                        <tr>
-                        <td>Balanço</td> 
-                        <td><%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') - Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %>
-                        </td>
-                        </tr>
-                      </tbody>
-                  </table>
-              </div>
-          </div> 
-          <div class="col-md-4">
-            <div class="">
-              <div id="results_partial" data-url="<%= highcharts_results_partial_path %>"></div>
-            </div>
-          </div>
         </div>
       </div>
       <div id="menu1" class="tab-pane m-l-30">
@@ -150,28 +114,26 @@
                 <tr>
                 <th><%= expense.expense_category.name %> -> <%= expense.expense_value %></th>
                 <div class="operational-score" data-perspective="<%= expense.id %>">
-                    ee<%= @expense
-                    %>
-                  </div>
-              </tr>
-                <% end %>
+                  <%= @expense %>
+                </div>
+                </tr>
+              <% end %>
             </tbody>
           </table>
           <hr>
           <h3><h1>Balanço -> <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') - Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></h1></h3>
-      </div>
-      </div>
-      </div>
-      <div id="menu2" class="tab-pane fade">
-        <h3>Menu 2</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-      </div>
-      <div id="menu3" class="tab-pane fade">
-        <h3>Menu 3</h3>
-        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
       </div>
     </div>
-  </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+</div>
 <% else %>
   <div class="container">
     <div class="d-flex justify-content-center h-100">
