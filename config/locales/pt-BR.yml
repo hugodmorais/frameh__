@@ -259,12 +259,12 @@ pt-BR:
     currency:
       format:
         delimiter: "."
-        format: "%u %n"
+        format: "%n %u"
         precision: 2
         separator: ","
         significant: false
         strip_insignificant_zeros: false
-        unit: R$
+        unit: €
     format:
       delimiter: "."
       precision: 3
@@ -374,12 +374,12 @@ pt-BR:
     currency:
       format:
         delimiter: .
-        format: ! '%u %n'
+        format: ! '%n %u'
         precision: 2
         separator: ! ','
         significant: false
         strip_insignificant_zeros: false
-        unit: R$
+        unit: €
     format:
       delimiter: .
       precision: 3
