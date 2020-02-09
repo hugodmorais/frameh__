@@ -30,8 +30,34 @@
           </span>
         </div>
       </div>
-      <!-- sidebar-search  -->
+
       <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>Ano</span>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-tachometer-alt"></i>
+              <span><%= Current.year %></span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <!-- sidebar-search  -->
+                <% AnnualManagement.all.each do |annual_management| %>
+                  <!-- list item-->
+
+                  <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
+                    <%= annual_management.year %>  
+                  <% end %>
+                  <!-- list item-->
+                <% end %>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+
         <ul>
           <li class="header-menu">
             <span>General</span>
