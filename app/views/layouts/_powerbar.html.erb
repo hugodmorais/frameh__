@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark py-0 bg-dark navbar-expand-lg navbar-fixed-top">
+  <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= Current.year %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+         <% AnnualManagement.all.each do |annual_management| %>
+          <!-- list item-->
+          <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
+            <%= annual_management.year %>  
+          <% end %>
+          <!-- list item-->
+        <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+

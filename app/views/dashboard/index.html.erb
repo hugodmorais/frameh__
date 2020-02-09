@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
-  <!-- Start Info_hidden -->
+ <!-- Start Info_hidden -->
 <%= info_hidden(monthly_expenses_url: incomes_path) %>
 <!-- End Info_hidden -->
 
 <div class="container">
-  <ul class="nav nav-tabs row_chart m-l-15 m-t-30">
-    <li class="active"><a data-toggle="tab" href="#home">Análise Anual - <%= Date.current.year %></a></li>
+  <ul class="nav nav-tabs row_chart m-l-15 m-t-80">
+    <li class="active"><a data-toggle="tab" href="#home">Análise Anual - <%= Current.year %></a></li>
     <li class=""><a data-toggle="tab" href="#menu1">Menu 1</a></li>
     <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
     <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
@@ -18,7 +18,7 @@
               <h3>
                 <span class="glyphicon glyphicon glyphicon-ok-sign" aria-hidden="true" style="font-size:20px;color:rgb(5, 93, 0);"></span> 
                 <b data-plugin="counterup">
-                  <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).sum('income_value') %>
+                  <%= Income.where(annual_management: AnnualManagement.where(year: Current.year)).sum('income_value') %>
                 </b>
               </h3>
               <h4 class="text-muted">Total Receitas</h4>
@@ -29,7 +29,7 @@
               <h3>
                 <span class="glyphicon glyphicon-adjust" aria-hidden="true" style="font-size:20px;color:rgb(171, 0, 0);"></span> 
                 <b data-plugin="counterup">
-                  <%= Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).includes(:expense_groups).sum('expense_value') %>
+                  <%= Expense.where(annual_management: AnnualManagement.where(year: Current.year)).includes(:expense_groups).sum('expense_value') %>
                 </b>
               </h3>
               <h4 class="text-muted">Total Despesas</h4>
@@ -106,34 +106,36 @@
         <h3>Menu 1</h3>
         <div class="row text-center">
         <div class="jumbotron" style="width: 500px;">
-          <h1>Receita Mensal - <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') %></h1>
-          <h1>Despesas Mensais - <%= Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></h1>
+          <h1>Receita Mensal - <%= Income.where(annual_management: AnnualManagement.where(year: Current.year), month: Time.now.month).sum('income_value') %></h1>
+          <h1>Despesas Mensais - <%= Expense.where(annual_management: AnnualManagement.where(year: Current.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></h1>
           <table class="table table-striped">
             <tbody>
               <% @expenses.each do |expense| %>
                 <tr>
                 <th><%= expense.expense_category.name %> -> <%= expense.expense_value %></th>
                 <div class="operational-score" data-perspective="<%= expense.id %>">
-                  <%= @expense %>
-                </div>
-                </tr>
-              <% end %>
+                    ee<%= @expense
+                    %>
+                  </div>
+              </tr>
+                <% end %>
             </tbody>
           </table>
           <hr>
-          <h3><h1>Balanço -> <%= Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).sum('income_value') - Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></h1></h3>
-        </div>
+          <h3><h1>Balanço -> <%= Income.where(annual_management: AnnualManagement.where(year: Current.year), month: Time.now.month).sum('income_value') - Expense.where(annual_management: AnnualManagement.where(year: Current.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></h1></h3>
+      </div>
+      </div>
+      </div>
+      <div id="menu2" class="tab-pane fade">
+        <h3>Menu 2</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      </div>
+      <div id="menu3" class="tab-pane fade">
+        <h3>Menu 3</h3>
+        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
       </div>
     </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-</div>
+  </div>
 <% else %>
   <div class="container">
     <div class="d-flex justify-content-center h-100">

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :set_current_month
+  before_action :set_current_annual_management
 
   def current_user
     return unless session[:user_id]
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private
+
+  def set_current_annual_management
+    Current.annual_management = AnnualManagement.find_by(id: session[:frameh_annual_management]) || AnnualManagement.last
+  end
 
   def set_current_month
     # return if Current.annual_management.blank?

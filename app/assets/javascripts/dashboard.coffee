@@ -5,10 +5,6 @@ dashboard =
     results_total.dashboard_index()
     results_total.get_chart_data()
 
-    results_partial = new ResultChart('results_partial')
-    results_partial.dashboard_index_partial()
-    results_partial.get_chart_data()
-
     selected_month = new MonthSelector
     selected_month.on_change = ->
       monthly_expenses_url = $('#info_hidden').data('monthly-expenses-url')

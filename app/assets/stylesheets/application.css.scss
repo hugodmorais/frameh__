@@ -17,6 +17,10 @@ h1 {
   font-size: 26px !important;
 }
 
+.bg-dark {
+  background-color: #1e2229;
+} 
+
 #list-tab {
   padding-top: 1.5rem;
 }
@@ -122,7 +126,7 @@ body {
 #show-sidebar {
   position: fixed;
   left: 0;
-  top: 10px;
+  top: 0;
   border-radius: 0 4px 4px 0px;
   width: 35px;
   transition-delay: 0.3s;
@@ -131,6 +135,9 @@ body {
   left: -40px;
 }
 /*----------------sidebar-wrapper----------------*/
+.navbar {
+  width: 100%;
+}
 
 .sidebar-wrapper {
   width: 260px;
@@ -827,6 +834,14 @@ html {
 }
 .m-t-40 {
   margin-top: 40px !important;
+}
+
+.m-t-60 {
+  margin-top: 60px !important;
+}
+
+.m-t-80 {
+  margin-top: 80px !important;
 }
 
 .m-tr-20 {

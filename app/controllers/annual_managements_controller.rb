@@ -1,5 +1,5 @@
 class AnnualManagementsController < ApplicationController
-    before_action :set_annual_management, only: [:edit, :show, :update, :destroy]
+    before_action :set_annual_management, only: [:edit, :show, :update, :destroy, :switch]
   
     def index
         @annual_managements = AnnualManagement.all.by_year
@@ -38,6 +38,11 @@ class AnnualManagementsController < ApplicationController
         @annual_management.destroy
         flash[:danger] = "annual_management was successefully destroy"
         redirect_to annual_managements_path
+    end
+
+    def switch
+        session[:frameh_annual_management] = @annual_management.id
+        redirect_to dashboard_path
     end
     
     private

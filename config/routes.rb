@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   resources :user_groups 
   resources :companies
   resources :work_groups
-  resources :annual_managements
+  resources :annual_managements do
+    member do
+      get 'switch', defaults: { format: :json }
+    end
+  end
   resources :incomes
   resources :income_categories
   resources :expense_categories

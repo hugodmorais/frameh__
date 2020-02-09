@@ -1,6 +1,7 @@
 class AnnualManagement < ApplicationRecord
     # Includes
-
+    include CurrentScopable
+    
     # Attributes
 
     # Associations

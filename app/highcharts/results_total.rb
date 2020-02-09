@@ -18,8 +18,8 @@ class ResultsTotal
         self.expenses = Income.none
         return false
       end
-      self.incomes = Income.where(annual_management: AnnualManagement.where(year: Time.zone.now.year))
-      self.expenses = Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year)).includes(:expense_groups)
+      self.incomes = Income.where(annual_management: AnnualManagement.where(year: Current.year))
+      self.expenses = Expense.where(annual_management: AnnualManagement.where(year: Current.year)).includes(:expense_groups)
     end
   end
   
