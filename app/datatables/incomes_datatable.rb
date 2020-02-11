@@ -10,9 +10,12 @@ class IncomesDatatable < ApplicationDatatable
       @incomes.map do |income|
         [].tap do |row|
           row << income.id
-          row << income.annual_management.year
           row << t('date.month_names')[income.month]
-          row << income.kind
+          if income.income_category.present?
+            row << income.income_category.name
+          else
+            row << ''
+          end
           row << income.income_value
           links = [].tap do |link|
             link << link_to(income_path(income)) do

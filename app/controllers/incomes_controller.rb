@@ -3,6 +3,7 @@ class IncomesController < ApplicationController
     before_action :set_annual_managements, only: [:new, :create, :edit, :update]
     before_action :set_user_groups, only: [:new, :create, :edit, :update]
     before_action :set_income_categories, only: [:new, :create, :edit, :update]
+    before_action :set_companies, only: [:new, :create, :edit, :update]
     before_action :require_logged_in_user
   
     def index
@@ -18,6 +19,7 @@ class IncomesController < ApplicationController
 
     def create
         @income = Income.new(income_params)
+        @income.annual_management = AnnualManagement.find_by_year(Current.year)
         if @income.save
             flash[:success] = "income was successfully created!"
             redirect_to income_path(@income)
@@ -62,6 +64,10 @@ class IncomesController < ApplicationController
 
     def set_income_categories
         @income_categories = IncomeCategory.all
+    end
+
+    def set_companies
+        @companies = Company.all
     end  
     
     def income_params

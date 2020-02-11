@@ -9,6 +9,7 @@ class Income < ApplicationRecord
     belongs_to :income_category
     belongs_to :annual_management
     belongs_to :user_group
+    belongs_to :company, optional: true
     
     # Delegates
 

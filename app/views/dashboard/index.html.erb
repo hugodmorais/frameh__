@@ -110,14 +110,16 @@
           <h1>Despesas Mensais - <%= Expense.where(annual_management: AnnualManagement.where(year: Current.year), month: Time.now.month).includes(:expense_groups).sum('expense_value') %></h1>
           <table class="table table-striped">
             <tbody>
-              <% @expenses.each do |expense| %>
-                <tr>
-                <th><%= expense.expense_category.name %> -> <%= expense.expense_value %></th>
-                <div class="operational-score" data-perspective="<%= expense.id %>">
-                    ee<%= @expense
-                    %>
-                  </div>
-              </tr>
+              <% if @expenses.present? %>
+                <% @expenses.each do |expense| %>
+                  <tr>
+                  <th><%= expense.expense_category.name %> -> <%= expense.expense_value %></th>
+                  <div class="operational-score" data-perspective="<%= expense.id %>">
+                      ee<%= @expense
+                      %>
+                    </div>
+                </tr>
+                  <% end %>
                 <% end %>
             </tbody>
           </table>

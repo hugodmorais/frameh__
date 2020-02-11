@@ -1,6 +1,6 @@
 <!-- Start Breadcrumb -->
 <% @bread_links = [link_to(t('incomes.incomes'), incomes_path)] %>
-<% @current_bread_name = @income.income_category.name %>
+<% @current_bread_name = @income.kind.to_s %>
 <!-- End Breadcrumb -->
 <div class="row row_index">
   <div class="offset-2 col-xs-9">

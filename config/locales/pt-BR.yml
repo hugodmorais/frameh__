@@ -47,6 +47,7 @@ pt-BR:
     edit: Editar Utilizador
 
   incomes:
+    origin: Origem
     incomes: Receitas
     income_kind: Tipo de Receita
     new: Nova Receita

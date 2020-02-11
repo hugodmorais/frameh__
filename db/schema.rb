@@ -57,14 +57,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
     t.index ["year"], name: "index_annual_managements_on_year", unique: true
   end
 
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "country", default: "", null: false
@@ -73,15 +65,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_companies_on_user_id"
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "contract_statuses", force: :cascade do |t|
@@ -173,12 +156,15 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
     t.integer "month"
     t.integer "kind"
     t.decimal "income_value"
+    t.text "comment"
     t.bigint "user_group_id"
+    t.bigint "company_id"
     t.bigint "annual_management_id"
     t.bigint "income_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["annual_management_id"], name: "index_incomes_on_annual_management_id"
+    t.index ["company_id"], name: "index_incomes_on_company_id"
     t.index ["income_category_id"], name: "index_incomes_on_income_category_id"
     t.index ["user_group_id"], name: "index_incomes_on_user_group_id"
   end
@@ -231,7 +217,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
   end
 
   add_foreign_key "companies", "users"
-  add_foreign_key "contacts", "users"
   add_foreign_key "expenses", "annual_managements"
   add_foreign_key "expenses", "user_groups"
   add_foreign_key "groups", "expense_categories"

@@ -10,17 +10,7 @@
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if income.errors['annual_management'].present? %>">
-    <%= f.label :annual_management_id do %>
-      <%= t(:year) %></span>
-    <% end %>
-    <%= f.collection_select :annual_management_id, @annual_managements, :id, :year, {}, class: 'form-control' %>
-    <% if income.errors[:annual_management].present? %>
-      <span class="help-block text-danger">
-        <small><%= income.errors[:annual_management].first %></small>
-      </span>
-    <% end %>
-  </div>
+  
   <div class="form-group <%= 'has-error' if income.errors['month'].present? %>">
     <%= f.label :month do %>
       <%= t(:month) %></span>
@@ -35,8 +25,8 @@
     <% end %>
   </div>
   <div class="form-group <%= 'has-error' if income.errors['income_category'].present? %>">
-    <%= f.label :income_category_id do %>
-      <%= t('incomes.income_kind') %></span>
+    <%= f.label :income_category do %>
+      <%= t('incomes.income_income_category') %></span>
     <% end %>
     <%= f.collection_select :income_category_id, @income_categories, :id, :name, {}, class: 'form-control' %>
     <% if income.errors[:income_category].present? %>
@@ -45,14 +35,36 @@
       </span>
     <% end %>
   </div>  
+  <div class="form-group <%= 'has-error' if income.errors['company'].present? %>">
+    <%= f.label :company_id do %>
+      <%= t('incomes.origin') %></span>
+    <% end %>
+    <%= f.collection_select :company_id, @companies, :id, :name, {}, class: 'form-control' %>
+    <% if income.errors[:company].present? %>
+      <span class="help-block text-danger">
+        <small><%= income.errors[:company].first %></small>
+      </span>
+    <% end %>
+  </div>  
   <div class="form-group <%= 'has-error' if income.errors['income_value'].present? %>">
     <%= f.label :income_value do %>
       <%= t(:value) %></span>
     <% end %>
-    <%= f.text_field :income_value, class: 'form-control', rows: "10" %>
+    <%= f.text_field :income_value, class: 'form-control' %>
     <% if income.errors[:income_value].present? %>
       <span class="help-block text-danger">
         <small><%= income.errors[:income_value].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if income.errors['comment'].present? %>">
+    <%= f.label :comment do %>
+      <%= t(:comment) %></span>
+    <% end %>
+    <%= f.text_area :comment, class: 'form-control', size: "30x10" %>
+    <% if income.errors[:comment].present? %>
+      <span class="help-block text-danger">
+        <small><%= income.errors[:comment].first %></small>
       </span>
     <% end %>
   </div>
