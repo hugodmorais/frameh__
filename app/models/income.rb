@@ -16,7 +16,7 @@ class Income < ApplicationRecord
     # Constants
 
     # Validations
-    validates :income_value, presence: true
+    validates :income_value, :month, presence: true
 
     # Scopes   
     scope :in_month, ->(month) { where month: month } 

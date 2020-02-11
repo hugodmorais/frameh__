@@ -25,7 +25,8 @@ pt-BR:
   store_name: Local da Compra
   deposit_money: Valor da Mensalidade
   monthly_installment: Valor de Entrada
-
+  select: Selecione 
+  
   companies:
     companies: Empresas
     new: Nova Empresa

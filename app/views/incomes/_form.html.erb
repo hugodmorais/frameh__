@@ -1,77 +1,78 @@
-<%= form_for income do |f| %>
-  <div class="form-group <%= 'has-error' if income.errors['user_group'].present? %>">
-    <%= f.label :user_group_id do %>
-      <%= t(:user) %></span>
-    <% end %>
-    <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, {}, class: 'form-control' %>
-    <% if income.errors[:user_group].present? %>
-      <span class="help-block text-danger">
-        <small><%= income.errors[:user_group].first %></small>
-      </span>
-    <% end %>
-  </div>
-  
-  <div class="form-group <%= 'has-error' if income.errors['month'].present? %>">
-    <%= f.label :month do %>
-      <%= t(:month) %></span>
-    <% end %>
-    <%= f.select :month, nil, { }, class: 'form-control' do %>
-      <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}) %>
-    <% end %>
-    <% if income.errors[:month].present? %>
-      <span class="help-block text-danger">
-        <small><%= income.errors[:month].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group <%= 'has-error' if income.errors['income_category'].present? %>">
-    <%= f.label :income_category do %>
-      <%= t('incomes.income_income_category') %></span>
-    <% end %>
-    <%= f.collection_select :income_category_id, @income_categories, :id, :name, {}, class: 'form-control' %>
-    <% if income.errors[:income_category].present? %>
-      <span class="help-block text-danger">
-        <small><%= income.errors[:income_category].first %></small>
-      </span>
-    <% end %>
-  </div>  
-  <div class="form-group <%= 'has-error' if income.errors['company'].present? %>">
-    <%= f.label :company_id do %>
-      <%= t('incomes.origin') %></span>
-    <% end %>
-    <%= f.collection_select :company_id, @companies, :id, :name, {}, class: 'form-control' %>
-    <% if income.errors[:company].present? %>
-      <span class="help-block text-danger">
-        <small><%= income.errors[:company].first %></small>
-      </span>
-    <% end %>
-  </div>  
-  <div class="form-group <%= 'has-error' if income.errors['income_value'].present? %>">
-    <%= f.label :income_value do %>
-      <%= t(:value) %></span>
-    <% end %>
-    <%= f.text_field :income_value, class: 'form-control' %>
-    <% if income.errors[:income_value].present? %>
-      <span class="help-block text-danger">
-        <small><%= income.errors[:income_value].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group <%= 'has-error' if income.errors['comment'].present? %>">
-    <%= f.label :comment do %>
-      <%= t(:comment) %></span>
-    <% end %>
-    <%= f.text_area :comment, class: 'form-control', size: "30x10" %>
-    <% if income.errors[:comment].present? %>
-      <span class="help-block text-danger">
-        <small><%= income.errors[:comment].first %></small>
-      </span>
-    <% end %>
-  </div>
+<%= form_for income, role: 'form', class: 'form-horizontal' do |f| %>
   <div class="row">
-    <div class="col-sm-10 m-t-15">
-      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-      <%= link_to "Cancelar", incomes_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+    <div class="col-xs-12 table">
+      <div class="form-group col-md-6">
+        <label>Utilizador</label>
+        <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, { prompt: t(:select)}, class: 'form-control' %>
+        <% if income.errors[:user_group].present? %>
+          <span class="help-block text-danger">
+            <small><%= income.errors[:user_group].first %></small>
+          </span>
+        <% end %>
+      </div>
+      <div class="form-group col-md-6">
+        <fieldset disabled>
+          <div class="form-group">
+            <label for="disabledTextInput">Ano:</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder=<%= "#{Current.year}" %>>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Mês</label>
+        <%= f.select :month, nil, { prompt: t(:select) }, class: 'form-control' do %>
+          <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}) %>
+        <% end %>
+        <% if income.errors[:month].present? %>
+          <span class="help-block text-danger">
+            <small><%= income.errors[:month].first %></small>
+          </span>
+        <% end %>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Tipo</label>
+        <%= f.collection_select :income_category_id, @income_categories, :id, :name, { prompt: t(:select) }, class: 'form-control' %>
+        <% if income.errors[:income_category].present? %>
+          <span class="help-block text-danger">
+            <small><%= income.errors[:income_category].first %></small>
+          </span>
+        <% end %>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Origem</label>
+        <%= f.collection_select :company_id, @companies, :id, :name, { prompt: t(:select) }, class: 'form-control' %>
+        <% if income.errors[:company].present? %>
+          <span class="help-block text-danger">
+            <small><%= income.errors[:company].first %></small>
+          </span>
+        <% end %>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Valor</label>
+        <%= f.text_field :income_value, class: 'form-control' %>
+        <% if income.errors[:income_value].present? %>
+          <span class="help-block text-danger">
+            <small><%= income.errors[:income_value].first %></small>
+          </span>
+        <% end %>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="inputEmail4">Comentário</label>
+        <%= f.text_area :comment, class: 'form-control', rows: "6" %>
+        <% if income.errors[:comment].present? %>
+          <span class="help-block text-danger">
+            <small><%= income.errors[:comment].first %></small>
+          </span>
+        <% end %>
+      </div>
+      <div class="form-group col-md-12">
+        <div class="row">
+          <div class="col-sm-10 m-t-15">
+            <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+            <%= link_to "Cancelar", incomes_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+          </div>
+        </div>  
+      </div>
     </div>
-  </div>  
+  </div>
 <% end %>

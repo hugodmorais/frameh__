@@ -16,7 +16,7 @@ class IncomesDatatable < ApplicationDatatable
           else
             row << ''
           end
-          row << income.income_value
+          row << ActionController::Base.helpers.number_to_currency(income.income_value)
           links = [].tap do |link|
             link << link_to(income_path(income)) do
               content_tag :i, '', class: 'fa fa-eye'
