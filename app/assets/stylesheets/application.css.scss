@@ -556,7 +556,7 @@ body {
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-  background-color: white;
+  background-color: #F4F4F4 !important;
   height: 90%;
   font-family: 'Numans', sans-serif;
 }
@@ -653,11 +653,6 @@ body, .container {
   height: 80%;
 }
 
-.row_frameh {
-  padding: 3rem;
-  height: 600px;
-  background-color: white;
-}
 
 .card_body {
   background-color: white;  
@@ -703,19 +698,6 @@ html {
   color: white !important;
 }
 
-.row_chart {
-  margin-top: -900px !important;
-}
-
-.row_chart li a {
-  font-weight: bold !important;
-  color: #6c757d!important;
-}
-
-.row_index {
-  padding-top: 1rem;
-}
-
 #results_total {
   width: 700px;
   height: 300px;
@@ -738,10 +720,6 @@ html {
 
 .select_row {
    padding: 15px 0px 15px 0px;
-}
-
-.dataTables_wrapper {
-  width: 850px;
 }
 
 
@@ -876,6 +854,10 @@ html {
 .panel_breadcrumb {
   width: 100%;
   height: 25px; 
+}
+
+.breadcrumb {
+  background-color: white !important;
 }
 
 .panel_breadcrumb li a {

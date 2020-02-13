@@ -25,16 +25,20 @@
     <div class="content-page" id="page" data-controller="<%= controller_name %>" data-action="<%= action_name %>" data-locale="<%= locale %>">
       <!-- Start content -->
       <% if user_signed_in? %>
-      <div class="content offset-2" id="background_in">
+      <div class="content offset-2">
           <div class="container">
-            <!-- Start Breadcrumb -->
-            <%= render 'layouts/breadcrumb', bread_links: @bread_links || [], current_bread_name: @current_bread_name %>
-            <!-- End Breadcrumb -->
+            <div class="row">
+              <div class="col-lg-12 m-t-30 panel panel-body">
+                <!-- Start Breadcrumb -->
+                <%= render 'layouts/breadcrumb', bread_links: @bread_links || [], current_bread_name: @current_bread_name %>
+                <!-- End Breadcrumb -->
 
-            <!-- START Page -->
-            <%= yield %>
-            <%= render 'layouts/sidebar' %>
-            <!-- END Page -->
+                <!-- START Page -->
+                <%= yield %>
+                <%= render 'layouts/sidebar' %>
+                <!-- END Page -->
+              </div> <!-- container -->
+            </div> <!-- content -->
           </div> <!-- container -->
         </div> <!-- content -->
       <% else %>

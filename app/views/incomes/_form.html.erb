@@ -49,7 +49,7 @@
       </div>
       <div class="form-group col-md-6">
         <label for="inputEmail4">Valor</label>
-        <%= f.text_field :income_value, class: 'form-control' %>
+        <%= f.text_field :income_value, placeholder: t(:value), class: 'form-control' %>
         <% if income.errors[:income_value].present? %>
           <span class="help-block text-danger">
             <small><%= income.errors[:income_value].first %></small>
@@ -58,7 +58,7 @@
       </div>
       <div class="form-group col-md-12">
         <label for="inputEmail4">Comentário</label>
-        <%= f.text_area :comment, class: 'form-control', rows: "6" %>
+        <%= f.text_area :comment, placeholder: t(:comment), class: 'form-control', rows: "6" %>
         <% if income.errors[:comment].present? %>
           <span class="help-block text-danger">
             <small><%= income.errors[:comment].first %></small>

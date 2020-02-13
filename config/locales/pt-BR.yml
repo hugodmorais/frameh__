@@ -26,6 +26,7 @@ pt-BR:
   deposit_money: Valor da Mensalidade
   monthly_installment: Valor de Entrada
   select: Selecione 
+  comment: Comentário
   
   companies:
     companies: Empresas
