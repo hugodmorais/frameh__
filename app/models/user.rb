@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   # Associations
   has_many :user_groups
+  has_many :expenses
   has_many :companies
   has_many :payment_installments
   

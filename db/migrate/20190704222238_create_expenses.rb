@@ -4,7 +4,7 @@ class CreateExpenses < ActiveRecord::Migration[5.2]
       t.integer :month
       t.integer :kind
 
-      t.references :user_group, foreign_key: true
+      t.references :user, foreign_key: true
       t.references :annual_management, foreign_key: true
       t.timestamps
     end

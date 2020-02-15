@@ -6,7 +6,7 @@ class Expense < ApplicationRecord
 
     # Associations
     belongs_to :annual_management
-    belongs_to :user_group
+    belongs_to :user
     has_many :expense_groups
     
     # Delegates
@@ -15,7 +15,7 @@ class Expense < ApplicationRecord
     # Constants
 
     # Validations
-    validates :month, presence: true
+    validates :month, :expense_groups, presence: true
 
     # Scopes    
     scope :in_month, ->(month) { where month: month }

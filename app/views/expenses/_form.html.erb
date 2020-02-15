@@ -1,61 +1,58 @@
 <%= form_for expense do |f| %>
-  <div class="form-group <%= 'has-error' if expense.errors['user_group'].present? %>">
-    <%= f.label :user_group_id do %>
-      <%= t(:user) %></span>
-    <% end %>
-    <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, {}, class: 'form-control' %>
-    <% if expense.errors['user_group'].present? %>
-      <span class="help-block text-danger">
-        <small><%= expense.errors['user_group'].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group <%= 'has-error' if expense.errors['annual_management'].present? %>">
-    <%= f.label :annual_management_id do %>
-      <%= t(:year) %></span>
-    <% end %>
-    <%= f.collection_select :annual_management_id, @annual_managements, :id, :year, {}, class: 'form-control' %>
-    <% if expense.errors['annual_management'].present? %>
-      <span class="help-block text-danger">
-        <small><%= expense.errors['annual_management'].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group <%= 'has-error' if expense.errors['month'].present? %>">
-    <%= f.label :month do %>
-      <%= t(:month) %></span>
-    <% end %>
-    <%= f.select :month, nil, { }, class: 'form-control' do %>
-      <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}) %>
-    <% end %>
-    
-    <% if expense.errors['month'].present? %>
-      <span class="help-block text-danger">
-        <small><%= expense.errors['month'].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group" style="margin-top: 20px;">
-    <h6 class="col-sm-6"><%= t :expense_kind %> <span class="text-danger">*</span></h6>
-    <h6 class="col-sm-5"><%= t :value %> <span class="text-danger">*</span></h6>
-    <h6 class="col-sm-1"><%= t :delete %></h6>
-  </div>
-  <div id="permissions" class="select_row">
-    <%= f.fields_for :expense_groups do |w| %>
-      <%= render partial: 'expense_group_fields',locals: { f: w } %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <div class=" col-sm-10">
-      <%= link_to_add_fields f, :expense_groups, {}, id: 'new_permission' do %>
-        <i class="fa fa-plus-square"></i>
+  <div class="row">
+    <div class="col-xs-12 table">
+      <div class="form-group col-md-6 <%= 'has-error' if expense.errors['month'].present? %>">
+        <%= f.label :month do %>
+          <%= t(:month) %></span>
+        <% end %>
+        <%= f.select :month, nil, { prompt: t(:select) }, class: 'form-control' do %>
+          <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}) %>
+        <% end %>
+        
+        <% if expense.errors['month'].present? %>
+          <span class="help-block text-danger">
+            <small><%= expense.errors['month'].first %></small>
+          </span>
+        <% end %>
+      </div>
+      <div class="form-group col-md-6">
+        <fieldset disabled>
+          <div class="form-group">
+            <label for="disabledTextInput">Ano:</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder=<%= "#{Current.year}" %>>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group col-md-12">
+      <div class="form-group" style="margin-top: 20px;">
+        <h6 class="col-sm-6"><%= t :expense_kind %> <span class="text-danger">*</span></h6>
+        <h6 class="col-sm-5"><%= t :value %> <span class="text-danger">*</span></h6>
+        <h6 class="col-sm-1"><%= t :delete %></h6>
+      </div>
+      <div id="permissions" class="select_row">
+        <%= f.fields_for :expense_groups do |w| %>
+          <%= render partial: 'expense_group_fields',locals: { f: w } %>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <div class=" col-sm-10">
+          <%= link_to_add_fields f, :expense_groups, {}, id: 'new_permission' do %>
+            <i class="fa fa-plus-square"></i>
+          <% end %>
+        </div>
+      </div>
+      </div>
+      <% if expense.errors['expense_groups'].present? %>
+        <span class="help-block text-danger">
+          <small><%= expense.errors['expense_groups'].first %></small>
+        </span>
       <% end %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-10 m-t-15">
-      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-      <%= link_to "Cancelar", expenses_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+      <div class="form-group">
+        <div class="col-sm-10 m-t-15">
+          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+          <%= link_to "Cancelar", expenses_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

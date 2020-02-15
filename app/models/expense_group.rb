@@ -13,7 +13,7 @@ class ExpenseGroup < ApplicationRecord
     # Constants
 
     # Validations
-
+    validates :expense_value, :expense_category, presence: true
     # Scopes    
 
     # Callbacks

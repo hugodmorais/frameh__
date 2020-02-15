@@ -119,12 +119,12 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
   create_table "expenses", force: :cascade do |t|
     t.integer "month"
     t.integer "kind"
-    t.bigint "user_group_id"
+    t.bigint "user_id"
     t.bigint "annual_management_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["annual_management_id"], name: "index_expenses_on_annual_management_id"
-    t.index ["user_group_id"], name: "index_expenses_on_user_group_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
   create_table "financial_statements", force: :cascade do |t|
@@ -153,9 +153,9 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.integer "month"
+    t.integer "month", null: false
     t.integer "kind"
-    t.decimal "income_value"
+    t.decimal "income_value", null: false
     t.text "comment"
     t.bigint "user_group_id"
     t.bigint "company_id"
@@ -218,7 +218,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
 
   add_foreign_key "companies", "users"
   add_foreign_key "expenses", "annual_managements"
-  add_foreign_key "expenses", "user_groups"
+  add_foreign_key "expenses", "users"
   add_foreign_key "groups", "expense_categories"
   add_foreign_key "incomes", "annual_managements"
   add_foreign_key "incomes", "income_categories"

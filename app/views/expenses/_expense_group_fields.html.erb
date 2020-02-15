@@ -1,15 +1,20 @@
 <div class="select_row">
     <div class="form-group compete_fields">
         <div class="col-sm-6">
-            <%= f.collection_select :expense_category_id, ExpenseCategory.all, :id, :name, { prompt: t('groups.select') }, class: 'form-control select2' %>
-            <% if f.object.errors[:group].present? %>
+            <%= f.collection_select :expense_category_id, ExpenseCategory.all, :id, :name, { prompt: t(:select) }, class: 'form-control select2' %>
+            <% if f.object.errors[:expense_category].present? %>
                 <span class="help-block text-danger">
-                    <small><%= f.object.errors[:group_id].first %></small>
+                    <small><%= f.object.errors[:expense_category].first %></small>
                 </span>
             <% end %>
         </div>
         <div class="col-sm-5">
             <%= f.text_field :expense_value, class: 'form-control' %>
+            <% if f.object.errors[:expense_value].present? %>
+                <span class="help-block text-danger">
+                    <small><%= f.object.errors[:expense_value].first %></small>
+                </span>
+            <% end %>
         </div>
         <div class="col-sm-1">
         <%= link_to '#', class: 'delete_compete', data: { confirm: t(:remove_question) } do %>
