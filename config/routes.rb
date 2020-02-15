@@ -16,8 +16,6 @@ Rails.application.routes.draw do
       get 'results', defaults: { format: :json }
     end
   end
-  resources :contacts
-  resources :articles
   resources :users
   resources :user_groups 
   resources :companies

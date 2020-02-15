@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       flash[:success] = 'Dados atualizados'
-      redirect_to contacts_url
+      redirect_to users_url
     else
       render 'edit'
     end

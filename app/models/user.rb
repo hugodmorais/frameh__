@@ -7,8 +7,6 @@ class User < ApplicationRecord
   # Attributes
 
   # Associations
-  has_many :contacts
-  has_many :articles
   has_many :user_groups
   has_many :companies
   has_many :payment_installments
