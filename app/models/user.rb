@@ -8,9 +8,11 @@ class User < ApplicationRecord
 
   # Associations
   has_many :user_groups
+  has_many :annual_managements
   has_many :expenses
   has_many :companies
   has_many :payment_installments
+  has_one :setting
   
   # Delegates
 
@@ -28,6 +30,7 @@ class User < ApplicationRecord
 
   # Callbacks
   before_save { self.email = email.downcase }
+  after_save :set_setting_account
   
   # Constants Methods
 
@@ -36,6 +39,11 @@ class User < ApplicationRecord
   def thumb
     image.variant(resize: '260x180', auto_orient: true)
   end
-  
+
   private
+
+  def set_setting_account
+    Setting.create!(user_id: User.last.id)
+  end
+
 end

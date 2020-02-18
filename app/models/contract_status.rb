@@ -10,7 +10,11 @@ class ContractStatus < ApplicationRecord
     # Delegates
     
     # Constants
-    
+    ACTIVE_STATUS_KEY = 'active'.freeze
+    INACTIVE_STATUS_KEY = 'inactive'.freeze
+    PENDING_STATUS_KEY = 'pending'.freeze
+    CANCELED_STATUS_KEY = 'canceled'.freeze
+
     # Scopes
     
     # Callbacks

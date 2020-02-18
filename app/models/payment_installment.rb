@@ -16,7 +16,7 @@ class PaymentInstallment < ApplicationRecord
     after_initialize :number_of_months
 
     # Validations
-    
+    validates :name, :start_date, :months_number, :total_value, :deposit_money, presence: true
     # Constants Methods
     
     # Class methods

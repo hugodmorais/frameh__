@@ -1,38 +1,38 @@
 <%= form_for contract do |f| %>
-  <div class="form-group <%= 'has-error' if contract.errors['name'].present? %>">
+  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['name'].present? %>">
     <%= f.label :name do %>
       <%= t(:name) %></span>
     <% end %>
-    <%= f.text_field :name, class: 'form-control', rows: "10" %>
+    <%= f.text_field :name, placeholder: "Nome", class: 'form-control', rows: "10" %>
     <% if contract.errors[:name].present? %>
       <span class="help-block text-danger">
         <small><%= contract.errors[:name].first %></small>
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if contract.errors['number'].present? %>">
+  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['number'].present? %>">
     <%= f.label :number do %>
       <%= t(:contract_number) %></span>
     <% end %>
-    <%= f.text_field :number, class: 'form-control', rows: "10" %>
+    <%= f.text_field :number, placeholder: "Número de Contrato", class: 'form-control', rows: "10" %>
     <% if contract.errors[:number].present? %>
       <span class="help-block text-danger">
         <small><%= contract.errors[:number].first %></small>
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if contract.errors['description'].present? %>">
+  <div class="form-group col-md-12<%= 'has-error' if contract.errors['description'].present? %>">
     <%= f.label :description do %>
       <%= t(:description) %></span>
     <% end %>
-    <%= f.text_area :description, class: 'form-control', rows: "10" %>
+    <%= f.text_area :description, placeholder: "Descrição", class: 'form-control', rows: "10" %>
     <% if contract.errors[:description].present? %>
       <span class="help-block text-danger">
         <small><%= contract.errors[:description].first %></small>
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if contract.errors['start_date'].present? %>">
+  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['start_date'].present? %>">
     <%= f.label :start_date do %>
       <%= t(:start_date) %></span>
     <% end %>
@@ -43,7 +43,7 @@
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if contract.errors['end_date'].present? %>">
+  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['end_date'].present? %>">
     <%= f.label :end_date do %>
       <%= t(:end_date) %></span>
     <% end %>
@@ -54,7 +54,7 @@
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if contract.errors['user_group'].present? %>">
+  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['user_group'].present? %>">
     <%= f.label :user_group_id do %>
       <%= t(:user) %></span>
     <% end %>
@@ -65,7 +65,7 @@
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if contract.errors['company'].present? %>">
+  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
     <%= f.label :company_id do %>
       <%= t(:company) %></span>
     <% end %>
@@ -76,7 +76,7 @@
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if contract.errors['company'].present? %>">
+  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
     <%= f.label :contract_status do %>
       <%= t(:status) %></span>
     <% end %>
@@ -87,10 +87,12 @@
       </span>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-sm-10 m-t-15">
-      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-      <%= link_to "Cancelar", contracts_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-    </div>
-  </div>  
+  <div class="form-group col-md-12">
+    <div class="row">
+      <div class="col-sm-10 m-t-15">
+        <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+        <%= link_to "Cancelar", contracts_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+      </div>
+    </div>  
+  </div>
 <% end %>

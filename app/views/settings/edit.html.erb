@@ -1,0 +1,38 @@
+<!-- Start Breadcrumb -->
+<% @bread_links = [link_to(t('settings'))] %>
+<!-- End Breadcrumb -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel-heading">
+      <h1 class="panel-title text-center"><%= t('settings') %></h1>
+    </div>
+    <div class="panel-body">
+      <%= form_for @setting do |f| %>
+      <div class="row">
+    <div class="col-xs-12 table">
+       
+      <div class="form-group offset-2 <%= 'has-error' if @setting.errors['primary_payments'].present? %>">
+        <%= f.label :primary_payments do %>
+          <%= t(:primary_payments) %>?&emsp; &emsp;&nbsp;&nbsp;</span>
+        <% end %>
+        <%= f.check_box :primary_payments %>
+          <label></label>
+        <% if @setting.errors[:primary_payments].present? %>
+          <span class="help-block text-danger">
+            <small><%= @setting.errors[:primary_payments].first %></small>
+          </span>
+        <% end %>
+      </div>
+          <div class="form-group col-md-12">
+        <div class="row">
+          <div class="col-sm-10 m-t-15 offset-2">
+            <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+          </div>
+        </div>  
+      </div>
+      </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

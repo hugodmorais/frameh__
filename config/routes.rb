@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :incomes
   resources :income_categories
   resources :expense_categories
+  resources :settings, only: [:edit, :update]
 
   resources :expenses do
     collection do

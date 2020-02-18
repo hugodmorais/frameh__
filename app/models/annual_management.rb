@@ -7,6 +7,7 @@ class AnnualManagement < ApplicationRecord
     # Associations
     has_many :incomes, dependent: :destroy
     has_many :financial_statements
+    belongs_to :users
     
     # Delegates
 

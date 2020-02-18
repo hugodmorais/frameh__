@@ -185,8 +185,13 @@
         <span class="badge badge-pill badge-success notification">7</span>
       </a>
       <a href="#">
-        <%= link_to edit_user_path(current_user) do %>
+        <%= link_to edit_setting_path(current_user) do %>
           <i class="fa fa-cog"></i>
+        <% end %>
+      </a>
+      <a href="#">
+        <%= link_to edit_user_path(current_user) do %>
+          <i class="fa fa-user"></i>
         <% end %>
       </a>
       <a href="#">

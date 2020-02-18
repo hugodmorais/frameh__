@@ -1,7 +1,7 @@
 <%= form_for financial_statement do |f| %>
   <div class="form-group <%= 'has-error' if financial_statement.errors['account'].present? %>">
     <%= f.label :account_id do %>
-      <%= t(:user) %></span>
+      <%= t(:account) %></span>
     <% end %>
     <%= f.collection_select :account_id, @accounts, :id, :name, {}, class: 'form-control' %>
     <% if financial_statement.errors['account'].present? %>

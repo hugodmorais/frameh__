@@ -16,10 +16,12 @@ pt-BR:
   genre: Gênero
   birth_date: Data de Nascimento
   contract_number: Número do Contrato
+  account: Conta
   main_account: Conta Principal
   savings_account: Conta Poupança
   credit_account: Conta C.Crédito
   start_date: Data de Início
+  end_date: Data de Fim
   payment_installment_months_number: Numero de Mensalidades
   total_value: Valor Total (c/juros)
   store_name: Local da Compra
@@ -27,6 +29,10 @@ pt-BR:
   monthly_installment: Valor de Entrada
   select: Selecione 
   comment: Comentário
+  company: Empresa
+  status: Estado
+  settings: Configurações
+  primary_payments: Pagamentos Base
   
   companies:
     companies: Empresas

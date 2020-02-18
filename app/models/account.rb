@@ -17,7 +17,7 @@ class Account < ApplicationRecord
     # Callbacks
     
     # Validations
-    
+    validates :name, :country, presence: true
     # Constants Methods
     
     # Class methods

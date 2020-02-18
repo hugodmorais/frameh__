@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_212458) do
+ActiveRecord::Schema.define(version: 2020_02_17_222134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
   create_table "annual_managements", force: :cascade do |t|
     t.integer "year", null: false
     t.text "description"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_annual_managements_on_user_id"
     t.index ["year"], name: "index_annual_managements_on_year", unique: true
   end
 
@@ -185,6 +187,14 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
     t.index ["user_id"], name: "index_payment_installments_on_user_id"
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.boolean "primary_payments"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_settings_on_user_id"
+  end
+
   create_table "user_groups", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
@@ -216,6 +226,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
     t.index ["user_group_id"], name: "index_work_groups_on_user_group_id"
   end
 
+  add_foreign_key "annual_managements", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "expenses", "annual_managements"
   add_foreign_key "expenses", "users"
@@ -224,6 +235,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_212458) do
   add_foreign_key "incomes", "income_categories"
   add_foreign_key "incomes", "user_groups"
   add_foreign_key "payment_installments", "users"
+  add_foreign_key "settings", "users"
   add_foreign_key "user_groups", "users"
   add_foreign_key "work_groups", "companies"
   add_foreign_key "work_groups", "user_groups"

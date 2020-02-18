@@ -6,7 +6,7 @@ class Income < ApplicationRecord
     # Attributes
 
     # Associations
-    belongs_to :income_category
+    belongs_to :income_category, optional: true
     belongs_to :annual_management
     belongs_to :user_group
     belongs_to :company, optional: true

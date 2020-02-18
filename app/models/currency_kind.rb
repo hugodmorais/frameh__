@@ -16,7 +16,7 @@ class CurrencyKind < ApplicationRecord
     # Callbacks
     
     # Validations
-    
+    validates :key, :name, presence: true
     # Constants Methods
     
     # Class methods
