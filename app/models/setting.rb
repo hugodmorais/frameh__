@@ -9,12 +9,14 @@ class Setting < ApplicationRecord
     # Delegates
 
     # Constants
-    
+    STATUSES = { inactive: 0, active: 1 }.freeze
+
     # Validations
 
     # Scopes    
 
     # Callbacks
+    after_initialize :init
 
     # Constants Methods
 
@@ -22,5 +24,7 @@ class Setting < ApplicationRecord
 
     private
 
-    
+    def init
+        self.primary_payments ||= STATUSES.fetch(:active)
+    end
 end

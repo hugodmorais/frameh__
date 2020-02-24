@@ -21,5 +21,14 @@ ContractStatus.create!(
     ]
   )
 
+ExpenseCategory.create!(
+  [
+    { name: 'Energia' },
+    { name: 'Gás' },
+    { name: 'Água' },
+    { name: 'Internet' }
+  ]
+)
+
 
 
