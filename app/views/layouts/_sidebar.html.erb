@@ -1,7 +1,7 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
-  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">  
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 </head>
 
 <div class="page-wrapper chiller-theme toggled">
@@ -24,10 +24,6 @@
           <% if current_user.admin? %>
             <span class="user-role">Administrator</span>
           <% end %>
-          <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
-          </span>
         </div>
       </div>
 
@@ -48,7 +44,7 @@
                   <!-- list item-->
                   <li>
                     <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
-                      <%= annual_management.year %>  
+                      <%= annual_management.year %>
                     <% end %>
                   </li>
                   <!-- list item-->
@@ -140,7 +136,7 @@
                 </li>
               </ul>
             </div>
-          </li>          
+          </li>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-users"></i>
@@ -153,9 +149,9 @@
                 </li>
                 <li>
                   <%= link_to 'Editar Trabalho', work_groups_static_path %>
-                </li>                     
+                </li>
               </ul>
-            </div>                  
+            </div>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
@@ -200,7 +196,6 @@
         <% end %>
       </a>
     </div>
-  </nav> 
+  </nav>
 </div>
-      
-          
+
