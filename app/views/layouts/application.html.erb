@@ -4,53 +4,36 @@
     <title>Frameh</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <!--  jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    	<!--Bootsrap 4 CDN-->
-	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-  <!--Fontawesome CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 
-    <!-- Bootstrap Date-Picker Plugin -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body >
     <div class="content-page" id="page" data-controller="<%= controller_name %>" data-action="<%= action_name %>" data-locale="<%= locale %>">
-      <!-- Start content -->
       <% if user_signed_in? %>
-      <div class="content offset-2">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12 m-t-30 panel panel-body">
-                <!-- Start Breadcrumb -->
-                <%= render 'layouts/breadcrumb', bread_links: @bread_links || [], current_bread_name: @current_bread_name %>
-                <!-- End Breadcrumb -->
-
-                <!-- START Page -->
-                <%= yield %>
-                <%= render 'layouts/sidebar' %>
-                <!-- END Page -->
-              </div> <!-- container -->
-            </div> <!-- content -->
-          </div> <!-- container -->
-        </div> <!-- content -->
+        <div class="col-lg-12 p-r-40">
+          <%= render 'layouts/breadcrumb', bread_links: @bread_links || [], current_bread_name: @current_bread_name %>
+          <div class="col-sm-offset-3 col-lg-9 m-t-30 panel panel-body p-r-40">
+            <%= yield %>
+          </div>
+          <div class="col-lg-3">
+            <%= render 'layouts/sidebar' %>
+          </div>
+        </div> 
       <% else %>
         <div class="content offset-2">
           <div class="container">
             <%= yield %>
-            <!-- END Page -->
-          </div> <!-- container -->
-        </div> <!-- content -->
+          </div> 
+        </div> 
       <% end %>
     </div>
-
-
   </body>
 </html>
