@@ -1,5 +1,5 @@
 json.title do
-  json.text "Receitas vs Despesas"
+  json.text "Receitas vs Despesas" - Current.year
 end
 json.set! 'yAxisTitle' do
   json.text "Receitas"

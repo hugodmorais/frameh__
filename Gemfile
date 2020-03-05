@@ -2,10 +2,10 @@ source 'http://rubygems.org'
 #source 'http://production.s3.rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 6.0'
 # Use postgresql as the database for Active Record
 gem 'paperclip'
 gem "aws-sdk-s3", require: false
@@ -77,7 +77,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '1.1.3'
   gem 'rails_12factor'
   
   gem 'mini_magick', '~> 4.8'
