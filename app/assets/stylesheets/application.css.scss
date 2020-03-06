@@ -687,13 +687,6 @@ html {
   text-align: center;
 }
 
-.breadcrumb_back {
-  background-color: white !important;
-  margin-top: 1rem;
-  margin-left: 6rem;
-  margin-right: 6rem;
-}
-
 .breadcrumb_color {
   color: white !important;
 }
@@ -743,6 +736,9 @@ html {
 }
 .p-t-10 {
   padding-top: 10px !important;
+}
+.p-t-30 {
+  padding-top: 30px !important;
 }
 .p-r-40 {
   padding-right: 40px !important;
@@ -867,10 +863,6 @@ html {
 
 .breadcrumb {
   background-color: white !important;
-}
-
-.panel_breadcrumb li a {
-  padding-bottom: 20px !important;
 }
 
 .row_charts {
