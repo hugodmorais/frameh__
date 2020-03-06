@@ -1,6 +1,4 @@
 <%= form_for income, role: 'form', class: 'form-horizontal' do |f| %>
-  <div class="row">
-    <div class="col-xs-12 table">
       <div class="form-group col-md-6">
         <label>Utilizador</label>
         <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, { prompt: t(:select)}, class: 'form-control' %>
@@ -73,6 +71,4 @@
           </div>
         </div>  
       </div>
-    </div>
-  </div>
 <% end %>
