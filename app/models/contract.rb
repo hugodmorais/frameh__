@@ -7,7 +7,7 @@ class Contract < ApplicationRecord
     # Associations
     belongs_to :company
     belongs_to :contract_status
-    belongs_to :user_group
+    belongs_to :user_group, optional: true
 
     # Delegates
     

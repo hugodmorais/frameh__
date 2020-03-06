@@ -10,6 +10,9 @@ pt-BR:
   name: Nome
   value: Valor
   expense_kind: Tipo de Despesa
+  contract_job: Contrato de trabalho
+  false: Falso
+  true: Verdadeiro
   delete: Apagar
   first_name: Primeiro Nome
   last_name: Último Nome

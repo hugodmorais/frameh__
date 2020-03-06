@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.string "description"
     t.date "start_date", null: false
     t.date "end_date"
+    t.boolean "job"
     t.bigint "contract_status_id"
     t.bigint "user_group_id"
     t.bigint "company_id"

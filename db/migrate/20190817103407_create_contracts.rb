@@ -6,6 +6,7 @@ class CreateContracts < ActiveRecord::Migration[5.2]
       t.string :description
       t.date :start_date, null: false
       t.date :end_date
+      t.boolean :job
 
       # references
       t.references :contract_status

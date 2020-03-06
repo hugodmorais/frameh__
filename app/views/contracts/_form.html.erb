@@ -54,16 +54,11 @@
       </span>
     <% end %>
   </div>
-  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['user_group'].present? %>">
+  <div class="form-group col-md-6">
     <%= f.label :user_group_id do %>
       <%= t(:user) %></span>
     <% end %>
     <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, { prompt: true }, class: 'form-control' %>
-    <% if contract.errors[:user_group].present? %>
-      <span class="help-block text-danger">
-        <small><%= contract.errors[:user_group].first %></small>
-      </span>
-    <% end %>
   </div>
   <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
     <%= f.label :company_id do %>
@@ -86,6 +81,20 @@
         <small><%= contract.errors[:company].first %></small>
       </span>
     <% end %>
+  </div>
+  <div class="form-group col-md-4 <%= 'has-error' if contract.errors['job'].present? %>">
+    <%= f.label :job do %>
+      <%= t(:contract_job) %>?
+    <% end %>
+    <div class="row p-l-r-30">
+      <%= f.check_box :job %>
+        <label></label>
+      <% if contract.errors[:job].present? %>
+        <span class="help-block text-danger">
+          <small><%= contract.errors[:job].first %></small>
+        </span>
+      <% end %>
+    </div>
   </div>
   <div class="form-group col-md-12">
     <div class="row">
