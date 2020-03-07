@@ -11,6 +11,7 @@ class ExpenseCategoriesDatatable < ApplicationDatatable
         [].tap do |row|
           row << expense_category.id
           row << expense_category.name
+          row << expense_category.primary_payment
           links = [].tap do |link|
             link << link_to(expense_category_path(expense_category)) do
               content_tag :i, '', class: 'fa fa-eye'
@@ -68,6 +69,7 @@ class ExpenseCategoriesDatatable < ApplicationDatatable
       %w[
         id
         name
+        primary_payment
       ]
     end
   
@@ -75,6 +77,7 @@ class ExpenseCategoriesDatatable < ApplicationDatatable
       %w[
         id
         name
+        primary_payment
       ]
     end
   

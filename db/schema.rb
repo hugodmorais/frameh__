@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
 
   create_table "expense_categories", force: :cascade do |t|
     t.string "name"
+    t.boolean "primary_payment", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

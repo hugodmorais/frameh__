@@ -13,6 +13,16 @@
   transform: rotate(90deg);
 }
 
+.login_page {
+  background-image: url('indicadores-desempenho.jpg');
+  background-position: cover !important;
+  position: absolute;
+  left: 0;
+  bottom: 0; // this is the bottom end of the content, not the bottom end of the viewport
+  width: 100%;
+  height: 100%;
+}
+
 h1 {
   font-size: 26px !important;
 }

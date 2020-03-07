@@ -16,6 +16,7 @@ pt-BR:
   card_identify: Número de Identificação
   nif: Nif
   address: Morada Fiscal
+  primary_category: Categoria principal
   delete: Apagar
   first_name: Primeiro Nome
   last_name: Último Nome
