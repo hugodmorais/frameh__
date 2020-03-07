@@ -13,6 +13,9 @@ pt-BR:
   contract_job: Contrato de trabalho
   false: Falso
   true: Verdadeiro
+  card_identify: Número de Identificação
+  nif: Nif
+  address: Morada Fiscal
   delete: Apagar
   first_name: Primeiro Nome
   last_name: Último Nome

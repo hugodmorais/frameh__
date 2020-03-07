@@ -1,49 +1,85 @@
 <!-- Campos de preenchimento do formulario -->
 <%= form_for user_group do |f| %>
-  <div class="form-group <%= 'has-error' if user_group.errors['first_name'].present? %>">
-    <%= f.label :first_name do %>
-      <%= t(:first_name) %></span>
+  <div class="form-group <%= 'has-error' if user_group.errors['name'].present? %>">
+    <%= f.label :name do %>
+      <%= t(:name) %></span>
     <% end %>
-    <%= f.text_field :first_name, class: 'form-control' %>
-    <% if user_group.errors[:first_name].present? %>
+    <%= f.text_field :name, placeholder: "Nome", class: 'form-control' %>
+    <% if user_group.errors[:name].present? %>
       <span class="help-block text-danger">
-        <small><%= user_group.errors[:first_name].first %></small>
+        <small><%= user_group.errors[:name].first %></small>
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if user_group.errors['last_name'].present? %>">
-    <%= f.label :last_name do %>
-      <%= t(:last_name) %></span>
+  <div class="row">
+    <div class="form-group col-md-6 <%= 'has-error' if user_group.errors['genre'].present? %>">
+      <%= f.label :genre do %>
+        <%= t('genre') %></span>
+      <% end %>
+      <%= f.select :genre, nil, { include_blank: false}, class: 'form-control' do %>
+        <%= options_for_select UserGroup::GENRES.map { |desc, index| [t(desc), index] }, @user_group.genre %>
+      <% end %>
+      <% if user_group.errors[:genre].present? %>
+        <span class="help-block text-danger">
+          <small><%= user_group.errors[:genre].first %></small>
+        </span>
+      <% end %>
+    </div>  
+    <div class="form-group col-md-6 <%= 'has-error' if user_group.errors['birth_date'].present? %>">
+      <%= f.label :birth_date do %>
+        <%= t(:birth_date) %></span>
+      <% end %>
+      <%= f.text_field :birth_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
+      <% if user_group.errors[:birth_date].present? %>
+        <span class="help-block text-danger">
+          <small><%= user_group.errors[:birth_date].first %></small>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6 <%= 'has-error' if user_group.errors['card_identify'].present? %>">
+      <%= f.label :card_identify do %>
+        <%= t('card_identify') %></span>
+      <% end %>
+      <%= f.text_field :card_identify, placeholder: t(:card_identify), class: 'form-control' %>
+      <% if user_group.errors[:card_identify].present? %>
+        <span class="help-block text-danger">
+          <small><%= user_group.errors[:card_identify].first %></small>
+        </span>
+      <% end %>
+    </div>  
+    <div class="form-group col-md-6 <%= 'has-error' if user_group.errors['nif'].present? %>">
+      <%= f.label :nif do %>
+        <%= t('nif') %></span>
+      <% end %>
+      <%= f.text_field :nif, placeholder: t(:nif), class: 'form-control' %>
+      <% if user_group.errors[:nif].present? %>
+        <span class="help-block text-danger">
+          <small><%= user_group.errors[:nif].first %></small>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group <%= 'has-error' if user_group.errors['address'].present? %>">
+    <%= f.label :address do %>
+      <%= t(:address) %></span>
     <% end %>
-    <%= f.text_field :last_name, class: 'form-control' %>
-    <% if user_group.errors[:last_name].present? %>
+    <%= f.text_field :address, placeholder: t(:address), class: 'form-control' %>
+    <% if user_group.errors[:address].present? %>
       <span class="help-block text-danger">
-        <small><%= user_group.errors[:last_name].first %></small>
+        <small><%= user_group.errors[:address].first %></small>
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if user_group.errors['genre'].present? %>">
-    <%= f.label :genre do %>
-      <%= t('genre') %></span>
+  <div class="form-group <%= 'has-error' if user_group.errors['comment'].present? %>">
+    <%= f.label :comment do %>
+      <%= t(:comment) %></span>
     <% end %>
-    <%= f.select :genre, nil, { include_blank: false}, class: 'form-control' do %>
-      <%= options_for_select UserGroup::GENRES.map { |desc, index| [t(desc), index] }, @user_group.genre %>
-    <% end %>
-    <% if user_group.errors[:genre].present? %>
+    <%= f.text_field :comment, placeholder: t(:comment), class: 'form-control' %>
+    <% if user_group.errors[:comment].present? %>
       <span class="help-block text-danger">
-        <small><%= user_group.errors[:genre].first %></small>
-      </span>
-    <% end %>
-  </div>  
-
-  <div class="form-group <%= 'has-error' if user_group.errors['birth_date'].present? %>">
-    <%= f.label :birth_date do %>
-      <%= t(:birth_date) %></span>
-    <% end %>
-    <%= f.text_field :birth_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
-    <% if user_group.errors[:birth_date].present? %>
-      <span class="help-block text-danger">
-        <small><%= user_group.errors[:birth_date].first %></small>
+        <small><%= user_group.errors[:comment].first %></small>
       </span>
     <% end %>
   </div>

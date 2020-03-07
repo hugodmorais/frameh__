@@ -197,8 +197,12 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
   end
 
   create_table "user_groups", force: :cascade do |t|
-    t.string "first_name", default: "", null: false
-    t.string "last_name", default: "", null: false
+    t.string "name", null: false
+    t.string "nif"
+    t.string "card_identify"
+    t.string "phone"
+    t.text "comment"
+    t.text "address"
     t.integer "genre"
     t.datetime "birth_date"
     t.bigint "user_id"

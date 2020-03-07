@@ -1,6 +1,5 @@
 class UserGroupsController < ApplicationController
     before_action :set_user_groups, only: [:edit, :show, :update, :destroy, :user_groups_table]
-    before_action :set_incomes, only: [:edit, :update, :destroy]
     before_action :require_logged_in_user
     
     def index
@@ -49,10 +48,6 @@ class UserGroupsController < ApplicationController
   
     def set_user_groups
       @user_group = UserGroup.find(params[:id])
-    end
-
-    def set_incomes
-      @incomes = Income.find(params[:id])
     end    
   
     def user_group_params

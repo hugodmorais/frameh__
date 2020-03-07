@@ -10,8 +10,7 @@ class UserGroupsDatatable < ApplicationDatatable
       @user_groups.map do |user_group|
         [].tap do |row|
           row << user_group.id
-          row << user_group.first_name
-          row << user_group.last_name
+          row << user_group.name
           row << user_group.birth_date.strftime("%F")
           row << user_group.to_s
           links = [].tap do |link|
@@ -70,8 +69,7 @@ class UserGroupsDatatable < ApplicationDatatable
     def order_columns
       %w[
         id
-        first_name
-        last_name
+        name
         genre
         birth_date
       ]
@@ -80,8 +78,7 @@ class UserGroupsDatatable < ApplicationDatatable
     def search_columns
       %w[
         id
-        first_name
-        last_name
+        name
         genre
         birth_date
       ]
