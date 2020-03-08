@@ -88,19 +88,7 @@
           </div>
         </div>
         <hr>
-        <div class="row m-t-30">
-          <div class="col-md-4">
-            <h2 class="text-center">Balanço Contas</h2>
-            <p class="m-b-15"></p>
-            <% @payment_installments.each do |p| %>
-              <span class="label label-success">
-                <%= p.name %>
-              </span>
-              <p class="m-b-5"></p>
-              <%= progress_bar p.percentage_calculate(p.total_value, p.amount_already_paid).round(2), label: true, style: 'min-width: 20px', alternative: 'success', active: true %>
-            <% end %>
-          </div>
-        </div>
+        <%= render partial: 'partial_analyzes' %>
       </div>
       <div id="menu1" class="tab-pane m-l-30">
         <h3>Menu 1</h3>

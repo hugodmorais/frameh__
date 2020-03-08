@@ -1,0 +1,51 @@
+<div class="row m-t-30">
+	<div class="col-md-4">
+		<h2 class="text-center">Balanço Contas</h2>
+		<p class="m-b-15"></p>
+		<% @payment_installments.each do |p| %>
+			<span class="label label-success">
+				<%= p.name %>
+			</span>
+			<p class="m-b-5"></p>
+			<%= progress_bar p.percentage_calculate(p.total_value, p.amount_already_paid).round(2), label: true, style: 'min-width: 20px', alternative: 'success', active: true %>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		<div class="col-md-12">
+		<h2 class="text-center">Contas Principais</h2>
+		<p class="m-b-15"></p>
+		<div class="col-xs-6 m-t-10">
+			<div class="card h-50 mb-2">
+				<div class="card-block text-center" style="background-color: red;">
+						<h1 class="p-3 text-muted"><i class="fa fa-2x fa-flask"></i></h1>
+				</div>
+				<div class="card-footer text-center">45 Tests</div>
+			</div>
+		</div>
+		<div class="col-xs-6 m-t-10">
+			<div class="card h-50 mb-2">
+				<div class="card-block text-center" style="background-color: green;">
+						<h1 class="p-3 text-muted"><i class="fa fa-2x fa-flask"></i></h1>
+				</div>
+				<div class="card-footer text-center">45 Tests</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="card h-50 mb-2">
+				<div class="card-block text-center" style="background-color: green;">
+						<h1 class="p-3 text-muted"><i class="fa fa-2x fa-flask"></i></h1>
+				</div>
+				<div class="card-footer text-center">45 Tests</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="card h-50 mb-2">
+				<div class="card-block text-center" style="background-color: green;">
+						<h1 class="p-3 text-muted"><i class="fa fa-2x fa-flask"></i></h1>
+				</div>
+				<div class="card-footer text-center">45 Tests</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

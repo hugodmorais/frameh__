@@ -576,13 +576,6 @@ html,body{
   align-content: center;
 }
 
-.card  {
-  margin-left: 200px;
-  margin-right: 500px;
-  margin-top: 200px;
-    
-}
-
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
@@ -665,7 +658,8 @@ body, .container {
 
 
 .card_body {
-  background-color: white;  
+  background-color: white; 
+  padding: 10px !important; 
 }
 
 .panel-body {
