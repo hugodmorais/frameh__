@@ -9,7 +9,10 @@ class ExpenseCategory < ApplicationRecord
     # Delegates
     
     # Constants
-
+    CATEGORY_KINDS = {
+        'abc' => 'ABC',
+        'cde' => 'CDE'
+      }
     # Validations
     validates :name, presence: true, uniqueness: true
     
