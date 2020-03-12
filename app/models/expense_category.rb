@@ -9,10 +9,10 @@ class ExpenseCategory < ApplicationRecord
     # Delegates
     
     # Constants
-    CATEGORY_KINDS = {
-        'abc' => 'ABC',
-        'cde' => 'CDE'
-      }
+    CATEGORY_KINDS = 
+        [["&#xf036;", 'fa-align-left'], ["Kroner", "DKK"]]
+        
+      
     # Validations
     validates :name, presence: true, uniqueness: true
     

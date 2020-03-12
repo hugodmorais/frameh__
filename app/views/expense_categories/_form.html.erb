@@ -13,17 +13,11 @@
       <% end %>
     </div>
     <div class="form-group col-md-6">
-      <label>Utilizador</label>
-      <%= f.collection_select :icon, ExpenseCategory::CATEGORY_KIND, :id, :first_name, { prompt: t(:select)}, class: 'form-control' %>
-      
+      <label>Icon</label>
+      <%= f.select :icon, nil, {}, class: "form-control fa", style: 'font-family: FontAwesome;' do %>
+        <%= options_for_select ExpenseCategory::CATEGORY_KINDS.map { |desc, index| [show_icon(desc), index] }, f.object.icon  %>
+      <% end %>      
     </div>
-    <select name="sample" id="sample" class="fa" style="width: 100px;">
-        <option value="">----</option>
-        <option style="heigth: 100px;" value="fa fa-address-card">&#xf2bb;</option>
-        <option value="fa fa-bell">&#xf0f3;</option>
-        <option value="fa fa-bookmark">&#xf02e;</option>
-        <option value="fa fa-building">&#xf1ad;</option>
-</select>
     <div class="form-group col-md-6 <%= 'has-error' if expense_category.errors['primary_payment'].present? %>">
       <%= f.label :primary_payment do %>
         <%= t(:primary_category) %>?
