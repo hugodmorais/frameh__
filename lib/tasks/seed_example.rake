@@ -18,9 +18,9 @@ namespace :seed_example do
         Company.create!( name: 'McDonalds', country: 'Portugal', city: 'Lisboa', user: user )
 
         # Create UserGroup
-        UserGroup.create!( first_name: 'Hugo', last_name: 'Morais', genre: '0', user: user, birth_date: '29/05/1985' )
-        UserGroup.create!( first_name: 'Kenia', last_name: 'Freitas', genre: '1', user: user, birth_date: '9/04/1965' )
-        UserGroup.create!( first_name: 'Jose', last_name: 'Almeida', genre: '0', user: user, birth_date: '2/01/1975' )
+        UserGroup.create!( name: 'Hugo', genre: '0', user: user, birth_date: '29/05/1985' )
+        UserGroup.create!( name: 'Kenia', genre: '1', user: user, birth_date: '9/04/1965' )
+        UserGroup.create!( name: 'Jose', genre: '0', user: user, birth_date: '2/01/1975' )
 
         # Create Incomes
         Income.create!(

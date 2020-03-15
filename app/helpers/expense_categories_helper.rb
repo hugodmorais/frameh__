@@ -1,5 +1,5 @@
 module ExpenseCategoriesHelper
     def show_icon(icon)
-        content_tag(:i, 'fa-icon star')
+        content_tag(:em, icon.html_safe, class: "fa fa-power-off")
     end
 end
