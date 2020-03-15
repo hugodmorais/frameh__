@@ -13,32 +13,15 @@
 	<div class="col-md-4">
 		<h2 class="text-center">Contas Principais</h2>
 		<p class="m-b-15"></p>
-        <div class="col-md-12 m-t-10">
-			<div class="col-md-6">
-            <div class="card border-info mx-sm-1 p-3">
-                <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-car" aria-hidden="true"></span></div>
-                <div class="text-info text-center mt-3"><h4>Cars</h4></div>
-            </div>
-			 </div>
-			 <div class="col-md-6">
-             <div class="card border-success mx-sm-1 p-3">
-                <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-eye" aria-hidden="true"></span></div>
-                <div class="text-success text-center mt-3"><h4>Eyes</h4></div>
-            </div>
-			 </div>
-			 <div class="col-md-6 m-t-15">
-           <div class="card border-danger mx-sm-1 p-3">
-                <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-heart" aria-hidden="true"></span></div>
-                <div class="text-danger text-center mt-3"><h4>Hearts</h4></div>
-            </div>
-			 </div>
-			 <div class="col-md-6 m-t-15">
-            <div class="card border-warning mx-sm-1 p-3">
-                <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-inbox" aria-hidden="true"></span></div>
-                <div class="text-warning text-center mt-3"><h4>Inbox</h4></div>
-            </div>
-			 </div>
+    <div class="col-md-12">
+      <% @primary_expenses.each do |expense| %>
+        <div class="col-md-6 m-t-15">
+          <div class="card border-info mx-sm-1 p-3">
+            <div class="card border-info shadow text-info p-3 my-card" ><span class="<%= expense.icon %>" aria-hidden="true"></span></div>
+            <div class="text-info text-center mt-3"><h4><%= expense.name %></h4></div>
+          </div>
         </div>
-       
-	   </div>
+      <% end %>
+    </div>
+	</div>
 </div>
