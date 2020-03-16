@@ -44,7 +44,7 @@ class ExpensesDatatable < ApplicationDatatable
     def fetch_records
       query = []
       search_values = params[:search][:value] if params[:search].present?  
-      @expenses = Expense.all
+      @expenses = Expense.in_year(Current.year)
 
       if search_values.present?
         search_values = search_values.split
