@@ -6,10 +6,7 @@ class ExpensesController < ApplicationController
     before_action :require_logged_in_user
   
     def index
-        @expenses = []
-        5.times do
-            @expenses = Expense.all
-        end
+        @expenses = Expense.in_year(Current.year)
     end
     
     def new
@@ -52,6 +49,11 @@ class ExpensesController < ApplicationController
 
     def monthly_expenses
         @expenses = Expense.in_current_year.in_month(Current.month)
+    end
+
+    def import
+        Expense.import(params[:file])
+        redirect_to root_url, notice: "Imported"
     end
     
     private

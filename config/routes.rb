@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'items_imports/new'
+  get 'items_imports/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "dashboard#index"
 
@@ -11,6 +13,9 @@ Rails.application.routes.draw do
   post 'entrar', to: 'sessions#create'
   delete 'sair', to: 'sessions#destroy'
 
+  resources :items
+  resources :items_imports, only: [:new, :create]
+  
   resources :dashboard, only: [] do
     member do
       get 'results', defaults: { format: :json }
@@ -31,6 +36,7 @@ Rails.application.routes.draw do
   resources :settings, only: [:edit, :update]
 
   resources :expenses do
+    collection { post :import }
     collection do
       get 'monthly_expenses', defaults: { format: :json }
     end
