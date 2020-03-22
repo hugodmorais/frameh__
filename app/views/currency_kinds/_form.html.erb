@@ -1,15 +1,4 @@
 <%= form_for currency_kind do |f| %>
-  <div class="form-group <%= 'has-error' if currency_kind.errors['key'].present? %>">
-    <%= f.label :key do %>
-      <%= t(:key) %></span>
-    <% end %>
-    <%= f.text_field :key, class: 'form-control', rows: "10" %>
-    <% if currency_kind.errors[:key].present? %>
-      <span class="help-block text-danger">
-        <small><%= currency_kind.errors[:key].first %></small>
-      </span>
-    <% end %>
-  </div>
   <div class="form-group <%= 'has-error' if currency_kind.errors['name'].present? %>">
     <%= f.label :name do %>
       <%= t(:name) %></span>

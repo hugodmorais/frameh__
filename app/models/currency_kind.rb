@@ -12,11 +12,13 @@ class CurrencyKind < ApplicationRecord
     # Constants
     
     # Scopes
+    scope :by_user, ->(user) { where(user_id: user.id) }
     
     # Callbacks
     
     # Validations
-    validates :key, :name, presence: true
+    validates :name, presence: true
+
     # Constants Methods
     
     # Class methods
