@@ -5,6 +5,7 @@ class ExpenseCategory < ApplicationRecord
 
   # Associations
   has_many :expense_groups
+  belongs_to :user
   
   # Delegates
   

@@ -4,6 +4,7 @@ class CreateExpenseCategories < ActiveRecord::Migration[5.2]
       t.string :name 
       t.string :icon
       t.boolean :primary_payment, default: false
+      t.references :user, foreign_key: true
       
       t.timestamps
     end

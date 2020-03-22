@@ -1,4 +1,5 @@
 class AnnualManagementsDatatable < ApplicationDatatable
+    delegate :current_user, to: :@view
     delegate :annual_management_path, to: :@view
     delegate :edit_annual_management_path, to: :@view
   
@@ -43,7 +44,7 @@ class AnnualManagementsDatatable < ApplicationDatatable
     def fetch_records
       query = []
       search_values = params[:search][:value] if params[:search].present?  
-      @annual_managements = AnnualManagement.all
+      @annual_managements = AnnualManagement.by_user(current_user)
 
       if search_values.present?
         search_values = search_values.split

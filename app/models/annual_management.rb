@@ -17,7 +17,7 @@ class AnnualManagement < ApplicationRecord
     validates :year, presence: true, uniqueness: true
     
     # Scopes    
-    scope :by_year, -> { order :year }
+    scope :by_user, ->(user) { where(user_id: user.id) }
 
     # Callbacks
 

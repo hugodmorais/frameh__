@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_annual_managements_on_user_id"
-    t.index ["year"], name: "index_annual_managements_on_year", unique: true
   end
 
   create_table "companies", force: :cascade do |t|
@@ -105,8 +104,10 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.string "name"
     t.string "icon"
     t.boolean "primary_payment", default: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_expense_categories_on_user_id"
   end
 
   create_table "expense_groups", force: :cascade do |t|
@@ -153,8 +154,10 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
 
   create_table "income_categories", force: :cascade do |t|
     t.string "name"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_income_categories_on_user_id"
   end
 
   create_table "incomes", force: :cascade do |t|
@@ -235,9 +238,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
 
   add_foreign_key "annual_managements", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "expense_categories", "users"
   add_foreign_key "expenses", "annual_managements"
   add_foreign_key "expenses", "users"
   add_foreign_key "groups", "expense_categories"
+  add_foreign_key "income_categories", "users"
   add_foreign_key "incomes", "annual_managements"
   add_foreign_key "incomes", "income_categories"
   add_foreign_key "incomes", "user_groups"

@@ -6,6 +6,7 @@ class IncomeCategory < ApplicationRecord
 
     # Associations
     has_many :incomes
+    belongs_to :user
     
     # Delegates
 

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_annual_management
-    return if Current.annual_management.present?
+    return if Current.annual_management.present? && AnnualManagement.by_user(current_user).any?
 
     redirect_to warning_annual_path
   end

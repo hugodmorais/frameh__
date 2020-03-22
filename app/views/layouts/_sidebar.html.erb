@@ -35,12 +35,14 @@
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="far fa-calendar-alt"></i>
-              <span><%= Current.year %></span>
+              <% if AnnualManagement.by_user(current_user).any? %>
+                <span><%= Current.year %></span>
+              <% end %>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <!-- sidebar-search  -->
-                <% AnnualManagement.all.each do |annual_management| %>
+                <% AnnualManagement.by_user(current_user).each do |annual_management| %>
                   <!-- list item-->
                   <li>
                     <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>

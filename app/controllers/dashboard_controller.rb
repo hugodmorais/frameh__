@@ -7,6 +7,7 @@ class DashboardController < ApplicationController
         # @expenses = Expense.where(annual_management: AnnualManagement.where(year: Time.zone.now.year), month: Time.now.month)
         @expenses = Expense&.last&.expense_groups
         @primary_expenses = ExpenseCategory.where(primary_payment: true)
+        @annual_managements = AnnualManagement.by_user(current_user)
     end
 
     def warning_annual

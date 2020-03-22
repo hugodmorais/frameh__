@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :annual_managements
   has_many :expenses
   has_many :companies
+  has_many :expense_categories
+  has_many :income_categories
   has_many :payment_installments
   has_one :setting
   

@@ -15,6 +15,7 @@ class IncomeCategoriesController < ApplicationController
 
     def create
         @income_category = IncomeCategory.new(income_category_params)
+        @income_category.user = current_user
         if @income_category.save
             flash[:success] = "income_category was successfully created!"
             redirect_to income_category_path(@income_category)

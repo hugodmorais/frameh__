@@ -2,7 +2,7 @@ class AnnualManagementsController < ApplicationController
     before_action :set_annual_management, only: [:edit, :show, :update, :destroy, :switch]
   
     def index
-        @annual_managements = AnnualManagement.all.by_year
+        @annual_managements = AnnualManagement.by_user(current_user)
     end
     
     def new
@@ -14,6 +14,7 @@ class AnnualManagementsController < ApplicationController
 
     def create
         @annual_management = AnnualManagement.new(annual_management_params)
+        @annual_management.user_id = current_user.id
         if @annual_management.save
             flash[:success] = "annual_management was successfully created!"
             redirect_to annual_management_path(@annual_management)
