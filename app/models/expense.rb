@@ -36,7 +36,7 @@ class Expense < ApplicationRecord
       expense_category_id = ExpenseCategory.find_by(name: expense_category)
       
       (1..12).each do |month|
-        expense_value = row[Date::MONTHNAMES[month]]
+        expense_value = row[I18n.t Date::MONTHNAMES[month]]
         next if expense_value.blank?
         
         expense = Expense.find_by(month: month, annual_management: AnnualManagement.last)
