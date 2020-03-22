@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboard#index'
   get 'index', to: 'static_pages#index'
+  get 'warning_annual', to: 'dashboard#warning_annual'
   get 'sobre', to: 'static_pages#sobre'
   get 'contacto', to: 'static_pages#contacto'
   get 'work_groups_static', to: 'static_pages#work_groups_static'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   resources :items
   resources :items_imports, only: [:new, :create]
   
-  resources :dashboard, only: [] do
+  resources :dashboar do
     member do
       get 'results', defaults: { format: :json }
     end

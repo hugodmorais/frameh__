@@ -1,6 +1,7 @@
 class FinancialStatementsController < ApplicationController
     before_action :set_financial_statements, only: [:edit, :show, :update, :destroy]
     before_action :set_accounts, only: [:new, :create, :edit, :update]
+    before_action :require_annual_management
   
     def index
         @financial_statements = FinancialStatement.all

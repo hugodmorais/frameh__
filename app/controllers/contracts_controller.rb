@@ -3,6 +3,7 @@ class ContractsController < ApplicationController
     before_action :set_user_groups, only: [:new, :create, :edit, :update]
     before_action :set_companies, only: [:new, :create, :edit, :update]
     before_action :set_contract_statuses, only: [:new, :create, :edit, :update]
+    before_action :require_annual_management
   
     def index
         @contracts = Contract.all

@@ -1,5 +1,6 @@
 class PaymentInstallmentsController < ApplicationController
     before_action :set_payment_installment, only: [:edit, :show, :update, :destroy]
+    before_action :require_annual_management
   
     def index
         @payment_installments = PaymentInstallment.all

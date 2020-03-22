@@ -1,6 +1,6 @@
 class ExpenseCategoriesController < ApplicationController
     before_action :set_expense_category, only: [:edit, :show, :update, :destroy]
-    before_action :require_logged_in_user
+    before_action :require_logged_in_user, :require_annual_management
   
     def index
         @expense_categories = ExpenseCategory.all.paginate(page: params[:page], per_page: 9)

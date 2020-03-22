@@ -1,5 +1,6 @@
 class ContractStatusesController < ApplicationController
     before_action :set_contract_status, only: [:edit, :show, :update, :destroy]
+    before_action :require_annual_management
   
     def index
         @contract_statuses = ContractStatus.all

@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
     before_action :set_account, only: [:edit, :show, :update, :destroy]
     before_action :set_current_kinds, only: [:new, :create, :edit, :update]
+    before_action :require_annual_management
   
     def index
         @accounts = Account.all

@@ -1,5 +1,6 @@
 class CurrencyKindsController < ApplicationController
     before_action :set_currency_kinds, only: [:edit, :show, :update, :destroy]
+    before_action :require_annual_management
   
     def index
         @currency_kinds = CurrencyKind.all

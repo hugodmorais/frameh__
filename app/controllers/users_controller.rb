@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show, :update, :destroy]
   before_action :require_logged_in_user, only: [:edit, :update]
+  before_action :require_annual_management
 
   def index
     @users = User.paginate(page: params[:page], per_page: 9)

@@ -12,6 +12,12 @@ class ApplicationController < ActionController::Base
     @current_user_group ||= UserGroup.find(ids)
   end
 
+  def require_annual_management
+    return if Current.annual_management.present?
+
+    redirect_to warning_annual_path
+  end
+
   include SessionsHelper
 
   private
