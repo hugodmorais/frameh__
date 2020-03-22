@@ -44,7 +44,7 @@ class ExpensesController < ApplicationController
         @expense.destroy
 
         flash[:danger] = "expense was successefully destroy"
-        redirect_to expense_path
+        redirect_to expenses_path
     end
 
     def monthly_expenses

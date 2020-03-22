@@ -14,6 +14,7 @@ class ExpenseGroup < ApplicationRecord
 
     # Validations
     validates :expense_value, :expense_category, presence: true
+    
     # Scopes    
 
     # Callbacks

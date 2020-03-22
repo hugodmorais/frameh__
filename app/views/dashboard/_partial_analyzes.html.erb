@@ -13,15 +13,15 @@
 	<div class="col-md-4">
 		<h2 class="text-center">Contas Principais</h2>
 		<p class="m-b-15"></p>
-    <div class="col-md-12">
-      <% @primary_expenses.each do |expense| %>
-        <div class="col-md-6 m-t-15">
-          <div class="card border-info mx-sm-1 p-3">
-            <div class="card border-info shadow text-info p-3 my-card" ><span class="<%= expense.icon %>" aria-hidden="true"></span></div>
-            <div class="text-info text-center mt-3"><h4><%= expense.name %></h4></div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+		<div class="col-md-12">
+		<% @primary_expenses.each do |expense| %>
+			<div class="col-md-6 m-t-15">
+			<div class="card border-info mx-sm-1 p-3">
+				<div class="card border-info shadow text-info p-3 my-card" ><span class="<%= expense.icon %>" aria-hidden="true"></span></div>
+				<div class="text-info text-center mt-3"><h4><%= expense.name %></h4></div>
+			</div>
+			</div>
+		<% end %>
+		</div>
 	</div>
 </div>

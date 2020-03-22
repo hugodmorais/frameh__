@@ -11,8 +11,8 @@ class ExpenseCategory < ApplicationRecord
   # Constants
   CATEGORY_KINDS = 
     [
-      ["&#xf105;", 'fa-angle-right'], ["&#xf0f9;", "fa-ambulance"], ["&#xf179;", "fa-apple"], ["&#xf187;", "fa-archive"], 
-      ["&#xf069;", "fa-asterisk"], ["&#xf1fa;", "fa-at"], ["&#xf102;", "fa-angle-double-up"], ["&#xf24e;", "fa-balance-scale"], 
+      ["&#xf105;", 'fa-angle-right'], ["&#xf0f9;", "fas fa-ambulance"], ["&#xf179;", "fa-apple"], ["&#xf187;", "fa-archive"], 
+      ["&#xf069;", "fa-asterisk"], ["&#xf1fa;", "fa-at"], ["&#xf102;", "fa-angle-double-up"], ["&#xf24e;", "fas fa-balance-scale"], 
       ["&#xf19c;", "fa-bank"], ["&#xf0fc;", "fa-beer"], ["&#xf0f3;", "fa-bell"], ["&#xf206;", "fa-bicycle"], 
       ["&#xf02d;", "fa-book"], ["&#xf02e;", "fa-bookmark"], ["&#xf0b1;", "fa-briefcase"], ["&#xf1ad;", "fa-building"], 
       ["&#xf207;", "fa-bus"], ["&#xf1b9;", "fa-car"], ["&#xf1ae;", "fa-child"], ["&#xf0c6;", "fa-paperclip"], 
