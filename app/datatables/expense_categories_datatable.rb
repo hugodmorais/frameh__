@@ -11,7 +11,9 @@ class ExpenseCategoriesDatatable < ApplicationDatatable
         [].tap do |row|
           row << expense_category.id
           row << expense_category.name
-          row << expense_category.primary_payment
+          primary_payments = expense_category.primary_payment? ? (content_tag :i, '', class: 'fa fa-check') : (content_tag :i, '', class: 'fa fa-times')
+          row << primary_payments
+          row << (content_tag :i, '', class: "#{expense_category.icon}")
           links = [].tap do |link|
             link << link_to(expense_category_path(expense_category)) do
               content_tag :i, '', class: 'fa fa-eye'
@@ -70,6 +72,7 @@ class ExpenseCategoriesDatatable < ApplicationDatatable
         id
         name
         primary_payment
+        icon
       ]
     end
   
@@ -78,6 +81,7 @@ class ExpenseCategoriesDatatable < ApplicationDatatable
         id
         name
         primary_payment
+        icon
       ]
     end
   

@@ -15,8 +15,13 @@
     <div class="form-group col-md-2">
       <label>Icon</label>
       <%= f.select :icon, nil, { include_blank: true }, class: "form-control fa", style: 'font-family: FontAwesome; color: #004080;' do %>
-        <%= options_for_select ExpenseCategory::CATEGORY_KINDS.map { |desc, index| [show_icon(desc), index] }, f.object.icon %>
-      <% end %>      
+        <% options_for_select ExpenseCategory::CATEGORY_KINDS.map { |desc, index| [show_icon(desc), index] }, f.object.icon %>
+      <% end %> 
+      <% if expense_category.errors[:icon].present? %>
+        <span class="help-block text-danger">
+          <small><%= expense_category.errors[:icon].first %></small>
+        </span>
+      <% end %>     
     </div>
     <div class="form-group col-md-6 <%= 'has-error' if expense_category.errors['primary_payment'].present? %>">
       <%= f.label :primary_payment do %>

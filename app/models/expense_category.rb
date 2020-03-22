@@ -25,7 +25,8 @@ class ExpenseCategory < ApplicationRecord
     
   
   # Validations
-  validates :name, presence: true, uniqueness: true
+  validates :name, :icon, presence: true
+  validates :name, uniqueness: true
   
   # Scopes    
 
