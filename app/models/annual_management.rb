@@ -14,7 +14,7 @@ class AnnualManagement < ApplicationRecord
     # Constants
 
     # Validations
-    validates :year, presence: true, uniqueness: true
+    validates :year, presence: true
     
     # Scopes    
     scope :by_user, ->(user) { where(user_id: user.id) }

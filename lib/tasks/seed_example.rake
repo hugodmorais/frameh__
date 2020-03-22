@@ -7,15 +7,16 @@ namespace :seed_example do
   [2018, 2019, 2020].each do |year|
     annual_management = AnnualManagement.create!(
     year: year,
-    description: year
+    description: year,
+    user_id: user.id
   )
   end
 
   # Create Incomes Categories
-  IncomeCategory.create!( name: 'Salário' )
-  IncomeCategory.create!( name: 'Sub. férias' )
-  IncomeCategory.create!( name: 'Sub. Natal' )
-  IncomeCategory.create!( name: 'Horas Extra' )
+  IncomeCategory.create!( name: 'Salário', user: user )
+  IncomeCategory.create!( name: 'Sub. férias', user: user )
+  IncomeCategory.create!( name: 'Sub. Natal', user: user )
+  IncomeCategory.create!( name: 'Horas Extra', user: user )
   
   # Create Companies
   Company.create!( name: 'Aquapor', country: 'Portugal', city: 'Lisboa', user: user )

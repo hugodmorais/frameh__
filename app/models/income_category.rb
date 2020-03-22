@@ -17,6 +17,7 @@ class IncomeCategory < ApplicationRecord
 
     # Scopes    
     scope :by_month, -> { order :month }
+    scope :by_user, ->(user) { where(user_id: user.id) }
 
     # Callbacks
 
