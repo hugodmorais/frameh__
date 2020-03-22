@@ -69,11 +69,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
   end
 
   create_table "contract_statuses", force: :cascade do |t|
-    t.string "key"
     t.string "name"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["key"], name: "index_contract_statuses_on_key", unique: true
+    t.index ["user_id"], name: "index_contract_statuses_on_user_id"
   end
 
   create_table "contracts", force: :cascade do |t|
@@ -238,6 +238,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
 
   add_foreign_key "annual_managements", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "contract_statuses", "users"
   add_foreign_key "expense_categories", "users"
   add_foreign_key "expenses", "annual_managements"
   add_foreign_key "expenses", "users"

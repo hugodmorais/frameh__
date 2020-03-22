@@ -17,6 +17,22 @@ namespace :seed_example do
   IncomeCategory.create!( name: 'Sub. férias', user: user )
   IncomeCategory.create!( name: 'Sub. Natal', user: user )
   IncomeCategory.create!( name: 'Horas Extra', user: user )
+
+  # Create Expense Categories
+  ExpenseCategory.create!( name: 'Energia', primary_payment: true, icon: 'fas fa-battery-three-quarters', user: user )
+  ExpenseCategory.create!( name: 'Gás', primary_payment: true, icon: 'fas fa-fire', user: user )
+  ExpenseCategory.create!( name: 'Água', primary_payment: true, icon: 'fa fas fa-tint', user: user )
+  ExpenseCategory.create!( name: 'Vodafone', primary_payment: true, icon: 'fas fa-mobile', user: user )
+  ExpenseCategory.create!( name: 'Mercado', primary_payment: false, icon: 'fas fa-shopping-cart', user: user )
+  ExpenseCategory.create!( name: 'Seguro Carro', primary_payment: false, icon: 'fas fa-car', user: user )
+  ExpenseCategory.create!( name: 'Formação', primary_payment: false, icon: 'fas fa-university', user: user )
+  ExpenseCategory.create!( name: 'Combustivel', primary_payment: false, icon: 'fas fa-hashtag', user: user )
+
+  # Create ContractStatus
+  ContractStatus.create!( name: 'Pendente', user: user)
+  ContractStatus.create!( name: 'Cancelado', user: user)
+  ContractStatus.create!( name: 'Em Execução', user: user)
+  ContractStatus.create!( name: 'Fechado', user: user)
   
   # Create Companies
   Company.create!( name: 'Aquapor', country: 'Portugal', city: 'Lisboa', user: user )

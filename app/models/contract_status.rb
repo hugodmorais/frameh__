@@ -6,21 +6,19 @@ class ContractStatus < ApplicationRecord
     
     # Associations
     has_many :contracts
+    belongs_to :user
 
     # Delegates
     
     # Constants
-    ACTIVE_STATUS_KEY = 'active'.freeze
-    INACTIVE_STATUS_KEY = 'inactive'.freeze
-    PENDING_STATUS_KEY = 'pending'.freeze
-    CANCELED_STATUS_KEY = 'canceled'.freeze
 
     # Scopes
-    
+    scope :by_user, ->(user) { where(user_id: user.id) }
+  
     # Callbacks
     
     # Validations
-    validates :key, :name, presence: true
+    validates :name, presence: true
 
     # Constants Methods
     

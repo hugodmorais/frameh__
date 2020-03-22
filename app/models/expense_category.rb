@@ -30,7 +30,8 @@ class ExpenseCategory < ApplicationRecord
   validates :name, uniqueness: true
   
   # Scopes    
-
+  scope :by_user, ->(user) { where(user_id: user.id) }
+  
   # Callbacks
 
   # Constants Methods

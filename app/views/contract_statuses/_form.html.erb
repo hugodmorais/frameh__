@@ -1,15 +1,4 @@
 <%= form_for contract_status do |f| %>
-  <div class="form-group <%= 'has-error' if contract_status.errors['key'].present? %>">
-    <%= f.label :key do %>
-      <%= t(:key) %></span>
-    <% end %>
-    <%= f.text_field :key, class: 'form-control', rows: "10" %>
-    <% if contract_status.errors[:key].present? %>
-      <span class="help-block text-danger">
-        <small><%= contract_status.errors[:key].first %></small>
-      </span>
-    <% end %>
-  </div>
   <div class="form-group <%= 'has-error' if contract_status.errors['name'].present? %>">
     <%= f.label :name do %>
       <%= t(:name) %></span>
