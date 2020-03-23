@@ -23,9 +23,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.string "description"
     t.string "country"
     t.bigint "currency_kind_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["currency_kind_id"], name: "index_accounts_on_currency_kind_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -94,10 +96,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
   end
 
   create_table "currency_kinds", force: :cascade do |t|
-    t.string "key", null: false
     t.string "name", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_currency_kinds_on_user_id"
   end
 
   create_table "expense_categories", force: :cascade do |t|
@@ -236,9 +239,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.index ["user_group_id"], name: "index_work_groups_on_user_group_id"
   end
 
+  add_foreign_key "accounts", "users"
   add_foreign_key "annual_managements", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "contract_statuses", "users"
+  add_foreign_key "currency_kinds", "users"
   add_foreign_key "expense_categories", "users"
   add_foreign_key "expenses", "annual_managements"
   add_foreign_key "expenses", "users"
