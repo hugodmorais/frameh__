@@ -46,7 +46,11 @@ class IncomesController < ApplicationController
         flash[:danger] = "income was successefully destroy"
         redirect_to incomes_path
     end
-    
+
+    def import
+        Income.import(params[:file])
+        redirect_to root_url, notice: "Imported"
+    end    
 
     private
 

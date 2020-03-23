@@ -45,7 +45,6 @@ namespace :seed_example do
   Account.create!( name: 'Millenium', main_account: true, credit_account: false, savings_account: false, country: 'Portugal', currency_kind: CurrencyKind.first, user: user)
   Account.create!( name: 'Banco do Brasil', main_account: false, credit_account: false, savings_account: true, country: 'Brasil', currency_kind: CurrencyKind.third, user: user)
 
-  
   # Create Companies
   Company.create!( name: 'Aquapor', country: 'Portugal', city: 'Lisboa', user: user )
   Company.create!( name: 'Sebo', country: 'Brasil', city: 'Ji-Paraná', user: user )

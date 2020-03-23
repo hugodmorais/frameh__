@@ -1,7 +1,7 @@
 <%= form_for income, role: 'form', class: 'form-horizontal' do |f| %>
       <div class="form-group col-md-6">
         <label>Utilizador</label>
-        <%= f.collection_select :user_group_id, @user_groups, :id, :first_name, { prompt: t(:select)}, class: 'form-control' %>
+        <%= f.collection_select :user_group_id, @user_groups, :id, :name, { prompt: t(:select)}, class: 'form-control' %>
         <% if income.errors[:user_group].present? %>
           <span class="help-block text-danger">
             <small><%= income.errors[:user_group].first %></small>

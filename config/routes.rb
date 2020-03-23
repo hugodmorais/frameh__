@@ -13,9 +13,6 @@ Rails.application.routes.draw do
   get 'entrar', to: 'sessions#new'
   post 'entrar', to: 'sessions#create'
   delete 'sair', to: 'sessions#destroy'
-
-  resources :items
-  resources :items_imports, only: [:new, :create]
   
   resources :dashboar do
     member do
@@ -31,7 +28,9 @@ Rails.application.routes.draw do
       get 'switch', defaults: { format: :json }
     end
   end
-  resources :incomes
+  resources :incomes do 
+    collection { post :import }
+  end
   resources :income_categories
   resources :expense_categories
   resources :settings, only: [:edit, :update]
