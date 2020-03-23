@@ -33,6 +33,18 @@ namespace :seed_example do
   ContractStatus.create!( name: 'Cancelado', user: user)
   ContractStatus.create!( name: 'Em Execução', user: user)
   ContractStatus.create!( name: 'Fechado', user: user)
+
+  # Create CurrencyKind
+  CurrencyKind.create!( name: 'Euro', user: user)
+  CurrencyKind.create!( name: 'Dolar', user: user)
+  CurrencyKind.create!( name: 'Real', user: user)
+  CurrencyKind.create!( name: 'Libra', user: user)
+
+  # Create Account
+  Account.create!( name: 'Euro', user: user)
+  Account.create!( name: 'Dolar', user: user)
+  Account.create!( name: 'Real', user: user)
+  Account.create!( name: 'Libra', user: user)
   
   # Create Companies
   Company.create!( name: 'Aquapor', country: 'Portugal', city: 'Lisboa', user: user )

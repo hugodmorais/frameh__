@@ -48,7 +48,7 @@ class AccountsDatatable < ApplicationDatatable
     def fetch_records
       query = []
       search_values = params[:search][:value] if params[:search].present?  
-      @accounts = Account.all
+      @accounts = Account.by_user(current_user)
 
       if search_values.present?
         search_values = search_values.split

@@ -9,6 +9,7 @@ class CreateAccounts < ActiveRecord::Migration[5.2]
       t.string :country
 
       t.references :currency_kind
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

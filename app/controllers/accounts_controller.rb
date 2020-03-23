@@ -16,6 +16,7 @@ class AccountsController < ApplicationController
 
     def create
         @account = Account.new(account_params)
+        @account.user = current_user
         if @account.save
             flash[:success] = "account was successfully created!"
             redirect_to account_path(@account)

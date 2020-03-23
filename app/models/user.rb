@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :income_categories
   has_many :payment_installments
   has_many :contract_statuses
+  has_many :accounts
   has_one :setting
   
   # Delegates

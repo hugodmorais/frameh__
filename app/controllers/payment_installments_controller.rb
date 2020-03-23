@@ -15,6 +15,7 @@ class PaymentInstallmentsController < ApplicationController
 
     def create
         @payment_installment = PaymentInstallment.new(payment_installment_params)
+        @payment_installment.user = current_user
         if @payment_installment.save
             flash[:success] = "payment_installment was successfully created!"
             redirect_to payment_installment_path(@payment_installment)
