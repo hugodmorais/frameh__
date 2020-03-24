@@ -37,14 +37,18 @@ class Income < ApplicationRecord
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       income_category = row["Categoria"]
+      income_company = row["Empresa"]
+      income_user = row["Utilizador"]
       
       (1..12).each do |month|
         income_value = row[I18n.t Date::MONTHNAMES[month]]
         
         next if income_value.blank?
         
-        income = Income.new(month: month, annual_management: AnnualManagement.last) 
+        income = Income.new(month: month, annual_management: AnnualManagement.find_by(year: Current.year)) 
 
+        income.user_group = UserGroup.find_by(name: income_user)
+        income.company = Company.find_by(name: income_company)
         income.income_category = IncomeCategory.find_by(name: income_category)
         income.income_value = income_value
 

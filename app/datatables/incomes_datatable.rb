@@ -48,7 +48,7 @@ class IncomesDatatable < ApplicationDatatable
     def fetch_records
       query = []
       search_values = params[:search][:value] if params[:search].present?  
-      @incomes = Income.in_year(Current.year)
+      @incomes = Income.in_year(Current.year).reorder(income_value: :asc)
 
       if search_values.present?
         search_values = search_values.split

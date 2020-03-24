@@ -39,7 +39,7 @@ class Expense < ApplicationRecord
         expense_value = row[I18n.t Date::MONTHNAMES[month]]
         next if expense_value.blank?
         
-        expense = Expense.find_by(month: month, annual_management: AnnualManagement.last)
+        expense = Expense.find_by(month: month, annual_management: AnnualManagement.find_by(year: Current.year))
 
         if expense.present?                
           expense.expense_groups.create!(
@@ -47,7 +47,7 @@ class Expense < ApplicationRecord
               expense_value: expense_value
           )
         else
-          Expense.create!(month: month, annual_management: AnnualManagement.last) do |expense|
+          Expense.create!(month: month, annual_management: AnnualManagement.find_by(year: Current.year)) do |expense|
               expense.expense_groups_attributes = {"#{Time.now}": {expense_category: expense_category_id, expense_value: expense_value}}
           end
         end
