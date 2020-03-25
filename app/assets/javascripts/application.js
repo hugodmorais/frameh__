@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require popper
 //= require bootstrap-sprockets
 //= require jquery.dataTables
 //= require dataTables.bootstrap
@@ -51,3 +52,7 @@ $(document).on('turbolinks:load', function() {
     });
   // });
 });
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})

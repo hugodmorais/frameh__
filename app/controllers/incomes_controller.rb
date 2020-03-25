@@ -49,7 +49,7 @@ class IncomesController < ApplicationController
 
     def import
         Income.import(params[:file])
-        redirect_to root_url, notice: "Imported"
+        redirect_to incomes_path, notice: "Imported"
     end    
 
     private

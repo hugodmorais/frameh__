@@ -1,7 +1,10 @@
 class ItemsImportsController < ApplicationController
 
   def new
-    @items_import = ItemsImport.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

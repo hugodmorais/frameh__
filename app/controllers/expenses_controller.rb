@@ -53,7 +53,7 @@ class ExpensesController < ApplicationController
 
     def import
         Expense.import(params[:file])
-        redirect_to root_url, notice: "Imported"
+        redirect_to expenses_path, notice: "Imported"
     end
     
     private

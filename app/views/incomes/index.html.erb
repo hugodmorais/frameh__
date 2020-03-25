@@ -1,9 +1,12 @@
 <!-- Start Breadcrumb -->
 <% @current_bread_name = t('incomes.incomes') %>
 <!-- End Breadcrumb -->
-
 <div class="row">
   <div class="col-lg-12">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+      Importar / Exportar
+    </button>
     <h1 class="panel-title text-center">Receitas</h1>
   </div>
 </div>
@@ -13,12 +16,6 @@
       <%= link_to new_income_path, class: 'btn btn-success btn-sm waves-effect waves-light' do %>
         <i class="m-l-5 fa fa-plus"></i>
         <%= t('incomes.new') %>
-      <% end %>
-    </div>
-    <div class="btn-group pull-left">
-      <%= form_tag import_incomes_path, multipart: true do %>
-        <%= file_field_tag :file, class: 'btn btn-outline-success m-l-5' %>
-        <%= submit_tag 'Upload', class: 'btn btn-success btn-sm waves-effect waves-light' %>
       <% end %>
     </div>
     <thead>
@@ -31,5 +28,50 @@
       </tr>
     </thead>
   </table>
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Importar / Exportar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_tag import_incomes_path, multipart: true do %>
+              <div class="col-lg-12">
+                <div class="btn-group">
+                  <%= file_field_tag :file, class: 'btn btn-outline-primary m-l-5' %>
+                  <%= submit_tag 'Upload', class: 'btn btn-primary btn-sm waves-effect waves-light' %>
+                  <span style="color: Tomato;">
+                    <i class="fas fa-info-circle fa-2x p-t-4 p-l-5"></i>
+                  </span>
+                  <span class="p-t-10 p-l-5">Escolha o ficheiro das receitas!</span>
+                </div>
+                </div>
+              </div>
+          <% end %>
+        <div class="modal-body">
+        <div class="col-sm-12">
+          <div class="container">
+          <div class="jumbotron">
+  <h1 class="display-2">Hello, world!</h1>
+  <span>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</span>
+  <hr class="my-4">
+  <span>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</span>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 </div>
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
