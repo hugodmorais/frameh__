@@ -29,7 +29,10 @@ Rails.application.routes.draw do
     end
   end
   resources :incomes do 
-    collection { post :import }
+    collection do
+      post :import
+      get 'incomes_template', defaults: { format: :xlsx }
+    end
   end
   resources :income_categories
   resources :expense_categories

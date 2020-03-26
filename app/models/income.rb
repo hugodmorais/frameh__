@@ -31,7 +31,7 @@ class Income < ApplicationRecord
       name
   end
 
-  def self.import(file)
+  def self.import(file, user)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
@@ -46,7 +46,7 @@ class Income < ApplicationRecord
         next if income_value.blank?
         
         income = Income.new(month: month, annual_management: AnnualManagement.find_by(year: Current.year)) 
-
+        income.user_id = user.id
         income.user_group = UserGroup.find_by(name: income_user)
         income.company = Company.find_by(name: income_company)
         income.income_category = IncomeCategory.find_by(name: income_category)

@@ -101,6 +101,14 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    caxlsx (3.0.1)
+      htmlentities (~> 4.3, >= 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (~> 1.10, >= 1.10.4)
+      rubyzip (>= 1.3.0, < 3)
+    caxlsx_rails (0.6.2)
+      actionpack (>= 3.1)
+      caxlsx (>= 3.0)
     chartkick (3.3.1)
     childprocess (3.0.0)
     choice (0.2.0)
@@ -128,6 +136,7 @@ GEM
       activesupport (>= 5)
     highcharts-rails (6.0.3)
       railties (>= 3.1)
+    htmlentities (4.3.4)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -292,6 +301,7 @@ DEPENDENCIES
   bootstrap_progressbar
   byebug
   capybara (>= 2.15)
+  caxlsx_rails
   chartkick
   chromedriver-helper
   coffee-rails (~> 4.2)

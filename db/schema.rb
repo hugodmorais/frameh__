@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.text "comment"
     t.bigint "user_group_id"
     t.bigint "company_id"
+    t.bigint "user_id"
     t.bigint "annual_management_id"
     t.bigint "income_category_id"
     t.datetime "created_at", null: false
@@ -178,6 +179,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.index ["company_id"], name: "index_incomes_on_company_id"
     t.index ["income_category_id"], name: "index_incomes_on_income_category_id"
     t.index ["user_group_id"], name: "index_incomes_on_user_group_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "payment_installments", force: :cascade do |t|
