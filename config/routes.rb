@@ -37,9 +37,10 @@ Rails.application.routes.draw do
   resources :settings, only: [:edit, :update]
 
   resources :expenses do
-    collection { post :import }
     collection do
+      post :import
       get 'monthly_expenses', defaults: { format: :json }
+      get 'expenses_template', defaults: { format: :xlsx }
     end
   end
 

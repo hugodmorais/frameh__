@@ -1,0 +1,23 @@
+wb = xlsx_package.workbook
+
+# define your styles
+title = wb.styles.add_style(bg_color: '9cbfe4', fg_color: '#FF000000', b: true, border: Axlsx::STYLE_THIN_BORDER, alignment: { horizontal: :center })
+
+wb.add_worksheet name: valid_sheet_name('Despesas') do |sheet|
+  months = []
+  month_names = I18n.t('date.month_names')[1..12]
+  month_names.each do |month|
+    months << month
+  end
+
+  sheet.add_row(['Categoria'].concat(months), style: title, height: 20)
+  
+  @expense_categories.each do |expense|
+    sheet.add_row [
+      expense.name
+    ].flatten
+
+  end
+
+  sheet.column_widths 20, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12
+end

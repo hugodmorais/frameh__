@@ -9,7 +9,7 @@
 <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
   <table id="incomes_table" class="table table-hover" data-url="<%= datatables_incomes_path %>">
     <div class="btn-group pull-left">
-      <!-- Button trigger modal -->
+    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
       <i class="fas fa-cloud-upload-alt"></i>
     </button>
@@ -40,41 +40,39 @@
         </div>
         <div class="modal-body">
           <%= form_tag import_incomes_path, multipart: true do %>
-                <div class="btn-group col-lg-12">
-                  <div class="col-lg-6">
-                    <div class="row">
-                    <%= file_field_tag :file, class: 'btn btn-outline-primary m-l-5' %>
-                    <%= button_tag(type: "submit", class: "btn btn-primary btn-sm waves-effect waves-light") do %>
-                      <i class="fas fa-cloud-upload-alt"></i>
-                    <% end %>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <span style="color: Tomato;">
-                      <i class="fas fa-info-circle fa-2x p-t-4 p-l-5"></i>
-                    </span>
-                    <span class="p-t-10 p-l-5">Escolha o ficheiro das receitas!</span>
-                  </div>
+            <div class="btn-group col-lg-12">
+              <div class="col-lg-6">
+                <div class="row">
+                <%= file_field_tag :file, class: 'btn btn-outline-primary m-l-5' %>
+                <%= button_tag(type: "submit", class: "btn btn-primary btn-sm waves-effect waves-light") do %>
+                  <i class="fas fa-cloud-upload-alt"></i>
+                <% end %>
                 </div>
+              </div>
+              <div class="col-lg-6">
+                <span style="color: Tomato;">
+                  <i class="fas fa-info-circle fa-2x p-t-4 p-l-5"></i>
+                </span>
+                <span class="p-t-10 p-l-5">Escolha o ficheiro das receitas!</span>
+              </div>
+            </div>
           <% end %>
         </div>
         <div class="modal-body">
-            <div class="btn-group col-lg-12" data-turbolinks="false">
-              <div class="col-lg-6 float-right">
-                <%= link_to incomes_template_incomes_path, class: 'btn btn-primary m-l-5 float-right' do %>
-                  <%= 'Receitas' %>
-                  <i class="m-l-5 fas fa-cloud-download-alt"></i>
-                <% end %>
-              </div>
-              <div class="col-lg-6">
-              <span style="color: Tomato;">
-                <i class="fas fa-info-circle fa-2x p-t-4 p-l-5"></i>
-              </span>
-              <span class="p-t-10 p-l-5">Faça download do template!</span>
+          <div class="btn-group col-lg-12" data-turbolinks="false">
+            <div class="col-lg-6 float-right">
+              <%= link_to incomes_template_incomes_path, class: 'btn btn-primary m-l-5 float-right' do %>
+                <%= 'Receitas' %>
+                <i class="m-l-5 fas fa-cloud-download-alt"></i>
+              <% end %>
             </div>
-            </div>
+            <div class="col-lg-6">
+            <span style="color: Tomato;">
+              <i class="fas fa-info-circle fa-2x p-t-4 p-l-5"></i>
+            </span>
+            <span class="p-t-10 p-l-5">Faça download do template!</span>
+          </div>
         </div>
-        <div class="row p-t-30">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
