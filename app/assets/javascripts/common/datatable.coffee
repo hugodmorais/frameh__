@@ -43,7 +43,7 @@ class window.FramehDatatable
                 paginate: 
                     previous: "Anterior",
                     next: "Próximo"
-            dom: "<'row toolbar'<'col-lg-9'><'col-lg-3 text-right'f>>t<'col-lg-4'i><'col-lg-4 text-right'p>"   
+            dom: "<'row toolbar'<'col-lg-10'><'col-lg-2 text-right'f>>t<'col-lg-4'i><'col-lg-4 text-right'p>"   
             search: "Pesquisar"
             info: "Mostrando 0 até 0 de 0 registros"
             ajax: $(@table_id).data('url')

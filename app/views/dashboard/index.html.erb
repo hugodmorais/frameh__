@@ -3,7 +3,7 @@
 <%= info_hidden(monthly_expenses_url: incomes_path) %>
 <!-- End Info_hidden -->
 
-<div class="container">
+<div class="">
   <ul class="nav nav-tabs row_chart m-l-15 m-t-80">
     <li class="active"><a data-toggle="tab" href="#home">Análise Anual - <%= Current.year %></a></li>
     <li class=""><a data-toggle="tab" href="#menu1">Menu 1</a></li>
@@ -11,7 +11,7 @@
     <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
   </ul>
     <div class="tab-content">
-      <div id="home" class="tab-pane fade in active">
+      <div id="" class="tab-pane fade in active">
         <div class="row m-t-20">
           <div class="col-lg-3 col-sm-6">
             <div class="widget-inline-box text-center">
@@ -49,12 +49,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-6">
             <div class="">
               <div id="results_total" data-url="<%= highcharts_results_total_path %>"></div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-lg-3">
             <div class="list-group" id="list-tab">
               <a class="list-group-item">
                 <h3>
