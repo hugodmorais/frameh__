@@ -10,7 +10,7 @@
 			<%= progress_bar p.percentage_calculate(p.total_value, p.amount_already_paid).round(2), label: true, style: 'min-width: 20px', alternative: 'success', active: true %>
 		<% end %>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<h2 class="text-center">Contas Principais</h2>
 		<p class="m-b-15"></p>
 		<div class="col-md-12">
@@ -18,7 +18,8 @@
 			<div class="col-md-6 m-t-15">
 			<div class="card border-info mx-sm-1 p-3">
 				<div class="card border-info shadow text-info p-3 my-card" ><span class="<%= expense.icon %>" aria-hidden="true"></span></div>
-				<div class="text-info text-center mt-3"><h4><%= expense.name %></h4></div>
+				<div class="text-info text-center mt-3" ><h4><%= expense.name %></h4></div>
+				<div class="text-info text-center mt-3" style="<%= show_expense(expense) %>"><h4>BLABLA</h4></div>
 			</div>
 			</div>
 		<% end %>
