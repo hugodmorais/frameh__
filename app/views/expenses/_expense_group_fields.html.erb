@@ -8,6 +8,7 @@
                 </span>
             <% end %>
         </div>
+        <%= f.text_field :status, value: true, class: 'hidden' %>
         <div class="col-sm-5">
             <%= f.text_field :expense_value, class: 'form-control' %>
             <% if f.object.errors[:expense_value].present? %>

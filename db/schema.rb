@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
 
   create_table "expense_groups", force: :cascade do |t|
     t.integer "expense_value"
+    t.boolean "status", default: false
     t.bigint "expense_id"
     t.bigint "group_id"
     t.bigint "expense_category_id"

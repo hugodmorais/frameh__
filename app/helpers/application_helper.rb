@@ -66,5 +66,19 @@ module ApplicationHelper
     invalid_chars = %r{[\[\]\*/\\\?\:]}
     truncate(name.to_s, length: max_sheet_name_size, escape: false).gsub(invalid_chars, '_')
   end
+
+  def show_expense(expense)
+    expense = Expense.where(month: 1)
+      
+    expense.each do |e|
+      status = ExpenseGroup.where(expense: e).find_by(expense_category: expense)
+      
+      if status.present?
+        return "color: yellow !important"
+      else
+        return "color: red !important"
+      end
+    end
+  end
 end
   

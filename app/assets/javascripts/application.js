@@ -22,6 +22,7 @@
 //= require highcharts
 //= require chartkick
 //= require turbolinks
+
 // require common/app_form
 //= require_tree .
 
@@ -30,6 +31,10 @@
 $(document).on('turbolinks:load', function() {
   // The below commented jQuery line is commented when turbolink is disabled and uncommented when trubolink is enabled
   // jQuery(function ($) { 
+    $('[data-toggle=offcanvas]').click(function() {
+      $('.row-offcanvas').toggleClass('active');
+    });
+
     $(".sidebar-dropdown > a").click(function(e) {
       e.preventDefault();
       $(".sidebar-submenu").slideUp(200);
@@ -56,3 +61,12 @@ $(document).on('turbolinks:load', function() {
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
+
+  
+
+
+
+
+
+
+

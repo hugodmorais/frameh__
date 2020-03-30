@@ -87,7 +87,7 @@ class ExpensesController < ApplicationController
       :kind,
       :user_group_id,
       :annual_management_id,
-      expense_groups_attributes: %i[id expense_category_id expense_value _destroy]
+      expense_groups_attributes: %i[id expense_category_id status expense_value _destroy]
     )
   end
 end

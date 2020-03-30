@@ -2,7 +2,7 @@ class CreateExpenseGroups < ActiveRecord::Migration[5.2]
   def change
     create_table :expense_groups do |t|
       t.integer :expense_value
-
+      t.boolean :status, default: false
       t.references :expense
       t.references :group
       t.references :expense_category
