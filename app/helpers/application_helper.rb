@@ -68,15 +68,15 @@ module ApplicationHelper
   end
 
   def show_expense(expense)
-    expense = Expense.where(month: 1)
-      
-    expense.each do |e|
+    month = (Current.month - 1)
+    expenses = Expense.where('month = ? AND annual_management_id = ?', month, AnnualManagement.find_by(year: Current.year))
+    
+    expenses.each do |e|
       status = ExpenseGroup.where(expense: e).find_by(expense_category: expense)
-      
       if status.present?
-        return "color: yellow !important"
+        return "background-color: #00FA9A; !important"
       else
-        return "color: red !important"
+        return "background-color: #FF0000; !important"
       end
     end
   end

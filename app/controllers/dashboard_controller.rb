@@ -13,6 +13,9 @@ class DashboardController < ApplicationController
     def warning_annual
     end
 
+    def example
+    end
+
     private
 
 end

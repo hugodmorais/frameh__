@@ -1,48 +1,7 @@
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
-
-
-@import "material-dashboard/variables";
- @import "material-dashboard/mixins";
- @import "material-dashboard/core-bootstrap";
-
- // Core Components
- @import "material-dashboard/buttons";
- @import "material-dashboard/checkboxes";
- @import "material-dashboard/radios";
- @import "material-dashboard/forms";
- @import "material-dashboard/input-group";
- @import "material-dashboard/images";
- @import "material-dashboard/navbar";
- @import "material-dashboard/alerts";
- @import "material-dashboard/headers";
- @import "material-dashboard/type";
- @import "material-dashboard/tabs";
- @import "material-dashboard/tooltip";
- @import "material-dashboard/popover";
- @import "material-dashboard/dropdown";
- @import "material-dashboard/togglebutton";
- @import "material-dashboard/ripples";
- @import "material-dashboard/footers";
- @import "material-dashboard/sidebar-and-main-panel";
- @import "material-dashboard/fixed-plugin";
- @import "material-dashboard/tables";
- @import "material-dashboard/misc";
- @import "material-dashboard/social-buttons";
-
-@import "material-dashboard/cards";
-@import "material-dashboard/cards/card-stats";
-@import "material-dashboard/cards/card-profile";
-@import "material-dashboard/cards/card-plain";
-
- //plugin scss
- @import "material-dashboard/plugins/animate";
- @import "material-dashboard/plugins/chartist";
- @import "material-dashboard/plugins/perfect-scrollbar";
-
- @import "material-dashboard/responsive";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 /*
 *= require bootstrap-datepicker
@@ -50,8 +9,6 @@
 *= require dataTables.bootstrap
 *= require jquery.dataTables
 *= require font-awesome
-*= require material-dashboard/material-dashboard.css
-*= require material-dashboard/demo.css
 */
 .rotateSide {
   transform: rotate(90deg);
@@ -945,12 +902,23 @@ html {
 
 .my-card
 {
-    position:relative;
-    left:20%;
-    top:-20px;
-    border-radius:70%;
-    width: 4rem;
-    padding: 4px !important;
+  border-radius: 25px !important;
+  position:relative;
+  left:20%;
+  top:-20px;
+  border-radius:70%;
+  width: 4rem;
+  padding: 4px !important;
+}
+
+.my-cards {
+  border-radius: 25px !important;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.my-cards:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .modal-dialog {
@@ -959,3 +927,4 @@ html {
   left: 30%;
   transform: translate(-50%, -50%) !important;
 }
+
