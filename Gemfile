@@ -10,7 +10,7 @@ gem 'rails', '~> 6.0'
 gem 'paperclip'
 gem "aws-sdk-s3", require: false
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'material-icons-rails'
