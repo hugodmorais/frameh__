@@ -2,7 +2,8 @@
  <!-- Start Info_hidden -->
 <%= info_hidden(monthly_expenses_url: incomes_path) %>
 <!-- End Info_hidden -->
-<div class="">
+
+<div class="col-md-12 pt-4">
   <ul class="nav nav-tabs row_chart m-l-15 m-t-80">
     <li class="active"><a data-toggle="tab" href="#home">Análise Anual - <%= Current.year %></a></li>
     <li class=""><a data-toggle="tab" href="#menu1">Menu 1</a></li>
@@ -14,36 +15,36 @@
         <div class="row m-t-20">
           <div class="col-lg-3 col-sm-6">
             <div class="widget-inline-box text-center">
-              <h3>
+              <h4>
                 <span class="glyphicon glyphicon glyphicon-ok-sign" aria-hidden="true" style="font-size:20px;color:rgb(5, 93, 0);"></span> 
                 <b data-plugin="counterup">
                   <%= Income.where(annual_management: AnnualManagement.where(year: Current.year)).sum('income_value') %>
                 </b>
-              </h3>
-              <h4 class="text-muted">Total Receitas</h4>
+              </h4>
+              <h5 class="text-muted">Total Receitas</h5>
             </div>
           </div>
           <div class="col-lg-3 col-sm-6">
             <div class="widget-inline-box text-center">
-              <h3>
+              <h4>
                 <span class="glyphicon glyphicon-adjust" aria-hidden="true" style="font-size:20px;color:rgb(171, 0, 0);"></span> 
                 <b data-plugin="counterup">
                   <%= Expense.where(annual_management: AnnualManagement.where(year: Current.year)).includes(:expense_groups).sum('expense_value') %>
                 </b>
-              </h3>
-              <h4 class="text-muted">Total Despesas</h4>
+              </h4>
+              <h5 class="text-muted">Total Despesas</h5>
             </div>
           </div>
           <div class="col-lg-3 col-sm-6">
             <div class="widget-inline-box text-center">
-              <h3><span class="glyphicon glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;color:yellow;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
-              <h4 class="text-muted">Label 03</h4>
+              <h4><span class="glyphicon glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;color:yellow;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h4>
+              <h5 class="text-muted">Label 03</h5>
             </div>
           </div>
           <div class="col-lg-3 col-sm-6">
             <div class="widget-inline-box text-center b-0">
-              <h3><span class="glyphicon glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="font-size:20px;color:green;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h3>
-              <h4 class="text-muted">Label 04</h4>
+              <h4><span class="glyphicon glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="font-size:20px;color:green;"></span> <b data-plugin="counterup"><%= @user_groups.size %></b></h4>
+              <h5 class="text-muted">Label 04</h5>
             </div>
           </div>
         </div>
@@ -56,32 +57,32 @@
           <div class="col-4">
             <div class="list-group" id="list-tab">
               <a class="list-group-item">
-                <h3>
+                <h5>
                   <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="font-size:20px;"></span> 
                   <b data-plugin="counterup">2.958,25</b>
-                </h3>
-                <h4 class="text-muted">Débito - Conta Bancária</h4>
+                </h5>
+                <span class="text-muted">Débito - Conta Bancária</span>
               </a>
               <a class="list-group-item" role="tab" aria-controls="home">
-                <h3>
+                <h5>
                   <span class="glyphicon glyphicon-credit-card" aria-hidden="true" style="font-size:20px;"></span> 
                   <b data-plugin="counterup">1500,00</b>
-                </h3>
-                <h4 class="text-muted">Crédito - Disponível</h4>
+                </h5>
+                <span class="text-muted">Crédito - Disponível</span>
               </a>
               <a class="list-group-item" role="tab" aria-controls="home">
-                <h3>
+                <h5>
                   <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true" style="font-size:20px;"></span> 
                   <b data-plugin="counterup">800,00</b>
-                </h3>
-                <h4 class="text-muted">Poupança</h4>
+                </h5>
+                <span class="text-muted">Poupança</span>
               </a>
               <a class="list-group-item" role="tab" aria-controls="home">
-                <h3>
+                <h5>
                   <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="font-size:20px;"></span> 
                   <b data-plugin="counterup"><%= PaymentInstallment.sum('deposit_money') %></b>
-                </h3>
-                <h4 class="text-muted">Total Prestações mensal</h4>
+                </h5>
+                <span class="text-muted">Total Prestações mensal</span>
               </a>
             </div>
           </div>
