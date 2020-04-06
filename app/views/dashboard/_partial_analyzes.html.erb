@@ -1,6 +1,6 @@
 <div class="row m-t-30">
-	<div class="col-md-4">
-		<h2 class="text-center">Balanço Contas</h2>
+	<div class="col-md-3">
+		<h4 class="text-center">Balanço Contas</h4>
 		<p class="m-b-15"></p>
 		<% @payment_installments.each do |p| %>
 			<span class="label label-success">
@@ -10,15 +10,15 @@
 			<%= progress_bar p.percentage_calculate(p.total_value, p.amount_already_paid).round(2), label: true, style: 'min-width: 20px', alternative: 'success', active: true %>
 		<% end %>
 	</div>
-	<div class="col-md-4">
-		<h2 class="text-center">Contas Principais</h2>
+	<div class="col-md-3">
+		<h4 class="text-center">Contas Principais</h4>
 		<p class="m-b-15"></p>
 		<div class="col-md-12">
 		<% @primary_expenses.each do |expense| %>
 			<div class="col-md-6 m-t-15">
         <div class="card mx-sm-1 p-3 my-cards" style="<%= show_expense(expense) %>">
           <div class="card border-info shadow text-info p-3 my-card" ><span class="<%= expense.icon %>" aria-hidden="true"></span></div>
-          <div class="text-info text-center mt-3"><h4 style="color: white; font-size: 20px;"><%= expense.name %></h4></div>
+          <div class="text-info text-center mt-3"><h5 style="color: white;"><%= expense.name %></h5></div>
         </div>
 			</div>
 		<% end %>
