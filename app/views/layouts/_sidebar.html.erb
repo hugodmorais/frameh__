@@ -1,192 +1,88 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-<div class="page-wrapper chiller-theme toggled">
-  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#"></a>
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-text mx-3">FRAMEH</div>
   </a>
-  <nav id="sidebar" class="sidebar-wrapper">
-    <div class="sidebar-content">
-      <div class="sidebar-brand">
-        <a href="#">
-          <%= link_to dashboard_path do %>
-            <span>Frameh</span>
-          <% end %>
-        </a>
-      </div>
-      <div class="sidebar-header">
-        <div class="user-info m-l-40">
-          <span class="user-name">
-            <%= current_user.name %>
-          </span>
-          <% if current_user.admin? %>
-            <span class="user-role">Administrator</span>
-          <% end %>
-        </div>
-      </div>
 
-      <div class="sidebar-menu">
-        <ul>
-          <li class="header-menu">
-            <span>Ano</span>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="far fa-calendar-alt"></i>
-              <% if AnnualManagement.by_user(current_user).any? %>
-                <span><%= Current.year %></span>
-              <% end %>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <!-- sidebar-search  -->
-                <% AnnualManagement.by_user(current_user).each do |annual_management| %>
-                  <!-- list item-->
-                  <li>
-                    <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
-                      <%= annual_management.year %>
-                    <% end %>
-                  </li>
-                  <!-- list item-->
-                <% end %>
-              </ul>
-            </div>
-          </li>
-        </ul>
-        <ul>
-          <li class="header-menu">
-            <span>General</span>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-              <span class="badge badge-pill badge-warning">New</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Dashboard 1
-                    <span class="badge badge-pill badge-success">Pro</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 2</a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 3</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-list-alt"></i>
-              <span>Biblioteca</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <% if current_user.admin? %>
-                  <li>
-                    <%= link_to 'Contas Utilizadores', users_path %>
-                  </li>
-                <% end %>
-                <li>
-                  <%= link_to 'Gestão Anual', annual_managements_path %>
-                </li>
-                <li>
-                  <%= link_to 'Categorias das Receitas', income_categories_path %>
-                </li>
-                <li>
-                  <%= link_to 'Categorias das Despesas', expense_categories_path %>
-                </li>
-                <li>
-                  <%= link_to 'Estados do Contrato', contract_statuses_path %>
-                </li>
-                <li>
-                  <%= link_to 'Tipos de Moeda', currency_kinds_path %>
-                </li>
-                <li>
-                  <%= link_to 'Contas Banco', accounts_path %>
-                </li>
-                <li>
-                  <%= link_to 'Fecho do mês', financial_statements_path %>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fas fa-archive"></i>
-              <span>Registos</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <%= link_to 'Contratos', contracts_path %>
-                </li>
-                <li>
-                  <%= link_to 'Receitas', incomes_path %>
-                </li>
-                <li>
-                  <%= link_to 'Despesas', expenses_path %>
-                </li>
-                <li>
-                  <%= link_to 'Pagamentos Parcelas', payment_installments_path %>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fas fa-users"></i>
-              <span>Agregado</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <%= link_to 'Agregado', user_groups_path %>
-                </li>
-                <li>
-                  <%= link_to 'Editar Trabalho', work_groups_static_path %>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-briefcase"></i>
-              <span>Trabalho</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <%= link_to 'Empresas', companies_path %>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <!-- sidebar-menu  -->
-    </div>
-      <!-- sidebar-content  -->
-    <div class="sidebar-footer">
-      <a href="#">
-        <i class="fa fa-bell"></i>
-        <span class="badge badge-pill badge-warning notification">3</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-envelope"></i>
-        <span class="badge badge-pill badge-success notification">7</span>
-      </a>
-      <%= link_to edit_setting_path(current_user) do %>
-        <i class="fa fa-cog"></i>
-      <% end %>
-      <%= link_to edit_user_path(current_user) do %>
-        <i class="fa fa-user"></i>
-      <% end %>
-      <%= link_to sair_path, method: :delete, data: { confirm: t(:remove_question)} do %>
-        <i class="fa fa-power-off"></i>
-      <% end %>
-    </div>
-  </nav>
-</div>
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
 
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="index.html">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Interface
+  </div>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Components</span>
+    </a>
+    <div class="dropdown-menu py-2">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </li>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>Utilities</span>
+    </a>
+    <div class="dropdown-menu py-2">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Addons
+  </div>
+
+  <!-- Nav Item - Charts -->
+  <li class="nav-item">
+    <a class="nav-link" href="charts.html">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Charts</span></a>
+  </li>
+
+  <!-- Nav Item - Tables -->
+  <li class="nav-item">
+    <a class="nav-link" href="tables.html">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Tables</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
+
+</ul>
+<!-- End of Sidebar -->

@@ -16,6 +16,12 @@ class DashboardController < ApplicationController
     def example
     end
 
+    def testes
+    end
+
+    def show
+    end
+
     private
 
 end

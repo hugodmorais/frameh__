@@ -9,9 +9,8 @@
 *= require dataTables.bootstrap
 *= require jquery.dataTables
 *= require font-awesome
+*= require custom
 */
-
-
 
 // .rotateSide {
 //   transform: rotate(90deg);
@@ -11893,6 +11892,13 @@ body.sidebar-toggled footer.sticky-footer {
 
 
 // CUSTOM CSS
+.bank_info {
+  height: 20rem;
+}
 
+.bank_slides {
+  background: #0B0227; 
+  color: white;
+}
 
 

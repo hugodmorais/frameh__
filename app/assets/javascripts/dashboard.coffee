@@ -1,5 +1,7 @@
 dashboard =
   index: ->
+    $('.carousel').carousel()
+
     # Draw Events chart
     results_total = new ResultChart('results_total')
     results_total.dashboard_index()
