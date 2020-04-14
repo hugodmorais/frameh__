@@ -255,6 +255,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
   add_foreign_key "incomes", "annual_managements"
   add_foreign_key "incomes", "income_categories"
   add_foreign_key "incomes", "user_groups"
+  add_foreign_key "incomes", "users"
   add_foreign_key "payment_installments", "users"
   add_foreign_key "settings", "users"
   add_foreign_key "user_groups", "users"

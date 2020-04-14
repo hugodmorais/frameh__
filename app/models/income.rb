@@ -10,6 +10,7 @@ class Income < ApplicationRecord
   belongs_to :annual_management
   belongs_to :user_group
   belongs_to :company, optional: true
+  belongs_to :user
   
   # Delegates
 
@@ -21,6 +22,7 @@ class Income < ApplicationRecord
   # Scopes   
   scope :in_month, ->(month) { where month: month } 
   scope :in_year, ->(year) { joins(:annual_management).where(annual_managements: { year: year }) }
+  scope :result_by_year, ->(user) { where(annual_management: AnnualManagement.where(year: Current.year)).where(user_id: user).sum('income_value') }
   
   # Callbacks
 

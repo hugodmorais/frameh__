@@ -3,6 +3,10 @@ module ApplicationHelper
     content_tag :div, '', id: 'info_hidden', class: 'hidden', data: options
   end
 
+  def number_to_euro(amount)
+    number_to_currency(amount, :unit=>'€')
+  end
+
   def link_to_add_fields(name = nil, form = nil, association = nil, options = nil, html_options = nil, &block)
     # If a block is provided there is no name attribute and the arguments are
     # shifted with one position to the left. This re-assigns those values.

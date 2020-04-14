@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :user_groups
   has_many :annual_managements
   has_many :expenses
+  has_many :incomes
   has_many :companies
   has_many :expense_categories
   has_many :income_categories

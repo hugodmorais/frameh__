@@ -19,6 +19,7 @@ class IncomesController < ApplicationController
 
   def create
     @income = Income.new(income_params)
+    @income.user = current_user
     @income.annual_management = AnnualManagement.find_by_year(Current.year)
     if @income.save
       flash[:success] = "income was successfully created!"
