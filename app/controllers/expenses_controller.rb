@@ -18,7 +18,7 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.new(expense_params)
-    @expense.user = Current.user
+    @expense.user = current_user
     @expense.annual_management = AnnualManagement.find_by_year(Current.year)
     if @expense.save
       flash[:success] = "expense was successfully created!"
