@@ -15,76 +15,73 @@
       <% end %>
     </a>
     <div class="dropdown-menu py-2">
-      <!-- sidebar-search  -->
-                <% AnnualManagement.by_user(current_user).each do |annual_management| %>
-                  <!-- list item-->
-                    <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
-                      <%= annual_management.year %>
-                    <% end %>
-                  <!-- list item-->
-                <% end %>
+      <% AnnualManagement.by_user(current_user).each do |annual_management| %>
+        <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
+          <%= annual_management.year %>
+        <% end %>
+      <% end %>
     </div>
   </li>
-
-
-  <!-- Divider -->
   <hr class="sidebar-divider">
-
-  <!-- Heading -->
   <div class="sidebar-heading">
-    Interface
+    Sistema
   </div>
-
-  <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <a class="nav-link dropdown-toggle ml-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-fw fa-cog"></i>
-      <span>Components</span>
+      <span>Configurações</span>
     </a>
     <div class="dropdown-menu py-2">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
+      <% if current_user.admin? %>
+        <%= link_to 'Contas Utilizadores', users_path, class: 'dropdown-item py-2' %>      
+      <% end %>    
+      <%= link_to 'Gestão Anual', annual_managements_path, class: 'dropdown-item py-2' %>    
+      <%= link_to 'Categorias das Receitas', income_categories_path, class: 'dropdown-item py-2' %>
+      <%= link_to 'Categorias das Despesas', expense_categories_path, class: 'dropdown-item py-2' %>
+      <%= link_to 'Estados do Contrato', contract_statuses_path, class: 'dropdown-item py-2' %>
+      <%= link_to 'Tipos de Moeda', currency_kinds_path, class: 'dropdown-item py-2' %>
+      <%= link_to 'Contas Banco', accounts_path, class: 'dropdown-item py-2' %>         
+      <%= link_to 'Fecho do mês', financial_statements_path, class: 'dropdown-item py-2' %>          
     </div>
   </li>
-
-  <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-fw fa-wrench"></i>
-      <span>Utilities</span>
+    <a class="nav-link dropdown-toggle ml-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-users fa-cog"></i>
+      <span>Agregado</span>
     </a>
-    <div class="dropdown-menu py-2">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
+    <div class="dropdown-menu py-2"> 
+      <%= link_to 'Agregado', user_groups_path, class: 'dropdown-item py-2' %>    
+      <%= link_to 'Editar Trabalho', work_groups_static_path, class: 'dropdown-item py-2' %>     
     </div>
   </li>
-
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle ml-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-briefcase"></i>
+      <span>Trabalho</span>
+    </a>
+    <div class="dropdown-menu py-2"> 
+      <%= link_to 'Empresas', companies_path, class: 'dropdown-item py-2' %>    
+    </div>
+  </li>
   <!-- Divider -->
   <hr class="sidebar-divider">
 
   <!-- Heading -->
   <div class="sidebar-heading">
-    Addons
+    Frameh
   </div>
 
-  <!-- Nav Item - Charts -->
-  <li class="nav-item">
-    <a class="nav-link" href="charts.html">
-      <i class="fas fa-fw fa-chart-area"></i>
-      <span>Charts</span></a>
-  </li>
-
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a class="nav-link" href="tables.html">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Tables</span></a>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle ml-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-archive"></i>
+      <span>Registos</span>
+    </a>
+    <div class="dropdown-menu py-2">
+      <%= link_to 'Contratos', contracts_path, class: 'dropdown-item py-2' %>
+      <%= link_to 'Receitas', incomes_path, class: 'dropdown-item py-2' %>
+      <%= link_to 'Despesas', expenses_path, class: 'dropdown-item py-2' %>
+      <%= link_to 'Pagamentos Parcelas', payment_installments_path, class: 'dropdown-item py-2' %>         
+    </div>
   </li>
 
   <!-- Divider -->
