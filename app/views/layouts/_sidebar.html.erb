@@ -1,20 +1,31 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
     <div class="sidebar-brand-text mx-3">FRAMEH</div>
   </a>
-
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
-
-  <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
-    <a class="nav-link" href="index.html">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle ml-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <i class="far fa-calendar-alt"></i>
+      <% if AnnualManagement.by_user(current_user).any? %>
+        <span><%= Current.year %></span>
+      <% end %>
+    </a>
+    <div class="dropdown-menu py-2">
+      <!-- sidebar-search  -->
+                <% AnnualManagement.by_user(current_user).each do |annual_management| %>
+                  <!-- list item-->
+                    <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
+                      <%= annual_management.year %>
+                    <% end %>
+                  <!-- list item-->
+                <% end %>
+    </div>
   </li>
+
 
   <!-- Divider -->
   <hr class="sidebar-divider">
@@ -86,3 +97,15 @@
 
 </ul>
 <!-- End of Sidebar -->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script>
+  $(document).ready(function(){
+    $('#sidebarCollapse').on('click',function(){
+      $('#sidebar').toggleClass('active');
+    });
+  });  
+</script>
