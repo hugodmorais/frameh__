@@ -73,14 +73,45 @@ module ApplicationHelper
 
   def show_expense(expense)
     month = (Current.month - 1)
-    expenses = Expense.where('month = ? AND annual_management_id = ?', month, AnnualManagement.find_by(year: Current.year))
+    expenses = Expense.where('month = ? AND annual_management_id = ?', month, AnnualManagement.find_by(year: Current.year).id)
+    return "background-color: rgb(171, 0, 0); !important" if expenses.blank?
+
+    expenses.each do |e|
+      status = ExpenseGroup.where(expense: e).find_by(expense_category: expense)
+      if status.present?
+        return "background-color: rgb(5, 93, 0); !important"
+      else
+        return "background-color: rgb(171, 0, 0); !important"
+      end
+    end
+  end
+
+  def expense_button(expense)
+    month = (Current.month - 1)
+    expenses = Expense.where('month = ? AND annual_management_id = ?', month, AnnualManagement.find_by(year: Current.year).id)
+    
+    return new_expense_path if expenses.blank?
     
     expenses.each do |e|
       status = ExpenseGroup.where(expense: e).find_by(expense_category: expense)
       if status.present?
-        return "background-color: #00FA9A; !important"
+        return edit_expense_path(e.id)
       else
-        return "background-color: #FF0000; !important"
+        return new_expense_path
+      end
+    end
+  end
+
+  def expense_value(expense)
+    month = (Current.month - 1)
+    expenses = Expense.where('month = ? AND annual_management_id = ?', month, AnnualManagement.find_by(year: Current.year).id)
+    
+    expenses.each do |e|
+      status = ExpenseGroup.where(expense: e).find_by(expense_category: expense)
+      if status.present?
+        return "<span>Pago<i class='far fa-check-square ml-2'></i></span><br><span>#{number_to_euro(status.expense_value)}</span>".html_safe
+      else
+        return "<span>Atenção!</span><br><span>Pagar</span>".html_safe
       end
     end
   end
