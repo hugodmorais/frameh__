@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 users =
   index: ->
-    frameh_table = new FramehDatatable('users_table')
+    frameh_table = new Datatable()
     frameh_table.users_index()
     
 $(document).on 'turbolinks:load', ->

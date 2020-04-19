@@ -1,6 +1,6 @@
 annual_managements =
   index: ->
-    frameh_table = new FramehDatatable('annual_managements_table')
+    frameh_table = new Datatable()
     frameh_table.annual_managements_index()
     
 $(document).on 'turbolinks:load', ->

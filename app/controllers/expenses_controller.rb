@@ -48,7 +48,7 @@ class ExpensesController < ApplicationController
   end
 
   def monthly_expenses
-    @expenses = Expense.in_current_year.in_month(Current.month)
+    @expenses = Expense.current_year.in_month(Current.month)
   end
 
   def import
