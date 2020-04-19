@@ -3,8 +3,11 @@ class UsersController < ApplicationController
   before_action :require_logged_in_user, only: [:edit, :update]
   before_action :require_annual_management
 
-  def index
-    @users = User.paginate(page: params[:page], per_page: 9)
+  def index  
+    respond_to do |format|
+      format.html
+      format.json { render json: UserDatatable.new(params, view_context: view_context) }
+    end
   end
 
   def new

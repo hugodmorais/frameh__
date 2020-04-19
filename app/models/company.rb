@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: companies
+#
+#  id         :bigint           not null, primary key
+#  name       :string           default(""), not null
+#  country    :string           default(""), not null
+#  city       :string
+#  user_id    :bigint
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_companies_on_user_id  (user_id)
+#
+
 class Company < ApplicationRecord
     # Includes
 
