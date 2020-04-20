@@ -4,6 +4,8 @@ start_it = ->
   $.extend true, $.fn.dataTable.defaults,
     bPaginate: true
     bStateSave: true
+    fixedHeader:
+      header: true
     language:
       sProcessing:   "A processar...",
       sLengthMenu:   "_MENU_",
@@ -21,4 +23,8 @@ start_it = ->
           sLast:     ">>"
 
 $(document).on 'turbolinks:load', start_it
+
+$(document).on 'turbolinks:before-cache', ->
+  if $('.datatables').length >= 1
+    $('.datatables').DataTable().destroy()
 

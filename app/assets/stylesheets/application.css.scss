@@ -3121,6 +3121,12 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+.btn-custom {
+  color: #fff;
+  background-color: #00210F;
+  border-color: #00210F;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #00210F;
@@ -11721,7 +11727,7 @@ body.sidebar-toggled footer.sticky-footer {
 
 .dataTables_filter label .fas {
   margin: auto;
-  padding-right: 4px;
+  padding-right: 8px;
 }
 
 .dataTables_filter input { 

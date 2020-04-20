@@ -21,7 +21,7 @@ class AnnualManagementsDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-    AnnualManagement.by_user
+    AnnualManagement.all
   end
 
   def show_action(record)

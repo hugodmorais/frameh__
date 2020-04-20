@@ -10,12 +10,18 @@
 <div class="row px-5">
   <div class="col-lg-12">
     <div class="panel-body px-5">
+      <div class="btn-group pull-left pl-5 pt-4">
+        <%= link_to new_annual_management_path, class: 'btn btn-custom btn-sm waves-effect waves-light' do %>
+          <i class="m-l-5 fa fa-plus"></i>
+          <%= 'Nova Gestão Anual' %>
+        <% end %>
+      </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
-        <table id="annual_managements-datatable" class="table table-hover datatables" data-url="<%= annual_managements_path(format: :json) %>">
+        <table id="annual_managements-datatable" class="table table-hover datatables" data-source="<%= annual_managements_path(format: :json) %>">
           <thead>
             <tr>
-              <th>Year</th>
-              <th>Description</th>
+              <th>Ano</th>
+              <th>Descrição</th>
               <th>Ações</th>
             </tr>
           </thead>

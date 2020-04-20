@@ -53,8 +53,6 @@ Rails.application.routes.draw do
   resources :payment_installments
 
   get 'datatables/user_groups_table', defaults: { format: :json }
-  get 'datatables/users_table', defaults: { format: :json }
-  get 'datatables/annual_managements_table', defaults: { format: :json }
   get 'datatables/income_categories', defaults: { format: :json }
   get 'datatables/expense_categories', defaults: { format: :json }
   get 'datatables/incomes', defaults: { format: :json }

@@ -4,6 +4,51 @@ class window.Datatable
     @table_id = '#' + table_id
     @datatable = null
 
+  users_index: -> 
+    @datatable = $('#users-datatable').dataTable
+      processing: true
+      bStateSave: true
+      serverSide: true
+      ajax:
+        url: $('#users-datatable').data('source')
+      dom: 
+        "<'row'<'col-sm-2'l><'col-sm-7 text-center'B><'col-sm-3'f>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'row'<'col-sm-5'i><'col-sm-7 btn-sm'p>>"
+      pagingType: 'full_numbers'
+      columns: [
+        { data: 'name' }
+        { data: 'email' }
+        { data: 'admin' }
+        { data: 'actions' }
+      ]
+      columnDefs: [{
+        targets: -1
+        orderable: false
+      }]
+
+  annual_managements_index: ->
+    @datatable = $('#annual_managements-datatable').dataTable
+      processing: true
+      bStateSave: true
+      serverSide: true
+      ajax:
+        url: $('#annual_managements-datatable').data('source')
+      dom: 
+        "<'row'<'col-sm-3'l><'col-sm-7 text-center'B><'col-sm-2'f>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'row'<'col-sm-5'i><'col-sm-6 btn-sm'p>>"
+      pagingType: 'full_numbers'
+      columns: [
+        { data: 'year' }
+        { data: 'description' }
+        { data: 'actions' }
+      ]
+      columnDefs: [{
+        targets: -1
+        orderable: false
+      }]
+
     user_groups_index: ->
         $(@table_id).dataTable(
             language:
@@ -18,49 +63,6 @@ class window.Datatable
             info: "Mostrando 0 até 0 de 0 registros"
             ajax: $(@table_id).data('url')
         )
-    
-  users_index: ->
-    $('#users-datatable').dataTable
-      processing: true
-      serverSide: true
-      dom: 
-        "<'row'<'col-sm-3'l><'col-sm-6 text-center'B><'col-sm-3'f>>" +
-        "<'row'<'col-sm-12'tr>>" +
-        "<'row'<'col-sm-5'i><'col-sm-7 btn-sm'p>>"
-      ajax:
-        url: $('#users-datatable').data('source')
-      pagingType: 'full_numbers'
-      columns: [
-        { data: 'name' }
-        { data: 'email' }
-        { data: 'admin' }
-        { data: 'actions' }
-      ]
-      columnDefs: [{
-        targets: -1
-        orderable: false
-      }]
-
-  annual_managements_index: ->
-    $('#annual_managements-datatable').dataTable
-      processing: true
-      serverSide: true
-      dom: 
-        "<'row'<'col-sm-3'l><'col-sm-6 text-center'B><'col-sm-3'f>>" +
-        "<'row'<'col-sm-12'tr>>" +
-        "<'row'<'col-sm-5'i><'col-sm-7 btn-sm'p>>"
-      ajax:
-        url: $('#annual_managements-datatable').data('source')
-      pagingType: 'full_numbers'
-      columns: [
-        { data: 'year' }
-        { data: 'description' }
-        { data: 'actions' }
-      ]
-      columnDefs: [{
-        targets: -1
-        orderable: false
-      }]
         
     income_categories_index: ->
         $(@table_id).dataTable(
@@ -226,4 +228,7 @@ class window.Datatable
             info: "Mostrando 0 até 0 de 0 registros"
             ajax: $(@table_id).data('url')
         )
+
+  reload_data: ->
+    @datatable.ajax.reload()
         

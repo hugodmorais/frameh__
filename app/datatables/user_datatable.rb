@@ -23,7 +23,7 @@ class UserDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-    User.all
+    users = User.all
   end
 
   def show_action(record)

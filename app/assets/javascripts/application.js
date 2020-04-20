@@ -22,7 +22,8 @@
 //= require highcharts
 //= require chartkick
 //= require turbolinks
-// require common/app_form
+//= require common/app_form
+//= require common/datatable
 //= require_tree .
 
 
