@@ -1,14 +1,16 @@
-<!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('income_categories.income_categories'), income_categories_path)] %>
-<% @current_bread_name = @income_category.name %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="col-xs-12">
-    <div class="panel-heading">
-      <h1 class="panel-title text-center">Categoria</h1>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4>Categoria: <%= @income_category.name %></h4>
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+  </div>
+</div>
+ <div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="container pt-4">
         <form class="form-horizontal">
           <div class="form-group">
             <label class="col-sm-2 control-label">Nome:</label>
@@ -26,6 +28,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 

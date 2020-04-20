@@ -1,14 +1,18 @@
-<!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('income_categories.income_categories'), income_categories_url)] %>
-<% @current_bread_name = t('income_categories.new') %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="offset-1 col-lg-10">
-    <div class="panel-heading">
-      <h1 class="panel-title text-center"><%= t('income_categories.new') %></h1>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4><%= t('income_categories.new') %></h4>
+      </div>
     </div>
-    <div class="panel-body">
-      <%= render 'form', income_category: @income_category %>
+  </div>
+</div>
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="container pt-4">
+        <%= render 'form', income_category: @income_category %>
+      </div>
     </div>
   </div>
 </div>

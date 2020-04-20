@@ -1,7 +1,7 @@
 
 income_categories =
   index: ->
-    frameh_table = new FramehDatatable('income_categories_table')
+    frameh_table = new Datatable()
     frameh_table.income_categories_index()
     
 $(document).on 'turbolinks:load', ->
