@@ -4,7 +4,7 @@
 
 expense_categories =
   index: ->
-    frameh_table = new FramehDatatable('expense_categories_table')
+    frameh_table = new Datatable()
     frameh_table.expense_categories_index()
     
 $(document).on 'turbolinks:load', ->

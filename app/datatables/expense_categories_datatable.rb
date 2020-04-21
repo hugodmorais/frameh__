@@ -1,93 +1,34 @@
 class ExpenseCategoriesDatatable < ApplicationDatatable
-  delegate :current_user, to: :@view
-  delegate :expense_category_path, to: :@view
-  delegate :edit_expense_category_path, to: :@view
-
-  def valid?
-    true
+  
+  def view_columns
+    @view_columns ||= {
+      name: { source: "ExpenseCategory.name" },
+      primary_payment: { source: "ExpenseCategory.primary_payment" },
+      icon: { source: "ExpenseCategory.icon" },
+      actions: { source: "ExpenseCategory.id", sortable: false, searchable: false }
+    }
   end
+
+  private
 
   def data
-    @expense_categories.map do |expense_category|
-      [].tap do |row|
-        row << expense_category.id
-        row << expense_category.name
-        primary_payments = expense_category.primary_payment? ? (content_tag :i, '', class: 'fa fa-check') : (content_tag :i, '', class: 'fa fa-times')
-        row << primary_payments
-        row << (content_tag :i, '', class: "#{expense_category.icon}")
-        links = [].tap do |link|
-          link << link_to(expense_category_path(expense_category)) do
-            content_tag :i, '', class: 'fa fa-eye'
-          end
-          link << link_to(edit_expense_category_path(expense_category)) do
-              content_tag :i, '', class: 'fa fa-edit'
-          end
-          link << link_to(expense_category_path(expense_category), method: :delete, data: { confirm: t(:remove_item, count: 0) }) do
-              content_tag :i, '', class: 'fa fa-times'
-          end
-        end
-        row << links.join(' ')
-      end
+    records.map do |record|
+      {
+        name: record.name,
+        primary_payment: record.primary_payment? ? (content_tag :i, '', class: 'fa fa-check') : (content_tag :i, '', class: 'fa fa-times'),
+        icon: (content_tag :i, '', class: "#{expense_category.icon}"),
+        actions: show_action(record).html_safe
+      }
     end
   end
 
-  def count
-      expense_categories.count
+  def get_raw_records
+    ExpenseCategory.all
   end
 
-  def total_entries
-    10
-  end
-
-  def expense_categories
-    @expense_categories ||= fetch_records
-  end
-
-  def fetch_records
-    query = []
-    search_values = params[:search][:value] if params[:search].present?  
-    @expense_categories = ExpenseCategory.by_user(current_user)
-
-    if search_values.present?
-      search_values = search_values.split
-      # Search in month description
-      search_values.each do |search_value|
-        month_numbers = months_to_search(search_value)
-        query << "EXTRACT(MONTH FROM date_at) IN (#{month_numbers.join(', ')})" if month_numbers.any?
-      end
-      # CAST all fields to string
-      search_columns.each do |term|
-        query << "CAST(#{term} AS VARCHAR) ~* :search"
-      end
-
-      search_values.each do |search_value|
-        search_value.sub! ',', '.' # replace , with . to do numeric search
-        expense_categories = expense_categories.where(query.join(' or '), search: Regexp.escape(search_value))
-      end
-    end
-    @expense_categories
-  end
-
-  def order_columns
-    %w[
-      id
-      name
-      primary_payment
-      icon
-    ]
-  end
-
-  def search_columns
-    %w[
-      id
-      name
-      primary_payment
-      icon
-    ]
-  end
-
-  def months_to_search(search_value)
-    months = t('date.month_names').map(&:to_s).map(&:downcase)
-    months.each_index.select { |i| months[i].include?(search_value.downcase) }
+  def show_action(record)
+    actions = "<a href='/expense_categories/#{record.id}'><i class='fa fa-eye'></i></a> "
+    actions += "<a href='/expense_categories/#{record.id}/edit'><i class='fa fa-edit'></i></a> "
+    actions += "<a data-confirm='Tem a certeza que pretende eliminar?'' rel='nofollow' data-method='delete' href='/expense_categories/#{record.id}'><i class='fa fa-times'></i></a>"
   end
 end
