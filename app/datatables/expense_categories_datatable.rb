@@ -15,8 +15,8 @@ class ExpenseCategoriesDatatable < ApplicationDatatable
     records.map do |record|
       {
         name: record.name,
-        primary_payment: record.primary_payment? ? (content_tag :i, '', class: 'fa fa-check') : (content_tag :i, '', class: 'fa fa-times'),
-        icon: (content_tag :i, '', class: "#{expense_category.icon}"),
+        primary_payment: record.primary_payment? ? "<i class='fa fa-check'></i></a>".html_safe : "<i class='fa fa-times'></i></a>".html_safe,
+        icon: "<i class='#{record.icon}'></i></a>".html_safe,
         actions: show_action(record).html_safe
       }
     end
