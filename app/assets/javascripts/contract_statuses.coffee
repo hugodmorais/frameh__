@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 contract_statuses =
-    index: ->
-        frameh_table = new FramehDatatable('contract_statuses_table')
-        frameh_table.contract_statuses_index()
+  index: ->
+    frameh_table = new Datatable()
+    frameh_table.contract_statuses_index()
     
 $(document).on 'turbolinks:load', ->
   controller = $('#page').data('controller')
