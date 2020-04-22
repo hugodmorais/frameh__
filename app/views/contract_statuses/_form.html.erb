@@ -3,7 +3,7 @@
     <%= f.label :name do %>
       <%= t(:name) %></span>
     <% end %>
-    <%= f.text_field :name, class: 'form-control', rows: "10" %>
+    <%= f.text_field :name, class: 'form-control' %>
     <% if contract_status.errors[:name].present? %>
       <span class="help-block text-danger">
         <small><%= contract_status.errors[:name].first %></small>
@@ -12,7 +12,7 @@
   </div>
   <div class="row">
     <div class="col-sm-10 m-t-15">
-      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+      <%= f.submit 'Guardar', class: 'btn btn-primary btn-sm' %>
       <%= link_to "Cancelar", contract_statuses_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
     </div>
   </div>  

@@ -1,14 +1,18 @@
-<!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('contract_statuses.contract_statuses'), contract_statuses_url)] %>
-<% @current_bread_name = t('contract_statuses.edit') %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="offset-1 col-lg-10">
-    <div class="panel-heading">
-      <h1 class="panel-title text-center"><%= t('contract_statuses.edit') %></h1>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4><%= t('contract_statuses.edit') %></h4>
+      </div>
     </div>
-    <div class="panel-body">
-      <%= render 'form', contract_status: @contract_status %>
+  </div>
+</div>
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="container pt-4">
+        <%= render 'form', contract_status: @contract_status %>
+      </div>
     </div>
   </div>
 </div>

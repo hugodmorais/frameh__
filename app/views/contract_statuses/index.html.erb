@@ -1,27 +1,35 @@
-<!-- Start Breadcrumb -->
-<% @current_bread_name = t('contract_statuses.contract_statuses') %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="col-lg-12">
-    <div class="col-lg-12">
-      <h1 class="panel-title text-center">Estados do Contrato</h1>
-    </div>
-    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-      <table id="contract_statuses_table" class="table table-hover" data-url="<%= datatables_contract_statuses_path %>">
-        <div class="btn-group pull-left">
-          <%= link_to new_contract_status_path, class: 'btn btn-success btn-sm waves-effect waves-light' do %>
-            <i class="m-l-5 fa fa-plus"></i>
-            <%= t('contract_statuses.new') %>
-          <% end %>
-        </div>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-      </table>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4>Estados do Contrato</h4>
+      </div>
     </div>
   </div>
 </div>
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="btn-group pull-left pl-5 pt-4">
+        <%= link_to new_contract_status_path, class: 'btn btn-primary btn-sm waves-effect waves-light' do %>
+          <i class="m-l-5 fa fa-plus"></i>
+          <%= t('contract_statuses.new') %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 table-responsive px-5 pt-4">
+        <table id="contract_statuses-datatable" class="table table-hover datatables" data-source="<%= contract_statuses_path(format: :json) %>">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
