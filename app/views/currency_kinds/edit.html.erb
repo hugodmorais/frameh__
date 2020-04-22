@@ -1,17 +1,18 @@
-<!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('currency_kinds.currency_kinds'), currency_kinds_url)] %>
-<% @current_bread_name = t('currency_kinds.edit') %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="offset-1 col-lg-10">
-    <div class="panel-heading">
-      <h1 class="panel-title text-center"><%= t('currency_kinds.edit') %></h1>
-    </div>
-    <div class="panel-body">
-      <%= render 'form', currency_kind: @currency_kind %>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4><%= t('currency_kinds.edit') %></h4>
+      </div>
     </div>
   </div>
 </div>
-
-  
-  
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="container pt-4">
+        <%= render 'form', currency_kind: @currency_kind %>
+      </div>
+    </div>
+  </div>
+</div>
