@@ -1,16 +1,25 @@
-<!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('user_groups.user_groups'), user_groups_url)] %>
-<% @current_bread_name = t('user_groups.new') %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="offset-1 col-lg-10">
-    <div class="panel-heading">
-      <h1 class="panel-title text-center"><%= t('user_groups.new') %></h1>
-    </div>
-    <div class="panel-body">
-      <%= render 'form', user_group: @user_group %>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4><%= t('user_groups.new') %></h4>
+      </div>
     </div>
   </div>
 </div>
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="container pt-4">
+        <%= render 'form', user_group: @user_group %>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+
+  
+  
   
   

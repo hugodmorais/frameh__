@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 financial_statements =
   index: ->
-    frameh_table = new FramehDatatable('financial_statements_table')
+    frameh_table = new Datatable()
     frameh_table.financial_statements_index()
     
 $(document).on 'turbolinks:load', ->

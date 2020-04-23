@@ -1,36 +1,36 @@
-<%= form_for financial_statement do |f| %>
-  <div class="form-group <%= 'has-error' if financial_statement.errors['account'].present? %>">
+<%= form_for @financial_statement do |f| %>
+  <div class="form-group <%= 'has-error' if @financial_statement.errors['account'].present? %>">
     <%= f.label :account_id do %>
       <%= t(:account) %></span>
     <% end %>
     <%= f.collection_select :account_id, @accounts, :id, :name, {}, class: 'form-control' %>
-    <% if financial_statement.errors['account'].present? %>
+    <% if @financial_statement.errors['account'].present? %>
       <span class="help-block text-danger">
-        <small><%= financial_statement.errors['account'].first %></small>
+        <small><%= @financial_statement.errors['account'].first %></small>
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if financial_statement.errors['month'].present? %>">
+  <div class="form-group <%= 'has-error' if @financial_statement.errors['month'].present? %>">
     <%= f.label :month do %>
       <%= t(:month) %></span>
     <% end %>
     <%= f.select :month, nil, { }, class: 'form-control' do %>
       <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}) %>
     <% end %>
-    <% if financial_statement.errors[:month].present? %>
+    <% if @financial_statement.errors[:month].present? %>
       <span class="help-block text-danger">
-        <small><%= financial_statement.errors[:month].first %></small>
+        <small><%= @financial_statement.errors[:month].first %></small>
       </span>
     <% end %>
   </div>
-  <div class="form-group <%= 'has-error' if financial_statement.errors['total_balance'].present? %>">
+  <div class="form-group <%= 'has-error' if @financial_statement.errors['total_balance'].present? %>">
     <%= f.label :total_balance do %>
       <%= t(:value) %></span>
     <% end %>
     <%= f.text_field :total_balance, class: 'form-control', rows: "10" %>
-    <% if financial_statement.errors[:total_balance].present? %>
+    <% if @financial_statement.errors[:total_balance].present? %>
       <span class="help-block text-danger">
-        <small><%= financial_statement.errors[:total_balance].first %></small>
+        <small><%= @financial_statement.errors[:total_balance].first %></small>
       </span>
     <% end %>
   </div>

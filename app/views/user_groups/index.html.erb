@@ -1,26 +1,39 @@
-<!-- Start Breadcrumb -->
-<% @current_bread_name = t('user_groups.user_groups') %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="col-lg-12">
-    <div class="col-lg-12">
-      <h1 class="panel-title text-center">Utilizadores</h1>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4>Utilizadores</h4>
+      </div>
     </div>
-    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
-      <table id="user_groups_table" class="table table-hover" data-url="<%= datatables_user_groups_table_path %>">
-        <div class="btn-group pull-left">
-          <%= link_to 'Novo utilizador', new_user_group_path, class: 'btn btn-success' %>
-        </div>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>Gênero</th>
-            <th>Ações</th>
-          </tr>
-        </thead>           
-      </table>
-    <div>
   </div>
 </div>
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="btn-group pull-left pl-5 pt-4">
+        <%= link_to new_user_group_path, class: 'btn btn-primary btn-sm waves-effect waves-light' do %>
+          <i class="m-l-5 fa fa-plus"></i>
+          Novo utilizador
+        <% end %>
+      </div>
+      <div class="col-xs-12 table-responsive px-5 pt-4">
+        <table id="user_groups-datatable" class="table table-hover datatables" data-source="<%= financial_statements_path(format: :json) %>">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data de Nascimento</th>
+              <th>Gênero</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
