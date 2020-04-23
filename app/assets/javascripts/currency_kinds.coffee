@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 currency_kinds =
     index: ->
-        frameh_table = new FramehDatatable('currency_kinds_table')
+        frameh_table = new Datatable()
         frameh_table.currency_kinds_index()
     
 $(document).on 'turbolinks:load', ->

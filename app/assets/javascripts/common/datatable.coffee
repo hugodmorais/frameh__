@@ -114,6 +114,27 @@ class window.Datatable
         orderable: false
       }]
 
+  currency_kinds_index: ->
+    @datatable = $('#currency_kinds-datatable').dataTable
+      processing: true
+      bStateSave: true
+      serverSide: true
+      ajax:
+        url: $('#currency_kinds-datatable').data('source')
+      dom: 
+        "<'row'<'col-sm-3'l><'col-sm-7 text-center'B><'col-sm-2'f>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'row'<'col-sm-5'i><'col-sm-6 btn-sm'p>>"
+      pagingType: 'full_numbers'
+      columns: [
+        { data: 'name' }
+        { data: 'actions' }
+      ]
+      columnDefs: [{
+        targets: -1
+        orderable: false
+      }]
+
 
     user_groups_index: ->
         $(@table_id).dataTable(
@@ -176,21 +197,6 @@ class window.Datatable
         )
 
     contracts_index: ->
-        $(@table_id).dataTable(
-            language:
-                search: "Procurar:"
-                info: "Registos: _START_ de _END_ de _TOTAL_ registos"
-                infoFiltered: " - filtrado de _MAX_ registos"
-                paginate: 
-                    previous: "Anterior",
-                    next: "Próximo"
-            dom: "<'row toolbar'<'col-lg-9'><'col-lg-3 text-right'f>>t<'col-lg-4'i><'col-lg-4 text-right'p>"   
-            search: "Pesquisar"
-            info: "Mostrando 0 até 0 de 0 registros"
-            ajax: $(@table_id).data('url')
-        )
-        
-    currency_kinds_index: ->
         $(@table_id).dataTable(
             language:
                 search: "Procurar:"
