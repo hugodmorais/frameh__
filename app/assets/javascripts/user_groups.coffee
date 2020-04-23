@@ -1,6 +1,6 @@
 user_groups =
   index: ->
-    frameh_table = new FramehDatatable('user_groups_table')
+    frameh_table = new Datatable()
     frameh_table.user_groups_index()
     
   form: ->

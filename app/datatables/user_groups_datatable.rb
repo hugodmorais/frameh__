@@ -1,92 +1,35 @@
 class UserGroupsDatatable < ApplicationDatatable
-    delegate :user_group_path, to: :@view
-    delegate :edit_user_group_path, to: :@view
-  
-    def valid?
-      true
-    end
-  
-    def data
-      @user_groups.map do |user_group|
-        [].tap do |row|
-          row << user_group.id
-          row << user_group.name
-          row << user_group.birth_date.strftime("%F")
-          row << user_group.to_s
-          links = [].tap do |link|
-            link << link_to(user_group_path(user_group)) do
-              content_tag :i, '', class: 'fa fa-eye'
-            end
-            link << link_to(edit_user_group_path(user_group)) do
-                content_tag :i, '', class: 'fa fa-edit'
-            end
-            link << link_to(user_group_path(user_group), method: :delete, data: { confirm: t(:remove_item, count: 0) }) do
-                content_tag :i, '', class: 'fa fa-times'
-            end
-          end
-          row << links.join(' ')
-        end
-      end
-    end
-  
-    def count
-      measures.count
-    end
-  
-    def total_entries
-      10
-    end
-  
-    def measures
-      @user_groups ||= fetch_records
-    end
-  
-    def fetch_records
-      query = []
-      search_values = params[:search][:value] if params[:search].present?  
-      @user_groups = UserGroup.all
 
-      if search_values.present?
-        search_values = search_values.split
-        # Search in month description
-        search_values.each do |search_value|
-          month_numbers = months_to_search(search_value)
-          query << "EXTRACT(MONTH FROM date_at) IN (#{month_numbers.join(', ')})" if month_numbers.any?
-        end
-        # CAST all fields to string
-        search_columns.each do |term|
-          query << "CAST(#{term} AS VARCHAR) ~* :search"
-        end
-  
-        search_values.each do |search_value|
-          search_value.sub! ',', '.' # replace , with . to do numeric search
-          user_groups = user_groups.where(query.join(' or '), search: Regexp.escape(search_value))
-        end
-      end
-      @user_groups
-    end
-  
-    def order_columns
-      %w[
-        id
-        name
-        genre
-        birth_date
-      ]
-    end
-  
-    def search_columns
-      %w[
-        id
-        name
-        genre
-        birth_date
-      ]
-    end
-  
-    def months_to_search(search_value)
-      months = t('date.month_names').map(&:to_s).map(&:downcase)
-      months.each_index.select { |i| months[i].include?(search_value.downcase) }
+  def view_columns
+    @view_columns ||= {
+      name: { source: "UserGroup.name" },
+      birth_date: { source: "UserGroup.birth_date" },
+      genre: { source: "UserGroup.genre" },
+      actions: { source: "UserGroup.id", sortable: false, searchable: false }
+    }
+  end
+
+  private
+
+  def data
+    records.map do |record|
+      {
+        name: record.name,
+        birth_date: record.birth_date,
+        genre: record.genre,
+        actions: show_action(record).html_safe
+      }
     end
   end
+
+  def get_raw_records
+    UserGroup.all
+  end
+
+  def show_action(record)
+    actions = "<a href='/user_groups/#{record.id}'><i class='fa fa-eye'></i></a> "
+    actions += "<a href='/user_groups/#{record.id}/edit'><i class='fa fa-edit'></i></a> "
+    actions += "<a data-confirm='Tem a certeza que pretende eliminar?'' rel='nofollow' data-method='delete' href='/user_groups/#{record.id}'><i class='fa fa-times'></i></a>"
+  end
+end
   
