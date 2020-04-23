@@ -6,7 +6,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 accounts =
   index: ->
-    frameh_table = new FramehDatatable('accounts_table')
+    frameh_table = new Datatable()
     frameh_table.accounts_index()
     
 $(document).on 'turbolinks:load', ->

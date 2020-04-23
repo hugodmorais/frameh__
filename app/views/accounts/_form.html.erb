@@ -1,110 +1,102 @@
 <%= form_for account do |f| %>
-  <div class="col-sm-12">
-    <div class="form-group <%= 'has-error' if account.errors['name'].present? %>">
-      <%= f.label :name do %>
-        <%= t(:name) %></span>
-      <% end %>
-      <%= f.text_field :name, class: 'form-control' %>
-      <% if account.errors[:name].present? %>
-        <span class="help-block text-danger">
-          <small><%= account.errors[:name].first %></small>
-        </span>
-      <% end %>
-    </div>
+  <div class="form-group <%= 'has-error' if account.errors['name'].present? %>">
+    <%= f.label :name do %>
+      <%= t(:name) %></span>
+    <% end %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <% if account.errors[:name].present? %>
+      <span class="help-block text-danger">
+        <small><%= account.errors[:name].first %></small>
+      </span>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="col-sm-4">
-        <div class="form-group <%= 'has-error' if account.errors['main_account'].present? %>">
-          <%= f.label :main_account do %>
-            <%= t(:main_account) %>?&emsp; &emsp;&nbsp;&nbsp;</span>
-          <% end %>
-          <%= f.check_box :main_account, id: 'main_account' %>
-            <label></label>
-          <% if account.errors[:main_account].present? %>
-            <span class="help-block text-danger">
-              <small><%= account.errors[:main_account].first %></small>
-            </span>
-          <% end %>
-        </div>
+  <div class="row pt-3">
+    <div class="col-sm-4">
+      <div class="form-group <%= 'has-error' if account.errors['main_account'].present? %>">
+        <%= f.label :main_account do %>
+          <%= t(:main_account) %>?&emsp; &emsp;&nbsp;&nbsp;</span>
+        <% end %>
+        <%= f.check_box :main_account, id: 'main_account' %>
+          <label></label>
+        <% if account.errors[:main_account].present? %>
+          <span class="help-block text-danger">
+            <small><%= account.errors[:main_account].first %></small>
+          </span>
+        <% end %>
       </div>
-      <div class="col-sm-4">
-        <div class="form-group <%= 'has-error' if account.errors['credit_account'].present? %>">
-          <%= f.label :credit_account do %>
-            <%= t(:credit_account) %>?&emsp; &emsp;&nbsp;</span>
-          <% end %>
-          <%= f.check_box :credit_account, id: 'credit_account' %>
-            <label></label>
-          <% if account.errors[:credit_account].present? %>
-            <span class="help-block text-danger">
-              <small><%= account.errors[:credit_account].first %></small>
-            </span>
-          <% end %>
-        </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group <%= 'has-error' if account.errors['credit_account'].present? %>">
+        <%= f.label :credit_account do %>
+          <%= t(:credit_account) %>?&emsp; &emsp;&nbsp;</span>
+        <% end %>
+        <%= f.check_box :credit_account, id: 'credit_account' %>
+          <label></label>
+        <% if account.errors[:credit_account].present? %>
+          <span class="help-block text-danger">
+            <small><%= account.errors[:credit_account].first %></small>
+          </span>
+        <% end %>
       </div>
-      <div class="col-sm-4">
-        <div class="form-group <%= 'has-error' if account.errors['savings_account'].present? %>">
-          <%= f.label :savings_account do %>
-            <%= t(:savings_account) %>?&emsp; &emsp;</span>
-          <% end %>
-          <%= f.check_box :savings_account, id: 'savings_account' %>
-            <label></label>
-          <% if account.errors[:savings_account].present? %>
-            <span class="help-block text-danger">
-              <small><%= account.errors[:savings_account].first %></small>
-            </span>
-          <% end %>
-        </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group <%= 'has-error' if account.errors['savings_account'].present? %>">
+        <%= f.label :savings_account do %>
+          <%= t(:savings_account) %>?&emsp; &emsp;</span>
+        <% end %>
+        <%= f.check_box :savings_account, id: 'savings_account' %>
+          <label></label>
+        <% if account.errors[:savings_account].present? %>
+          <span class="help-block text-danger">
+            <small><%= account.errors[:savings_account].first %></small>
+          </span>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
-      <div class="col-xs-6">
-        <div class="form-group <%= 'has-error' if account.errors['currency_kind'].present? %>">
-          <%= f.label :currency_kind do %>
-            <%= t(:currency_kind) %></span>
-          <% end %>
-            <%= f.collection_select :currency_kind_id, @currency_kinds, :id, :name, { prompt: true }, class: 'form-control' %>
-          <% if account.errors[:currency_kind].present? %>
-            <span class="help-block text-danger">
-              <small><%= account.errors[:currency_kind].first %></small>
-            </span>
-          <% end %>
-        </div>
+    <div class="col-md-6">
+      <div class="form-group <%= 'has-error' if account.errors['currency_kind'].present? %>">
+        <%= f.label :currency_kind do %>
+          <%= t(:currency_kind) %></span>
+        <% end %>
+          <%= f.collection_select :currency_kind_id, @currency_kinds, :id, :name, { prompt: true }, class: 'form-control' %>
+        <% if account.errors[:currency_kind].present? %>
+          <span class="help-block text-danger">
+            <small><%= account.errors[:currency_kind].first %></small>
+          </span>
+        <% end %>
       </div>
-      <div class="col-xs-6">
-        <div class="form-group <%= 'has-error' if account.errors['country'].present? %>">
-          <%= f.label :country do %>
-            <%= t(:country) %></span>
-          <% end %>
-          <%= f.text_field :country, class: 'form-control' %>
-          <% if account.errors[:country].present? %>
-            <span class="help-block text-danger">
-              <small><%= account.errors[:country].first %></small>
-            </span>
-          <% end %>
-        </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group <%= 'has-error' if account.errors['country'].present? %>">
+        <%= f.label :country do %>
+          <%= t(:country) %></span>
+        <% end %>
+        <%= f.text_field :country, class: 'form-control' %>
+        <% if account.errors[:country].present? %>
+          <span class="help-block text-danger">
+            <small><%= account.errors[:country].first %></small>
+          </span>
+        <% end %>
       </div>
     </div>
   </div>
-  <div class="col-xs-12">
-    <div class="form-group <%= 'has-error' if account.errors['description'].present? %>">
-      <%= f.label :description do %>
-        <%= t(:description) %></span>
-      <% end %>
-      <%= f.text_area :description, class: 'form-control' %>
-      <% if account.errors[:description].present? %>
-        <span class="help-block text-danger">
-          <small><%= account.errors[:description].first %></small>
-        </span>
-      <% end %>
+  <div class="form-group <%= 'has-error' if account.errors['description'].present? %>">
+    <%= f.label :description do %>
+      <%= t(:description) %></span>
+    <% end %>
+    <%= f.text_area :description, class: 'form-control', rows: '4' %>
+    <% if account.errors[:description].present? %>
+      <span class="help-block text-danger">
+        <small><%= account.errors[:description].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 m-t-15">
+      <%= f.submit 'Guardar', class: 'btn btn-primary btn-sm' %>
+      <%= link_to "Cancelar", accounts_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
     </div>
-    <div class="row">
-      <div class="col-sm-10 m-t-15">
-        <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-        <%= link_to "Cancelar", accounts_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-      </div>
-    </div>
-  </div>  
+  </div>
 <% end %>
