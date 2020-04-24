@@ -1,107 +1,113 @@
 <%= form_for contract do |f| %>
-  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['name'].present? %>">
-    <%= f.label :name do %>
-      <%= t(:name) %></span>
-    <% end %>
-    <%= f.text_field :name, placeholder: "Nome", class: 'form-control', rows: "10" %>
-    <% if contract.errors[:name].present? %>
-      <span class="help-block text-danger">
-        <small><%= contract.errors[:name].first %></small>
-      </span>
-    <% end %>
+  <div class="row">
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['name'].present? %>">
+      <%= f.label :name do %>
+        <%= t(:name) %></span>
+      <% end %>
+      <%= f.text_field :name, placeholder: "Nome", class: 'form-control' %>
+      <% if contract.errors[:name].present? %>
+        <span class="help-block text-danger">
+          <small><%= contract.errors[:name].first %></small>
+        </span>
+      <% end %>
+    </div>
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['number'].present? %>">
+      <%= f.label :number do %>
+        <%= t(:contract_number) %></span>
+      <% end %>
+      <%= f.text_field :number, placeholder: "Número de Contrato", class: 'form-control' %>
+      <% if contract.errors[:number].present? %>
+        <span class="help-block text-danger">
+          <small><%= contract.errors[:number].first %></small>
+        </span>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['number'].present? %>">
-    <%= f.label :number do %>
-      <%= t(:contract_number) %></span>
-    <% end %>
-    <%= f.text_field :number, placeholder: "Número de Contrato", class: 'form-control', rows: "10" %>
-    <% if contract.errors[:number].present? %>
-      <span class="help-block text-danger">
-        <small><%= contract.errors[:number].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group col-md-12<%= 'has-error' if contract.errors['description'].present? %>">
+  <div class="form-group <%= 'has-error' if contract.errors['description'].present? %>">
     <%= f.label :description do %>
       <%= t(:description) %></span>
     <% end %>
-    <%= f.text_area :description, placeholder: "Descrição", class: 'form-control', rows: "10" %>
+    <%= f.text_area :description, placeholder: "Descrição", class: 'form-control', rows: "4" %>
     <% if contract.errors[:description].present? %>
       <span class="help-block text-danger">
         <small><%= contract.errors[:description].first %></small>
       </span>
     <% end %>
   </div>
-  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['start_date'].present? %>">
-    <%= f.label :start_date do %>
-      <%= t(:start_date) %></span>
-    <% end %>
-    <%= f.text_field :start_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
-    <% if contract.errors[:start_date].present? %>
-      <span class="help-block text-danger">
-        <small><%= contract.errors[:start_date].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['end_date'].present? %>">
-    <%= f.label :end_date do %>
-      <%= t(:end_date) %></span>
-    <% end %>
-    <%= f.text_field :end_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
-    <% if contract.errors[:end_date].present? %>
-      <span class="help-block text-danger">
-        <small><%= contract.errors[:end_date].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group col-md-6">
-    <%= f.label :user_group_id do %>
-      <%= t(:user) %></span>
-    <% end %>
-    <%= f.collection_select :user_group_id, @user_groups, :id, :name, { prompt: true }, class: 'form-control' %>
-  </div>
-  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
-    <%= f.label :company_id do %>
-      <%= t(:company) %></span>
-    <% end %>
-    <%= f.collection_select :company_id, @companies, :id, :name, { prompt: true }, class: 'form-control' %>
-    <% if contract.errors[:company].present? %>
-      <span class="help-block text-danger">
-        <small><%= contract.errors[:company].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
-    <%= f.label :contract_status do %>
-      <%= t(:status) %></span>
-    <% end %>
-      <%= f.collection_select :contract_status_id, @contract_statuses, :id, :name, { prompt: true }, class: 'form-control' %>
-    <% if contract.errors[:company].present? %>
-      <span class="help-block text-danger">
-        <small><%= contract.errors[:company].first %></small>
-      </span>
-    <% end %>
-  </div>
-  <div class="form-group col-md-4 <%= 'has-error' if contract.errors['job'].present? %>">
-    <%= f.label :job do %>
-      <%= t(:contract_job) %>?
-    <% end %>
-    <div class="row p-l-r-30">
-      <%= f.check_box :job %>
-        <label></label>
-      <% if contract.errors[:job].present? %>
+  <div class="row">
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['start_date'].present? %>">
+      <%= f.label :start_date do %>
+        <%= t(:start_date) %></span>
+      <% end %>
+      <%= f.text_field :start_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
+      <% if contract.errors[:start_date].present? %>
         <span class="help-block text-danger">
-          <small><%= contract.errors[:job].first %></small>
+          <small><%= contract.errors[:start_date].first %></small>
+        </span>
+      <% end %>
+    </div>
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['end_date'].present? %>">
+      <%= f.label :end_date do %>
+        <%= t(:end_date) %></span>
+      <% end %>
+      <%= f.text_field :end_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
+      <% if contract.errors[:end_date].present? %>
+        <span class="help-block text-danger">
+          <small><%= contract.errors[:end_date].first %></small>
         </span>
       <% end %>
     </div>
   </div>
-  <div class="form-group col-md-12">
-    <div class="row">
-      <div class="col-sm-10 m-t-15">
-        <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-        <%= link_to "Cancelar", contracts_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-      </div>
-    </div>  
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :user_group_id do %>
+        <%= t(:user) %></span>
+      <% end %>
+      <%= f.collection_select :user_group_id, @user_groups, :id, :name, { prompt: true }, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
+      <%= f.label :company_id do %>
+        <%= t(:company) %></span>
+      <% end %>
+      <%= f.collection_select :company_id, @companies, :id, :name, { prompt: true }, class: 'form-control' %>
+      <% if contract.errors[:company].present? %>
+        <span class="help-block text-danger">
+          <small><%= contract.errors[:company].first %></small>
+        </span>
+      <% end %>
+    </div>
   </div>
+  <div class="row">
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
+      <%= f.label :contract_status do %>
+        <%= t(:status) %></span>
+      <% end %>
+        <%= f.collection_select :contract_status_id, @contract_statuses, :id, :name, { prompt: true }, class: 'form-control' %>
+      <% if contract.errors[:company].present? %>
+        <span class="help-block text-danger">
+          <small><%= contract.errors[:company].first %></small>
+        </span>
+      <% end %>
+    </div>
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['job'].present? %>">
+      <%= f.label :job do %>
+        <%= t(:contract_job) %>?
+      <% end %>
+      <div class="row p-l-r-30 pl-3">
+        <%= f.check_box :job %>
+          <label></label>
+        <% if contract.errors[:job].present? %>
+          <span class="help-block text-danger">
+            <small><%= contract.errors[:job].first %></small>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 m-t-15">
+      <%= f.submit 'Guardar', class: 'btn btn-primary btn-sm' %>
+      <%= link_to "Cancelar", contracts_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+    </div>
+  </div>  
 <% end %>
