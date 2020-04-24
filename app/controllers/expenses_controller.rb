@@ -6,7 +6,10 @@ class ExpensesController < ApplicationController
   before_action :require_logged_in_user, :require_annual_management
 
   def index
-    @expenses = Expense.in_year(Current.year)
+    respond_to do |format|
+      format.html
+      format.json { render json: ExpensesDatatable.new(params, view_context: view_context) }
+    end
   end
   
   def new
