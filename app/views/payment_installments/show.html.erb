@@ -1,14 +1,16 @@
-<!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('payment_installments.payment_installments'), payment_installments_path)] %>
-<% @current_bread_name = @payment_installment.name %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="col-xs-12">
-    <div class="panel-heading">
-      <h1 class="panel-title text-center">Pagamento</h1>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4>Pagamento</h4>
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 table-responsive">
+  </div>
+</div>
+ <div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="container pt-4">
         <form class="form-horizontal">
           <div class="form-group">
             <label class="col-sm-2 control-label"><%= t(:name) %></label>
@@ -60,7 +62,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-9 m-t-15">
-                <%= link_to "Sair", payment_installments_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
+              <%= link_to "Sair", payment_installments_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
             </div>
           </div>
         </form>
@@ -68,4 +70,13 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
 

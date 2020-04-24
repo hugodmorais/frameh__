@@ -1,17 +1,24 @@
-<!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('payment_installments.payment_installments'), payment_installments_url)] %>
-<% @current_bread_name = t('payment_installments.new') %>
-<!-- End Breadcrumb -->
-<div class="row">
-  <div class="offset-1 col-lg-10">
-    <div class="panel-heading">
-      <h1 class="panel-title text-center"><%= t('payment_installments.new') %></h1>
-    </div>
-    <div class="panel-body">
-      <%= render 'form', payment_installment: @payment_installment %>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4><%= t('payment_installments.new') %></h4>
+      </div>
     </div>
   </div>
 </div>
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="container pt-4">
+        <%= render 'form', payment_installment: @payment_installment %>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+
 
   
   
