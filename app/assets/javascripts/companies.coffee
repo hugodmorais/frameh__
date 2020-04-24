@@ -1,7 +1,7 @@
 
 companies =
   index: ->
-    frameh_table = new FramehDatatable('companies_table')
+    frameh_table = new Datatable()
     frameh_table.companies_index()
     
 $(document).on 'turbolinks:load', ->

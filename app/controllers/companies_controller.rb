@@ -1,56 +1,58 @@
 class CompaniesController < ApplicationController
-    before_action :set_company, only: [:edit, :show, :update, :destroy]
-    before_action :require_logged_in_user
+  before_action :set_company, only: [:edit, :show, :update, :destroy]
+  before_action :require_logged_in_user
 
-    def index
-        @companies = Company.where(user: current_user).paginate(page: params[:page], per_page: 9)
+  def index
+    respond_to do |format|
+      format.html
+      format.json { render json: CompaniesDatatable.new(params, view_context: view_context) }
     end
-    
-    def new
-        @company = Company.new
-    end
+  end
+  
+  def new
+    @company = Company.new
+  end
 
-    def edit
-    end  
+  def edit
+  end  
 
-    def create
-        @company = Company.new(company_params)
-        @company.user = current_user
-        if @company.save
-            flash[:success] = "Company was successfully created!"
-            redirect_to company_path(@company)
-        else
-            render 'new'
-        end
-    end
-
-    def update
-    if @company.update(company_params)
-        flash[:success] = "Company was successfully updated!"
-        redirect_to company_path(@company)
+  def create
+    @company = Company.new(company_params)
+    @company.user = current_user
+    if @company.save
+      flash[:success] = "Company was successfully created!"
+      redirect_to company_path(@company)
     else
-        render 'edit'
+      render 'new'
     end
-    end
+  end
 
-    def show
+  def update
+    if @company.update(company_params)
+      flash[:success] = "Company was successfully updated!"
+      redirect_to company_path(@company)
+    else
+      render 'edit'
     end
+  end
 
-    def destroy
-        @company.destroy
+  def show
+  end
 
-        flash[:danger] = "Article was successefully destroy"
-        redirect_to companies_path
-    end
-    
+  def destroy
+    @company.destroy
 
-    private
+    flash[:danger] = "Article was successefully destroy"
+    redirect_to companies_path
+  end
+  
+  private
 
-    def set_company
-        @company = Company.find(params[:id])
-    end
-    
-    def company_params
-        params.require(:company).permit!
-    end
+  def set_company
+    @company = Company.find(params[:id])
+  end
+  
+  def company_params
+    params.require(:company).permit!
+  end
 end
