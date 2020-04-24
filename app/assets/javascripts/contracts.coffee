@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 contracts =
   index: ->
-    frameh_table = new FramehDatatable('contracts_table')
+    frameh_table = new Datatable()
     frameh_table.contracts_index()
     
   form: ->

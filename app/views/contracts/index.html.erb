@@ -17,17 +17,13 @@
         <% end %>
       </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
-        <table id="companies-datatable" class="table table-hover datatables" data-source="<%= companies_path(format: :json) %>">
+        <table id="contracts-datatable" class="table table-hover datatables" data-source="<%= contracts_path(format: :json) %>">
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Numero</th>
-              <th>Descrição</th>
               <th>Data de Inicio</th>
               <th>Data de Fim</th>
               <th>Estado</th>
-              <th>Utilizador</th>
-              <th>Empresa</th>
               <th>Ações</th>
             </tr>
           </thead>

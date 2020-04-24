@@ -1,107 +1,36 @@
 class ContractsDatatable < ApplicationDatatable
-    delegate :contract_path, to: :@view
-    delegate :edit_contract_path, to: :@view
-  
-    def valid?
-      true
-    end
-  
-    def data
-      @contracts.map do |contract|
-        [].tap do |row|
-          row << contract.id
-          row << contract.name
-          row << contract.number
-          row << contract.description
-          row << contract.start_date
-          row << contract.end_date
-          row << contract.contract_status&.name
-          row << contract.user_group&.first_name
-          row << contract.company&.name
-          links = [].tap do |link|
-            link << link_to(contract_path(contract)) do
-              content_tag :i, '', class: 'fa fa-eye'
-            end
-            link << link_to(edit_contract_path(contract)) do
-                content_tag :i, '', class: 'fa fa-edit'
-            end
-            link << link_to(contract_path(contract), method: :delete, data: { confirm: t(:remove_item, count: 0) }) do
-                content_tag :i, '', class: 'fa fa-times'
-            end
-          end
-          row << links.join(' ')
-        end
-      end
-    end
-  
-    def count
-      contracts.count
-    end
-  
-    def total_entries
-      10
-    end
-  
-    def contracts
-      @contracts ||= fetch_records
-    end
-  
-    def fetch_records
-      query = []
-      search_values = params[:search][:value] if params[:search].present?  
-      @contracts = Contract.all
 
-      if search_values.present?
-        search_values = search_values.split
-        # Search in month description
-        search_values.each do |search_value|
-          month_numbers = months_to_search(search_value)
-          query << "EXTRACT(MONTH FROM date_at) IN (#{month_numbers.join(', ')})" if month_numbers.any?
-        end
-        # CAST all fields to string
-        search_columns.each do |term|
-          query << "CAST(#{term} AS VARCHAR) ~* :search"
-        end
-  
-        search_values.each do |search_value|
-          search_value.sub! ',', '.' # replace , with . to do numeric search
-          contracts = contracts.where(query.join(' or '), search: Regexp.escape(search_value))
-        end
-      end
-      @contracts
-    end
-  
-    def order_columns
-      %w[
-        id
-        name
-        number
-        description
-        start_date
-        end_date
-        contract_status
-        user_group
-        company
-      ]
-    end
-  
-    def search_columns
-      %w[
-        id
-        name
-        number
-        description
-        start_date
-        end_date
-        contract_status
-        user_group
-        company
-      ]
-    end
-  
-    def months_to_search(search_value)
-      months = t('date.month_names').map(&:to_s).map(&:downcase)
-      months.each_index.select { |i| months[i].include?(search_value.downcase) }
+  def view_columns
+    @view_columns ||= {
+      name: { source: "Contract.name" },
+      start_date: { source: "Contract.start_date" },
+      end_date: { source: "Contract.end_date" },
+      contract_status: { source: "Contract.name" },
+      actions: { source: "Contract.id", sortable: false, searchable: false }
+    }
+  end
+
+  private
+
+  def data
+    records.map do |record|
+      {
+        name: record.name,
+        start_date: record.start_date,
+        end_date: record.end_date,
+        contract_status: record.contract_status.name,
+        actions: show_action(record).html_safe
+      }
     end
   end
-  
+
+  def get_raw_records
+    Contract.all
+  end
+
+  def show_action(record)
+    actions = "<a href='/contracts/#{record.id}'><i class='fa fa-eye'></i></a> "
+    actions += "<a href='/contracts/#{record.id}/edit'><i class='fa fa-edit'></i></a> "
+    actions += "<a data-confirm='Tem a certeza que pretende eliminar?'' rel='nofollow' data-method='delete' href='/contracts/#{record.id}'><i class='fa fa-times'></i></a>"
+  end  
+end
