@@ -17,13 +17,12 @@
         <% end %>
       </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
-        <table id="incomes-datatable" class="table table-hover datatables" data-source="<%= incomes_path(format: :json) %>">
+        <table id="payment_installments-datatable" class="table table-hover datatables" data-source="<%= payment_installments_path(format: :json) %>">
           <thead>
             <tr>
               <th>Nome</th>
               <th>Nº Parcelas</th>
               <th>Valor total</th>
-              <th>Entidade</th>
               <th>Valor Mensal</th>
               <th>Valor já Pago</th>
               <th>Ações</th>
@@ -34,56 +33,3 @@
     </div>
   </div>
 </div>
-
-<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Importar / Exportar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= form_tag import_incomes_path, multipart: true do %>
-          <div class="btn-group col-lg-12">
-            <div class="col-lg-6">
-              <div class="row">
-              <%= file_field_tag :file, class: 'btn btn-outline-primary m-l-5' %>
-              <%= button_tag(type: "submit", class: "btn btn-primary btn-sm waves-effect waves-light") do %>
-                <i class="fas fa-cloud-upload-alt"></i>
-              <% end %>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <span style="color: Tomato;">
-                <i class="fas fa-info-circle fa-2x p-t-4 p-l-5"></i>
-              </span>
-              <span class="p-t-10 p-l-5">Escolha o ficheiro das receitas!</span>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="modal-body">
-        <div class="btn-group col-lg-12" data-turbolinks="false">
-          <div class="col-lg-6 float-right">
-            <%= link_to incomes_template_incomes_path, class: 'btn btn-primary m-l-5 float-right' do %>
-              <%= 'Receitas' %>
-              <i class="m-l-5 fas fa-cloud-download-alt"></i>
-            <% end %>
-          </div>
-          <div class="col-lg-6">
-          <span style="color: Tomato;">
-            <i class="fas fa-info-circle fa-2x p-t-4 p-l-5"></i>
-          </span>
-          <span class="p-t-10 p-l-5">Faça download do template!</span>
-        </div>
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-  

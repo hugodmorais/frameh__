@@ -1,4 +1,5 @@
 class IncomesDatatable < ApplicationDatatable
+  
   def view_columns
     @view_columns ||= {
       month: { source: "Income.month" },

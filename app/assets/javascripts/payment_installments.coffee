@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 payment_installments =
   index: ->
-    frameh_table = new FramehDatatable('payment_installments_table')
+    frameh_table = new Datatable()
     frameh_table.payment_installments_index()
     
   form: ->
