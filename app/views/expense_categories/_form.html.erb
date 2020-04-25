@@ -1,13 +1,13 @@
 
-<%= form_for expense_category do |f| %>
-  <div class="form-group <%= 'has-error' if expense_category.errors['name'].present? %>">
-    <%= f.label :expense_category do %>
+<%= form_for @expense_category do |f| %>
+  <div class="form-group <%= 'has-error' if @expense_category.errors['name'].present? %>">
+    <%= f.label :@expense_category do %>
       <%= t(:name) %></span>
     <% end %>
     <%= f.text_field :name, class: 'form-control' %>
-    <% if expense_category.errors['name'].present? %>
+    <% if @expense_category.errors['name'].present? %>
       <span class="help-block text-danger">
-        <small><%= expense_category.errors['name'].first %></small>
+        <small><%= @expense_category.errors['name'].first %></small>
       </span>
     <% end %>
   </div>
@@ -16,22 +16,22 @@
     <%= f.select :icon, nil, { include_blank: true }, class: "form-control fa", style: 'font-family: FontAwesome; color: #004080;' do %>
       <% options_for_select ExpenseCategory::CATEGORY_KINDS.map { |desc, index| [show_icon(desc), index] }, f.object.icon %>
     <% end %> 
-    <% if expense_category.errors[:icon].present? %>
+    <% if @expense_category.errors[:icon].present? %>
       <span class="help-block text-danger">
-        <small><%= expense_category.errors[:icon].first %></small>
+        <small><%= @expense_category.errors[:icon].first %></small>
       </span>
     <% end %>     
   </div>
-  <div class="form-group <%= 'has-error' if expense_category.errors['primary_payment'].present? %>">
+  <div class="form-group <%= 'has-error' if @expense_category.errors['primary_payment'].present? %>">
     <%= f.label :primary_payment do %>
       <%= t(:primary_category) %>?
     <% end %>
-    <div class="row p-l-r-30">
+    <div class="row p-l-r-30 pl-3">
       <%= f.check_box :primary_payment %>
         <label></label>
-      <% if expense_category.errors[:primary_payment].present? %>
+      <% if @expense_category.errors[:primary_payment].present? %>
         <span class="help-block text-danger">
-          <small><%= expense_category.errors[:primary_payment].first %></small>
+          <small><%= @expense_category.errors[:primary_payment].first %></small>
         </span>
       <% end %>
     </div>

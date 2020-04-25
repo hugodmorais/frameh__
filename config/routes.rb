@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "dashboard#index"
-  get 'dashboard', to: 'dashboard#index'
+  root 'dashboard#index'
+  get 'dashboard/index', as: 'dashboard'
+
+  # root to: "dashboard#index"
+  # get 'dashboard', to: 'dashboard#index'
   get 'testes', to: 'dashboard#testes'
 
   get 'index', to: 'static_pages#index'
