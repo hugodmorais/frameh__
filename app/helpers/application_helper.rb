@@ -65,6 +65,26 @@ module ApplicationHelper
     end
   end
 
+  def progress_bar(spent)
+    boundaries = ['success', 'warning', 'danger']
+    if spent > 99
+      bgcolor = boundaries[2]
+    elsif spent >= 90 
+      bgcolor = boundaries[1]
+    elsif spent < 90
+      bgcolor = boundaries[0]
+    end
+
+    content_tag :div, 
+                '', 
+                class: "progress-bar bg-#{bgcolor}", 
+                role: 'progressbar',
+                aria: 
+                  { valuenow: spent, valuemin: 0, valuemax: 100 }, 
+                style: "width: #{spent}%"
+      
+  end
+
   def valid_sheet_name(name)
     max_sheet_name_size = 31
     invalid_chars = %r{[\[\]\*/\\\?\:]}
@@ -106,6 +126,7 @@ module ApplicationHelper
     month = (Current.month - 1)
     expenses = Expense.where('month = ? AND annual_management_id = ?', month, AnnualManagement.find_by(year: Current.year).id)
     
+    return "<span>Atenção!</span><br><span>Pagar</span>".html_safe if expenses.blank?
     expenses.each do |e|
       status = ExpenseGroup.where(expense: e).find_by(expense_category: expense)
       if status.present?
