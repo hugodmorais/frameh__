@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'dashboard#index'
   get 'dashboard/index', as: 'dashboard'
 
+  get 'sessions/destroy'
   get 'testes', to: 'dashboard#testes'
 
   get 'index', to: 'static_pages#index'

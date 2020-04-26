@@ -22,11 +22,13 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
+      <% if current_user.present? %>
         <%= render 'layouts/sidebar' %>
 
         <%= render 'layouts/navbar' %>
-        
-        <%= yield %>
+      <% end %>
+      
+      <%= yield %>
 
       </div>
       <!-- Footer -->

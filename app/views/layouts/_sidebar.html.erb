@@ -5,21 +5,23 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle ml-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-      <i class="far fa-calendar-alt"></i>
-      <% if AnnualManagement.by_user(current_user).any? %>
-        <span><%= Current.year %></span>
-      <% end %>
-    </a>
-    <div class="dropdown-menu py-2">
-      <% AnnualManagement.by_user(current_user).each do |annual_management| %>
-        <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
-          <%= annual_management.year %>
+  <% if current_user.present? %>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle ml-2" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        <i class="far fa-calendar-alt"></i>
+        <% if AnnualManagement.by_user(current_user).any? %>
+          <span><%= Current.year %></span>
         <% end %>
-      <% end %>
-    </div>
-  </li>
+      </a>
+      <div class="dropdown-menu py-2">
+        <% AnnualManagement.by_user(current_user).each do |annual_management| %>
+          <%= link_to switch_annual_management_path(annual_management), class: 'dropdown-item' do %>
+            <%= annual_management.year %>
+          <% end %>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
   <hr class="sidebar-divider">
   <div class="sidebar-heading">
     Sistema
@@ -30,7 +32,7 @@
       <span>Configurações</span>
     </a>
     <div class="dropdown-menu py-2">
-      <% if current_user.admin? %>
+      <% if current_user.present? && current_user.admin? %>
         <%= link_to 'Contas Utilizadores', users_path, class: 'dropdown-item py-2' %>      
       <% end %>    
       <%= link_to 'Gestão Anual', annual_managements_path, class: 'dropdown-item py-2' %>    

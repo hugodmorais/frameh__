@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to dashboard_path
     else
       flash.now[:danger] = 'Email ou palavra-passe invalidos'
-      redirect_to root_path
+      render :create
     end
   end
 
