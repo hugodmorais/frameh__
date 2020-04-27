@@ -8,7 +8,6 @@ ruby '2.6.3'
 gem 'rails', '~> 6.0'
 # Use postgresql as the database for Active Record
 gem 'paperclip'
-gem "aws-sdk-s3", require: false
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
