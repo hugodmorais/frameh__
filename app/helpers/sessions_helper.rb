@@ -16,7 +16,7 @@ module SessionsHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def user_signed_in?
-    !current_user.nil?
+  def logged_in?
+    current_user.present? && current_user.active_state?
   end
 end
