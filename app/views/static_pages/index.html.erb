@@ -7,7 +7,7 @@
         <div class="card card-signin my-auto">
           <div class="card-body">
             <h5 class="card-title text-center">Entrar</h5>
-        		<%= form_for :session, url: entrar_path, method: :post do |f| %>
+        		<%= form_for :session, url: sessions_path, method: :post do |f| %>
               <div class="form-label-group">
               	<%= f.email_field :email, placeholder: 'Email', id: 'inputEmail', class: 'form-control' %>
                 <label for="inputEmail">Email</label>

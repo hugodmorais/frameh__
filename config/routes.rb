@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'dashboard#index'
+  root 'sessions#new'
   get 'dashboard/index', as: 'dashboard'
 
+  resources :sessions, only: [:new, :create]
   get 'sessions/destroy'
   get 'testes', to: 'dashboard#testes'
 
@@ -11,9 +12,6 @@ Rails.application.routes.draw do
   get 'sobre', to: 'static_pages#sobre'
   get 'contacto', to: 'static_pages#contacto'
   get 'work_groups_static', to: 'static_pages#work_groups_static'
-  get 'entrar', to: 'sessions#new'
-  post 'entrar', to: 'sessions#create'
-  delete 'sair', to: 'sessions#destroy'
   
   resources :dashboard do
     member do

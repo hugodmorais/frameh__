@@ -1,22 +1,36 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1>Entrar</h1>
-  </div>
-    <div class="col-md-6 col-md-offset-3 col-xs-12">
-      <!-- Campos de preenchimento do formulario -->
-      <%= form_for :session, url: entrar_path, method: :post do |f| %>
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
 
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.email_field :email, placeholder: 'Email', class: 'form-control' %>
+<body>
+  <div class="container login-page">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 login-card mx-auto">
+        <div class="card card-signin my-auto">
+          <div class="card-body">
+            <h5 class="card-title text-center">Entrar</h5>
+        		<%= form_for :session, url: sessions_path, method: :post do |f| %>
+              <div class="form-label-group">
+              	<%= f.email_field :email, placeholder: 'Email', id: 'inputEmail', class: 'form-control' %>
+                <label for="inputEmail">Email</label>
+              </div>
+
+              <div class="form-label-group">
+              	<%= f.password_field :password, id: 'inputPassword', placeholder: 'Palavra-passe', class: 'form-control' %>
+                <label for="inputPassword">Password</label>
+              </div>
+
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Lembrar password</label>
+              </div>
+							<%= f.submit 'Entrar', class: 'btn btn-lg btn-primary btn-block text-uppercase' %>
+              <%# <hr class="my-4">
+              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> %>
+						<% end %>
+          </div>
         </div>
-
-        <div class="form-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, placeholder: 'Palavra-passe', class: 'form-control' %>
-        </div>
-
-        <%= f.submit 'Entrar', class: 'btn btn-primary' %>
-      <% end %>
+      </div>
     </div>
-</div>
+  </div>
+</body>
+
