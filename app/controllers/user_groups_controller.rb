@@ -1,6 +1,5 @@
 class UserGroupsController < ApplicationController
   before_action :set_user_groups, only: [:edit, :show, :update, :destroy, :user_groups_table]
-  before_action :require_logged_in_user
   
   def index
     respond_to do |format|

@@ -1,6 +1,6 @@
 class IncomeCategoriesController < ApplicationController
   before_action :set_income_category, only: [:edit, :show, :update, :destroy]
-  before_action :require_logged_in_user, :require_annual_management
+  before_action :require_annual_management
 
   def index
     respond_to do |format|

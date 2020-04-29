@@ -4,7 +4,7 @@ class IncomesController < ApplicationController
   before_action :set_user_groups, only: [:new, :create, :edit, :update]
   before_action :set_income_categories, only: [:new, :create, :edit, :update, :incomes_template]
   before_action :set_companies, only: [:new, :create, :edit, :update]
-  before_action :require_logged_in_user, :require_annual_management
+  before_action :require_annual_management
 
   def index
     respond_to do |format|

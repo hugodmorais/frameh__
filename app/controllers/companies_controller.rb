@@ -1,6 +1,5 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:edit, :show, :update, :destroy]
-  before_action :require_logged_in_user
 
   def index
     respond_to do |format|

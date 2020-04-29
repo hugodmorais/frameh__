@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
   before_action :set_annual_managements, only: [:new, :create, :edit, :update]
   before_action :set_user_groups, only: [:new, :create, :edit, :update]
   before_action :set_expense_categories, only: [:new, :create, :edit, :update, :expenses_template]
-  before_action :require_logged_in_user, :require_annual_management
+  before_action :require_annual_management
 
   def index
     respond_to do |format|
