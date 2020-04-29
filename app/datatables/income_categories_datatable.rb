@@ -19,7 +19,7 @@ class IncomeCategoriesDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-    IncomeCategory.all
+    IncomeCategory.by_user(params[:current_user])
   end
 
   def show_action(record)
