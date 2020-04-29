@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
-        <table id="annual_managements-datatable" class="table table-hover datatables" data-source="<%= annual_managements_path(format: :json) %>">
+        <table id="annual_managements-datatable" class="table table-hover datatables" data-source="<%= annual_managements_path(current_user: current_user, format: :json) %>">
           <thead>
             <tr>
               <th>Ano</th>

@@ -1,11 +1,27 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  include SessionsHelper
 
+  before_action :require_login
   before_action :set_current_month
   before_action :set_current_annual_management
 
-  def current_user
-    return unless session[:user_id]
-    @current_user ||= User.find(session[:user_id])
+  def create_user_session(user)
+    destroy_user_session # Recomended by Rails Guides to clear session after login
+    session[:auth_token] = user.auth_token
+    self.current_user = user
+  end
+
+  def destroy_user_session
+    reset_session
+    self.current_user = nil
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = 'require_login'
+      redirect_to root_url
+    end
   end
 
   def current_user_group(ids)
@@ -17,8 +33,6 @@ class ApplicationController < ActionController::Base
 
     redirect_to warning_annual_path
   end
-
-  include SessionsHelper
 
   private
 

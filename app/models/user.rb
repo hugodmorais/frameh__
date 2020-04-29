@@ -12,7 +12,7 @@
 #
 
 class User < ApplicationRecord
-
+  include Tokenable
   has_secure_password
   has_one_attached :image
   # Includes
@@ -49,6 +49,7 @@ class User < ApplicationRecord
   # Callbacks
   before_save { self.email = email.downcase }
   after_save :set_setting_account
+  before_create :set_tokens
   
   # Constants Methods
 
@@ -59,6 +60,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def set_tokens
+    generate_token(:auth_token)
+  end
 
   def set_setting_account
     Setting.create!(user_id: User.last.id)

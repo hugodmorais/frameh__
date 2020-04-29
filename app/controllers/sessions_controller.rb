@@ -1,23 +1,23 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login
 
   def new
     redirect_to dashboard_url if logged_in?
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password])
-      sign_in(user)
+      create_user_session(user)
       redirect_to dashboard_url
     else
-      flash.now[:danger] = 'Email ou palavra-passe invalidos'
+      flash[:error] = "login_error"
       redirect_to root_url
     end
   end
 
   def destroy
-    sign_out
+    destroy_user_session
     redirect_to root_url
   end
-
 end

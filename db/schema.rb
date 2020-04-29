@@ -226,9 +226,11 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.string "email", default: "", null: false
     t.string "name", default: "", null: false
     t.string "password_digest", default: "", null: false
+    t.string "auth_token", null: false
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["auth_token"], name: "index_users_on_auth_token"
   end
 
   create_table "work_groups", force: :cascade do |t|
