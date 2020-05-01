@@ -43,11 +43,11 @@ class ExpenseCategory < ApplicationRecord
     
   
   # Validations
-  validates :name, :icon, presence: true
+  validates :name, presence: true
   validates :name, uniqueness: true
   
   # Scopes    
-  scope :by_user, ->(user) { where(user_id: user.id) }
+  scope :by_user, ->(user) { where(user_id: user) }
   
   # Callbacks
 

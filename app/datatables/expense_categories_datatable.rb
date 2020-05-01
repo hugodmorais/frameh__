@@ -23,7 +23,7 @@ class ExpenseCategoriesDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-    ExpenseCategory.all
+    ExpenseCategory.by_user(params[:current_user])
   end
 
   def show_action(record)

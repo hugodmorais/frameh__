@@ -11,30 +11,29 @@
       </span>
     <% end %>
   </div>
-  <div class="form-group">
-    <label>Icon</label>
-    <%= f.select :icon, nil, { include_blank: true }, class: "form-control fa", style: 'font-family: FontAwesome; color: #004080;' do %>
-      <% options_for_select ExpenseCategory::CATEGORY_KINDS.map { |desc, index| [show_icon(desc), index] }, f.object.icon %>
-    <% end %> 
-    <% if @expense_category.errors[:icon].present? %>
-      <span class="help-block text-danger">
-        <small><%= @expense_category.errors[:icon].first %></small>
-      </span>
-    <% end %>     
+  <div class="row">
+    <div class="form-group col-md-2">
+      <label>Icon</label>
+      <%= f.select :icon, nil, { include_blank: true }, class: "form-control fa", style: 'font-family: FontAwesome; color: #004080; font-size: 1.5rem;' do %>
+        <% options_for_select ExpenseCategory::CATEGORY_KINDS.map { |desc, index| [show_icon(desc), index] }, f.object.icon%>
+      <% end %> 
+      <% if @expense_category.errors[:icon].present? %>
+        <span class="help-block text-danger">
+          <small><%= @expense_category.errors[:icon].first %></small>
+        </span>
+      <% end %>     
+    </div>
   </div>
   <div class="form-group <%= 'has-error' if @expense_category.errors['primary_payment'].present? %>">
     <%= f.label :primary_payment do %>
       <%= t(:primary_category) %>?
     <% end %>
-    <div class="row p-l-r-30 pl-3">
-      <%= f.check_box :primary_payment %>
-        <label></label>
-      <% if @expense_category.errors[:primary_payment].present? %>
-        <span class="help-block text-danger">
-          <small><%= @expense_category.errors[:primary_payment].first %></small>
-        </span>
-      <% end %>
-    </div>
+    <span class="pl-2">
+      <%= f.radio_button :primary_payment, true %>
+      <%= f.label :primary_payment, "Sim", :value => "true", class: 'px-2' %>
+      <%= f.radio_button :primary_payment, false, :checked => true %>
+      <%= f.label :primary_payment, "Não", :value => "false", class: 'px-2' %>
+    </span>
   </div>
   <div class="row">
     <div class="col-sm-10 m-t-15">

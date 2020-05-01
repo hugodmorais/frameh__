@@ -88,10 +88,16 @@ class window.Datatable
         { data: 'icon' }
         { data: 'actions' }
       ]
-      columnDefs: [{
-        targets: -1
-        orderable: false
-      }]
+      columnDefs: [
+        {
+          targets: [1, 2],
+          className: 'text-center'
+        },
+        {
+          targets: 3,
+          className: 'text-right'
+        }
+      ]
 
   contract_statuses_index: ->
     @datatable = $('#contract_statuses-datatable').dataTable

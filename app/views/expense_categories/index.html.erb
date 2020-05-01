@@ -17,11 +17,11 @@
         <% end %>
       </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
-        <table id="expense_categories-datatable" class="table table-hover datatables" data-source="<%= expense_categories_path(format: :json) %>">
+        <table id="expense_categories-datatable" class="table table-hover datatables" data-source="<%= expense_categories_path(current_user: current_user, format: :json) %>">
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Categoria principal</th>
+              <th class="text-center">Categoria principal</th>
               <th>Icon</th>
               <th>Ações</th>
             </tr>
