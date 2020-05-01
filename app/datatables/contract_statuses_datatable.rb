@@ -19,7 +19,7 @@ class ContractStatusesDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-    ContractStatus.all
+    ContractStatus.by_user(params[:current_user])
   end
 
   def show_action(record)
