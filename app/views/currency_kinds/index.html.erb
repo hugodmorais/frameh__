@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
-        <table id="currency_kinds-datatable" class="table table-hover datatables" data-source="<%= currency_kinds_path(format: :json) %>">
+        <table id="currency_kinds-datatable" class="table table-hover datatables" data-source="<%= currency_kinds_path(current_user: current_user, format: :json) %>">
           <thead>
             <tr>
               <th>Nome</th>

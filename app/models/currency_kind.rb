@@ -27,7 +27,7 @@ class CurrencyKind < ApplicationRecord
     # Constants
     
     # Scopes
-    scope :by_user, ->(user) { where(user_id: user.id) }
+    scope :by_user, ->(user) { where(user_id: user) }
     
     # Callbacks
     

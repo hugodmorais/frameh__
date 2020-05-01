@@ -19,7 +19,7 @@ class CurrencyKindsDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-    CurrencyKind.all
+    CurrencyKind.by_user(params[:current_user])
   end
 
   def show_action(record)
