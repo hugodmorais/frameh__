@@ -17,16 +17,15 @@
         <% end %>
       </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
-        <table id="accounts-datatable" class="table table-hover datatables" data-source="<%= accounts_path(format: :json) %>">
+        <table id="accounts-datatable" class="table table-hover datatables" data-source="<%= accounts_path(current_user: current_user, format: :json) %>">
           <thead>
             <tr>
               <th>Nome</th>
+              <th>País</th>
               <th>Conta Principal</th>
               <th>C. Crédito</th>
               <th>Conta Poupança</th>
-              <th>País</th>
               <th>Moeda</th>
-              <th>Descrição</th>
               <th>Ações</th>
             </tr>
           </thead>

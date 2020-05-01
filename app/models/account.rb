@@ -36,12 +36,12 @@ class Account < ApplicationRecord
     # Constants
     
     # Scopes
-    scope :by_user, ->(user) { where(user_id: user.id) }
+    scope :by_user, ->(user) { where(user_id: user) }
 
     # Callbacks
     
     # Validations
-    validates :name, :country, presence: true
+    validates :name, :country, :currency_kind_id, presence: true
 
     # Constants Methods
     

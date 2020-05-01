@@ -25,6 +25,8 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="row pt-3">
     <div class="col-sm-4">
       <div class="form-group <%= 'has-error' if account.errors['credit_account'].present? %>">
         <%= f.label :credit_account do %>
@@ -39,6 +41,8 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="row pt-3">
     <div class="col-sm-4">
       <div class="form-group <%= 'has-error' if account.errors['savings_account'].present? %>">
         <%= f.label :savings_account do %>
@@ -56,14 +60,14 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <div class="form-group <%= 'has-error' if account.errors['currency_kind'].present? %>">
+      <div class="form-group <%= 'has-error' if account.errors['currency_kind_id'].present? %>">
         <%= f.label :currency_kind do %>
-          <%= t(:currency_kind) %></span>
+          Moeda
         <% end %>
-          <%= f.collection_select :currency_kind_id, @currency_kinds, :id, :name, { prompt: true }, class: 'form-control' %>
-        <% if account.errors[:currency_kind].present? %>
+        <%= f.collection_select :currency_kind_id, @currency_kinds, :id, :name, { prompt: true }, class: 'form-control' %>
+        <% if account.errors[:currency_kind_id].present? %>
           <span class="help-block text-danger">
-            <small><%= account.errors[:currency_kind].first %></small>
+            <small><%= account.errors[:currency_kind_id].first %></small>
           </span>
         <% end %>
       </div>

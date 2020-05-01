@@ -8,7 +8,6 @@ class AccountsDatatable < ApplicationDatatable
       credit_account: { source: "Account.credit_account" },
       savings_account: { source: "Account.savings_account" },
       currency_kind: { source: "Account.currency_kind.name" },
-      description: { source: "Account.description" },
       actions: { source: "Account.id", sortable: false, searchable: false }
     }
   end
@@ -24,14 +23,13 @@ class AccountsDatatable < ApplicationDatatable
         credit_account: record.credit_account? ? "<i class='fa fa-check'></i></a>".html_safe : "<i class='fa fa-times'></i></a>".html_safe,
         savings_account: record.savings_account? ? "<i class='fa fa-check'></i></a>".html_safe : "<i class='fa fa-times'></i></a>".html_safe,
         currency_kind: record.currency_kind.name,
-        description: record.description,
         actions: show_action(record).html_safe
       }
     end
   end
 
   def get_raw_records
-    Account.all
+    Account.by_user(params[:current_user])
   end
 
   def show_action(record)

@@ -160,13 +160,20 @@ class window.Datatable
         { data: 'credit_account' }
         { data: 'savings_account' }
         { data: 'currency_kind' }
-        { data: 'description' }
         { data: 'actions' }
       ]
       columnDefs: [{
-        targets: -1
-        orderable: false
-      }]
+          targets: [2, 3, 4, 5],
+          className: 'text-center'
+        },
+        {
+          targets: 6,
+          className: 'text-right'
+        },
+        {
+          targets: -1
+          orderable: false
+        }]
 
   financial_statements_index: ->
     @datatable = $('#financial_statements-datatable').dataTable
