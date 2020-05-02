@@ -15,7 +15,7 @@
       <%= t(:month) %></span>
     <% end %>
     <%= f.select :month, nil, { }, class: 'form-control' do %>
-      <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}) %>
+      <%= options_for_select((1..12).map {|m| [t("date.month_names")[m], m]}, @financial_statement.month) %>
     <% end %>
     <% if @financial_statement.errors[:month].present? %>
       <span class="help-block text-danger">

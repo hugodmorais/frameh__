@@ -13,11 +13,11 @@
       <div class="btn-group pull-left pl-5 pt-4">
         <%= link_to new_financial_statement_path, class: 'btn btn-primary btn-sm waves-effect waves-light' do %>
           <i class="m-l-5 fa fa-plus"></i>
-          <%= t('financial_statements.new') %>
+          Novo
         <% end %>
       </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
-        <table id="financial_statements-datatable" class="table table-hover datatables" data-source="<%= financial_statements_path(format: :json) %>">
+        <table id="financial_statements-datatable" class="table table-hover datatables" data-source="<%= financial_statements_path(current_user: current_user, format: :json) %>">
           <thead>
             <tr>
               <th>Mês</th>

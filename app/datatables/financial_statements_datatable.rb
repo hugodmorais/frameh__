@@ -13,7 +13,7 @@ class FinancialStatementsDatatable < ApplicationDatatable
   def data
     records.map do |record|
       {
-        month: record.month,
+        month: I18n.t('date.month_names')[record.month],
         account: record.account.name,
         actions: show_action(record).html_safe
       }
