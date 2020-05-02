@@ -23,6 +23,7 @@ class FinancialStatement < ApplicationRecord
     # Attributes
     
     # Associations
+    belongs_to :user
     belongs_to :annual_management
     belongs_to :account
     
@@ -31,7 +32,8 @@ class FinancialStatement < ApplicationRecord
     # Constants
     
     # Scopes
-    
+    scope :by_user, ->(user) { where(user_id: user) }
+
     # Callbacks
     
     # Validations

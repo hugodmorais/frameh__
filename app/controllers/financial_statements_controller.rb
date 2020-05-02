@@ -19,6 +19,7 @@ class FinancialStatementsController < ApplicationController
 
   def create
     @financial_statement = FinancialStatement.new(financial_statement_params)
+    @financial_statement.user_id = current_user.id
     if @financial_statement.save
       flash[:success] = "financial_statement was successfully created!"
       redirect_to financial_statement_path(@financial_statement)

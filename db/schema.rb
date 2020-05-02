@@ -141,11 +141,13 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.integer "month"
     t.decimal "total_balance"
     t.bigint "annual_management_id"
+    t.bigint "user_id"
     t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_financial_statements_on_account_id"
     t.index ["annual_management_id"], name: "index_financial_statements_on_annual_management_id"
+    t.index ["user_id"], name: "index_financial_statements_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -252,6 +254,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
   add_foreign_key "expense_categories", "users"
   add_foreign_key "expenses", "annual_managements"
   add_foreign_key "expenses", "users"
+  add_foreign_key "financial_statements", "users"
   add_foreign_key "groups", "expense_categories"
   add_foreign_key "income_categories", "users"
   add_foreign_key "incomes", "annual_managements"

@@ -5,6 +5,7 @@ class CreateFinancialStatements < ActiveRecord::Migration[5.2]
       t.decimal :total_balance
 
       t.references :annual_management
+      t.references :user, foreign_key: true
       t.references :account
       t.timestamps
     end
