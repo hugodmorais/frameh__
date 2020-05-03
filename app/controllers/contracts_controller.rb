@@ -21,6 +21,7 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new(contract_params)
+    @contract.user = current_user
     if @contract.save
       flash[:success] = "contract was successfully created!"
       redirect_to contract_path(@contract)

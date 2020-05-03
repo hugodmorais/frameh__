@@ -3,6 +3,14 @@ module ApplicationHelper
     content_tag :div, '', id: 'info_hidden', class: 'hidden', data: options
   end
 
+  def show_check(record)
+    if record.present?
+      content_tag(:i, '', class: 'fa fa-check')
+    else
+      content_tag(:i, '', class: 'fa fa-times')
+    end
+  end
+
   def number_to_euro(amount)
     number_to_currency(amount, :unit=>'€')
   end

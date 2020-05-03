@@ -12,6 +12,7 @@ class CreateContracts < ActiveRecord::Migration[5.2]
       t.references :contract_status
       t.references :user_group
       t.references :company
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

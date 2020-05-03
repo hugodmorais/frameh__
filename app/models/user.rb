@@ -31,6 +31,7 @@ class User < ApplicationRecord
   has_many :contract_statuses
   has_many :accounts
   has_one :setting
+  has_many :contracts
   
   # Delegates
 

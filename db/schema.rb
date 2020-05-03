@@ -88,11 +88,13 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.bigint "contract_status_id"
     t.bigint "user_group_id"
     t.bigint "company_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["contract_status_id"], name: "index_contracts_on_contract_status_id"
     t.index ["user_group_id"], name: "index_contracts_on_user_group_id"
+    t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 
   create_table "currency_kinds", force: :cascade do |t|
@@ -250,6 +252,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
   add_foreign_key "annual_managements", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "contract_statuses", "users"
+  add_foreign_key "contracts", "users"
   add_foreign_key "currency_kinds", "users"
   add_foreign_key "expense_categories", "users"
   add_foreign_key "expenses", "annual_managements"

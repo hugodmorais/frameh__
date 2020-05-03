@@ -1,6 +1,6 @@
 <%= form_for contract do |f| %>
   <div class="row">
-    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['name'].present? %>">
+    <div class="form-group col-md-12 <%= 'has-error' if contract.errors['name'].present? %>">
       <%= f.label :name do %>
         <%= t(:name) %></span>
       <% end %>
@@ -11,6 +11,8 @@
         </span>
       <% end %>
     </div>
+  </div>
+  <div class="row">
     <div class="form-group col-md-6 <%= 'has-error' if contract.errors['number'].present? %>">
       <%= f.label :number do %>
         <%= t(:contract_number) %></span>
@@ -38,8 +40,8 @@
     <div class="form-group col-md-6 <%= 'has-error' if contract.errors['start_date'].present? %>">
       <%= f.label :start_date do %>
         <%= t(:start_date) %></span>
-      <% end %>
-      <%= f.text_field :start_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
+      <% end %><br>
+      <%= f.date_select :start_date, {:include_blank => true, start_year: Time.now.year - 100}, class: 'form-control', autocomplete: 'off' %>
       <% if contract.errors[:start_date].present? %>
         <span class="help-block text-danger">
           <small><%= contract.errors[:start_date].first %></small>
@@ -49,8 +51,8 @@
     <div class="form-group col-md-6 <%= 'has-error' if contract.errors['end_date'].present? %>">
       <%= f.label :end_date do %>
         <%= t(:end_date) %></span>
-      <% end %>
-      <%= f.text_field :end_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
+      <% end %><br>
+      <%= f.date_select :end_date, {:include_blank => true, start_year: Time.now.year - 100}, class: 'form-control', autocomplete: 'off' %>
       <% if contract.errors[:end_date].present? %>
         <span class="help-block text-danger">
           <small><%= contract.errors[:end_date].first %></small>
@@ -65,43 +67,40 @@
       <% end %>
       <%= f.collection_select :user_group_id, @user_groups, :id, :name, { prompt: true }, class: 'form-control' %>
     </div>
-    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company_id'].present? %>">
       <%= f.label :company_id do %>
         <%= t(:company) %></span>
       <% end %>
       <%= f.collection_select :company_id, @companies, :id, :name, { prompt: true }, class: 'form-control' %>
-      <% if contract.errors[:company].present? %>
+      <% if contract.errors[:company_id].present? %>
         <span class="help-block text-danger">
-          <small><%= contract.errors[:company].first %></small>
+          <small><%= contract.errors[:company_id].first %></small>
         </span>
       <% end %>
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['company'].present? %>">
+    <div class="form-group col-md-6 <%= 'has-error' if contract.errors['contract_status_id'].present? %>">
       <%= f.label :contract_status do %>
         <%= t(:status) %></span>
       <% end %>
         <%= f.collection_select :contract_status_id, @contract_statuses, :id, :name, { prompt: true }, class: 'form-control' %>
-      <% if contract.errors[:company].present? %>
+      <% if contract.errors[:contract_status_id].present? %>
         <span class="help-block text-danger">
-          <small><%= contract.errors[:company].first %></small>
+          <small><%= contract.errors[:contract_status_id].first %></small>
         </span>
       <% end %>
     </div>
     <div class="form-group col-md-6 <%= 'has-error' if contract.errors['job'].present? %>">
       <%= f.label :job do %>
         <%= t(:contract_job) %>?
-      <% end %>
-      <div class="row p-l-r-30 pl-3">
-        <%= f.check_box :job %>
-          <label></label>
-        <% if contract.errors[:job].present? %>
-          <span class="help-block text-danger">
-            <small><%= contract.errors[:job].first %></small>
-          </span>
-        <% end %>
-      </div>
+      <% end %><br>
+      <span class="pl-1">
+        <%= f.radio_button :job, true %>
+        <%= f.label :job, "Sim", :value => "true", class: 'px-2' %>
+        <%= f.radio_button :job, false, :checked => true %>
+        <%= f.label :job, "Não", :value => "false", class: 'px-2' %>
+      </span>
     </div>
   </div>
   <div class="row">

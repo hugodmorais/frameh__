@@ -18,6 +18,9 @@
 *= require datatables/dataTables.bootstrap.min
 *= require bootstrap-datepicker
 *= require custom
+*= require_tree .
+*= require_self
+
 */
 // Login Page
 
@@ -11894,34 +11897,6 @@ body.sidebar-toggled footer.sticky-footer {
   content: '\25BC';
 }
 
-// Datetime select
-#user_group_birth_date_1i,
-#user_group_birth_date_2i,
-#user_group_birth_date_3i {
-	background-color:#599bb3;
-	border-radius:8px;
-	display:inline-block;
-	color:#e6e6e6;
-	font-size:12px;
-	font-weight:bold;
-	padding:4px 4px;
-  text-decoration:none;
-  width: auto;
-}
-
-#user_group_birth_date_1i:hover,
-#user_group_birth_date_2i:hover,
-#user_group_birth_date_3i:hover {
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	background-color:#408c99;
-}
-
-#user_group_birth_date_1i:active,
-#user_group_birth_date_2i:active,
-#user_group_birth_date_3i:active {
-	position:relative;
-	top:1px;
-}
 
 
 
@@ -11965,7 +11940,46 @@ body.sidebar-toggled footer.sticky-footer {
   color: white;
 }
 
+// Datetime select
+#user_group_birth_date_1i,
+#user_group_birth_date_2i,
+#user_group_birth_date_3i {
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	color:#e6e6e6;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 4px;
+  text-decoration:none;
+  width: auto;
+}
 
+#user_group_birth_date_1i:hover,
+#user_group_birth_date_2i:hover,
+#user_group_birth_date_3i:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+
+#user_group_birth_date_1i:active,
+#user_group_birth_date_2i:active,
+#user_group_birth_date_3i:active {
+	position:relative;
+	top:1px;
+}
+
+// Datetime select
+#contract_start_date_1i,
+#contract_start_date_2i,
+#contract_start_date_3i,
+#contract_end_date_1i,
+#contract_end_date_2i,
+#contract_end_date_3i {
+	border-radius:8px;
+	display:inline-block;
+  width: auto;
+}
 
 
 
