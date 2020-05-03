@@ -22,7 +22,7 @@ class CompaniesDatatable < ApplicationDatatable
   end
 
   def get_raw_records
-    Company.all
+    Company.by_user(params[:current_user])
   end
 
   def show_action(record)

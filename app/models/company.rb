@@ -34,7 +34,8 @@ class Company < ApplicationRecord
     validates :name, :city, :country, presence: true
 
     # Scopes
-
+    scope :by_user, ->(user) { where(user_id: user) }
+    
     # Callbacks
 
     # Constants Methods
