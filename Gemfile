@@ -38,7 +38,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.0'
 
-gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-datepicker-rails', require: 'bootstrap-datepicker-rails',
+                              git: 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'bootstrap_progressbar'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -86,3 +87,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "roo", "~> 2.8.0"
 gem 'caxlsx_rails'
 gem 'ajax-datatables-rails'
+gem 'pickadate-rails'

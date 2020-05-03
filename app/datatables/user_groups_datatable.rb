@@ -16,14 +16,14 @@ class UserGroupsDatatable < ApplicationDatatable
       {
         name: record.name,
         birth_date: record.birth_date,
-        genre: record.genre,
+        genre: UserGroup::GENRES.key(record.genre),
         actions: show_action(record).html_safe
       }
     end
   end
 
   def get_raw_records
-    UserGroup.all
+    UserGroup.by_user(params[:current_user])
   end
 
   def show_action(record)

@@ -13,7 +13,6 @@ class window.LinkAddFields
         $(@).attr 'name', @name.replace '[new_record]', "[#{child_index}]"
         $(@).attr 'id', @id.replace '_new_record_', "_#{child_index}_"
       obj.appendTo target
-      AppForm.init()
 
     # Delete compete with rails confirmation dialog
     target.on 'confirm:complete', '.delete_compete[data-confirm]', (event) ->

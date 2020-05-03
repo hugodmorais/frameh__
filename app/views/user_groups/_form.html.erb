@@ -28,13 +28,8 @@
     <div class="form-group col-md-6 <%= 'has-error' if user_group.errors['birth_date'].present? %>">
       <%= f.label :birth_date do %>
         <%= t(:birth_date) %></span>
-      <% end %>
-      <%= f.text_field :birth_date, placeholder: "dd/mm/aaaa", class: 'form-control datepicker' %>
-      <% if user_group.errors[:birth_date].present? %>
-        <span class="help-block text-danger">
-          <small><%= user_group.errors[:birth_date].first %></small>
-        </span>
-      <% end %>
+      <% end %><br>
+      <%= f.date_select :birth_date, {:include_blank => true, start_year: Time.now.year - 100}, class: 'form-control', autocomplete: 'off' %>
     </div>
   </div>
   <div class="row">
@@ -65,7 +60,7 @@
     <%= f.label :address do %>
       <%= t(:address) %></span>
     <% end %>
-    <%= f.text_field :address, placeholder: t(:address), class: 'form-control' %>
+    <%= f.text_area :address, placeholder: t(:address), class: 'form-control', rows: '4' %>
     <% if user_group.errors[:address].present? %>
       <span class="help-block text-danger">
         <small><%= user_group.errors[:address].first %></small>
@@ -76,7 +71,7 @@
     <%= f.label :comment do %>
       <%= t(:comment) %></span>
     <% end %>
-    <%= f.text_field :comment, placeholder: t(:comment), class: 'form-control' %>
+    <%= f.text_area :comment, placeholder: t(:comment), class: 'form-control', rows: '4' %>
     <% if user_group.errors[:comment].present? %>
       <span class="help-block text-danger">
         <small><%= user_group.errors[:comment].first %></small>

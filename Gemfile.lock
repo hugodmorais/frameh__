@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
+  revision: 31be2ecdc26a3d82b3bacc7d003a0c4d40728120
+  specs:
+    bootstrap-datepicker-rails (1.9.0.1)
+      railties (>= 3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -72,8 +79,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    bootstrap-datepicker-rails (1.9.0.1)
-      railties (>= 3.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -168,6 +173,8 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.1.3)
+    pickadate-rails (3.5.6.0)
+      railties (>= 3.1.0)
     popper_js (1.14.7)
     public_suffix (4.0.3)
     puma (3.12.4)
@@ -282,7 +289,7 @@ DEPENDENCIES
   annotate
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
-  bootstrap-datepicker-rails
+  bootstrap-datepicker-rails!
   bootstrap-sass (~> 3.4.1)
   bootstrap_progressbar
   byebug
@@ -302,6 +309,7 @@ DEPENDENCIES
   mini_magick (~> 4.8)
   paperclip
   pg (= 1.1.3)
+  pickadate-rails
   popper_js (~> 1.14.5)
   puma (~> 3.12)
   rails (~> 6.0)

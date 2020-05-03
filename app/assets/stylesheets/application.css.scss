@@ -2,9 +2,11 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "pickadate/default";
+@import "pickadate/default.date"; 
+@import "pickadate/default.time"; 
 
 /*
-*= require bootstrap-datepicker
 *= require material_icons
 *= require dataTables.bootstrap
 *= require jquery.dataTables
@@ -14,6 +16,7 @@
 *= require datatables/responsive.bootstrap.min
 *= require datatables/dataTables.colVis
 *= require datatables/dataTables.bootstrap.min
+*= require bootstrap-datepicker
 *= require custom
 */
 // Login Page
@@ -11890,6 +11893,36 @@ body.sidebar-toggled footer.sticky-footer {
 .sorting_desc:before{
   content: '\25BC';
 }
+
+// Datetime select
+#user_group_birth_date_1i,
+#user_group_birth_date_2i,
+#user_group_birth_date_3i {
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	color:#e6e6e6;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px 4px;
+  text-decoration:none;
+  width: auto;
+}
+
+#user_group_birth_date_1i:hover,
+#user_group_birth_date_2i:hover,
+#user_group_birth_date_3i:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+
+#user_group_birth_date_1i:active,
+#user_group_birth_date_2i:active,
+#user_group_birth_date_3i:active {
+	position:relative;
+	top:1px;
+}
+
 
 
 

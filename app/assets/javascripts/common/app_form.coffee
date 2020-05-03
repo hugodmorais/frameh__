@@ -1,5 +1,8 @@
 start_it = ->
   $('[data-toggle="tooltip"]').tooltip()
+  $('.datepicker').pickadate(
+    language: 'pt'
+    )
 
   $.extend true, $.fn.dataTable.defaults,
     bPaginate: true

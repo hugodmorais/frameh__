@@ -39,10 +39,11 @@ class UserGroup < ApplicationRecord
   GENRES = { 'Masculino': 0, 'Feminino': 1 }.freeze
 
   # Validations
-  validates :name, :genre, :birth_date, presence: true
+  validates :name, :genre, presence: true
 
   # Scopes
-
+  scope :by_user, ->(user) { where(user_id: user) }
+  
   # Callbacks
 
   # Constants Methods
