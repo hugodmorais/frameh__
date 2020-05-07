@@ -1,5 +1,7 @@
 {
   "name": "contact_list",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "micromodal": "^0.4.6"
+  }
 }

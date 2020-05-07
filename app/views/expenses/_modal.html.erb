@@ -1,0 +1,52 @@
+<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <header class="modal__header">
+        <h2 class="modal__title" id="modal-1-title">
+          Importar / Exportar
+        </h2>
+        <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <main class="modal__content" id="modal-1-content">
+        <div class="row d-flex justify-content-between">
+          <div class="col-md-5">
+            <%= form_tag import_expenses_path, multipart: true do %>
+              <div class="custom-file">
+                <%= file_field_tag :file, id: "inputGroupFile01", class: 'hidden form-control' %>
+                <label class="custom-file-label" for="inputGroupFile01"><%= t('choose_image') %></label>
+              </div>
+            <%= button_tag(type: "submit", class: "pb-4 btn btn-info btn-sm waves-effect waves-light form-control") do %>
+              <i class="fas fa-cloud-upload-alt"></i>
+            <% end %>
+            <div class="pt-2">
+              <span style="color: Tomato;" class="pt-2">
+                <i class="fas fa-info-circle p-t-4 p-l-10"></i>
+              </span>
+              <span class="p-t-10 p-l-5">Escolha o ficheiro das despesas!</span>
+            </div>
+            <% end %>
+          </div>
+          <span class="py-5 pl-2 pr-2">OU</span>
+          <div class="col-md-5 text-center">
+            <%= link_to expenses_template_expenses_path, class: 'btn btn-info px-auto' do %>
+              <%= 'Despesas' %>
+              <i class="m-l-5 fas fa-cloud-download-alt"></i>
+            <% end %>
+          <div>
+          <div class="pt-2">
+            <span style="color: Tomato;">
+              <i class="fas fa-info-circle p-t-4 p-l-5"></i>
+            </span>
+            <span class="p-t-10 p-l-5">Faça download do template!</span>
+          </div>
+          </div>
+        </div>
+      </main>
+      <div class="row">
+        <footer class="modal__footer">
+          <button class="btn btn-primary" data-micromodal-close aria-label="Close this dialog window">Fechar</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

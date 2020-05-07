@@ -25,6 +25,7 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt.js
+//= require micromodal/dist/micromodal
 //= require common/app_form
 //= require common/datatable
 //= require_tree .
