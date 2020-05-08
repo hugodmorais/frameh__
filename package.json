@@ -3,5 +3,9 @@
   "private": true,
   "dependencies": {
     "micromodal": "^0.4.6"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.10.3"
   }
 }
