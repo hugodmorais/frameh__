@@ -1,8 +1,8 @@
 class ExpensesDatatable < ApplicationDatatable
   def view_columns
     @view_columns ||= {
-      month: { source: "Expense.month" },
       year: { source: "Expense.annual_management_id" },
+      month: { source: "Expense.month" },
       actions: { source: "Expense.id", sortable: false, searchable: false }
     }
   end
@@ -12,15 +12,15 @@ class ExpensesDatatable < ApplicationDatatable
   def data
     records.map do |record|
       {
-        month: record.month,
         year: record.annual_management.year,
+        month: I18n.t('date.month_names')[record.month],
         actions: show_action(record).html_safe
       }
     end
   end
 
   def get_raw_records
-    Expense.in_year(Current.year)
+    Expense.by_user(params[:current_user]).in_year(Current.year)
   end
 
   def show_action(record)

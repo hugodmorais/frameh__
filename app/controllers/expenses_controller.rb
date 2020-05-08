@@ -27,7 +27,7 @@ class ExpensesController < ApplicationController
       flash[:success] = "expense was successfully created!"
       redirect_to expense_path(@expense)
     else
-        ender 'new'
+      render 'new'
     end
   end
 
@@ -48,10 +48,6 @@ class ExpensesController < ApplicationController
 
     flash[:danger] = "expense was successefully destroy"
     redirect_to expenses_path
-  end
-
-  def monthly_expenses
-    @expenses = Expense.current_year.in_month(Current.month)
   end
 
   def import

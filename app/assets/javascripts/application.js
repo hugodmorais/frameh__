@@ -18,7 +18,6 @@
 //= require dataTables.bootstrap
 //= require highcharts
 //= require chartkick
-//= require turbolinks
 //= require pickadate/picker
 //= require pickadate/picker.date
 //= require pickadate/picker.time
@@ -28,6 +27,7 @@
 //= require micromodal/dist/micromodal
 //= require common/app_form
 //= require common/datatable
+//= require turbolinks
 //= require_tree .
 
 
