@@ -44,6 +44,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :imports, except: [:edit, :update] do
+    member do
+      get :download
+      get :import_errors, defaults: { format: :json }
+      get :status, defaults: { format: :json }
+    end
+  end
+
   resources :contracts
   resources :contract_statuses
   resources :currency_kinds

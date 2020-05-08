@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_222134) do
+ActiveRecord::Schema.define(version: 2020_05_08_210244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,34 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
     t.index ["expense_category_id"], name: "index_groups_on_expense_category_id"
   end
 
+  create_table "import_errors", force: :cascade do |t|
+    t.string "sheet"
+    t.integer "row_number"
+    t.text "description"
+    t.bigint "import_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["import_id"], name: "index_import_errors_on_import_id"
+  end
+
+  create_table "imports", force: :cascade do |t|
+    t.integer "kind"
+    t.integer "status"
+    t.string "job_id"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.bigint "file_file_size"
+    t.datetime "file_updated_at"
+    t.text "error_description"
+    t.text "error_details"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_imports_on_user_id"
+  end
+
   create_table "income_categories", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
@@ -259,6 +287,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_222134) do
   add_foreign_key "expenses", "users"
   add_foreign_key "financial_statements", "users"
   add_foreign_key "groups", "expense_categories"
+  add_foreign_key "import_errors", "imports"
   add_foreign_key "income_categories", "users"
   add_foreign_key "incomes", "annual_managements"
   add_foreign_key "incomes", "income_categories"

@@ -24,6 +24,7 @@ class AnnualManagement < ApplicationRecord
     has_many :incomes, dependent: :destroy
     has_many :financial_statements
     belongs_to :users
+    has_many :imports, dependent: :nullify
     
     # Delegates
 

@@ -268,6 +268,26 @@ class window.Datatable
         orderable: false
       }]
 
+  imports_index: ->
+    @datatable = $('#imports-datatable').dataTable
+      processing: true
+      bStateSave: true
+      serverSide: true
+      ajax:
+        url: $('#imports-datatable').data('source')
+      dom: 
+        "<'row'<'col-sm-3'l><'col-sm-7 text-center'B><'col-sm-2'f>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'row'<'col-sm-5'i><'col-sm-6 btn-sm'p>>"
+      pagingType: 'full_numbers'
+      columns: [
+        { data: 'id' }
+      ]
+      columnDefs: [{
+        targets: -1
+        orderable: false
+      }]
+
   
   incomes_index: ->
     @datatable = $('#incomes-datatable').dataTable
