@@ -1,40 +1,38 @@
-<!-- Start Breadcrumb -->
-<% @current_bread_name = t('imports.imports') %>
-<!-- End Breadcrumb -->
-
-<div class="row">
-  <div class="col-lg-12">
-    <div class="panel panel-border">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="panel-heading">
-            <h3 class="panel-title pull-left"><%= t('imports.imports') %></h3>
-              <div class="btn-group pull-right m-t-5">
-                <%= link_to new_import_path, class: 'btn btn-default btn-sm waves-effect waves-light' do %>
-                  <%= t(:add) %>
-                  <i class="m-l-5 fa fa-plus"></i>
-                <% end %>
-              </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-xs-12 table-responsive">
-                <table id="imports-datatable" class="table table-hover" data-url="<%= imports_path %>">
-                  <thead>
-                    <tr>
-                      <th><%= t(:kind) %></th>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4><%= t('imports.imports') %></h4>
       </div>
     </div>
   </div>
 </div>
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="btn-group pull-left pl-5 pt-4">
+        <%= link_to new_import_path, class: 'btn btn-primary btn-sm waves-effect waves-light' do %>
+          <i class="m-l-5 fa fa-plus"></i>
+          Adicionar
+        <% end %>
+      </div>
+      <div class="col-xs-12 table-responsive px-5 pt-4">
+        <table id="imports-datatable" class="table table-hover" data-url="<%= imports_path %>">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Início</th>
+              <th>Fim</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+

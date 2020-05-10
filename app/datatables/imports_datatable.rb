@@ -1,7 +1,10 @@
 class ImportsDatatable < ApplicationDatatable
   def view_columns
     @view_columns ||= {
-      id: { source: "Import.id" }
+      id: { source: "Import.id" },
+      started_at: { source: "Import.started_at" },
+      finished_at: { source: "Import.finished_at" },
+      actions: { source: "Income.id", sortable: false, searchable: false }
     }
   end
 
@@ -10,7 +13,10 @@ class ImportsDatatable < ApplicationDatatable
   def data
     records.map do |record|
       {
-        id: record.id
+        id: record.id,
+        started_at: record.started_at,
+        finished_at: record.finished_at,
+        actions: show_action(record).html_safe
       }
     end
   end

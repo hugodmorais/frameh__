@@ -282,6 +282,9 @@ class window.Datatable
       pagingType: 'full_numbers'
       columns: [
         { data: 'id' }
+        { data: 'started_at' }
+        { data: 'finished_at' }
+        { data: 'actions' }
       ]
       columnDefs: [{
         targets: -1
