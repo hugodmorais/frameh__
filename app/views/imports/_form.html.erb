@@ -1,41 +1,32 @@
-<%= form_with model: import, role: 'form', class: 'form-horizontal' do |f| %>
-
+<%= form_with model: import do |f| %>
+  <div class="form-group <%= 'has-error' if import.errors['kind'].present? %>">
+    <%= f.label :kind do %>
+      Tipo <span class="text-danger">*</span>
+    <% end %>
+    <%= f.select :kind, nil, { prompt: t('imports.select_kind') }, class: 'form-control' do %>
+      <%= options_for_select(Import::KINDS.each { |key| t(key, scope: :imports) }, import.kind) %>
+    <% end %>
+    <% if import.errors['kind'].present? %>
+      <span class="help-block text-danger">
+        <small><%= import.errors['kind'].first %></small>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group <%= 'has-error' if import.errors['file'].present? %>">
+    <%= f.label :file do %>
+      <%= t(:file) %> <span class="text-danger">*</span>
+    <% end %>
+    <%= f.file_field :file %>
+    <% if import.errors['file'].present? %>
+      <span class="help-block text-danger">
+        <small><%= import.errors['file'].first %></small>
+      </span>
+    <% end %>
+  </div>
   <div class="row">
-    <div class="col-xs-12 table">
-      <div class="form-group <%= 'has-error' if import.errors['kind'].present? %>">
-        <%= f.label :kind, class: 'col-sm-2 control-label' do %>
-          <%= t(:kind) %> <span class="text-danger">*</span>
-        <% end %>
-        <div class="col-sm-10">
-          <%= f.select :kind, nil, { prompt: t('imports.select_kind') }, class: 'form-control' do %>
-            <%= options_for_select(Import::KINDS.each { |key| t(key, scope: :imports) }, import.kind) %>
-          <% end %>
-          <% if import.errors['kind'].present? %>
-            <span class="help-block text-danger">
-              <small><%= import.errors['kind'].first %></small>
-            </span>
-          <% end %>
-        </div>
-      </div>
-      <div class="form-group <%= 'has-error' if import.errors['file'].present? %>">
-        <%= f.label :file, class: 'col-sm-2 control-label' do %>
-          <%= t(:file) %> <span class="text-danger">*</span>
-        <% end %>
-        <div class="col-sm-10">
-          <%= f.file_field :file %>
-          <% if import.errors['file'].present? %>
-            <span class="help-block text-danger">
-              <small><%= import.errors['file'].first %></small>
-            </span>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-offset-2 col-sm-10 m-t-15">
-          <%= f.submit t(:save), class: 'btn btn-default btn-sm' %>
-          <%= link_to t(:cancel), imports_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
-        </div>
-      </div>
+    <div class="col-sm-10 m-t-15">
+      <%= f.submit 'Guardar', class: 'btn btn-primary btn-sm' %>
+      <%= link_to 'Cancelar', imports_path, class: "btn btn-white btn-sm waves-effect m-l-5" %>
     </div>
   </div>
 <% end %>

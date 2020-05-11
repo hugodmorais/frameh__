@@ -1,17 +1,19 @@
-<!-- Start Breadcrumb -->
-<% @bread_links = [link_to(t('imports.imports'), imports_url)] %>
-<% @current_bread_name = t('imports.new') %>
-<!-- End Breadcrumb -->
-
-<div class="row">
-  <div class="col-xs-12">
-    <div class="panel panel-border panel-custom">
-      <div class="panel-heading">
-        <h3 class="panel-title text-center"><%= t('imports.imports') %></h3>
+<div class="row mb-3">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h4><%= t('imports.imports') %></h4>
       </div>
-      <div class="panel-body">
+    </div>
+  </div>
+</div>
+<div class="row px-5">
+  <div class="col-lg-12">
+    <div class="panel-body px-5">
+      <div class="container pt-4 offset-2 col-md-6">
         <%= render 'form', import: @import %>
       </div>
     </div>
   </div>
 </div>
+  

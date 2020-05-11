@@ -13,7 +13,7 @@ class Import < ApplicationRecord
 
   # Constants
   STATUSES = { pending: 0, executing: 1, finished: 2, with_error: 3 }.freeze
-  KINDS = { BSC: 0, all_data: 1, operational_report: 2, portfolio: 3, estimated_indicators: 4 }.freeze
+  KINDS = { incomes: 0, expenses: 1 }.freeze
 
   # Validations
   # validates :file, presence: true
