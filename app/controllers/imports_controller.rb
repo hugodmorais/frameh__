@@ -19,7 +19,7 @@ class ImportsController < ApplicationController
 
   def create
     @import = Import.new(import_params.merge(user: Current.user))
-    if @import.save
+    if @import.save_it
       redirect_to @import, notice: :created
     else
       render :new

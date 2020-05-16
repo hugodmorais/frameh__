@@ -31,6 +31,30 @@ class Import < ApplicationRecord
 
   # Default
 
+  def save_it
+    if save
+      job = ImportJob.perform_later(self)
+      update! job_id: job.try(:provider_job_id) # when running in dev job is a boolean class without provider_job_id
+    else
+      false
+    end
+  end
+
+  def execute_job
+    update! started_at: Time.current, status: STATUSES.fetch(:executing)
+    ActiveRecord::Base.transaction do
+      case kind
+      when KINDS.fetch(:incomes)
+        import_portfolio
+      when KINDS.fetch(:expenses)
+        import_bsc
+      end
+    end
+    self.status = with_error? ? STATUSES.fetch(:with_error) : STATUSES.fetch(:finished)
+    # AquaCache.clear_current_tenant
+    update! finished_at: Time.current
+  end
+
   def kind_desc
     KINDS.key(kind)
   end
