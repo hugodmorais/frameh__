@@ -39,7 +39,6 @@ class ItemsImport
   end
 
   def imported_items
-    byebug
     @imported_items ||= load_imported_items
     true
   end

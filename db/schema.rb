@@ -171,20 +171,18 @@ ActiveRecord::Schema.define(version: 2020_05_08_210244) do
   end
 
   create_table "imports", force: :cascade do |t|
-    t.integer "kind"
+    t.integer "kind", null: false
     t.integer "status"
     t.string "job_id"
     t.datetime "started_at"
     t.datetime "finished_at"
-    t.string "file_file_name"
-    t.string "file_content_type"
-    t.bigint "file_file_size"
-    t.datetime "file_updated_at"
     t.text "error_description"
     t.text "error_details"
     t.bigint "user_id"
+    t.bigint "annual_management_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["annual_management_id"], name: "index_imports_on_annual_management_id"
     t.index ["user_id"], name: "index_imports_on_user_id"
   end
 

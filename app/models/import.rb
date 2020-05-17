@@ -45,9 +45,9 @@ class Import < ApplicationRecord
     ActiveRecord::Base.transaction do
       case kind
       when KINDS.fetch(:incomes)
-        import_portfolio
+        import_incomes
       when KINDS.fetch(:expenses)
-        import_bsc
+        import_bsc(user)
       end
     end
     self.status = with_error? ? STATUSES.fetch(:with_error) : STATUSES.fetch(:finished)
@@ -67,5 +67,9 @@ class Import < ApplicationRecord
 
   def init
     self.status ||= STATUSES.fetch(:pending)
+  end
+
+  def import_incomes
+    Imports::IncomesImport.new(import: self).save
   end
 end

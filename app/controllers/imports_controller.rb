@@ -18,7 +18,7 @@ class ImportsController < ApplicationController
   end
 
   def create
-    @import = Import.new(import_params.merge(user: Current.user))
+    @import = Current.annual_management.imports.new(import_params.merge(user: current_user))
     if @import.save_it
       redirect_to @import, notice: :created
     else
