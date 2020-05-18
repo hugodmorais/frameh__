@@ -16,7 +16,7 @@ class Import < ApplicationRecord
   KINDS = { incomes: 0, expenses: 1 }.freeze
 
   # Validations
-  # validates :file, presence: true
+  validates :file, :kind, presence: true
 
   # Scopes
   scope :including_import_errors, -> { includes(:import_errors).order('import_errors.row_number') }
@@ -69,6 +69,6 @@ class Import < ApplicationRecord
   end
 
   def import_incomes(file)
-    Imports::IncomesImport.new(import: self, file: file)
+    Imports::IncomesImport.new(import: self, file: file).save
   end
 end

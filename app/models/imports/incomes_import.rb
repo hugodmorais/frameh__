@@ -1,4 +1,4 @@
-class Imports::IncomesImport
+class Imports::IncomesImport < Imports::ApplicationImport
   attr_accessor :import
   attr_accessor :file
   attr_accessor :spreadsheet
@@ -12,23 +12,36 @@ class Imports::IncomesImport
   end
 
   def execute
-    import
+    import_data
   end
 
   private
 
-  def import
-    spreadsheet = open_spreadsheet
+  def template_ok?
+    true
+  end
+
+  def import_data
+    Rails.logger.info { 'Start importing Incomes...' }
+    open_spreadsheet 
+
+    import_incomes
+  end
+
+  def import_incomes
+    return if spreadsheet.blank?
+
+
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      income_category = row["Categoria"]
-      income_company = row["Empresa"]
-      income_user = row["Utilizador"]
-      
+      income_category = row['Categoria']
+      income_company = row['Empresa']
+      income_user = row['Utilizador']
+
       (1..12).each do |month|
         income_value = row[I18n.t Date::MONTHNAMES[month]]
-        
+
         next if income_value.blank?
         
         income = Income.new(month: month, annual_management: AnnualManagement.find_by(year: Current.year)) 
@@ -39,16 +52,7 @@ class Imports::IncomesImport
         income.income_value = income_value
 
         income.save!
-        
       end
-    end
-  end
-
-  def open_spreadsheet
-    case File.extname(@file)
-    when ".xls" then Roo::Excel.new(@file)
-    when ".xlsx" then Roo::Excelx.new(@file)
-    else raise "Unknown filename type:"
     end
   end
 end

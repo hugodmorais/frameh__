@@ -2,14 +2,11 @@ class Imports::ApplicationImport
   attr_accessor :import
   attr_accessor :spreadsheet
 
-  def initialize(attributes = {})
-    attributes.each { |name, value| public_send("#{name}=", value) }
-  end
-
   def valid?
     validation_result = false
     if import.file.present?
       open_spreadsheet
+      
       if spreadsheet.nil?
         import.error_description = I18n.t('imports.file_not_valid')
       else
@@ -42,11 +39,9 @@ class Imports::ApplicationImport
   private
 
   def open_spreadsheet
-    byebug
-    case File.extname(import.file.original_filename)
-    when '.csv' then self.spreadsheet = Roo::CSV.new(import.file.path, file_warning: :ignore, csv_options: { col_sep: ';' })
-    when '.xls' then self.spreadsheet = Roo::Excel.new(import.file.path, file_warning: :ignore)
-    when '.xlsx' then self.spreadsheet = Roo::Excelx.new(import.file.path, file_warning: :ignore)
+    case File.extname(@file)
+    when '.xls' then self.spreadsheet = Roo::Excel.new(@file)
+    when '.xlsx' then self.spreadsheet = Roo::Excelx.new(@file)
     end
   end
 end
