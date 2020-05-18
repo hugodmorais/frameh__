@@ -31,10 +31,9 @@ class Import < ApplicationRecord
 
   # Default
 
-  def save_it
+  def save_it(file)
     if save
-      job = ImportJob.perform_later(self)
-      update! job_id: job.try(:provider_job_id) # when running in dev job is a boolean class without provider_job_id
+      import_incomes(file)
     else
       false
     end
@@ -45,7 +44,7 @@ class Import < ApplicationRecord
     ActiveRecord::Base.transaction do
       case kind
       when KINDS.fetch(:incomes)
-        import_incomes
+        import_incomes(file)
       when KINDS.fetch(:expenses)
         import_bsc(user)
       end
@@ -69,7 +68,7 @@ class Import < ApplicationRecord
     self.status ||= STATUSES.fetch(:pending)
   end
 
-  def import_incomes
-    Imports::IncomesImport.new(import: self).save
+  def import_incomes(file)
+    Imports::IncomesImport.new(import: self, file: file)
   end
 end

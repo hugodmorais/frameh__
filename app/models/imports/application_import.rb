@@ -8,9 +8,7 @@ class Imports::ApplicationImport
 
   def valid?
     validation_result = false
-    byebug
     if import.file.present?
-      byebug
       open_spreadsheet
       if spreadsheet.nil?
         import.error_description = I18n.t('imports.file_not_valid')

@@ -1,21 +1,25 @@
-class Imports::IncomesImport < Imports::ApplicationImport
-  INCOMES_SHEET = 'Receitas'.freeze
+class Imports::IncomesImport
+  attr_accessor :import
+  attr_accessor :file
+  attr_accessor :spreadsheet
 
-  attr_accessor :annual_management
+  def initialize(attributes = {})
+    @import = attributes[:import]
+    @user = attributes[:import].user_id
+    @file = attributes[:file]
+
+    execute
+  end
+
+  def execute
+    import
+  end
 
   private
 
-  def import_data
-    # Import tabs excel
-    Rails.logger.info { 'Start importing Incomes...' }
-    import_incomes
-  end
-
-  def import_incomes
-    byebug
-    spreadsheet.default_sheet = INCOMES_SHEET
+  def import
+    spreadsheet = open_spreadsheet
     header = spreadsheet.row(1)
-    byebug
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       income_category = row["Categoria"]
@@ -28,7 +32,7 @@ class Imports::IncomesImport < Imports::ApplicationImport
         next if income_value.blank?
         
         income = Income.new(month: month, annual_management: AnnualManagement.find_by(year: Current.year)) 
-        income.user_id = user.id
+        income.user_id = @user
         income.user_group = UserGroup.find_by(name: income_user)
         income.company = Company.find_by(name: income_company)
         income.income_category = IncomeCategory.find_by(name: income_category)
@@ -40,11 +44,11 @@ class Imports::IncomesImport < Imports::ApplicationImport
     end
   end
 
-  def open_spreadsheet(import)
-    case File.extname(import.file.filename)
-    when ".xls" then Roo::Excel.new(import.path)
-    when ".xlsx" then Roo::Excelx.new(import.path)
-    else raise "Unknown file type:"
+  def open_spreadsheet
+    case File.extname(@file)
+    when ".xls" then Roo::Excel.new(@file)
+    when ".xlsx" then Roo::Excelx.new(@file)
+    else raise "Unknown filename type:"
     end
   end
 end
