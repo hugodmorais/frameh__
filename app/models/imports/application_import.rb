@@ -4,6 +4,7 @@ class Imports::ApplicationImport
 
   def valid?
     validation_result = false
+    
     if import.file.present?
       open_spreadsheet
       

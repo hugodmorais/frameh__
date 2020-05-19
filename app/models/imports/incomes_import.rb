@@ -7,12 +7,6 @@ class Imports::IncomesImport < Imports::ApplicationImport
     @import = attributes[:import]
     @user = attributes[:import].user_id
     @file = attributes[:file]
-
-    execute
-  end
-
-  def execute
-    import_data
   end
 
   private
@@ -22,16 +16,12 @@ class Imports::IncomesImport < Imports::ApplicationImport
   end
 
   def import_data
-    Rails.logger.info { 'Start importing Incomes...' }
-    open_spreadsheet 
+    Rails.logger.info { 'Start importing Incomes...' } 
 
     import_incomes
   end
 
   def import_incomes
-    return if spreadsheet.blank?
-
-
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
