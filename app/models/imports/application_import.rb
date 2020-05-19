@@ -4,10 +4,8 @@ class Imports::ApplicationImport
 
   def valid?
     validation_result = false
-    
     if import.file.present?
       open_spreadsheet
-      
       if spreadsheet.nil?
         import.error_description = I18n.t('imports.file_not_valid')
       else
