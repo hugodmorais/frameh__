@@ -7,7 +7,6 @@ class Imports::ApplicationImport
 
   attr_accessor :import
   attr_accessor :spreadsheet
-  attr_accessor :current_user
 
   def initialize(attributes = {})
     attributes.each { |name, value| public_send("#{name}=", value) }

@@ -1,5 +1,7 @@
 class Imports::IncomesImport < Imports::ApplicationImport
 
+  attr_accessor :income
+
   private
 
   def template_ok?
@@ -79,18 +81,18 @@ class Imports::IncomesImport < Imports::ApplicationImport
 
       next if income_value.blank?
       
-      income = Income.new(month: month, annual_management: AnnualManagement.find_by(year: Current.year)) 
-      income.user_id = @user
-      income.user_group = UserGroup.find_by(name: income_user)
-      income.company = Company.find_by(name: income_company)
-      income.income_category = IncomeCategory.find_by(name: income_category)
-      income.income_value = income_value
-      byebug
-      income.save
+      @income = Income.new(month: month, annual_management: AnnualManagement.find_by(year: Current.year)) 
+      @income.user_id = Current.user.id
+      @income.user_group = UserGroup.find_by(name: income_user)
+      @income.company = Company.find_by(name: income_company)
+      @income.income_category = IncomeCategory.find_by(name: income_category)
+      @income.income_value = income_value
+      
+      @income.save
     end
-    
-    build_import_error index, income.errors.full_messages.first
-    import.error_description = I18n.t('imports.import_incomplete')
+  rescue StandardError => e
+    build_import_error index, @income.errors.full_messages.first
+    @import.error_description = I18n.t('imports.import_incomplete')
     false
   end
 end

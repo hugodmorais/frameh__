@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   before_action :require_login
+  before_action :set_current_user
   before_action :set_current_month
   before_action :set_current_annual_management
 
@@ -35,6 +36,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_current_user
+    Current.user = User.find_by(auth_token: session[:auth_token])
+  end
 
   def set_current_annual_management
     Current.annual_management = AnnualManagement.find_by(id: session[:frameh_annual_management]) || AnnualManagement.last
