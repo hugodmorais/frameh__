@@ -86,10 +86,10 @@ class Income < ApplicationRecord
     end
   end
 
-  def self.open_spreadsheet(file)
-    case File.extname(file.original_filename)
-    when ".xls" then Roo::Excel.new(file.path)
-    when ".xlsx" then Roo::Excelx.new(file.path)
+  def self.open_spreadsheet
+    case File.extname(self.file.original_filename)
+    when ".xls" then Roo::Excel.new(self.file.path)
+    when ".xlsx" then Roo::Excelx.new(self.file.path)
     else raise "Unknown file type:"
     end
   end

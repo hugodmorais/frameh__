@@ -1,6 +1,17 @@
 class Imports::ApplicationImport
+  include ErrorDescribable
+  include ActiveModel::Model
+  require 'roo'
+
+  attr_accessor :file
+
   attr_accessor :import
   attr_accessor :spreadsheet
+  attr_accessor :current_user
+
+  def initialize(attributes = {})
+    attributes.each { |name, value| public_send("#{name}=", value) }
+  end
 
   def valid?
     validation_result = false
@@ -38,9 +49,10 @@ class Imports::ApplicationImport
   private
 
   def open_spreadsheet
-    case File.extname(@file)
-    when '.xls' then self.spreadsheet = Roo::Excel.new(@file)
-    when '.xlsx' then self.spreadsheet = Roo::Excelx.new(@file)
+    case File.extname(import.file.blob[:filename])
+    when '.csv' then self.spreadsheet = Roo::CSV.new(import.file.blob[:filename].pathmap, file_warning: :ignore, csv_options: { col_sep: ';' })
+    when '.xls' then self.spreadsheet = Roo::Excel.new(import.file.blob[:filename].pathmap, file_warning: :ignore)
+    when '.xlsx' then self.spreadsheet = Roo::Excelx.new(ActiveStorage::Blob.service.send(:path_for, import.file.key), file_warning: :ignore)
     end
   end
 end

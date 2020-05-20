@@ -1,5 +1,6 @@
 class Import < ApplicationRecord
   # Includes
+  include ErrorDescribable
 
   # Attributes
   has_one_attached :file
@@ -16,7 +17,8 @@ class Import < ApplicationRecord
   KINDS = { incomes: 0, expenses: 1 }.freeze
 
   # Validations
-  validates :file, :kind, presence: true
+  validates :kind, inclusion: { in: KINDS.values }
+  validates :file, presence: true
 
   # Scopes
   scope :including_import_errors, -> { includes(:import_errors).order('import_errors.row_number') }
@@ -31,27 +33,29 @@ class Import < ApplicationRecord
 
   # Default
 
-  def save_it(file)
+  def save_it
     if save
-      import_incomes(file)
+      job = ImportJob.perform_later(self)
+      update! job_id: job.try(:provider_job_id)
     else
       false
     end
   end
 
+  # Backend method to import pending Import
   def execute_job
     update! started_at: Time.current, status: STATUSES.fetch(:executing)
     ActiveRecord::Base.transaction do
       case kind
-      when KINDS.fetch(:incomes)
-        import_incomes(file)
-      when KINDS.fetch(:expenses)
-        import_bsc(user)
+      when 0
+        import_incomes
+      when 1
+        execute_remove_client_import
       end
     end
-    self.status = with_error? ? STATUSES.fetch(:with_error) : STATUSES.fetch(:finished)
-    # AquaCache.clear_current_tenant
-    update! finished_at: Time.current
+    self.status = STATUSES.fetch(:finished)
+    self.finished_at = Time.now
+    save!
   end
 
   def kind_desc
@@ -64,11 +68,11 @@ class Import < ApplicationRecord
 
   private
 
+  def import_incomes
+    Imports::IncomesImport.new(import: self).save
+  end  
+
   def init
     self.status ||= STATUSES.fetch(:pending)
-  end
-
-  def import_incomes(file)
-    Imports::IncomesImport.new(import: self, file: file).save
   end
 end
