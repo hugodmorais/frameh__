@@ -161,9 +161,9 @@ ActiveRecord::Schema.define(version: 2020_05_08_210244) do
   end
 
   create_table "import_errors", force: :cascade do |t|
-    t.string "sheet"
-    t.integer "row_number"
-    t.text "description"
+    t.text "sheet", null: false
+    t.integer "row_number", null: false
+    t.text "description", null: false
     t.bigint "import_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -176,6 +176,10 @@ ActiveRecord::Schema.define(version: 2020_05_08_210244) do
     t.string "job_id"
     t.datetime "started_at"
     t.datetime "finished_at"
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.bigint "file_file_size"
+    t.datetime "file_updated_at"
     t.text "error_description"
     t.text "error_details"
     t.bigint "user_id"

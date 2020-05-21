@@ -7,7 +7,7 @@ class CreateImports < ActiveRecord::Migration[6.0]
 
       t.datetime :started_at
       t.datetime :finished_at
-      t.attachment :file, null: false
+      t.attachment :file
       t.text :error_description
       t.text :error_details
 
