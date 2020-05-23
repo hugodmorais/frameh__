@@ -25,7 +25,7 @@ json.series do
     indexed_results = @expenses
     json.data 1..12 do |month|
       if indexed_results.present?
-          json.y indexed_results.where(month: month).expese_groups.sum('expense_value')
+          json.y Expense.joins(:expense_groups).where(month: month).sum('expense_value')
       else
         json.y nil
       end
