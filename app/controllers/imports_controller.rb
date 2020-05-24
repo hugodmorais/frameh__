@@ -48,7 +48,10 @@ class ImportsController < ApplicationController
 
   def import_errors
     datatable = ImportErrorsDatatable.new(view_context)
-    render json: datatable
+    respond_to do |format|
+      format.html
+      format.json { render json: ImportErrorsDatatable.new(params, view_context: view_context) }
+    end
   end
 
   def status

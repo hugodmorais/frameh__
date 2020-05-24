@@ -17,26 +17,20 @@
                   <p class="form-control-static"><%= @import.id %></p>
                 </div>
               </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Job</label>
-                  <div class="col-sm-10">
-                    <p class="form-control-static"><%= @import.job_id %></p>
-                  </div>
-                </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label"><%= t(:kind) %></label>
+                <label class="col-sm-2 control-label">Tipo de Importação</label>
                 <div class="col-sm-10">
-                  <p class="form-control-static"><%= t @import.kind_desc, scope: :imports %></p>
+                  <p class="form-control-static"><%= t @import.kind_desc %></p>
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label"><%= t(:error_description) %></label>
+                <label class="col-sm-2 control-label">Descrição do Erro</label>
                 <div class="col-sm-10">
                   <p class="form-control-static"><%= @import.error_description  %></p>
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label"><%= t(:error_details) %></label>
+                <label class="col-sm-2 control-label">Detalhes do erro</label>
                 <div class="col-sm-10">
                   <p class="form-control-static">
                     <% @import.error_details.to_s.split("\n").each do |error_detail|  %>
@@ -45,14 +39,18 @@
                   </p>
                 </div>
               </div>
+              <div class="form-group">
+                <div class="col-sm-2 control-label">
+                  <%= link_to t(:go_back), imports_url, class: "btn btn-primary btn-sm waves-effect" %>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-lg-12">
                   <div class="panel panel-border">
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="panel-heading">
-                          <h5 class="m-t-0 text-center"><%= t 'imports.import_errors' %></h5>
-                          <hr>
+                          <h5 class="m-t-0 text-center">Erros de Importação</h5>
                         </div>
                       </div>
                     </div>
@@ -64,9 +62,9 @@
                               <table id="import_errors_datatable" class="table table-hover" data-url="<%= import_errors_import_path(@import) %>">
                                 <thead>
                                   <tr>
-                                    <th><%= t(:sheet) %></th>
-                                    <th><%= t(:row_number) %></th>
-                                    <th><%= t(:description) %></th>
+                                    <th>Folha</th>
+                                    <th>Número da linha</th>
+                                    <th>Descrição</th>
                                   </tr>
                                 </thead>
                               </table>
@@ -76,28 +74,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="panel panel-border">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="panel-heading">
-                            <h5 class="m-t-0 text-center"><%= t 'statistic_batches.statistic_batches' %></h5>
-                            <hr>
-                          </div>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-                </div>
-
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-9 m-t-15">
-                  <%= link_to t(:go_back), imports_url, class: "btn btn-white btn-sm waves-effect" %>
                 </div>
               </div>
             </form>

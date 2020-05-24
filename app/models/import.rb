@@ -59,7 +59,10 @@ class Import < ApplicationRecord
   end
 
   def kind_desc
-    KINDS.key(kind)
+    case KINDS.key(kind)
+    when :incomes
+      return 'Incomes'
+    end
   end
 
   def status_desc
