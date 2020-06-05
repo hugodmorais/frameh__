@@ -27,7 +27,6 @@ class ImportsDatatable < ApplicationDatatable
 
   def show_action(record)
     actions = "<a href='/imports/#{record.id}'><i class='fa fa-eye'></i></a> "
-    actions += "<a href='/imports/#{record.id}/edit'><i class='fa fa-edit'></i></a> "
     actions += "<a data-confirm='Tem a certeza que pretende eliminar?'' rel='nofollow' data-method='delete' href='/imports/#{record.id}'><i class='fa fa-times'></i></a>"
   end
 end

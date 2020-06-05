@@ -11,12 +11,15 @@
   <div class="col-lg-12">
     <div class="panel-body px-5">
       <div class="btn-group pull-left pl-5 pt-4">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-          <i class="fas fa-cloud-upload-alt"></i>
-        </button>
-        <%= link_to new_income_path, class: 'btn btn-primary btn-sm waves-effect waves-light m-l-5 p-t-4' do %>
+        <%= link_to new_income_path, class: 'btn btn-primary btn-sm waves-effect waves-light' do %>
           <i class="m-l-5 fa fa-plus"></i>
           <%= t('incomes.new') %>
+        <% end %>
+      </div>
+      <div class="btn-group pull-left pl-3 pt-4">
+        <%= link_to incomes_template_incomes_path, class: 'btn btn-primary btn-sm waves-effect waves-light' do %>
+          <i class="fas fa-download pr-1"></i>
+          Template receitas 
         <% end %>
       </div>
       <div class="col-xs-12 table-responsive px-5 pt-4">
