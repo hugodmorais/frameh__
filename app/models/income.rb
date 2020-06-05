@@ -25,7 +25,6 @@
 #
 
 class Income < ApplicationRecord
-    
   # Includes
   include CurrentScopable
   

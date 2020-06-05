@@ -15,32 +15,32 @@
 #
 
 class AnnualManagement < ApplicationRecord
-    # Includes
-    include CurrentScopable
-    
-    # Attributes
+  # Includes
+  include CurrentScopable
 
-    # Associations
-    has_many :incomes, dependent: :destroy
-    has_many :financial_statements
-    belongs_to :users
-    has_many :imports, dependent: :nullify
-    
-    # Delegates
+  # Attributes
 
-    # Constants
+  # Associations
+  has_many :incomes, dependent: :destroy
+  has_many :financial_statements
+  belongs_to :users
+  has_many :imports, dependent: :nullify
 
-    # Validations
-    validates :year, presence: true
-    
-    # Scopes    
-    scope :by_user, ->(user) { where(user_id: user) }
+  # Delegates
 
-    # Callbacks
+  # Constants
 
-    # Constants Methods
+  # Validations
+  validates :year, presence: true
 
-    # Default
+  # Scopes
+  scope :by_user, ->(user) { where(user_id: user) }
 
-    private
+  # Callbacks
+
+  # Constants Methods
+
+  # Default
+
+  private
 end

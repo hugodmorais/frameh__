@@ -19,7 +19,7 @@ class CurrencyKindsController < ApplicationController
   def create
     @currency_kind = CurrencyKind.new(currency_kind_params)
     if @currency_kind.save
-      flash[:success] = "currency_kind was successfully created!"
+      flash[:success] = 'currency_kind was successfully created!'
       redirect_to currency_kind_path(@currency_kind)
     else
       render 'new'
@@ -28,7 +28,7 @@ class CurrencyKindsController < ApplicationController
 
   def update
     if @currency_kind.update(currency_kind_params)
-      flash[:success] = "currency_kind was successfully updated!"
+      flash[:success] = 'currency_kind was successfully updated!'
       redirect_to currency_kind_path(@currency_kind)
     else
       render 'edit'
@@ -41,7 +41,7 @@ class CurrencyKindsController < ApplicationController
   def destroy
     @currency_kind.destroy
 
-    flash[:danger] = "currency_kind was successefully destroy"
+    flash[:danger] = 'currency_kind was successefully destroy'
     redirect_to currency_kinds_path
   end
   

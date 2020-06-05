@@ -23,7 +23,7 @@ class ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
     @contract.user = current_user
     if @contract.save
-      flash[:success] = "contract was successfully created!"
+      flash[:success] = 'contract was successfully created!'
       redirect_to contract_path(@contract)
     else
       render 'new'
@@ -32,7 +32,7 @@ class ContractsController < ApplicationController
 
   def update
     if @contract.update(contract_params)
-      flash[:success] = "contract was successfully updated!"
+      flash[:success] = 'contract was successfully updated!'
       redirect_to contract_path(@contract)
     else
       render 'edit'
@@ -45,7 +45,7 @@ class ContractsController < ApplicationController
   def destroy
     @contract.destroy
 
-    flash[:danger] = "contract was successefully destroy"
+    flash[:danger] = 'contract was successefully destroy'
     redirect_to contracts_path
   end
   

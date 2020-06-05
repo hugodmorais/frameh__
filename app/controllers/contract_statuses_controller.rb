@@ -20,7 +20,7 @@ class ContractStatusesController < ApplicationController
     @contract_status = ContractStatus.new(contract_status_params)
     @contract_status.user = current_user
     if @contract_status.save
-      flash[:success] = "contract_status was successfully created!"
+      flash[:success] = 'contract_status was successfully created!'
       redirect_to contract_status_path(@contract_status)
     else
       render 'new'
@@ -29,10 +29,10 @@ class ContractStatusesController < ApplicationController
 
   def update
     if @contract_status.update(contract_status_params)
-        flash[:success] = "contract_status was successfully updated!"
-        redirect_to contract_status_path(@contract_status)
+      flash[:success] = 'contract_status was successfully updated!'
+      redirect_to contract_status_path(@contract_status)
     else
-        render 'edit'
+      render 'edit'
     end
   end
 
@@ -42,10 +42,9 @@ class ContractStatusesController < ApplicationController
   def destroy
     @contract_status.destroy
 
-    flash[:danger] = "contract_status was successefully destroy"
+    flash[:danger] = 'contract_status was successefully destroy'
     redirect_to contract_statuses_path
   end
-  
 
   private
 

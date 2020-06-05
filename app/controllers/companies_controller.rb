@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
-      flash[:success] = "Company was successfully created!"
+      flash[:success] = 'Company was successfully created!'
       redirect_to company_path(@company)
     else
       render 'new'
@@ -28,7 +28,7 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      flash[:success] = "Company was successfully updated!"
+      flash[:success] = 'Company was successfully updated!'
       redirect_to company_path(@company)
     else
       render 'edit'
@@ -41,7 +41,7 @@ class CompaniesController < ApplicationController
   def destroy
     @company.destroy
 
-    flash[:danger] = "Article was successefully destroy"
+    flash[:danger] = 'Article was successefully destroy'
     redirect_to companies_path
   end
   

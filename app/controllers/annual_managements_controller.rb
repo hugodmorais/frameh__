@@ -7,7 +7,7 @@ class AnnualManagementsController < ApplicationController
       format.json { render json: AnnualManagementsDatatable.new(params, view_context: view_context) }
     end
   end
-  
+
   def new
     @annual_management = AnnualManagement.new
   end
@@ -19,7 +19,7 @@ class AnnualManagementsController < ApplicationController
     @annual_management = AnnualManagement.new(annual_management_params)
     @annual_management.user_id = current_user.id
     if @annual_management.save
-      flash[:success] = "annual_management was successfully created!"
+      flash[:success] = 'annual_management was successfully created!'
       redirect_to annual_management_path(@annual_management)
     else
       render 'new'
@@ -28,7 +28,7 @@ class AnnualManagementsController < ApplicationController
 
   def update
     if @annual_management.update(annual_management_params)
-      flash[:success] = "annual_management was successfully updated!"
+      flash[:success] = 'annual_management was successfully updated!'
       redirect_to annual_management_path(@annual_management)
     else
       render 'edit'
@@ -40,7 +40,7 @@ class AnnualManagementsController < ApplicationController
 
   def destroy
     @annual_management.destroy
-    flash[:danger] = "annual_management was successefully destroy"
+    flash[:danger] = 'annual_management was successefully destroy'
     redirect_to annual_managements_path
   end
 

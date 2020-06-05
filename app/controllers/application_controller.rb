@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    unless logged_in?
-      flash[:error] = 'require_login'
-      redirect_to root_url
-    end
+    return if logged_in?
+
+    flash[:error] = 'require_login'
+    redirect_to root_url
   end
 
   def current_user_group(ids)
@@ -42,7 +42,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_annual_management
-    Current.annual_management = AnnualManagement.find_by(id: session[:frameh_annual_management]) || AnnualManagement.last
+    Current.annual_management = AnnualManagement.find_by(id: session[:frameh_annual_management]) ||
+                                AnnualManagement.last
   end
 
   def set_current_month
