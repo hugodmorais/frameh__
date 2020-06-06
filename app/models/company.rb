@@ -16,31 +16,31 @@
 #
 
 class Company < ApplicationRecord
-    # Includes
+  # Includes
 
-    # Attributes
+  # Attributes
 
-    # Associations
-    has_many :work_groups
-    has_many :contracts
-    has_many :incomes
-    belongs_to :user
-    
-    # Delegates
+  # Associations
+  has_many :work_groups
+  has_many :contracts
+  has_many :incomes
+  belongs_to :user
+  
+  # Delegates
 
-    # Constants
+  # Constants
 
-    # Validations
-    validates :name, :city, :country, presence: true
+  # Validations
+  validates :name, :city, :country, presence: true
 
-    # Scopes
-    scope :by_user, ->(user) { where(user_id: user) }
-    
-    # Callbacks
+  # Scopes
+  scope :by_user, ->(user) { where(user_id: user) }
+  
+  # Callbacks
 
-    # Constants Methods
+  # Constants Methods
 
-    # Default
+  # Default
 
-    private
+  private
 end
