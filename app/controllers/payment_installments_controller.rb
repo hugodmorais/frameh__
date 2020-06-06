@@ -20,7 +20,7 @@ class PaymentInstallmentsController < ApplicationController
     @payment_installment = PaymentInstallment.new(payment_installment_params)
     @payment_installment.user = current_user
     if @payment_installment.save
-      flash[:success] = "payment_installment was successfully created!"
+      flash[:success] = 'payment_installment was successfully created!'
       redirect_to payment_installment_path(@payment_installment)
     else
       render 'new'
@@ -29,7 +29,7 @@ class PaymentInstallmentsController < ApplicationController
 
   def update
     if @payment_installment.update(payment_installment_params)
-      flash[:success] = "payment_installment was successfully updated!"
+      flash[:success] = 'payment_installment was successfully updated!'
       redirect_to payment_installment_path(@payment_installment)
     else
       render 'edit'
@@ -42,7 +42,7 @@ class PaymentInstallmentsController < ApplicationController
   def destroy
     @payment_installment.destroy
 
-    flash[:danger] = "payment_installment was successefully destroy"
+    flash[:danger] = 'payment_installment was successefully destroy'
     redirect_to payment_installments_path
   end
 

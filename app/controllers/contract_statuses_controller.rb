@@ -1,5 +1,5 @@
 class ContractStatusesController < ApplicationController
-  before_action :set_contract_status, only: [:edit, :show, :update, :destroy]
+  before_action :set_contract_status, only: %i[edit show update destroy]
   before_action :require_annual_management
 
   def index
@@ -8,13 +8,13 @@ class ContractStatusesController < ApplicationController
       format.json { render json: ContractStatusesDatatable.new(params, view_context: view_context) }
     end
   end
-  
+
   def new
     @contract_status = ContractStatus.new
   end
 
   def edit
-  end  
+  end
 
   def create
     @contract_status = ContractStatus.new(contract_status_params)
