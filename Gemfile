@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0'
 # Use postgresql as the database for Active Record
 gem 'paperclip'
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 5.3'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'material-icons-rails'
